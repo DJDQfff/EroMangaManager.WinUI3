@@ -1,0 +1,8 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="using:EroMangaManager.WinUI3.StaticResource">
+    <converter:ControlVisibility x:Key="controlvisibilityconverter" />
+    <converter:GetRandomSolidColorBrush x:Key="randomcolor" />
+    <converter:FileSizeConverter x:Key="filesizeConverter" />
+</ResourceDictionary>

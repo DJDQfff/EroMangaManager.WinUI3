@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Config.Net" Version="5.1.5" />
+    <PackageReference Include="SharpCompress" Version="0.34.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyLibrary\MyLibrary.Standard20\MyLibrary.Standard20.csproj" />
+    <ProjectReference Include="..\EroMangaDatabase\EroMangaDatabase\EroMangaDatabase.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="zh-CN" target-language="en" original="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/RESOURCES.RESW" datatype="resx" />
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="en" original="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/STRINGS.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/STRINGS.RESW" datatype="resx">
+        <trans-unit id="ContainInvalaidChar" translate="yes" xml:space="preserve">
+          <source>包含非法字符</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Contains illegal characters</target>
+        </trans-unit>
+        <trans-unit id="DontUseEmptyString" translate="yes" xml:space="preserve">
+          <source>请勿使用空内容</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Don't use empty content</target>
+        </trans-unit>
+        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
+          <source>出错啦，无法打开</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Something went wrong and can't be opened</target>
+        </trans-unit>
+        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
+          <source>导出完成</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">The export is complete</target>
+        </trans-unit>
+        <trans-unit id="OpenFailed" translate="yes" xml:space="preserve">
+          <source>打开失败</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Failed to open</target>
+        </trans-unit>
+        <trans-unit id="ExportFailed" translate="yes" xml:space="preserve">
+          <source>导出失败</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">The export failed</target>
+        </trans-unit>
+        <trans-unit id="AppUILanguage" translate="yes" xml:space="preserve">
+          <source>语言</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">language</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="en" original="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/APPXMANIFEST.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/APPXMANIFEST.RESW" datatype="resx">
+        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
+          <source>本子管理器</source>
+          <target state="final">Doujinshi Manager</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png、webp格式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">This is a manga manager to manage and read your comics in zip format. The internal images must be in jpg, png, and webp formats</target>
+        </trans-unit>
+        <trans-unit id="OpenAsAZipComic" translate="yes" xml:space="preserve">
+          <source>作为zip压缩包漫画打开</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open the comic as a zip archive</target>
+        </trans-unit>
+        <trans-unit id="ZipComic" translate="yes" xml:space="preserve">
+          <source>zip漫画包</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Zip comic pack</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="en" original="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/UI.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/UI.RESW" datatype="resx">
+        <trans-unit id="AddAFolder" translate="yes" xml:space="preserve">
+          <source>添加文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Add folders</target>
+        </trans-unit>
+        <trans-unit id="Bookcase" translate="yes" xml:space="preserve">
+          <source>书架</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">bookshelf</target>
+        </trans-unit>
+        <trans-unit id="BookcaseItemToolTip" translate="yes" xml:space="preserve">
+          <source>漫画书架</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Comic book shelves</target>
+        </trans-unit>
+        <trans-unit id="CancleEdit" translate="yes" xml:space="preserve">
+          <source>不作调整</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">No adjustments</target>
+        </trans-unit>
+        <trans-unit id="ChangeSortMethod" translate="yes" xml:space="preserve">
+          <source>切换排序</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Toggle sorting</target>
+        </trans-unit>
+        <trans-unit id="Close" translate="yes" xml:space="preserve">
+          <source>关闭</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Shut down</target>
+        </trans-unit>
+        <trans-unit id="CommonSetting" translate="yes" xml:space="preserve">
+          <source>一般设置</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">General settings</target>
+        </trans-unit>
+        <trans-unit id="ConfirmEdit" translate="yes" xml:space="preserve">
+          <source>确认调整</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Confirm the adjustment</target>
+        </trans-unit>
+        <trans-unit id="DeleteFile" translate="yes" xml:space="preserve">
+          <source>确认删除文件？</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Confirm the deletion of files?</target>
+        </trans-unit>
+        <trans-unit id="DeleteIt" translate="yes" xml:space="preserve">
+          <source>删除</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Delete</target>
+        </trans-unit>
+        <trans-unit id="DeleteMode" translate="yes" xml:space="preserve">
+          <source>删除模式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Delete the pattern</target>
+        </trans-unit>
+        <trans-unit id="DeleteMode_JustDelete" translate="yes" xml:space="preserve">
+          <source>从磁盘删除</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Delete from disk</target>
+        </trans-unit>
+        <trans-unit id="DeleteMode_MoveTo" translate="yes" xml:space="preserve">
+          <source>移动到回收站</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Move to the Recycle Bin</target>
+        </trans-unit>
+        <trans-unit id="DeleteSourceFile" translate="yes" xml:space="preserve">
+          <source>删除源文件</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Delete the source file</target>
+        </trans-unit>
+        <trans-unit id="DontShowThisImage" translate="yes" xml:space="preserve">
+          <source>不显示此图</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">This diagram is not displayed</target>
+        </trans-unit>
+        <trans-unit id="Edit" translate="yes" xml:space="preserve">
+          <source>编辑</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">edit</target>
+        </trans-unit>
+        <trans-unit id="ErrorZips" translate="yes" xml:space="preserve">
+          <source>异常Zip</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Exception Zip</target>
+        </trans-unit>
+        <trans-unit id="ExportToPDF" translate="yes" xml:space="preserve">
+          <source>导出为PDF</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Export to PDF</target>
+        </trans-unit>
+        <trans-unit id="FilteredImages" translate="yes" xml:space="preserve">
+          <source>过滤图库</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Filter the gallery</target>
+        </trans-unit>
+        <trans-unit id="FindSameMangaByName" translate="yes" xml:space="preserve">
+          <source>查找相同漫画</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Find the same comics</target>
+        </trans-unit>
+        <trans-unit id="Folders" translate="yes" xml:space="preserve">
+          <source>文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">folder</target>
+        </trans-unit>
+        <trans-unit id="FullScreen" translate="yes" xml:space="preserve">
+          <source>全屏</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Full screen</target>
+        </trans-unit>
+        <trans-unit id="FunctionOff" translate="yes" xml:space="preserve">
+          <source>已启用</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Enabled</target>
+        </trans-unit>
+        <trans-unit id="FunctionOn" translate="yes" xml:space="preserve">
+          <source>已禁用</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Disabled</target>
+        </trans-unit>
+        <trans-unit id="GitHubFeedBack" translate="yes" xml:space="preserve">
+          <source>Github反馈</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Github feedback</target>
+        </trans-unit>
+        <trans-unit id="IsEmptyFolderShow" translate="yes" xml:space="preserve">
+          <source>是否显示空文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Whether or not an empty folder is displayed</target>
+        </trans-unit>
+        <trans-unit id="MailFeedbackToDeveloper" translate="yes" xml:space="preserve">
+          <source>邮件反馈djdqfff@qq.com</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Email feedback djdqfff@qq.com</target>
+        </trans-unit>
+        <trans-unit id="MangaTags" translate="yes" xml:space="preserve">
+          <source>本子标签</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">This sub-tag</target>
+        </trans-unit>
+        <trans-unit id="MangaTagsCategorys" translate="yes" xml:space="preserve">
+          <source>标签分类</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Label classification</target>
+        </trans-unit>
+        <trans-unit id="MangaTagsManage" translate="yes" xml:space="preserve">
+          <source>标签管理</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Tag management</target>
+        </trans-unit>
+        <trans-unit id="No" translate="yes" xml:space="preserve">
+          <source>否</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">not</target>
+        </trans-unit>
+        <trans-unit id="NoFoldersPleaseAddFirst" translate="yes" xml:space="preserve">
+          <source>目前没有文件夹，请添加你的第一个扫描文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">There are currently no folders, please add your first scanned folder</target>
+        </trans-unit>
+        <trans-unit id="NoSelectedFolder" translate="yes" xml:space="preserve">
+          <source>未选择文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">No folder selected</target>
+        </trans-unit>
+        <trans-unit id="NowInitializingMaybeError" translate="yes" xml:space="preserve">
+          <source>正在初始化文件夹，现在使用工具功能可能出错</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Initializing the folder, now using the tool feature may be incorrect</target>
+        </trans-unit>
+        <trans-unit id="NowReading" translate="yes" xml:space="preserve">
+          <source>正在阅读</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Reading</target>
+        </trans-unit>
+        <trans-unit id="Open" translate="yes" xml:space="preserve">
+          <source>打开</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open it</target>
+        </trans-unit>
+        <trans-unit id="OpenFile" translate="yes" xml:space="preserve">
+          <source>打开文件</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open the file</target>
+        </trans-unit>
+        <trans-unit id="OpenFolder" translate="yes" xml:space="preserve">
+          <source>打开文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open the folder</target>
+        </trans-unit>
+        <trans-unit id="OpenInMicrosoftStore" translate="yes" xml:space="preserve">
+          <source>商店中打开</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Store opens</target>
+        </trans-unit>
+        <trans-unit id="OpenItsPlacedFolder" translate="yes" xml:space="preserve">
+          <source>打开所在文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open the folder you're in</target>
+        </trans-unit>
+        <trans-unit id="OverviewInformation" translate="yes" xml:space="preserve">
+          <source>查看信息</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">View the information</target>
+        </trans-unit>
+        <trans-unit id="PinnedFolders" translate="yes" xml:space="preserve">
+          <source>已固定文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">The folder has been pinned</target>
+        </trans-unit>
+        <trans-unit id="Refresh" translate="yes" xml:space="preserve">
+          <source>刷新</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">flushed</target>
+        </trans-unit>
+        <trans-unit id="Remove" translate="yes" xml:space="preserve">
+          <source>移除</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Remove</target>
+        </trans-unit>
+        <trans-unit id="RemoveFolder" translate="yes" xml:space="preserve">
+          <source>移除文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Remove the folder</target>
+        </trans-unit>
+        <trans-unit id="RemoveRepeatTags" translate="yes" xml:space="preserve">
+          <source>移除重复本子标签</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Remove duplicate book subtags</target>
+        </trans-unit>
+        <trans-unit id="RenameFile" translate="yes" xml:space="preserve">
+          <source>重命名文件</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Rename the file</target>
+        </trans-unit>
+        <trans-unit id="SaveAs" translate="yes" xml:space="preserve">
+          <source>另存为</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Save As</target>
+        </trans-unit>
+        <trans-unit id="Search" translate="yes" xml:space="preserve">
+          <source>查找</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Find</target>
+        </trans-unit>
+        <trans-unit id="SearchByMangaName" translate="yes" xml:space="preserve">
+          <source>查找本子名</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Find the subname of the book</target>
+        </trans-unit>
+        <trans-unit id="SearchByTag" translate="yes" xml:space="preserve">
+          <source>按Tag查找</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Search by Tag</target>
+        </trans-unit>
+        <trans-unit id="SetAsDefaultBookcaseFolder" translate="yes" xml:space="preserve">
+          <source>设置为默认展示文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Set it as the default presentation folder</target>
+        </trans-unit>
+        <trans-unit id="SetBack" translate="yes" xml:space="preserve">
+          <source>还原</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">restore</target>
+        </trans-unit>
+        <trans-unit id="ShowFolderBookcase" translate="yes" xml:space="preserve">
+          <source>显示书架</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Displays the bookshelf</target>
+        </trans-unit>
+        <trans-unit id="Tags" translate="yes" xml:space="preserve">
+          <source>标签</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">label</target>
+        </trans-unit>
+        <trans-unit id="ToolBox" translate="yes" xml:space="preserve">
+          <source>工具箱</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">toolbox</target>
+        </trans-unit>
+        <trans-unit id="Translate" translate="yes" xml:space="preserve">
+          <source>翻译</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Translation</target>
+        </trans-unit>
+        <trans-unit id="UpdateRecords" translate="yes" xml:space="preserve">
+          <source>更新记录</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Update history</target>
+        </trans-unit>
+        <trans-unit id="Usage" translate="yes" xml:space="preserve">
+          <source>使用说明</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Directions for use</target>
+        </trans-unit>
+        <trans-unit id="WhetherOpenFilterImageFunction" translate="yes" xml:space="preserve">
+          <source>是否启用单页过滤功能（开启此功能将减慢漫画打开速度）</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Whether to enable single-page filtering (turning this on will slow down the comic opening)</target>
+        </trans-unit>
+        <trans-unit id="WhetherShowDialogBeforeDelete" translate="yes" xml:space="preserve">
+          <source>是否直接删除</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Whether to delete it directly</target>
+        </trans-unit>
+        <trans-unit id="Yes" translate="yes" xml:space="preserve">
+          <source>是</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">be</target>
+        </trans-unit>
+        <trans-unit id="DefaultWay" translate="yes" xml:space="preserve">
+          <source>默认方式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Default way</target>
+        </trans-unit>
+        <trans-unit id="MangaOpenWay" translate="yes" xml:space="preserve">
+          <source>漫画打开方式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">How the comic opens</target>
+        </trans-unit>
+        <trans-unit id="OSRelated" translate="yes" xml:space="preserve">
+          <source>系统关联</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">System associations</target>
+        </trans-unit>
+        <trans-unit id="SelectExe" translate="yes" xml:space="preserve">
+          <source>选择exe程序</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Select the exe program</target>
+        </trans-unit>
+        <trans-unit id="LoadSubDirectory" translate="yes" xml:space="preserve">
+          <source>加载子文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Load the subfolder</target>
+        </trans-unit>
+        <trans-unit id="en" translate="yes" xml:space="preserve">
+          <source>英文</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">English</target>
+        </trans-unit>
+        <trans-unit id="zhCN" translate="yes" xml:space="preserve">
+          <source>简中</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Simplified</target>
+        </trans-unit>
+        <trans-unit id="AppUILanguage" translate="yes" xml:space="preserve">
+          <source>语言</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">language</target>
+        </trans-unit>
+        <trans-unit id="TagsViewMode" translate="yes" xml:space="preserve">
+          <source>标签视图</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Label view</target>
+        </trans-unit>
+        <trans-unit id="ThumanailViewMode" translate="yes" xml:space="preserve">
+          <source>缩略图视图</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Thumbnail view</target>
+        </trans-unit>
+        <trans-unit id="SwitchViewMode" translate="yes" xml:space="preserve">
+          <source>切换视图</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Toggle the view</target>
+        </trans-unit>
+        <trans-unit id="WhetherPickSubFolder" translate="yes" xml:space="preserve">
+          <source>是否添加子文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Whether to add subfolders</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="en" original="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/QUESTIONANDANSWERS.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="EROMANGAMANAGER.WINUI3/STRINGS/ZH-CN/QUESTIONANDANSWERS.RESW" datatype="resx">
+        <trans-unit id="Description_20221219" translate="yes" xml:space="preserve">
+          <source>添加导出PDF功能</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Add the ability to export PDFs</target>
+        </trans-unit>
+        <trans-unit id="Description_20221226" translate="yes" xml:space="preserve">
+          <source>修复了一些bug;添加更新日志</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Fixed some bugs; Add a changelog</target>
+        </trans-unit>
+        <trans-unit id="Description_20230109" translate="yes" xml:space="preserve">
+          <source>添加重复本子查找功能</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Added duplicate book search function</target>
+        </trans-unit>
+        <trans-unit id="Description_20230125" translate="yes" xml:space="preserve">
+          <source>阅读页面全屏功能；默认书架</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Reading page full-screen functionality; default bookshelf</target>
+        </trans-unit>
+        <trans-unit id="Description_20230205" translate="yes" xml:space="preserve">
+          <source>优化启动速度</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Optimized startup speed</target>
+        </trans-unit>
+        <trans-unit id="Description_before" translate="yes" xml:space="preserve">
+          <source>更早的记录</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Older records</target>
+        </trans-unit>
+        <trans-unit id="Version_20221219" translate="yes" xml:space="preserve">
+          <source>2022.12.19</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">2022.12.19</target>
+        </trans-unit>
+        <trans-unit id="Version_20221226" translate="yes" xml:space="preserve">
+          <source>2022.12.26</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">2022.12.26</target>
+        </trans-unit>
+        <trans-unit id="Version_20230109" translate="yes" xml:space="preserve">
+          <source>2023.01.09</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">2023.01.09</target>
+        </trans-unit>
+        <trans-unit id="Version_20230125" translate="yes" xml:space="preserve">
+          <source>2023.01.25</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">2023.01.25</target>
+        </trans-unit>
+        <trans-unit id="Version_20230205" translate="yes" xml:space="preserve">
+          <source>2023.2.5</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">2023.2.5</target>
+        </trans-unit>
+        <trans-unit id="Version_before" translate="yes" xml:space="preserve">
+          <source>更早的版本</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Earlier versions</target>
+        </trans-unit>
+        <trans-unit id="Question_WhyZipRatherFolder" translate="yes" xml:space="preserve">
+          <source>为什么使用压缩格式而不是文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Why use a compressed format instead of folders</target>
+        </trans-unit>
+        <trans-unit id="Answer_SupportedType" translate="yes" xml:space="preserve">
+          <source>仅Zip。对于保存本子而言，zip是个最好的选择。其他格式（如rar，7z）当然可以，但并不是最优解。zip格式是一种免费开源的压缩档案格式，windows内置支持zip，具有较好的解压缩速度和压缩率。</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Zip only. For saving books,Zip is the best choice.。 Other formats (e.g., RAR, 7Z) are of course possible, but they are not optimal. ZIP format is a free and open source compressed archive format, Windows built-in support for ZIP, with good decompression speed and compression rate.</target>
+        </trans-unit>
+        <trans-unit id="Answer_WhatISTheApp" translate="yes" xml:space="preserve">
+          <source>这是一个用于管理本地收藏的压缩格式的本子的软件。如果你不知道什么是本子，那么你大概率用不上本软件。</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">This is a software used to manage the compressed format of the book of the local collection.。 If you don't know what a book is,Then there's a high probability you won't use this software.。</target>
+        </trans-unit>
+        <trans-unit id="Answer_WhyZipRatherFolder" translate="yes" xml:space="preserve">
+          <source>使用文件夹，会有大量散乱的单个图片文件。大量零散文件及其不容易管理（如复制粘贴时会拖累系统速度），而且也利于收藏。</source>
+          <target state="translated" state-qualifier="mt-suggestion">With folders, there will be a large number of scattered individual picture files. A large number of scattered files and their difficulty in managing (e.g. copying and pasting slows down the system) and are also conducive to collections.</target>
+        </trans-unit>
+        <trans-unit id="Question_SupportedType" translate="yes" xml:space="preserve">
+          <source>支持的类型</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Supported types</target>
+        </trans-unit>
+        <trans-unit id="Question_WhatISTheApp" translate="yes" xml:space="preserve">
+          <source>这是什么软件？</source>
+          <target state="final" state-qualifier="mt-suggestion">What kind of software is it?</target>
+        </trans-unit>
+        <trans-unit id="Answer_MangaLibrary" translate="yes" xml:space="preserve">
+          <source>按文件夹对本子进行区分管理</source>
+          <target state="translated">Separate management of the doujinshi according to its folder</target>
+        </trans-unit>
+        <trans-unit id="Answer_Tag" translate="yes" xml:space="preserve">
+          <source>本子标签从本子名读取。如文件"[玉砂糖] キミ色保護色 (COMIC BAVEL 2021年6月号) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip"，在本软件中，包含在一对括号中的内容将被识别为Tag，未包含在括号中的内容将被识别为本子名称。这不一定100%正确识别。</source>
+          <target state="final">This Tag is read from the doujinshi. For example, in the file "[Jade Sugar] キミ色保護色 (COMIC BAVEL June 2021 issue) [無邪気漢化組] [無邪気無無universe分組] [MJK-22-Z2748] [無amendment].zip], in this software, content contained in a pair of parentheses will be recognized as a Tag, and content not included in parentheses will be recognized as this doujinshi. This is not necessarily 100% correctly identifiable.</target>
+        </trans-unit>
+        <trans-unit id="Question_MangaLibrary" translate="yes" xml:space="preserve">
+          <source>本子库</source>
+          <target state="translated">This doujinshi-library</target>
+        </trans-unit>
+        <trans-unit id="Question_Tag" translate="yes" xml:space="preserve">
+          <source>标签</source>
+          <target state="translated">Tag</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

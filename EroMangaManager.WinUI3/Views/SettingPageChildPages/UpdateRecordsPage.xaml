@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="EroMangaManager.WinUI3.Views.SettingPageChildPages.UpdateRecordsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
+        <StackPanel x:Name="UpdateRecordStackPanel">
+
+            <usercontrols:QATextBlock Answer="Description_20230205" Question="Version_20230205" />
+            <usercontrols:QATextBlock Answer="Description_20230125" Question="Version_20230125" />
+            <usercontrols:QATextBlock Answer="Description_20230109" Question="Version_20230109" />
+            <usercontrols:QATextBlock Answer="Description_20221226" Question="Version_20221226" />
+
+            <usercontrols:QATextBlock Answer="Description_20221219" Question="Version_20221219" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

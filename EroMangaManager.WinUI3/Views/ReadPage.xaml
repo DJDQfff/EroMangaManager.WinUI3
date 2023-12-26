@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="EroMangaManager.WinUI3.Views.ReadPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:image="using:Microsoft.UI.Xaml.Media.Imaging"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sharpcompress="using:SharpCompress.Archives"
+    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    Background="Transparent"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="BitmapImageDateType" x:DataType="image:BitmapImage">
+            <Grid>
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Disabled"
+                    HorizontalScrollMode="Disabled"
+                    VerticalScrollBarVisibility="Disabled"
+                    VerticalScrollMode="Disabled"
+                    ZoomMode="Enabled">
+                    <Image x:Name="image" Source="{x:Bind}" />
+                </ScrollViewer>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="EntryDataType" x:DataType="sharpcompress:IArchiveEntry">
+            <Grid>
+                <Grid.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Click="FilteThisImageByEntry" Text="{uid:UI Uid=DontShowThisImage}" />
+                        <MenuFlyoutItem Click="SaveImageByEntry" Text="{uid:UI Uid=SaveAs}" />
+                    </MenuFlyout>
+                </Grid.ContextFlyout>
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Disabled"
+                    HorizontalScrollMode="Disabled"
+                    VerticalScrollBarVisibility="Disabled"
+                    VerticalScrollMode="Disabled"
+                    ZoomMode="Enabled">
+                    <Image
+                        x:Name="image"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Source="Assets/SVGs/书籍.svg" />
+                </ScrollViewer>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+
+        <FlipView
+            x:Name="FLIP"
+            ItemTemplate="{StaticResource EntryDataType}"
+            SelectionChanged="FLIP_SelectionChanged_ByEntry"
+            Tapped="FLIP_Tapped">
+            <FlipView.ItemContainerStyle>
+                <Style TargetType="FlipViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                </Style>
+            </FlipView.ItemContainerStyle>
+        </FlipView>
+
+        <Grid x:Name="ControlsGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <CommandBar
+                x:Name="ReadPageCommand"
+                Grid.Row="0"
+                Background="Transparent"
+                FlowDirection="LeftToRight"
+                Visibility="Collapsed">
+                <CommandBar.PrimaryCommands>
+                    <AppBarToggleButton
+                        Checked="AppBarToggleButton_Checked"
+                        Icon="FullScreen"
+                        IsChecked="False"
+                        Unchecked="AppBarToggleButton_Unchecked" />
+                </CommandBar.PrimaryCommands>
+            </CommandBar>
+            <Slider
+                x:Name="ReadPositionSlider"
+                Grid.Row="2"
+                Minimum="1"
+                StepFrequency="1"
+                ValueChanged="ReadPositionSlider_ValueChanged"
+                Visibility="Collapsed" />
+        </Grid>
+    </Grid>
+</Page>
