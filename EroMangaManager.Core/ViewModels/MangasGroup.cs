@@ -11,9 +11,9 @@ using SharpCompress;
 namespace EroMangaManager.Core.ViewModels
 {
     /// <summary>
-    /// 本子文件夹，包含一大堆本子
+    /// 本子组
     /// </summary>
-    public class MangasFolder : INotifyPropertyChanged
+    public class MangasGroup : INotifyPropertyChanged
     {
         /// <summary>
         /// 文件夹路径，一开始是作为文件夹设计的，后来不作为文件夹，仅作为本子统一集合
@@ -59,14 +59,14 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 不当文件夹用，所以不指定文件夹路径
         /// </summary>
-        public MangasFolder ()
+        public MangasGroup ()
         { }
 
         /// <summary>
         /// 当文件夹用，需要指定文件夹路径
         /// </summary>
         /// <param name="storageFolderPath"></param>
-        public MangasFolder (string storageFolderPath)
+        public MangasGroup (string storageFolderPath)
         {
             FolderPath = storageFolderPath;
             ShowString = storageFolderPath;

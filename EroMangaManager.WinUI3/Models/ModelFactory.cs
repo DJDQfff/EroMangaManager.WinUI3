@@ -14,7 +14,7 @@ namespace EroMangaManager.WinUI3.Models
 
             foreach (var folder in storageFolders)
             {
-                var mangasFolder = new MangasFolder(folder);
+                var mangasFolder = new MangasGroup(folder);
                 ViewModel.MangaFolders.Add(mangasFolder);
             }
         }
@@ -33,7 +33,7 @@ namespace EroMangaManager.WinUI3.Models
         /// <param name="mangasFolder"></param>
         /// <param name="StorageFolder"></param>
         /// <returns></returns>
-        public static async Task Initial (this MangasFolder mangasFolder)
+        public static async Task Initial (this MangasGroup mangasFolder)
         {
             string[] OkExtension = new string[] { ".zip" };
             mangasFolder.IsInitialing = true;

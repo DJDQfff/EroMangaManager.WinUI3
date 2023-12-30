@@ -117,7 +117,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
             var condition = result as IEnumerable<MangaBook>;
 
-            var mangasfolder = new MangasFolder()
+            var mangasfolder = new MangasGroup()
             {
                 ShowString = (MangaNameAugoSuggestBox.Text + "+" + MangaTagTokenizingTextBox.SelectedTokenText)
                 .Trim('+') ,

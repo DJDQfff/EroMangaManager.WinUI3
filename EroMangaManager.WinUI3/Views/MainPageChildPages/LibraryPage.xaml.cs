@@ -16,7 +16,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void RemoveFolderButton_Click (object sender , RoutedEventArgs e)
         {
-            if ((sender as MenuFlyoutItem).DataContext is MangasFolder storageFolder)
+            if ((sender as MenuFlyoutItem).DataContext is MangasGroup storageFolder)
             {
                 DatabaseController.MangaFolder_RemoveSingle(storageFolder.FolderPath);
 
@@ -26,7 +26,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void JumpToBookcaseButton_Click (object sender , RoutedEventArgs e)
         {
-            if ((sender as MenuFlyoutItem).DataContext is MangasFolder datacontext)
+            if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
                 MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , datacontext);
             }
@@ -34,7 +34,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void SetAsDefaultBookcaseFolder_Click (object sender , RoutedEventArgs e)
         {
-            if ((sender as MenuFlyoutItem).DataContext is MangasFolder datacontext)
+            if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
                 App.Current.AppConfig.General.DefaultBookcaseFolder = datacontext.FolderPath;
             }
@@ -84,7 +84,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 }
                 foreach (var folder in folderws)
                 {
-                    if (!App.Current.GlobalViewModel.EnsureAddFolder(folder , out MangasFolder mangasFolder))
+                    if (!App.Current.GlobalViewModel.EnsureAddFolder(folder , out MangasGroup mangasFolder))
                     {
                         await mangasFolder.Initial();
                     };
@@ -94,7 +94,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void OpenFolderItem_Click (object sender , RoutedEventArgs e)
         {
-            if ((sender as MenuFlyoutItem).DataContext is MangasFolder datacontext)
+            if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
                 MangaBookCommands.Instance.OpenFolderInOutside.Execute(datacontext.FolderPath);
             }
@@ -102,7 +102,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void Grid_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)
         {
-            if ((sender as Grid).DataContext is MangasFolder datacontext)
+            if ((sender as Grid).DataContext is MangasGroup datacontext)
             {
                 MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , datacontext);
             }
@@ -110,13 +110,13 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private async void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
         {
-            if ((sender as MenuFlyoutItem).DataContext is MangasFolder datacontext)
+            if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
                 var folder = datacontext.FolderPath;
                 var chidlfolders = Directory.GetDirectories(folder);
                 foreach (var chidlfolder in chidlfolders)
                 {
-                    if (!App.Current.GlobalViewModel.EnsureAddFolder(chidlfolder , out MangasFolder mangaFolder))
+                    if (!App.Current.GlobalViewModel.EnsureAddFolder(chidlfolder , out MangasGroup mangaFolder))
                     {
                         await mangaFolder.Initial();
                     }

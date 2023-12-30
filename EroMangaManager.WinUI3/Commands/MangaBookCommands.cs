@@ -20,7 +20,7 @@ internal class MangaBookCommands
         {
             string folderpath = args.Parameter switch
             {
-                MangasFolder folder => folder.FolderPath,
+                MangasGroup folder => folder.FolderPath,
                 MangaBook book => book.FilePath,
                 string str => str,
                 _ => null

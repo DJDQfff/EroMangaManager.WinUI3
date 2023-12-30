@@ -103,7 +103,7 @@
             ItemsSource="{x:Bind app:App.Current.GlobalViewModel.MangaFolders, Mode=OneWay}"
             SelectionMode="Single">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="vm:MangasFolder">
+                <DataTemplate x:DataType="vm:MangasGroup">
                     <Grid ContextFlyout="{StaticResource flyout}" DoubleTapped="Grid_DoubleTapped">
 
                         <Grid.ColumnDefinitions>

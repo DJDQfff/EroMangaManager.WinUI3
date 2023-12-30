@@ -7,9 +7,9 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// </summary>
     public sealed partial class Bookcase : Page
     {
-        private MangasFolder _data;
+        private MangasGroup _data;
 
-        internal MangasFolder BindMangasFolder
+        internal MangasGroup BindMangasFolder
         {
             set
             {
@@ -46,7 +46,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
             switch (e.Parameter)
             {
-                case MangasFolder mangasFolder:
+                case MangasGroup mangasFolder:
                     BindMangasFolder = mangasFolder;
                     CommandText.Text = mangasFolder.ShowString;
                     break;

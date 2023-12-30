@@ -30,7 +30,7 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 本子文件夹集合
         /// </summary>
-        public ObservableCollection<MangasFolder> MangaFolders { get; } = new ObservableCollection<MangasFolder>();
+        public ObservableCollection<MangasGroup> MangaFolders { get; } = new ObservableCollection<MangasGroup>();
 
         /// <summary>
         /// 无法找到的文件夹
@@ -47,7 +47,7 @@ namespace EroMangaManager.Core.ViewModels
             get
             {
                 List<MangaBook> list = new List<MangaBook>();
-                foreach (MangasFolder folder in MangaFolders)
+                foreach (MangasGroup folder in MangaFolders)
                 {
                     list.AddRange(folder.MangaBooks);
                 }
@@ -82,7 +82,7 @@ namespace EroMangaManager.Core.ViewModels
         /// 确保已添加文件夹，并添加到集合。如果已存在这个folder，则返回true;否则返回false并创建新的
         /// </summary>
         /// <returns></returns>
-        public bool EnsureAddFolder (string path , out MangasFolder mangasFolder)
+        public bool EnsureAddFolder (string path , out MangasGroup mangasFolder)
         {
             if (StorageFolders.Contains(path))
             {
@@ -91,7 +91,7 @@ namespace EroMangaManager.Core.ViewModels
             }
             else
             {
-                mangasFolder = new MangasFolder(path);
+                mangasFolder = new MangasGroup(path);
                 MangaFolders.Add(mangasFolder);
 
                 return false;
@@ -104,7 +104,7 @@ namespace EroMangaManager.Core.ViewModels
         /// 2.从FolderList里移除
         /// 3.从MangaList里移除文件夹下属漫画
         /// </summary>
-        public void RemoveFolder (MangasFolder mangasfolder)
+        public void RemoveFolder (MangasGroup mangasfolder)
         {
             MangaFolders.Remove(mangasfolder);
         }
@@ -116,7 +116,7 @@ namespace EroMangaManager.Core.ViewModels
         public void RemoveManga (MangaBook mangaBook)
         {
             string folderpath = mangaBook.FolderPath;
-            MangasFolder folder = MangaFolders.Single(x => x.FolderPath == folderpath);
+            MangasGroup folder = MangaFolders.Single(x => x.FolderPath == folderpath);
             folder.RemoveManga(mangaBook);
         }
 
