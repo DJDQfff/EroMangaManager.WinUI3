@@ -1,8 +1,4 @@
-﻿using System.Diagnostics;
-
-using Windows.UI.ViewManagement;
-
-// https://go.microsoft.com/fwlink/?LinkId=234238
+﻿// https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
 namespace EroMangaManager.WinUI3.Views
@@ -69,41 +65,6 @@ namespace EroMangaManager.WinUI3.Views
         protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             SetSource(e.Parameter);
-        }
-
-        /// <summary>
-        /// 还是存在切换是闪烁的bug
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void FLIP_SelectionChanged_ByEntry (object sender , SelectionChangedEventArgs e)
-        {
-            Debug.WriteLine($"SelectionChanged事件开始");
-
-            var selectedEntry = FLIP.SelectedItem as IArchiveEntry;
-
-            if (FLIP.ContainerFromItem(selectedEntry) is FlipViewItem container)
-            {
-                var root = container.ContentTemplateRoot as Grid;
-
-                var image = root.FindName("image") as Image;
-
-                var stream = currentReader.GetOrAddShowedEntry(selectedEntry);
-
-                switch (stream)
-                {
-                    // TODO 这个逻辑有问题，做了多余的事
-                    case Stream _:
-                        image.Source = await selectedEntry.ShowEntryAsync();
-                        break;
-
-                    case null:
-                        image.Source = new SvgImageSource(new Uri(CoverHelper.ErrorSVGPath));
-                        break;
-                }
-            }
-
-            Debug.WriteLine($"SelectionChanged事件结束");
         }
 
         /// <summary> 添加此图片到过滤图库 </summary>
@@ -176,6 +137,48 @@ namespace EroMangaManager.WinUI3.Views
         {
             base.OnNavigatedFrom(e);
             currentReader?.Dispose();
+        }
+
+        // TODO 不知道为什么，只加载三个
+        private async void image_Loaded (object sender , RoutedEventArgs e)
+        {
+            var control = sender as Image;
+            var entry = control.DataContext as IArchiveEntry;
+            if (entry != null)
+            {
+                control.Source = await entry.ShowEntryAsync();
+            }
+        }
+
+        /// <summary>
+        /// 还是存在切换是闪烁的bug
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        [Obsolete]
+        private async void FLIP_SelectionChanged_ByEntry (object sender , SelectionChangedEventArgs e)
+        {
+            var selectedEntry = FLIP.SelectedItem as IArchiveEntry;
+
+            if (FLIP.ContainerFromItem(selectedEntry) is FlipViewItem container)
+            {
+                var root = container.ContentTemplateRoot as Grid;
+
+                var image = root.FindName("image") as Image;
+
+                // TODO 这个逻辑做了多余的事
+                var stream = currentReader.GetOrAddShowedEntry(selectedEntry);
+                switch (stream)
+                {
+                    case Stream _:
+                        image.Source = await selectedEntry.ShowEntryAsync();
+                        break;
+
+                    case null:
+                        image.Source = new SvgImageSource(new Uri(CoverHelper.ErrorSVGPath));
+                        break;
+                }
+            }
         }
     }
 }

@@ -65,6 +65,13 @@ namespace EroMangaManager.Core.ViewModels
             AllEntries = ZipArchive.Entries.ToList();
         }
 
+        public ReaderVM (Stream stream)
+        {
+            Stream = stream;
+            ZipArchive = ArchiveFactory.Open(Stream);
+            AllEntries = ZipArchive.Entries.ToList();
+        }
+
         /// <summary>
         /// 显示指定entry，并添加到图片字典中, 如果返回null，则未能正常打开流
         /// </summary>

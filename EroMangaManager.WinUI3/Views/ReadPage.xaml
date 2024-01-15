@@ -9,49 +9,37 @@
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
     Background="Transparent"
     mc:Ignorable="d">
-    <Page.Resources>
-        <DataTemplate x:Key="BitmapImageDateType" x:DataType="image:BitmapImage">
-            <Grid>
-                <ScrollViewer
-                    HorizontalScrollBarVisibility="Disabled"
-                    HorizontalScrollMode="Disabled"
-                    VerticalScrollBarVisibility="Disabled"
-                    VerticalScrollMode="Disabled"
-                    ZoomMode="Enabled">
-                    <Image x:Name="image" Source="{x:Bind}" />
-                </ScrollViewer>
-            </Grid>
-        </DataTemplate>
-        <DataTemplate x:Key="EntryDataType" x:DataType="sharpcompress:IArchiveEntry">
-            <Grid>
-                <Grid.ContextFlyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Click="FilteThisImageByEntry" Text="{uid:UI Uid=DontShowThisImage}" />
-                        <MenuFlyoutItem Click="SaveImageByEntry" Text="{uid:UI Uid=SaveAs}" />
-                    </MenuFlyout>
-                </Grid.ContextFlyout>
-                <ScrollViewer
-                    HorizontalScrollBarVisibility="Disabled"
-                    HorizontalScrollMode="Disabled"
-                    VerticalScrollBarVisibility="Disabled"
-                    VerticalScrollMode="Disabled"
-                    ZoomMode="Enabled">
-                    <Image
-                        x:Name="image"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Source="Assets/SVGs/书籍.svg" />
-                </ScrollViewer>
-            </Grid>
-        </DataTemplate>
-    </Page.Resources>
+
     <Grid>
 
         <FlipView
             x:Name="FLIP"
-            ItemTemplate="{StaticResource EntryDataType}"
             SelectionChanged="FLIP_SelectionChanged_ByEntry"
             Tapped="FLIP_Tapped">
+            <FlipView.ItemTemplate>
+                <DataTemplate x:DataType="sharpcompress:IArchiveEntry">
+                    <Grid>
+                        <Grid.ContextFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Click="FilteThisImageByEntry" Text="{uid:UI Uid=DontShowThisImage}" />
+                                <MenuFlyoutItem Click="SaveImageByEntry" Text="{uid:UI Uid=SaveAs}" />
+                            </MenuFlyout>
+                        </Grid.ContextFlyout>
+                        <ScrollViewer
+                            HorizontalScrollBarVisibility="Disabled"
+                            HorizontalScrollMode="Disabled"
+                            VerticalScrollBarVisibility="Disabled"
+                            VerticalScrollMode="Disabled"
+                            ZoomMode="Enabled">
+                            <Image
+                                x:Name="image"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Source="Assets/SVGs/书籍.svg" />
+                        </ScrollViewer>
+                    </Grid>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
             <FlipView.ItemContainerStyle>
                 <Style TargetType="FlipViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

@@ -95,6 +95,10 @@
 
 ## UpdateChanges
 
+## 2023.1.15
+
+* 在初始化globalviewmodels时，忽略不存在的文件夹
+
 * 切换bookcase的item
 
 * 检索子文件夹的设置

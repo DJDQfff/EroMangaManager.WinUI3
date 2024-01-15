@@ -14,8 +14,12 @@ namespace EroMangaManager.WinUI3.Models
 
             foreach (var folder in storageFolders)
             {
-                var mangasFolder = new MangasGroup(folder);
-                ViewModel.MangaFolders.Add(mangasFolder);
+                //不存在则跳过
+                if (Directory.Exists(folder))
+                {
+                    var mangasFolder = new MangasGroup(folder);
+                    ViewModel.MangaFolders.Add(mangasFolder);
+                }
             }
         }
 
@@ -37,28 +41,31 @@ namespace EroMangaManager.WinUI3.Models
         {
             string[] OkExtension = new string[] { ".zip" };
             mangasFolder.IsInitialing = true;
-            var files = Directory.GetFiles(mangasFolder.FolderPath);
-            var filteredfiles = files
-                .Where(x => OkExtension.Contains(Path.GetExtension(x).ToLower()))
-                .ToList();
-
-            var a = DatabaseController.database.FilteredImages.ToArray();
-            var tasks = new List<Task>();
-
-            var lcts = new LimitedConcurrencyLevelTaskScheduler(2);
-            var taskFactory = new TaskFactory(lcts);
-            foreach (var storageFile in filteredfiles)
+            if (Directory.Exists(mangasFolder.FolderPath))
             {
-                var file = storageFile;
+                var files = Directory.GetFiles(mangasFolder.FolderPath);
+                var filteredfiles = files
+                    .Where(x => OkExtension.Contains(Path.GetExtension(x).ToLower()))
+                    .ToList();
 
-                var manga = CreateMangaBook(file);
-                manga.CoverPath = (await CoverHelper.TryCreatCoverFileAsync(file , a))
-                                 ?? CoverHelper.DefaultCoverPath;
-                mangasFolder.MangaBooks.Add(manga);
+                var a = DatabaseController.database.FilteredImages.ToArray();
+                var tasks = new List<Task>();
+
+                var lcts = new LimitedConcurrencyLevelTaskScheduler(2);
+                var taskFactory = new TaskFactory(lcts);
+                foreach (var storageFile in filteredfiles)
+                {
+                    var file = storageFile;
+
+                    var manga = CreateMangaBook(file);
+                    manga.CoverPath = (await CoverHelper.TryCreatCoverFileAsync(file , a))
+                                     ?? CoverHelper.DefaultCoverPath;
+                    mangasFolder.MangaBooks.Add(manga);
+                }
+
+                await Task.WhenAll(tasks);
             }
             mangasFolder.IsInitialing = false;
-
-            await Task.WhenAll(tasks);
         }
 
         /// <summary>
