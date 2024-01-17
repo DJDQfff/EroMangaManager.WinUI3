@@ -108,7 +108,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-        private async void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
+        private async void LoadSubDIrectory (object sender , RoutedEventArgs e)
         {
             if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
@@ -116,6 +116,12 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 var chidlfolders = Directory.GetDirectories(folder);
                 foreach (var chidlfolder in chidlfolders)
                 {
+                    if (DatabaseController.MangaFolder_GetAllPaths().Contains(chidlfolder))
+                    {
+                        // 跳过已存在于数据库里的文件夹
+                        return;
+                    }
+
                     if (!App.Current.GlobalViewModel.EnsureAddFolder(chidlfolder , out MangasGroup mangaFolder))
                     {
                         await mangaFolder.Initial();

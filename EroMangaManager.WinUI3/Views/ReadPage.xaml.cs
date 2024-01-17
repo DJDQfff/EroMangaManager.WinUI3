@@ -46,7 +46,6 @@ namespace EroMangaManager.WinUI3.Views
                     break;
             }
 
-            FLIP.ItemsSource = currentReader.FilteredArchiveImageEntries;
             bool isfilterimage = App.Current.AppConfig.General.IsFilterImageOn;
             FilteredImage[] filteredImages = null;
             if (isfilterimage)
@@ -54,6 +53,7 @@ namespace EroMangaManager.WinUI3.Views
                 filteredImages = DatabaseController.database.FilteredImages.ToArray();
             }
             currentReader.SelectEntries(filteredImages);
+            FLIP.ItemsSource = currentReader.FilteredArchiveImageEntries;
 
             ReadPositionSlider.Maximum = currentReader.FilteredArchiveImageEntries.Count;
         }

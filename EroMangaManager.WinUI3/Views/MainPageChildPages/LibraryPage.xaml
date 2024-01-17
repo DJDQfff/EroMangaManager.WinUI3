@@ -40,7 +40,7 @@
                 Click="OpenFolderItem_Click"
                 Icon="Folder"
                 Text="{uid:UI Uid=OpenFolder}" />
-            <MenuFlyoutItem Click="MenuFlyoutItem_Click" Text="{uid:UI Uid=LoadSubDirectory}" />
+            <MenuFlyoutItem Click="LoadSubDIrectory" Text="{uid:UI Uid=LoadSubDirectory}" />
             <MenuFlyoutItem
                 x:Name="RemoveFolderButton"
                 Click="RemoveFolderButton_Click"
