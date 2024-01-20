@@ -49,7 +49,6 @@ namespace EroMangaManager.WinUI3.Views
 
             if (!type.Equals(MainFrame.CurrentSourcePageType))
             {
-
                 MainFrame.Navigate(type , App.Current.GlobalViewModel.MangaList);
             }
         }
@@ -63,6 +62,5 @@ namespace EroMangaManager.WinUI3.Views
         {
             MainFrame.Navigate(typeof(UsageDocumentPage));
         }
-
     }
 }

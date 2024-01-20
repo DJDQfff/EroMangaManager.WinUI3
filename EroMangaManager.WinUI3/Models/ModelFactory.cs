@@ -39,7 +39,7 @@ namespace EroMangaManager.WinUI3.Models
         /// <returns></returns>
         public static async Task Initial (this MangasGroup mangasFolder)
         {
-            string[] OkExtension = new string[] { ".zip" };
+            string[] OkExtension = new string[] { ".zip" , ".7z" };
             mangasFolder.IsInitialing = true;
             if (Directory.Exists(mangasFolder.FolderPath))
             {

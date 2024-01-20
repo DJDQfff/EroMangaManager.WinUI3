@@ -121,7 +121,7 @@
     <value>按文件夹对本子进行区分管理</value>
   </data>
   <data name="Answer_SupportedType" xml:space="preserve">
-    <value>仅Zip。对于保存本子而言，zip是个最好的选择。其他格式（如rar，7z）当然可以，但并不是最优解。zip格式是一种免费开源的压缩档案格式，windows内置支持zip，具有较好的解压缩速度和压缩率。</value>
+    <value>zip和7z。对于保存本子而言，zip是个最好的选择。其他格式（如rar，7z）当然可以，但并不是最优解。zip格式是一种免费开源的压缩档案格式，windows内置支持zip，具有较好的解压缩速度和压缩率。</value>
   </data>
   <data name="Answer_Tag" xml:space="preserve">
     <value>本子标签从本子名读取。如文件"[玉砂糖] キミ色保護色 (COMIC BAVEL 2021年6月号) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip"，在本软件中，包含在一对括号中的内容将被识别为Tag，未包含在括号中的内容将被识别为本子名称。这不一定100%正确识别。</value>
