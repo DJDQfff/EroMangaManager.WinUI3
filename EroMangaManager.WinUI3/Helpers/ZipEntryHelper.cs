@@ -12,8 +12,9 @@ namespace EroMangaManager.WinUI3.Helpers
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
-        public static async Task<BitmapImage> ShowEntryAsync (this IArchiveEntry entry)
+        public static async Task<BitmapImage> ToBitmapImage (this IArchiveEntry entry)
         {
+            // TODO 内部可以优化，试试不复制内存流直接读取
             var bitmapImage = new BitmapImage();
 
             var imageStream = new MemoryStream();

@@ -146,7 +146,7 @@ namespace EroMangaManager.WinUI3.Views
             var entry = control.DataContext as IArchiveEntry;
             if (entry != null)
             {
-                control.Source = await entry.ShowEntryAsync();
+                control.Source = await entry.ToBitmapImage();
             }
         }
 
@@ -171,7 +171,7 @@ namespace EroMangaManager.WinUI3.Views
                 switch (stream)
                 {
                     case Stream _:
-                        image.Source = await selectedEntry.ShowEntryAsync();
+                        image.Source = await selectedEntry.ToBitmapImage();
                         break;
 
                     case null:

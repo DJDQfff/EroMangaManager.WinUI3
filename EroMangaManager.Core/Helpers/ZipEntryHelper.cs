@@ -51,7 +51,7 @@ namespace EroMangaManager.Core.Helpers
         /// <returns></returns>
         public static bool EntryFilter (this IArchiveEntry entry , FilteredImage[] filteredImages)
         {
-            string[] okimageextension = new string[] { ".jpg" , ".png" , ".webp" , "bmp" };
+            string[] okimageextension = new string[] { ".jpg" , ".jpeg" , ".png" , ".bmp" , ".webp" };
             bool canuse = true;
 
             if (entry.IsDirectory)                      // 排除文件夹entry
