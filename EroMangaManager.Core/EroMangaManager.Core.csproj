@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Config.Net" Version="5.1.5" />
-    <PackageReference Include="SharpCompress" Version="0.34.2" />
+    <PackageReference Include="SharpCompress" Version="0.36.0" />
   </ItemGroup>
 
   <ItemGroup>

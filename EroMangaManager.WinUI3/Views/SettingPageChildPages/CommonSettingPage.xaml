@@ -1,73 +1,71 @@
-﻿<Page
-    x:Class="EroMangaManager.WinUI3.Views.SettingPageChildPages.CommonSettingPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:app="using:EroMangaManager.WinUI3"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:setting="using:CommunityToolkit.WinUI.Controls"
-    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
-    Background="Transparent"
-    mc:Ignorable="d">
+﻿<Page x:Class="EroMangaManager.WinUI3.Views.SettingPageChildPages.CommonSettingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:app="using:EroMangaManager.WinUI3"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:setting="using:CommunityToolkit.WinUI.Controls"
+      xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+      Background="Transparent"
+      mc:Ignorable="d">
 
     <Page.Resources>
         <Style TargetType="ComboBox">
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
         </Style>
         <Style TargetType="ToggleSwitch">
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
         </Style>
     </Page.Resources>
 
     <ScrollViewer VerticalScrollMode="Auto">
-        <StackPanel
-            HorizontalAlignment="Stretch"
-            Orientation="Vertical"
-            RelativePanel.AlignTopWithPanel="True">
+        <StackPanel HorizontalAlignment="Stretch"
+                    Orientation="Vertical"
+                    RelativePanel.AlignTopWithPanel="True">
 
-            <ComboBox
-                x:Name="ThemeSetting"
-                x:Load="False"
-                Header="主题"
-                SelectedIndex="{x:Bind app:App.Current.AppConfig.General.Theme}"
-                SelectionChanged="ThemeSetting_SelectionChanged">
+            <ComboBox x:Name="ThemeSetting"
+                      x:Load="False"
+                      Header="主题"
+                      SelectedIndex="{x:Bind app:App.Current.AppConfig.General.Theme}"
+                      SelectionChanged="ThemeSetting_SelectionChanged">
                 <ComboBoxItem Content="自动" />
                 <ComboBoxItem Content="浅色" />
                 <ComboBoxItem Content="深色" />
             </ComboBox>
 
             <setting:SettingsCard Header="{uid:UI Uid=AppUILanguage}">
-                <ComboBox
-                    x:Name="UILanguageSetting"
-                    Loaded="UILanguageSetting_Loaded"
-                    SelectionChanged="UILanguageSetting_SelectionChanged">
+                <ComboBox x:Name="UILanguageSetting"
+                          Loaded="UILanguageSetting_Loaded"
+                          SelectionChanged="UILanguageSetting_SelectionChanged">
                     <ComboBoxItem Content="{uid:UI Uid=zhCN}" />
                     <ComboBoxItem Content="{uid:UI Uid=en}" />
                 </ComboBox>
             </setting:SettingsCard>
             <setting:SettingsCard Header="{uid:UI Uid=WhetherShowDialogBeforeDelete}">
-                <ToggleSwitch
-                    x:Name="DeleteConfirmSetting"
-                    Loaded="DeleteConfirmSetting_Loaded"
-                    OffContent="{uid:UI Uid=No}"
-                    OnContent="{uid:UI Uid=Yes}"
-                    Toggled="DeleteConfirmSetting_Toggled" />
+                <ToggleSwitch x:Name="DeleteConfirmSetting"
+                              Loaded="DeleteConfirmSetting_Loaded"
+                              OffContent="{uid:UI Uid=No}"
+                              OnContent="{uid:UI Uid=Yes}"
+                              Toggled="DeleteConfirmSetting_Toggled" />
             </setting:SettingsCard>
             <setting:SettingsCard Header="{uid:UI Uid=DeleteMode}">
-                <ToggleSwitch
-                    x:Name="DeleteModeSetting"
-                    Loaded="DeleteModeSetting_Loaded"
-                    OffContent="{uid:UI Uid=DeleteMode_MoveTo}"
-                    OnContent="{uid:UI Uid=DeleteMode_JustDelete}"
-                    Toggled="DeleteModeSetting_Toggled" />
+                <ToggleSwitch x:Name="DeleteModeSetting"
+                              Loaded="DeleteModeSetting_Loaded"
+                              OffContent="{uid:UI Uid=DeleteMode_MoveTo}"
+                              OnContent="{uid:UI Uid=DeleteMode_JustDelete}"
+                              Toggled="DeleteModeSetting_Toggled" />
             </setting:SettingsCard>
+
             <setting:SettingsCard Header="{uid:UI Uid=MangaOpenWay}">
-                <ComboBox
-                    x:Name="MangaOpenWaySetting"
-                    Loaded="MangaOpenWaySetting_Loaded"
-                    SelectionChanged="MangaOpenWaySetting_SelectionChanged">
+                <ComboBox x:Name="MangaOpenWaySetting"
+                          Loaded="MangaOpenWaySetting_Loaded"
+                          SelectionChanged="MangaOpenWaySetting_SelectionChanged">
                     <ComboBoxItem Content="{uid:UI Uid=DefaultWay}" />
                     <ComboBoxItem Content="{uid:UI Uid=OSRelated}" />
                     <ComboBoxItem x:Name="ThirdComboItem" />
@@ -76,12 +74,11 @@
             </setting:SettingsCard>
 
             <setting:SettingsCard Header="{uid:UI Uid=WhetherPickSubFolder}">
-                <ToggleSwitch
-                    x:Name="WhetherPickSubFolder"
-                    Loaded="WhetherPickSubFolder_Loaded"
-                    OffContent="{uid:UI Uid=No}"
-                    OnContent="{uid:UI Uid=Yes}"
-                    Toggled="WhetherPickSubFolder_Toggled" />
+                <ToggleSwitch x:Name="WhetherPickSubFolder"
+                              Loaded="WhetherPickSubFolder_Loaded"
+                              OffContent="{uid:UI Uid=No}"
+                              OnContent="{uid:UI Uid=Yes}"
+                              Toggled="WhetherPickSubFolder_Toggled" />
             </setting:SettingsCard>
         </StackPanel>
     </ScrollViewer>

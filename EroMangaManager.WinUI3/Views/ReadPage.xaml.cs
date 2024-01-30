@@ -155,7 +155,7 @@ namespace EroMangaManager.WinUI3.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        [Obsolete]
+
         private async void FLIP_SelectionChanged_ByEntry (object sender , SelectionChangedEventArgs e)
         {
             var selectedEntry = FLIP.SelectedItem as IArchiveEntry;

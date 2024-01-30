@@ -434,8 +434,9 @@
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Why use a compressed format instead of folders</target>
         </trans-unit>
         <trans-unit id="Answer_SupportedType" translate="yes" xml:space="preserve">
-          <source>仅Zip。对于保存本子而言，zip是个最好的选择。其他格式（如rar，7z）当然可以，但并不是最优解。zip格式是一种免费开源的压缩档案格式，windows内置支持zip，具有较好的解压缩速度和压缩率。</source>
+          <source>zip和7z。对于保存本子而言，zip是个最好的选择。其他格式（如rar，7z）当然可以，但并不是最优解。zip格式是一种免费开源的压缩档案格式，windows内置支持zip，具有较好的解压缩速度和压缩率。</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Zip only. For saving books,Zip is the best choice.。 Other formats (e.g., RAR, 7Z) are of course possible, but they are not optimal. ZIP format is a free and open source compressed archive format, Windows built-in support for ZIP, with good decompression speed and compression rate.</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Answer_WhatISTheApp" translate="yes" xml:space="preserve">
           <source>这是一个用于管理本地收藏的压缩格式的本子的软件。如果你不知道什么是本子，那么你大概率用不上本软件。</source>

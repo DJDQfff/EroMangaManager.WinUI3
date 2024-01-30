@@ -64,7 +64,10 @@ namespace EroMangaManager.Core.ViewModels
             ZipArchive = ArchiveFactory.Open(Stream);
             AllEntries = ZipArchive.Entries.ToList();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stream"></param>
         public ReaderVM (Stream stream)
         {
             Stream = stream;
