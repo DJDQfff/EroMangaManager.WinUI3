@@ -46,7 +46,7 @@ namespace EroMangaManager.WinUI3.Views
                     break;
             }
 
-            bool isfilterimage = App.Current.AppConfig.General.IsFilterImageOn;
+            bool isfilterimage = App.Current.AppConfig.AppConfig.General.IsFilterImageOn;
             FilteredImage[] filteredImages = null;
             if (isfilterimage)
             {

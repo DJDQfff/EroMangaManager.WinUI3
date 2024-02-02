@@ -51,13 +51,13 @@ namespace EroMangaManager.WinUI3.Views.SettingPageChildPages
         private void ToggleSwitch_Toggled (object sender , RoutedEventArgs e)
         {
             var toggleSwitch = sender as ToggleSwitch;
-            App.Current.AppConfig.General.IsFilterImageOn = toggleSwitch.IsOn;
+            App.Current.AppConfig.AppConfig.General.IsFilterImageOn = toggleSwitch.IsOn;
         }
 
         private void ToggleSwitch_Loaded (object sender , RoutedEventArgs e)
         {
             var toggleSwitch = sender as ToggleSwitch;
-            toggleSwitch.IsOn = App.Current.AppConfig.General.IsFilterImageOn;
+            toggleSwitch.IsOn = App.Current.AppConfig.AppConfig.General.IsFilterImageOn;
         }
     }
 }

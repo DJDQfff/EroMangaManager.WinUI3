@@ -67,7 +67,7 @@ internal class MangaBookCommands
             {
                 if (args.Parameter is MangaBook book)
                 {
-                    var openway = App.Current.AppConfig.MangaOpenWaySetting.ReadMangaWay;
+                    var openway = App.Current.AppConfig.AppConfig.MangaOpenWaySetting.ReadMangaWay;
                     try
                     {
                         switch (openway)
@@ -83,7 +83,7 @@ internal class MangaBookCommands
                                 break;
 
                             case ReadMangaWayStrings.UserSelected:
-                                var SelectedExePath = App.Current.AppConfig.MangaOpenWaySetting.UserSelectedReadMangaExePath;
+                                var SelectedExePath = App.Current.AppConfig.AppConfig.MangaOpenWaySetting.UserSelectedReadMangaExePath;
                                 Process.Start(SelectedExePath , $"\"{book.FilePath}\"");
                                 break;
                         }

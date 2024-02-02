@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl
+    x:Class="EroMangaManager.WinUI3.UserControls.SettingParts.AppUILanguageSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:EroMangaManager.WinUI3.UserControls.SettingParts"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:setting="using:CommunityToolkit.WinUI.Controls"
+    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    mc:Ignorable="d">
+
+    <setting:SettingsCard Header="{uid:UI Uid=AppUILanguage}">
+        <ComboBox
+            x:Name="UILanguageSetting"
+            Loaded="UILanguageSetting_Loaded"
+            SelectionChanged="UILanguageSetting_SelectionChanged">
+            <ComboBoxItem Content="{uid:UI Uid=zhCN}" />
+            <ComboBoxItem Content="{uid:UI Uid=en}" />
+        </ComboBox>
+    </setting:SettingsCard>
+</UserControl>

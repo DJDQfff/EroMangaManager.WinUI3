@@ -1,8 +1,6 @@
 ﻿// To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-using EroMangaManager.Core.Setting;
-
 using Microsoft.Windows.ApplicationModel.WindowsAppRuntime;
 
 namespace EroMangaManager.WinUI3;
@@ -16,7 +14,7 @@ public partial class App : Application
     internal new static App Current;
     internal ObservableCollectionVM GlobalViewModel { get; private set; }
 
-    internal IAppConfig AppConfig { get; private set; }
+    internal SettingViewModel AppConfig { get; private set; }
     internal string AppConfigPath { get; private set; }
     internal string LocalFolder = ApplicationData.Current.LocalFolder.Path;
 
@@ -51,9 +49,9 @@ public partial class App : Application
         DatabaseController.Migrate();
 
         AppConfigPath = Path.Combine(LocalFolder , "AppConfig.ini");
-        AppConfig = new ConfigurationBuilder<IAppConfig>().UseIniFile(AppConfigPath).Build();
+        AppConfig = new SettingViewModel(AppConfigPath);
 
-        var language = App.Current.AppConfig.General.DefaultAppUILanguage;
+        var language = App.Current.AppConfig.AppConfig.General.DefaultAppUILanguage;
         Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language" , language);
 
         CoverHelper.InitialDefaultCover();
@@ -116,7 +114,7 @@ public partial class App : Application
     private void InitializeGlobalViewModel ()
     {
         var folders = DatabaseController.MangaFolder_GetAllPaths().ToList();
-        var defaultpath = AppConfig.General.DefaultBookcaseFolder;
+        var defaultpath = AppConfig.AppConfig.General.DefaultBookcaseFolder;
 
         var f = folders.SingleOrDefault(x => x == defaultpath);
         if (f != null)

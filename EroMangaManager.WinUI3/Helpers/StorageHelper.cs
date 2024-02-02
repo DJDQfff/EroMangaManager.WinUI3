@@ -45,9 +45,9 @@ internal class StorageHelper
     /// <returns></returns>
     public static async Task<bool> DeleteSourceFile (MangaBook eroManga)
     {
-        var temp1 = App.Current.AppConfig.General.WhetherShowDialogBeforeDelete;
+        var temp1 = App.Current.AppConfig.AppConfig.General.WhetherShowDialogBeforeDelete;
 
-        var temp2 = App.Current.AppConfig.General.StorageFileDeleteOption;
+        var temp2 = App.Current.AppConfig.AppConfig.General.StorageFileDeleteOption;
 
         var option = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
 

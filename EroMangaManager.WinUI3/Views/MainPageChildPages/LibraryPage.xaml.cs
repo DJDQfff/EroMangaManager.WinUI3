@@ -36,7 +36,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
-                App.Current.AppConfig.General.DefaultBookcaseFolder = datacontext.FolderPath;
+                App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder = datacontext.FolderPath;
             }
         }
 
@@ -44,14 +44,14 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             var toggleSwitch = sender as ToggleSwitch;
 
-            App.Current.AppConfig.General.IsEmptyFolderShow = toggleSwitch.IsOn;
+            App.Current.AppConfig.AppConfig.General.IsEmptyFolderShow = toggleSwitch.IsOn;
         }
 
         private void ToggleSwitch_Loaded (object sender , RoutedEventArgs e)
         {
             var toggleSwitch = sender as ToggleSwitch;
 
-            toggleSwitch.IsOn = App.Current.AppConfig.General.IsEmptyFolderShow;
+            toggleSwitch.IsOn = App.Current.AppConfig.AppConfig.General.IsEmptyFolderShow;
         }
 
         private async void AddFolder (XamlUICommand sender , ExecuteRequestedEventArgs args)
@@ -70,7 +70,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             if (selectedfolderpath != null)
             {
                 var folderws = new List<string>() { selectedfolderpath };
-                if (App.Current.AppConfig.General.WhetherPickSubFolder)
+                if (App.Current.AppConfig.AppConfig.General.WhetherPickSubFolder)
                 {
                     var fs = Directory.GetDirectories(selectedfolderpath , "*" , SearchOption.AllDirectories);
                     folderws.AddRange(fs);

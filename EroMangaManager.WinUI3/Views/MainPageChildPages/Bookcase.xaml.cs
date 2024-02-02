@@ -131,7 +131,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void Bookcase_GridView_Loaded (object sender , RoutedEventArgs e)
         {
-            var index = App.Current.AppConfig.General.BookcaseTemplateKey;
+            var index = App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey;
             DataTemplateList.SelectedIndex = index;
             var key = "BookcaseTemplate" + index;
             Bookcase_GridView.ItemTemplate = this.Resources[key] as DataTemplate;
@@ -145,7 +145,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
             Bookcase_GridView.ItemTemplate = this.Resources[key] as DataTemplate;
             var template = new DataTemplate();
-            App.Current.AppConfig.General.BookcaseTemplateKey = index;
+            App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey = index;
         }
     }
 }
