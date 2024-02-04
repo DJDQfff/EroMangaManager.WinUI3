@@ -116,11 +116,13 @@ namespace EroMangaManager.Core.Setting
         /// <summary>
         /// 用户选择的打开漫画方式
         /// </summary>
+        [DefaultValue("")]
         string UserSelectedReadMangaExePath { set; get; }
 
         /// <summary>
         /// 用户添加的exe路径拼接后字符串，路径由英文竖分割（不是中文竖）：|。因为config.net目前不支持写集合，所以用这个折中方法
         /// </summary>
+        [DefaultValue("")]
         string PossibleExePaths { set; get; }
     }
 

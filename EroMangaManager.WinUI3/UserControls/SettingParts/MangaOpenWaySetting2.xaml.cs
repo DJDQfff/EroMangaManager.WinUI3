@@ -24,7 +24,6 @@ public sealed partial class MangaOpenWaySetting2 : UserControl
         if (file is not null)
         {
             SettingVM.AddExePath(file.Path);
-            SettingVM.SetExePath(file.Path);
         }
     }
 

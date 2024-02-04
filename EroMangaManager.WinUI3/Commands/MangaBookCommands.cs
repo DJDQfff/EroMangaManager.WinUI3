@@ -67,24 +67,33 @@ internal class MangaBookCommands
             {
                 if (args.Parameter is MangaBook book)
                 {
-                    var openway = App.Current.AppConfig.AppConfig.MangaOpenWaySetting.ReadMangaWay;
+                    var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWaySetting.ReadMangaWayIndex;
+
                     try
                     {
-                        switch (openway)
+                        switch (wayindex)
                         {
-                            case ReadMangaWayStrings.InternalReadPage:
+                            case 0:
+                            RunDefault:
                                 WindowHelper.ShowReadWindow(book);
                                 break;
 
-                            case ReadMangaWayStrings.OSRelated:
+                            case 1:
 
                                 Process.Start("explorer" , book.FilePath);
                                 // TODO 无法触发，有bug
                                 break;
 
-                            case ReadMangaWayStrings.UserSelected:
+                            case 2:
                                 var SelectedExePath = App.Current.AppConfig.AppConfig.MangaOpenWaySetting.UserSelectedReadMangaExePath;
-                                Process.Start(SelectedExePath , $"\"{book.FilePath}\"");
+                                if (!File.Exists(SelectedExePath))
+                                {
+                                    goto RunDefault;
+                                }
+                                else
+                                {
+                                    Process.Start(SelectedExePath , $"\"{book.FilePath}\"");
+                                }
                                 break;
                         }
                     }

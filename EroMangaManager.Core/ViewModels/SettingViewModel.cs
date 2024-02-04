@@ -26,6 +26,10 @@ namespace EroMangaManager.Core.ViewModels
         public void RemoveExePath (string path)
         {
             AppConfig.MangaOpenWaySetting.PossibleExePaths = AppConfig.MangaOpenWaySetting.PossibleExePaths.Replace(path , string.Empty);
+            if (AppConfig.MangaOpenWaySetting.UserSelectedReadMangaExePath == path)
+            {
+                AppConfig.MangaOpenWaySetting.UserSelectedReadMangaExePath = string.Empty;
+            }
             OnPropertyChanged();
         }
 
