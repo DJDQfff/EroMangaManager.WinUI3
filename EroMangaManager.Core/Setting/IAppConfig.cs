@@ -69,11 +69,13 @@ namespace EroMangaManager.Core.Setting
         /// </summary>
         [DefaultValue(ThemeValue.Auto)]
         int Theme { set; get; }
+
         /// <summary>
         /// 默认书架界面
         /// </summary>
         [DefaultValue(0)]
         int BookcaseTemplateKey { set; get; }
+
         /// <summary>
         /// 是否加载子文件夹
         /// </summary>
@@ -108,6 +110,8 @@ namespace EroMangaManager.Core.Setting
         [DefaultValue(ReadMangaWayStrings.InternalReadPage)]
         string ReadMangaWay { set; get; }
 
+        [DefaultValue(0)]
+        int ReadMangaWayIndex { set; get; }
 
         /// <summary>
         /// 用户选择的打开漫画方式
@@ -118,7 +122,6 @@ namespace EroMangaManager.Core.Setting
         /// 用户添加的exe路径拼接后字符串，路径由英文竖分割（不是中文竖）：|。因为config.net目前不支持写集合，所以用这个折中方法
         /// </summary>
         string PossibleExePaths { set; get; }
-
     }
 
     /// <summary>

@@ -144,6 +144,9 @@
   <data name="ConfirmEdit" xml:space="preserve">
     <value>确认调整</value>
   </data>
+  <data name="CustomExe" xml:space="preserve">
+    <value>自定义exe</value>
+  </data>
   <data name="DefaultWay" xml:space="preserve">
     <value>默认方式</value>
   </data>

@@ -372,6 +372,10 @@
           <source>是否添加子文件夹</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Whether to add subfolders</target>
         </trans-unit>
+        <trans-unit id="CustomExe" translate="yes" xml:space="preserve">
+          <source>自定义exe</source>
+          <target state="new">自定义exe</target>
+        </trans-unit>
       </group>
     </body>
   </file>

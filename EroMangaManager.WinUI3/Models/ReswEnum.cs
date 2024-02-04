@@ -55,16 +55,19 @@
     ///<summary> </summary>
     public enum UI
     {
+        CustomExe,
         LoadSubDirectory,
         AppUILanguage,
         zhCN,
         en,
         ThumanailViewMode,
         TagsViewMode,
+
         /// <summary>
         ///
         /// </summary>
         Remove,
+
         SwitchViewMode,
         WhetherPickSubFolder,
         SelectExe,

@@ -11,9 +11,33 @@
     mc:Ignorable="d">
 
     <setting:SettingsExpander x:Name="MangaOpenWay" Header="{uid:UI Uid=MangaOpenWay}">
+        <setting:SettingsExpander.Content>
+            <ComboBox x:Name="MangaOpenWaySetting" SelectedIndex="{x:Bind SettingVM.AppConfig.MangaOpenWaySetting.ReadMangaWayIndex, Mode=TwoWay}">
+                <ComboBoxItem Content="{uid:UI Uid=DefaultWay}" />
+                <ComboBoxItem Content="{uid:UI Uid=OSRelated}" />
+                <ComboBoxItem Content="{uid:UI Uid=CustomExe}" />
+            </ComboBox>
+        </setting:SettingsExpander.Content>
         <setting:SettingsExpander.Items>
             <setting:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
-                <RadioButtons x:Name="MangaOpenWays" Loaded="RadioButtons_Loaded" />
+
+                <RadioButtons
+                    x:Name="MangaOpenWays"
+                    ItemsSource="{x:Bind SettingVM.ExePaths, Mode=OneWay}"
+                    Loaded="MangaOpenWays_Loaded"
+                    SelectionChanged="MangaOpenWays_SelectionChanged">
+                    <RadioButtons.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <TextBlock Text="{x:Bind}">
+                                <TextBlock.ContextFlyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem Click="MenuFlyoutItem_Click" Text="{uid:UI Uid=DeleteIt}" />
+                                    </MenuFlyout>
+                                </TextBlock.ContextFlyout>
+                            </TextBlock>
+                        </DataTemplate>
+                    </RadioButtons.ItemTemplate>
+                </RadioButtons>
             </setting:SettingsCard>
         </setting:SettingsExpander.Items>
         <setting:SettingsExpander.ItemsFooter>
