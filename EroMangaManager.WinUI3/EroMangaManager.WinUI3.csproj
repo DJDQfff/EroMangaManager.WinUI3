@@ -86,6 +86,7 @@
     <None Remove="Views\ReadPage.xaml" />
     <None Remove="Views\SettingPageChildPages\CommonSettingPage.xaml" />
     <None Remove="Views\SettingPageChildPages\FiltedImagesPage.xaml" />
+    <None Remove="Views\SettingPageChildPages\PasswordManagementPage.xaml" />
     <None Remove="Views\SettingPageChildPages\TagKeywordsManagePage.xaml" />
     <None Remove="Views\SettingPageChildPages\UpdateRecordsPage.xaml" />
     <None Remove="Views\SettingPageChildPages\UsageDocumentPage.xaml" />
@@ -775,6 +776,11 @@
     <Reference Include="ShellAPI">
       <HintPath>..\..\MyLibrary\SHOpenFolderAndSelectItems\bin\Release\netstandard2.0\ShellAPI.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\SettingPageChildPages\PasswordManagementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="UserControls\SettingParts\MangaOpenWaySetting2.xaml">

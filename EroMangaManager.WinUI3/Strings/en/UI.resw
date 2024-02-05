@@ -234,4 +234,10 @@
   <data name="WhetherPickSubFolder" xml:space="preserve">
     <value>Whether to add subfolders</value>
   </data>
+  <data name="CustomExe" xml:space="preserve">
+    <value>Custom exe</value>
+  </data>
+  <data name="PasswordManagement" xml:space="preserve">
+    <value>Password management</value>
+  </data>
 </root>

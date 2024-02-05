@@ -110,6 +110,9 @@ namespace EroMangaManager.Core.Setting
         [DefaultValue(ReadMangaWayStrings.InternalReadPage)]
         string ReadMangaWay { set; get; }
 
+        /// <summary>
+        /// 打开漫画的方式顺序，不再用上面那个
+        /// </summary>
         [DefaultValue(0)]
         int ReadMangaWayIndex { set; get; }
 

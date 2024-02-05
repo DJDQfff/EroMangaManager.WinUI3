@@ -99,6 +99,10 @@
 
 ## UpdateChanges
 
+## 2023.2.5
+
+* 添加多个exe路径作为打开方式
+
 ## 2023.1.15
 
 * 在初始化globalviewmodels时，忽略不存在的文件夹

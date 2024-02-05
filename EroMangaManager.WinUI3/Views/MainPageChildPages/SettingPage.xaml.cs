@@ -16,20 +16,15 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void NavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
         {
-            switch (args.InvokedItemContainer.Name)
+            Type type = args.InvokedItemContainer.Name switch
             {
-                case nameof(CommonSettingNavigationViewItem):
-                    SettingFrame.Navigate(typeof(CommonSettingPage));
-                    break;
-
-                case nameof(SettingFilterImageButton):
-                    SettingFrame.Navigate(typeof(FiltedImagesPage));
-                    break;
-
-                case nameof(SettingTagButton):
-                    SettingFrame.Navigate(typeof(TagKeywordsManagePage));
-                    break;
-            }
+                nameof(CommonSettingNavigationViewItem) => typeof(CommonSettingPage),
+                nameof(SettingFilterImageButton) => typeof(FiltedImagesPage),
+                nameof(SettingTagButton) => typeof(TagKeywordsManagePage),
+                nameof(PasswordManagementSetting) => typeof(PasswordManagementPage),
+                _ => typeof(CommonSettingPage)
+            };
+            SettingFrame.Navigate(type);
         }
     }
 }

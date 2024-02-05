@@ -374,7 +374,11 @@
         </trans-unit>
         <trans-unit id="CustomExe" translate="yes" xml:space="preserve">
           <source>自定义exe</source>
-          <target state="new">自定义exe</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Custom exe</target>
+        </trans-unit>
+        <trans-unit id="PasswordManagement" translate="yes" xml:space="preserve">
+          <source>密码管理</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Password management</target>
         </trans-unit>
       </group>
     </body>

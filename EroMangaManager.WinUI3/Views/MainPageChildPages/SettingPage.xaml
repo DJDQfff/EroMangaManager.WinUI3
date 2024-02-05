@@ -18,7 +18,11 @@
                     x:Name="CommonSettingNavigationViewItem"
                     Content="{uid:UI Uid=CommonSetting}"
                     IsSelected="True" />
-                <NavigationViewItem x:Name="SettingFilterImageButton" Content="{uid:UI Uid=FilteredImages}" />
+                <NavigationViewItem x:Name="PasswordManagementSetting" Content="{uid:UI Uid=PasswordManagement}" />
+                <NavigationViewItem
+                    x:Name="SettingFilterImageButton"
+                    Content="{uid:UI Uid=FilteredImages}"
+                    Visibility="Collapsed" />
                 <NavigationViewItem
                     x:Name="SettingTagButton"
                     Content="{uid:UI Uid=Tags}"

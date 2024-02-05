@@ -56,6 +56,7 @@
     public enum UI
     {
         CustomExe,
+        PasswordManagement,
         LoadSubDirectory,
         AppUILanguage,
         zhCN,

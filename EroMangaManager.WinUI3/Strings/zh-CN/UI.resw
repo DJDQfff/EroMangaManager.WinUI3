@@ -261,6 +261,9 @@
   <data name="OverviewInformation" xml:space="preserve">
     <value>查看信息</value>
   </data>
+  <data name="PasswordManagement" xml:space="preserve">
+    <value>密码管理</value>
+  </data>
   <data name="PinnedFolders" xml:space="preserve">
     <value>已固定文件夹</value>
   </data>
