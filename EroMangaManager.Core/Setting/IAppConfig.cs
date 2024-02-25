@@ -11,6 +11,10 @@ namespace EroMangaManager.Core.Setting
         /// 通用设置
         /// </summary>
         General General { get; set; }
+        /// <summary>
+        /// 漫画打开方式
+        /// </summary>
+        MangaOpenWay3 MangaOpenWay3 { get; set; }
 
         /// <summary>
         /// 漫画打开相关设置
@@ -97,6 +101,25 @@ namespace EroMangaManager.Core.Setting
         /// 英文
         /// </summary>
         public const string en = "en";
+    }
+
+    /// <summary>
+    /// 新的漫画打开方式设置，旧的不再使用
+    /// </summary>
+    public interface MangaOpenWay3
+    {
+        /// <summary>
+        /// 绑定序数
+        /// </summary>
+        [DefaultValue(0)]
+        int WayIndex { set; get; }
+
+        /// <summary>
+        /// 打开方式字符串都放这里，因为config.net还不支持集合，用这个代替
+        /// ?的两个为默认设置，|后面跟的是打开exe
+        /// </summary>
+        [DefaultValue("?InternalReadPage?OSRelated")]
+        string OpenWays { set; get; }
     }
 
     /// <summary>

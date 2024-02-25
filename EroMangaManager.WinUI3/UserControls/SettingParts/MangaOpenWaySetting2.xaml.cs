@@ -1,8 +1,6 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-using Microsoft.EntityFrameworkCore.Internal;
-
 namespace EroMangaManager.WinUI3.UserControls.SettingParts;
 
 public sealed partial class MangaOpenWaySetting2 : UserControl
@@ -31,14 +29,14 @@ public sealed partial class MangaOpenWaySetting2 : UserControl
     {
         if (MangaOpenWays.SelectedItem is string item)
         {
-            SettingVM.SetExePath(item);
+            //SettingVM.SetExePath(item);
         }
     }
 
     private void MangaOpenWays_Loaded (object sender , RoutedEventArgs e)
     {
         var exepath = SettingVM.AppConfig.MangaOpenWaySetting.UserSelectedReadMangaExePath;
-        var index = SettingVM.ExePaths.IndexOf(exepath);
+        var index = SettingVM.ExePaths.ToList().IndexOf(exepath);
         MangaOpenWays.SelectedIndex = index;
     }
 

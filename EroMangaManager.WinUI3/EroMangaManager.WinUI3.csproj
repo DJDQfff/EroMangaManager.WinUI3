@@ -63,7 +63,9 @@
     <None Remove="UserControls\QATextBlock.xaml" />
     <None Remove="UserControls\RenameMangaBookByString.xaml" />
     <None Remove="UserControls\SettingParts\AppUILanguageSetting.xaml" />
+    <None Remove="UserControls\SettingParts\ChangeMangaOpenWay.xaml" />
     <None Remove="UserControls\SettingParts\DeleteModeSetting.xaml" />
+    <None Remove="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml" />
     <None Remove="UserControls\SettingParts\MangaOpenWaySetting1.xaml" />
     <None Remove="UserControls\SettingParts\MangaOpenWaySetting2.xaml" />
     <None Remove="UserControls\SettingParts\ThemeSetting.xaml" />
@@ -776,6 +778,16 @@
     <Reference Include="ShellAPI">
       <HintPath>..\..\MyLibrary\SHOpenFolderAndSelectItems\bin\Release\netstandard2.0\ShellAPI.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\SettingParts\ChangeMangaOpenWay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\SettingPageChildPages\PasswordManagementPage.xaml">

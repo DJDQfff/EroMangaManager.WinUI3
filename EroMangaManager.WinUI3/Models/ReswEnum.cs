@@ -55,6 +55,8 @@
     ///<summary> </summary>
     public enum UI
     {
+        AddExe,
+        InternalReadPage,
         CustomExe,
         PasswordManagement,
         LoadSubDirectory,

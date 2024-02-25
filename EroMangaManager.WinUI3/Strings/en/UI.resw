@@ -240,4 +240,10 @@
   <data name="PasswordManagement" xml:space="preserve">
     <value>Password management</value>
   </data>
+  <data name="InternalReadPage" xml:space="preserve">
+    <value>Built-in reading page</value>
+  </data>
+  <data name="AddExe" xml:space="preserve">
+    <value>Add exe</value>
+  </data>
 </root>

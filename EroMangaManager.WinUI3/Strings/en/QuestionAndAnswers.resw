@@ -52,7 +52,7 @@
     <value>Why use a compressed format instead of folders</value>
   </data>
   <data name="Answer_SupportedType" xml:space="preserve">
-    <value>Zip only. For saving books,Zip is the best choice.。 Other formats (e.g., RAR, 7Z) are of course possible, but they are not optimal. ZIP format is a free and open source compressed archive format, Windows built-in support for ZIP, with good decompression speed and compression rate.</value>
+    <value>zip and 7z. For saving books,Zip is the best choice.。 Other formats (e.g., RAR, 7Z) are of course possible, but they are not optimal. ZIP format is a free and open source compressed archive format, Windows built-in support for ZIP, with good decompression speed and compression rate.</value>
   </data>
   <data name="Answer_WhatISTheApp" xml:space="preserve">
     <value>This is a software used to manage the compressed format of the book of the local collection.。 If you don't know what a book is,Then there's a high probability you won't use this software.。</value>

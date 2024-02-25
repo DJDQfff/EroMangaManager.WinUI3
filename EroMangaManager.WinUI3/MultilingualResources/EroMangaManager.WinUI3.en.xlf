@@ -380,6 +380,14 @@
           <source>密码管理</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Password management</target>
         </trans-unit>
+        <trans-unit id="InternalReadPage" translate="yes" xml:space="preserve">
+          <source>内置阅读页</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Built-in reading page</target>
+        </trans-unit>
+        <trans-unit id="AddExe" translate="yes" xml:space="preserve">
+          <source>添加exe</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Add exe</target>
+        </trans-unit>
       </group>
     </body>
   </file>
@@ -443,8 +451,7 @@
         </trans-unit>
         <trans-unit id="Answer_SupportedType" translate="yes" xml:space="preserve">
           <source>zip和7z。对于保存本子而言，zip是个最好的选择。其他格式（如rar，7z）当然可以，但并不是最优解。zip格式是一种免费开源的压缩档案格式，windows内置支持zip，具有较好的解压缩速度和压缩率。</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Zip only. For saving books,Zip is the best choice.。 Other formats (e.g., RAR, 7Z) are of course possible, but they are not optimal. ZIP format is a free and open source compressed archive format, Windows built-in support for ZIP, with good decompression speed and compression rate.</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">zip and 7z. For saving books,Zip is the best choice.。 Other formats (e.g., RAR, 7Z) are of course possible, but they are not optimal. ZIP format is a free and open source compressed archive format, Windows built-in support for ZIP, with good decompression speed and compression rate.</target>
         </trans-unit>
         <trans-unit id="Answer_WhatISTheApp" translate="yes" xml:space="preserve">
           <source>这是一个用于管理本地收藏的压缩格式的本子的软件。如果你不知道什么是本子，那么你大概率用不上本软件。</source>

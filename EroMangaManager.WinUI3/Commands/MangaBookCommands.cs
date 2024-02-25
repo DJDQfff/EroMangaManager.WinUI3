@@ -67,7 +67,7 @@ internal class MangaBookCommands
             {
                 if (args.Parameter is MangaBook book)
                 {
-                    var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWaySetting.ReadMangaWayIndex;
+                    var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex;
 
                     try
                     {
@@ -81,11 +81,10 @@ internal class MangaBookCommands
                             case 1:
 
                                 Process.Start("explorer" , book.FilePath);
-                                // TODO 无法触发，有bug
                                 break;
 
-                            case 2:
-                                var SelectedExePath = App.Current.AppConfig.AppConfig.MangaOpenWaySetting.UserSelectedReadMangaExePath;
+                            case > 1:
+                                var SelectedExePath = App.Current.AppConfig.ExePaths.ToList()[wayindex];
                                 if (!File.Exists(SelectedExePath))
                                 {
                                     goto RunDefault;

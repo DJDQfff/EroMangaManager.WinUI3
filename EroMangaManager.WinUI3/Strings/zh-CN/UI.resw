@@ -120,6 +120,9 @@
   <data name="AddAFolder" xml:space="preserve">
     <value>添加文件夹</value>
   </data>
+  <data name="AddExe" xml:space="preserve">
+    <value>添加exe</value>
+  </data>
   <data name="AppUILanguage" xml:space="preserve">
     <value>语言</value>
   </data>
@@ -203,6 +206,9 @@
   </data>
   <data name="GitHubFeedBack" xml:space="preserve">
     <value>Github反馈</value>
+  </data>
+  <data name="InternalReadPage" xml:space="preserve">
+    <value>内置阅读页</value>
   </data>
   <data name="IsEmptyFolderShow" xml:space="preserve">
     <value>是否显示空文件夹</value>

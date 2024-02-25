@@ -31,7 +31,7 @@
             <usercontrol:AppUILanguageSetting SettingVM="{x:Bind app:App.Current.AppConfig}" />
             <usercontrol:WhetherShowDialogBeforeDeleteSetting SettingVM="{x:Bind app:App.Current.AppConfig}" />
             <usercontrol:DeleteModeSetting SettingVM="{x:Bind app:App.Current.AppConfig}" />
-            <usercontrol:MangaOpenWaySetting2 SettingVM="{x:Bind app:App.Current.AppConfig}" />
+            <usercontrol:ManageMangaOpenWay3Setting SettingVM="{x:Bind app:App.Current.AppConfig}" />
             <usercontrol:WhetherPickSubFolderSetting SettingVM="{x:Bind app:App.Current.AppConfig}" />
         </StackPanel>
     </ScrollViewer>
