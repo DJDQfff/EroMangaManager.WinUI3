@@ -96,35 +96,26 @@
                     HorizontalTextAlignment="Center"
                     TextAlignment="Center" />
             </CommandBar.Content>
+
             <AppBarButton
                 AllowFocusOnInteraction="True"
                 Icon="OpenWith"
-                Label="打开">
+                Label="{uid:UI Uid=MangaOpenWay}">
                 <AppBarButton.Flyout>
                     <Flyout>
                         <ListBox
-                            x:Name="openwaylistbox"
-                            HorizontalContentAlignment="Center"
-                            AllowFocusOnInteraction="True"
-                            Background="Transparent"
                             ItemsSource="{x:Bind app:App.Current.AppConfig.ExePaths, Mode=OneWay}"
                             SelectedIndex="{x:Bind app:App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}"
                             SelectionMode="Single">
                             <ListBox.ItemTemplate>
                                 <DataTemplate x:DataType="x:String">
-                                    <ListBoxItem
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        HorizontalContentAlignment="Center"
-                                        Background="Transparent"
-                                        Content="{x:Bind Converter={StaticResource shortopenway}}" />
+                                    <TextBlock Text="{x:Bind Converter={StaticResource shortopenway}}" />
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
-
             <AppBarButton
                 AllowFocusOnInteraction="True"
                 Icon="Switch"
@@ -141,6 +132,7 @@
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
+
             <AppBarButton
                 Click="Order"
                 Icon="Sort"
