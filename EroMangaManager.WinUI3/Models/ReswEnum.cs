@@ -55,6 +55,7 @@
     ///<summary> </summary>
     public enum UI
     {
+        NeedRestart,
         AddExe,
         InternalReadPage,
         CustomExe,

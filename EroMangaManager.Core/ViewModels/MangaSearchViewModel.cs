@@ -20,12 +20,13 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 数据源
         /// </summary>
-        private readonly IEnumerable<string> originTags;
+        private IEnumerable<string> originTags;
 
         /// <summary>
         /// 隐藏起来的项
         /// </summary>
         private readonly List<string> hidedTags = new List<string>();
+
         /// <summary>
         /// 搜索ViewModel
         /// </summary>

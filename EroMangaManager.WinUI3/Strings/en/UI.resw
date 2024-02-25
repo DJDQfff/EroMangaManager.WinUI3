@@ -246,4 +246,7 @@
   <data name="AddExe" xml:space="preserve">
     <value>Add exe</value>
   </data>
+  <data name="NeedRestart" xml:space="preserve">
+    <value>A reboot is required</value>
+  </data>
 </root>

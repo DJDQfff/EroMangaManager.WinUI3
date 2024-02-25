@@ -62,15 +62,7 @@
     <None Remove="UserControls\MangaBookDetailInfo.xaml" />
     <None Remove="UserControls\QATextBlock.xaml" />
     <None Remove="UserControls\RenameMangaBookByString.xaml" />
-    <None Remove="UserControls\SettingParts\AppUILanguageSetting.xaml" />
-    <None Remove="UserControls\SettingParts\ChangeMangaOpenWay.xaml" />
-    <None Remove="UserControls\SettingParts\DeleteModeSetting.xaml" />
     <None Remove="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml" />
-    <None Remove="UserControls\SettingParts\MangaOpenWaySetting1.xaml" />
-    <None Remove="UserControls\SettingParts\MangaOpenWaySetting2.xaml" />
-    <None Remove="UserControls\SettingParts\ThemeSetting.xaml" />
-    <None Remove="UserControls\SettingParts\WhetherPickSubFolderSetting.xaml" />
-    <None Remove="UserControls\SettingParts\WhetherShowDialogBeforeDeleteSetting.xaml" />
     <None Remove="UserControls\TagInfo.xaml" />
     <None Remove="UserControls\TagsDisplayControl.xaml" />
     <None Remove="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml" />
@@ -785,52 +777,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="UserControls\SettingParts\ChangeMangaOpenWay.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="Views\SettingPageChildPages\PasswordManagementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="UserControls\SettingParts\MangaOpenWaySetting2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="UserControls\SettingParts\WhetherPickSubFolderSetting.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="UserControls\SettingParts\MangaOpenWaySetting1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="UserControls\SettingParts\DeleteModeSetting.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="UserControls\SettingParts\WhetherShowDialogBeforeDeleteSetting.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="UserControls\SettingParts\AppUILanguageSetting.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="UserControls\MangaBookCoverTags.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="UserControls\SettingParts\ThemeSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

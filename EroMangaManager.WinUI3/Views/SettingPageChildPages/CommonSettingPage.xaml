@@ -28,11 +28,34 @@
             Orientation="Vertical"
             RelativePanel.AlignTopWithPanel="True">
 
-            <usercontrol:AppUILanguageSetting SettingVM="{x:Bind app:App.Current.AppConfig}" />
-            <usercontrol:WhetherShowDialogBeforeDeleteSetting SettingVM="{x:Bind app:App.Current.AppConfig}" />
-            <usercontrol:DeleteModeSetting SettingVM="{x:Bind app:App.Current.AppConfig}" />
+            <setting:SettingsCard Description="{uid:UI Uid=NeedRestart}" Header="{uid:UI Uid=AppUILanguage}">
+                <ComboBox x:Name="UILanguageSetting" SelectedIndex="{x:Bind app:App.Current.AppConfig.AppConfig.General.LanguageIndex, Mode=TwoWay}">
+                    <ComboBoxItem Content="简体中文" />
+                    <ComboBoxItem Content="English" />
+                </ComboBox>
+            </setting:SettingsCard>
+            <setting:SettingsCard Header="{uid:UI Uid=WhetherShowDialogBeforeDelete}">
+                <ToggleSwitch
+                    x:Name="DeleteConfirmSetting"
+                    IsOn="{x:Bind app:App.Current.AppConfig.AppConfig.General.WhetherShowDialogBeforeDelete, Mode=TwoWay}"
+                    OffContent="{uid:UI Uid=No}"
+                    OnContent="{uid:UI Uid=Yes}" />
+            </setting:SettingsCard>
+
+            <setting:SettingsCard Header="{uid:UI Uid=DeleteMode}">
+                <ToggleSwitch
+                    IsOn="{x:Bind app:App.Current.AppConfig.AppConfig.General.StorageDeleteOption, Mode=TwoWay}"
+                    OffContent="{uid:UI Uid=DeleteMode_MoveTo}"
+                    OnContent="{uid:UI Uid=DeleteMode_JustDelete}" />
+            </setting:SettingsCard>
             <usercontrol:ManageMangaOpenWay3Setting SettingVM="{x:Bind app:App.Current.AppConfig}" />
-            <usercontrol:WhetherPickSubFolderSetting SettingVM="{x:Bind app:App.Current.AppConfig}" />
+            <setting:SettingsCard Header="{uid:UI Uid=WhetherPickSubFolder}">
+                <ToggleSwitch
+                    x:Name="WhetherPickSubFolder"
+                    IsOn="{x:Bind app:App.Current.AppConfig.AppConfig.General.WhetherPickSubFolder, Mode=TwoWay}"
+                    OffContent="{uid:UI Uid=No}"
+                    OnContent="{uid:UI Uid=Yes}" />
+            </setting:SettingsCard>
         </StackPanel>
     </ScrollViewer>
 </Page>

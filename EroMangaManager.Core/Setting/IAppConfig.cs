@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace EroMangaManager.Core.Setting
 {
@@ -11,15 +12,11 @@ namespace EroMangaManager.Core.Setting
         /// 通用设置
         /// </summary>
         General General { get; set; }
+
         /// <summary>
         /// 漫画打开方式
         /// </summary>
         MangaOpenWay3 MangaOpenWay3 { get; set; }
-
-        /// <summary>
-        /// 漫画打开相关设置
-        /// </summary>
-        MangaOpenWaySetting MangaOpenWaySetting { get; set; }
     }
 
     /// <summary>
@@ -65,8 +62,15 @@ namespace EroMangaManager.Core.Setting
         /// <summary>
         /// app默认UI语言
         /// </summary>
+        [Obsolete("使用LanguageIndex" , true)]
         [DefaultValue(DefaultAppUILanguageStrings.zhCN)]
         string DefaultAppUILanguage { set; get; }
+
+        /// <summary>
+        /// 语言序数
+        /// </summary>
+        [DefaultValue(0)]
+        int LanguageIndex { set; get; }
 
         /// <summary>
         /// 系统主题

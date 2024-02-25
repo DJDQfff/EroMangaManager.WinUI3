@@ -51,7 +51,11 @@ public partial class App : Application
         AppConfigPath = Path.Combine(LocalFolder , "AppConfig.ini");
         AppConfig = new SettingViewModel(AppConfigPath);
 
-        var language = App.Current.AppConfig.AppConfig.General.DefaultAppUILanguage;
+        var language = App.Current.AppConfig.AppConfig.General.LanguageIndex switch
+        {
+            1 => "en",
+            _ => "zhCN"
+        };
         Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language" , language);
 
         CoverHelper.InitialDefaultCover();

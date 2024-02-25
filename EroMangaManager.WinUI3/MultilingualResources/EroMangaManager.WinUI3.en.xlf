@@ -388,6 +388,10 @@
           <source>添加exe</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Add exe</target>
         </trans-unit>
+        <trans-unit id="NeedRestart" translate="yes" xml:space="preserve">
+          <source>需要重启</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">A reboot is required</target>
+        </trans-unit>
       </group>
     </body>
   </file>

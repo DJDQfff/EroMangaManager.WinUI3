@@ -231,6 +231,9 @@
   <data name="MangaTagsManage" xml:space="preserve">
     <value>标签管理</value>
   </data>
+  <data name="NeedRestart" xml:space="preserve">
+    <value>需要重启</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>否</value>
   </data>
