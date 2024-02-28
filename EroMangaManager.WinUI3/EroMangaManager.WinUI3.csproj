@@ -108,10 +108,10 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EroMangaDatabase\EroMangaDatabase.csproj" />
     <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
     <ProjectReference Include="..\..\MyLibrary\MyLibrary.Standard20\MyLibrary.Standard20.csproj" />
     <ProjectReference Include="..\..\RepeatItemChecker\GroupedItemsLibrary\GroupedItemsLibrary.csproj" />
-    <ProjectReference Include="..\EroMangaDatabase\EroMangaDatabase\EroMangaDatabase.csproj" />
     <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
