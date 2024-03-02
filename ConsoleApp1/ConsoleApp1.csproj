@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EroMangaDatabase\EroMangaDatabase.csproj" />
+    <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
+  </ItemGroup>
+
 </Project>

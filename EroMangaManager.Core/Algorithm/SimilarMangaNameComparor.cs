@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using EroMangaManager.Core.Models;
-
-namespace EroMangaManager.Core.Algorithm
+﻿namespace EroMangaManager.Core.Algorithm
 {
     /// <summary>
     /// 本子名比较器，用于从一堆类似的本子中选出可能相同的本子。

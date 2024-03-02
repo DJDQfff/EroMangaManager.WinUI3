@@ -1,7 +1,7 @@
-using EroMangaManager.Core.MangaNameParse;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
+
 
 namespace EroMangaManager.WinUI3.UserControls;
 
@@ -20,7 +20,7 @@ public sealed partial class RenameMangaBookByString : UserControl
             textbox.Text = value.FileDisplayName;
 
             //指定默认新名字，按移除重复标签方法对待
-            textbox.Text = MangaNameParser.RemoveRepeatTag(value.FileDisplayName);
+            textbox.Text = NameParser.RemoveRepeatTag(value.FileDisplayName);
 
             Bindings.Update();
         }

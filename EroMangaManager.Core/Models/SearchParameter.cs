@@ -1,19 +1,17 @@
-﻿using System.Collections.Generic;
+﻿namespace EroMangaManager.Core.Models;
 
-namespace EroMangaManager.Core.Models
+/// <summary>
+/// 用于导航到搜索页面的数据包
+/// </summary>
+public class SearchParameter
 {
     /// <summary>
-    /// 用于导航到搜索页面的数据包
+    /// 本子名
     /// </summary>
-    public class SearchParameter
-    {
-        /// <summary>
-        /// 本子名
-        /// </summary>
-        public string MangaName { set; get; }
-        /// <summary>
-        /// 标签
-        /// </summary>
-        public IEnumerable<string> Tags { set; get; }
-    }
+    public string MangaName { set; get; }
+
+    /// <summary>
+    /// 标签
+    /// </summary>
+    public IEnumerable<string> Tags { set; get; }
 }

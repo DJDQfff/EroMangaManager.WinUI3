@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-using EroMangaDatabase.Entities;
-
-using MyLibrary.Standard20;
-
-using SharpCompress.Archives;
-
-namespace EroMangaManager.Core.Helpers
+﻿namespace EroMangaManager.Core.Helpers
 {
     /// <summary>
     ///

@@ -1,13 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-
-namespace EroMangaManager.Core.MangaNameParse
+﻿namespace EroMangaManager.Core.MangaParser
 {
     /// <summary>
     /// 对基于tag的本子名的相关操作的帮助整合类
     /// </summary>
-    public static class MangaNameParser
+    public static class NameParser
     {
         /// <summary>
         /// 左括号
@@ -23,6 +19,12 @@ namespace EroMangaManager.Core.MangaNameParse
         /// 所有括号
         /// </summary>
         public const string LeftRightBrackets = LeftBrackets + RightBrackets;
+
+        public static string GetMangaName (string name)
+        {
+            return null;
+            //TODO
+        }
 
         /// <summary>
         /// 按左右括号分离tag并解析

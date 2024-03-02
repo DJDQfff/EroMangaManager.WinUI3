@@ -57,7 +57,6 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
 
                     book.MangaName = text;
                     book.FilePath = Path.Combine(book.FolderPath , text + ".zip");
-                    book.NotifyPropertyChanged(string.Empty);
                 }
                 catch
                 {

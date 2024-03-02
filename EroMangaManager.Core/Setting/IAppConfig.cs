@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-
-namespace EroMangaManager.Core.Setting
+﻿namespace EroMangaManager.Core.Setting
 {
     /// <summary>
     /// 设置项总和
