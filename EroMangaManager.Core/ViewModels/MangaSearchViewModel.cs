@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EroMangaManager.Core.ViewModels
+﻿namespace EroMangaManager.Core.ViewModels
 {
     /// <summary>
     /// 本子标签管理VM
@@ -15,7 +13,7 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 选中项
         /// </summary>
-        public List<string> SelectedTags = new List<string>();
+        public List<string> SelectedTags = new();
 
         /// <summary>
         /// 数据源
@@ -25,7 +23,7 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 隐藏起来的项
         /// </summary>
-        private readonly List<string> hidedTags = new List<string>();
+        private readonly List<string> hidedTags = [];
 
         /// <summary>
         /// 搜索ViewModel
@@ -33,7 +31,7 @@ namespace EroMangaManager.Core.ViewModels
         /// <param name="strings"></param>
         public MangaSearchViewModel (IEnumerable<string> strings)
         {
-            AllTags = new List<string>(strings);
+            AllTags = [];
         }
 
         /// <summary>
