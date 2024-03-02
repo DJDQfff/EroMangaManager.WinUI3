@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-
-using EroMangaManager.Core.Models;
+﻿using System.Collections.ObjectModel;
 
 using SharpCompress;
 
@@ -13,14 +7,18 @@ namespace EroMangaManager.Core.ViewModels
     /// <summary>
     /// 本子组
     /// </summary>
-    public class MangasGroup : INotifyPropertyChanged
+    public class MangasGroup : ObservableObject
     {
         /// <summary>
         /// 文件夹路径，一开始是作为文件夹设计的，后来不作为文件夹，仅作为本子统一集合
         /// </summary>
         public string FolderPath { get; }
 
-        private bool _IsInitialiing = false;
+        /// <summary>
+        /// 是否在更新数据
+        /// </summary>
+        [ObservableProperty]
+        private bool isInitialing = false;
 
         /// <summary>
         /// 对外展示的信息，考虑将这个属性改名为Description
@@ -28,22 +26,10 @@ namespace EroMangaManager.Core.ViewModels
         public string ShowString { set; get; }
 
         /// <summary>
-        /// 是否在更新数据
-        /// </summary>
-        public bool IsInitialing
-        {
-            set
-            {
-                _IsInitialiing = value;
-                PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(""));
-            }
-            get => _IsInitialiing;
-        }
-
-        /// <summary>
         /// 本子集合
         /// </summary>
         public ObservableCollection<MangaBook> MangaBooks { get; } = new ObservableCollection<MangaBook>();
+
         /// <summary>
         /// 所有标签
         /// </summary>
@@ -56,6 +42,7 @@ namespace EroMangaManager.Core.ViewModels
                 return tags;
             }
         }
+
         /// <summary>
         /// 不当文件夹用，所以不指定文件夹路径
         /// </summary>
@@ -71,11 +58,6 @@ namespace EroMangaManager.Core.ViewModels
             FolderPath = storageFolderPath;
             ShowString = storageFolderPath;
         }
-
-        /// <summary>
-        /// 更新通知
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// 对内部漫画进行排序
