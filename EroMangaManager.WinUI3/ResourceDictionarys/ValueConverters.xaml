@@ -7,5 +7,5 @@
     <converter:FileSizeConverter x:Key="filesizeConverter" />
     <converter:ItemsConverter x:Key="itemsconverter" />
     <converter:LocalizationWordsConverter x:Key="uistringconverter" />
-    <converter:openwayconverter2 x:Key="shortopenway" />
+    <converter:OpenwayConverter2 x:Key="shortopenway" />
 </ResourceDictionary>

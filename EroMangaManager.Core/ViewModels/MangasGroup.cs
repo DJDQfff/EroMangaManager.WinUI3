@@ -7,7 +7,7 @@ namespace EroMangaManager.Core.ViewModels
     /// <summary>
     /// 本子组
     /// </summary>
-    public class MangasGroup : ObservableObject
+    public partial class MangasGroup : ObservableObject
     {
         /// <summary>
         /// 文件夹路径，一开始是作为文件夹设计的，后来不作为文件夹，仅作为本子统一集合
@@ -28,7 +28,7 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 本子集合
         /// </summary>
-        public ObservableCollection<MangaBook> MangaBooks { get; } = new ObservableCollection<MangaBook>();
+        public ObservableCollection<MangaBook> MangaBooks { get; } = [];
 
         /// <summary>
         /// 所有标签
@@ -37,7 +37,7 @@ namespace EroMangaManager.Core.ViewModels
         {
             get
             {
-                List<string> tags = new List<string>();
+                List<string> tags = [];
                 MangaBooks.ForEach(X => tags.AddRange(X.MangaTagsIncludedInFileName));
                 return tags;
             }

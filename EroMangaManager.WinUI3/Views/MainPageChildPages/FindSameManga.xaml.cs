@@ -45,13 +45,5 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
                 mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
             }
         }
-
-        private void OpenMangaClick (object sender , RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            var manga = button.DataContext as MangaBook;
-
-            WindowHelper.ShowReadWindow(manga);
-        }
     }
 }

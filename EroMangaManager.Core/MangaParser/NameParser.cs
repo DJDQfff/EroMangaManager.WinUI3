@@ -19,7 +19,11 @@
         /// 所有括号
         /// </summary>
         public const string LeftRightBrackets = LeftBrackets + RightBrackets;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static string GetMangaName (string name)
         {
             return null;
@@ -48,10 +52,10 @@
                 var tagstart = _FileDisplayName.IndexOf(tag);
                 var tagend = tagstart + tag.Length - 1;
 
-                var left1 = _FileDisplayName.LastIndexOfAny(RightBrackets.ToArray() , tagstart);
-                var left2 = _FileDisplayName.LastIndexOfAny(LeftBrackets.ToArray() , tagstart);
-                var right1 = _FileDisplayName.IndexOfAny(LeftBrackets.ToArray() , tagend);
-                var right2 = _FileDisplayName.IndexOfAny(RightBrackets.ToArray() , tagend);
+                var left1 = _FileDisplayName.LastIndexOfAny([.. RightBrackets] , tagstart);
+                var left2 = _FileDisplayName.LastIndexOfAny([.. LeftBrackets] , tagstart);
+                var right1 = _FileDisplayName.IndexOfAny([.. LeftBrackets] , tagend);
+                var right2 = _FileDisplayName.IndexOfAny([.. RightBrackets] , tagend);
                 if
                 (
                    (left1 != -1 && left2 != -1 && left1 > left2) ||

@@ -139,17 +139,6 @@ namespace EroMangaManager.WinUI3.Views
             currentReader?.Dispose();
         }
 
-        // TODO 不知道为什么，只加载三个
-        private async void image_Loaded (object sender , RoutedEventArgs e)
-        {
-            var control = sender as Image;
-            var entry = control.DataContext as IArchiveEntry;
-            if (entry != null)
-            {
-                control.Source = await entry.ToBitmapImage();
-            }
-        }
-
         /// <summary>
         /// 还是存在切换是闪烁的bug
         /// </summary>

@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-
-using Config.Net;
+﻿using Config.Net;
 
 using EroMangaManager.Core.Setting;
 
@@ -12,12 +7,16 @@ namespace EroMangaManager.Core.ViewModels
     /// <summary>
     /// 设置项ViewModel
     /// </summary>
-    public class SettingViewModel : ObservableObject
+    /// <remarks>
+    ///
+    /// </remarks>
+    /// <param name="iniPath"></param>
+    public class SettingViewModel (string iniPath) : ObservableObject
     {
         /// <summary>
         /// 设置数据源
         /// </summary>
-        public IAppConfig AppConfig { get; }
+        public IAppConfig AppConfig { get; } = new ConfigurationBuilder<IAppConfig>().UseIniFile(iniPath).Build();
 
         /// <summary>
         /// 存储的exe路径
@@ -51,15 +50,6 @@ namespace EroMangaManager.Core.ViewModels
                 AppConfig.MangaOpenWay3.OpenWays += $"|{exePath}";
                 OnPropertyChanged(nameof(ExePaths));
             }
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="iniPath"></param>
-        public SettingViewModel (string iniPath)
-        {
-            AppConfig = new ConfigurationBuilder<IAppConfig>().UseIniFile(iniPath).Build();
         }
     }
 }

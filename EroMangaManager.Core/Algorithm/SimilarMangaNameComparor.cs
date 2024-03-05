@@ -3,20 +3,15 @@
     /// <summary>
     /// 本子名比较器，用于从一堆类似的本子中选出可能相同的本子。
     /// </summary>
-    public class SimilarMangaNameComparor
+    /// <remarks>
+    /// 传入要比较的本子
+    /// </remarks>
+    /// <param name="_books"></param>
+    public class SimilarMangaNameComparor (IEnumerable<MangaBook> _books)
     {
-        private readonly List<MangaBook> books;
+        private readonly List<MangaBook> books = new(_books);
 
-        private readonly Dictionary<MangaBook , string> mangaBookDictionary = new Dictionary<MangaBook , string>();
-
-        /// <summary>
-        /// 传入要比较的本子
-        /// </summary>
-        /// <param name="_books"></param>
-        public SimilarMangaNameComparor (IEnumerable<MangaBook> _books)
-        {
-            books = new List<MangaBook>(_books);
-        }
+        private readonly Dictionary<MangaBook , string> mangaBookDictionary = [];
 
         /// <summary>
         /// 依据本子名进行比较，找出这个本子的名。

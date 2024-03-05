@@ -3,22 +3,25 @@
     /// <summary>
     /// 本子标签管理VM
     /// </summary>
+    /// <remarks>
+    /// 搜索ViewModel
+    /// </remarks>
     public class MangaSearchViewModel
     {
         /// <summary>
         /// 对外公开的所有项
         /// </summary>
-        public List<string> AllTags { set; get; }
+        public List<string> AllTags { set; get; } = [];
 
         /// <summary>
         /// 选中项
         /// </summary>
-        public List<string> SelectedTags = new();
+        public List<string> SelectedTags = [];
 
         /// <summary>
         /// 数据源
         /// </summary>
-        private IEnumerable<string> originTags;
+        private readonly IEnumerable<string> originTags;
 
         /// <summary>
         /// 隐藏起来的项
@@ -29,10 +32,7 @@
         /// 搜索ViewModel
         /// </summary>
         /// <param name="strings"></param>
-        public MangaSearchViewModel (IEnumerable<string> strings)
-        {
-            AllTags = [];
-        }
+        public MangaSearchViewModel (IEnumerable<string> strings) => AllTags = new List<string>(strings);
 
         /// <summary>
         ///

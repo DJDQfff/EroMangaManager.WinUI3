@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-
-using EroMangaDatabase.Entities;
+﻿using System.Collections.ObjectModel;
 
 using EroMangaManager.Core.Helpers;
-using EroMangaManager.Core.Models;
-
-using SharpCompress.Archives;
 
 namespace EroMangaManager.Core.ViewModels
 {
@@ -42,15 +33,15 @@ namespace EroMangaManager.Core.ViewModels
         private bool isworking;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality" , "IDE0052:删除未读的私有成员" , Justification = "<挂起>")]
-        private readonly Queue<IArchiveEntry> entries = new Queue<IArchiveEntry>();
+        private readonly Queue<IArchiveEntry> entries = new();
 
         /// <summary>筛选过后的图片内容入口 </summary>
-        public ObservableCollection<IArchiveEntry> FilteredArchiveImageEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
+        public ObservableCollection<IArchiveEntry> FilteredArchiveImageEntries { set; get; } = [];
 
         /// <summary>
         /// 对应词典
         /// </summary>
-        public Dictionary<IArchiveEntry , Stream> BitmapImagesDic { set; get; } = new Dictionary<IArchiveEntry , Stream>();
+        public Dictionary<IArchiveEntry , Stream> BitmapImagesDic { set; get; } = [];
 
         /// <summary>
         ///

@@ -144,7 +144,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             var key = "BookcaseTemplate" + index;
 
             Bookcase_GridView.ItemTemplate = this.Resources[key] as DataTemplate;
-            var template = new DataTemplate();
+
+            _ = new DataTemplate();
             App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey = index;
         }
     }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-
-using EroMangaManager.Core.Models;
+﻿using System.Collections.ObjectModel;
 
 namespace EroMangaManager.Core.ViewModels
 {
@@ -30,12 +25,12 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 本子文件夹集合
         /// </summary>
-        public ObservableCollection<MangasGroup> MangaFolders { get; } = new ObservableCollection<MangasGroup>();
+        public ObservableCollection<MangasGroup> MangaFolders { get; } = [];
 
         /// <summary>
         /// 无法找到的文件夹
         /// </summary>
-        public ObservableCollection<string> MissingFolders { set; get; } = new ObservableCollection<string>();
+        public ObservableCollection<string> MissingFolders { set; get; } = [];
 
         /// <summary>存放zip文件的文件夹</summary>
         public List<string> StorageFolders => MangaFolders.Select(n => n.FolderPath).ToList();
@@ -46,7 +41,7 @@ namespace EroMangaManager.Core.ViewModels
         {
             get
             {
-                List<MangaBook> list = new List<MangaBook>();
+                List<MangaBook> list = [];
                 foreach (MangasGroup folder in MangaFolders)
                 {
                     list.AddRange(folder.MangaBooks);
@@ -61,7 +56,7 @@ namespace EroMangaManager.Core.ViewModels
         {
             get
             {
-                List<string> alltags = new List<string>();
+                List<string> alltags = [];
                 foreach (var manga in MangaList)
                 {
                     var tags = manga.MangaTagsIncludedInFileName;

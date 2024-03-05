@@ -19,7 +19,9 @@
     /// <summary>
     /// 一般设置项
     /// </summary>
+#pragma warning disable IDE1006 // 命名样式
     public interface General
+#pragma warning restore IDE1006 // 命名样式
     {
         /// <summary>
         /// 是否启用过滤图片功能
@@ -107,7 +109,9 @@
     /// <summary>
     /// 新的漫画打开方式设置，旧的不再使用
     /// </summary>
+#pragma warning disable IDE1006 // 命名样式
     public interface MangaOpenWay3
+#pragma warning restore IDE1006 // 命名样式
     {
         /// <summary>
         /// 绑定序数
@@ -126,7 +130,9 @@
     /// <summary>
     /// 漫画打开方式相关设置
     /// </summary>
+#pragma warning disable IDE1006 // 命名样式
     public interface MangaOpenWaySetting
+#pragma warning restore IDE1006 // 命名样式
     {
         /// <summary>
         /// 打开漫画方式

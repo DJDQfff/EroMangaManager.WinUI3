@@ -1,6 +1,6 @@
 ﻿namespace EroMangaManager.WinUI3.StaticResource
 {
-    internal class openwayconverter2 : IValueConverter
+    internal class OpenwayConverter2 : IValueConverter
     {
         public object Convert (object value , Type targetType , object parameter , string language)
         {

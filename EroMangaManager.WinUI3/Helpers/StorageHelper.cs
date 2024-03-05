@@ -47,7 +47,7 @@ internal class StorageHelper
 
         var temp2 = App.Current.AppConfig.AppConfig.General.StorageFileDeleteOption;
 
-        var option = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
+        _ = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
 
         bool deleteResult = false;
         if (!temp1)

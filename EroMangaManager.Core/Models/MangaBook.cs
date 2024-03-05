@@ -32,7 +32,7 @@ public partial class MangaBook : ObservableObject
         {
             SetProperty(ref filepath , value);
             var tags = NameParser.SplitAndParser(FileDisplayName);
-            MangaTagsIncludedInFileName = tags.Item2.ToArray();
+            MangaTagsIncludedInFileName = [.. tags.Item2];
             MangaName = tags.Item1;
         }
     }

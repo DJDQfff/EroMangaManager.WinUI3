@@ -13,7 +13,7 @@
         /// <returns></returns>
         public static List<string> SortEntriesByName (this IArchive zipArchive , Action<IEnumerable<string>> sortFunc = null)
         {
-            List<string> vs = new List<string>();
+            List<string> vs = [];
             foreach (var zipEntry in zipArchive.Entries)
             {
                 string entryName = zipEntry.Key;
@@ -40,7 +40,7 @@
         /// <returns></returns>
         public static bool EntryFilter (this IArchiveEntry entry , FilteredImage[] filteredImages)
         {
-            string[] okimageextension = new string[] { ".jpg" , ".jpeg" , ".png" , ".bmp" , ".webp" };
+            string[] okimageextension = [".jpg" , ".jpeg" , ".png" , ".bmp" , ".webp"];
             bool canuse = true;
 
             if (entry.IsDirectory)                      // 排除文件夹entry

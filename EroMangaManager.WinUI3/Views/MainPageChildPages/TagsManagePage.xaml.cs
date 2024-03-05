@@ -23,8 +23,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
         {
             var item = sender as MenuFlyoutItem;
-            var str = item.DataContext as string;
-            if (str != null)
+            if (item.DataContext is string str)
             {
                 var a = new SearchParameter()
                 {
