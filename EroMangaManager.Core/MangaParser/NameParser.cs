@@ -15,20 +15,12 @@
         /// </summary>
         public const string RightBrackets = "]】）)}";
 
+        private static int Length = LeftBrackets.Length;
+
         /// <summary>
         /// 所有括号
         /// </summary>
         public const string LeftRightBrackets = LeftBrackets + RightBrackets;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public static string GetMangaName (string name)
-        {
-            return null;
-            //TODO
-        }
 
         /// <summary>
         /// 按左右括号分离tag并解析
@@ -91,6 +83,35 @@
             }
 
             return (manganame, tagslist);
+        }
+
+        /// <summary>
+        /// 另一种推导本子名的方法，有问题
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string GetMangaName (string name)
+        {
+            var array = new int[Length];
+
+            foreach (var c in name)
+            {
+                var index = name.IndexOfAny([.. LeftBrackets]);
+                switch (index)
+                {
+                    case 0:
+
+                        var right = RightBrackets[index];
+                        var rightindex = name.IndexOf(right);
+                        var subname = name.Substring(rightindex + 1);
+                        return GetMangaName(subname);
+
+                    case > 0:
+                        // 有问题，传入index有问题
+                        return name.Substring(0 , index).Trim();
+                }
+            }
+            return name;
         }
 
         /// <summary>

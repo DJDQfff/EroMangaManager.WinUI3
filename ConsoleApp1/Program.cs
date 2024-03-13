@@ -4,7 +4,7 @@ var testfiles = Directory.GetFiles(testfolder , "*.zip");
 
 foreach (var testfile in testfiles)
 {
-    var filename = Path.GetFileName(testfile);
+    var filename = Path.GetFileNameWithoutExtension(testfile);
 
     var name1 = SplitAndParser(filename).Item1;
     var name2 = GetMangaName(filename);
@@ -12,7 +12,8 @@ foreach (var testfile in testfiles)
     {
         Console.WriteLine(filename);
 
-        Console.WriteLine($"\r{name1}\r {name2}");
+        Console.WriteLine(name1);
+        Console.WriteLine(name2);
         if (Console.ReadKey().Key == ConsoleKey.Spacebar)
         {
             // 导出
