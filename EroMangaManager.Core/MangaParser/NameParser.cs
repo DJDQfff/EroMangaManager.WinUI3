@@ -87,31 +87,32 @@
 
         /// <summary>
         /// 另一种推导本子名的方法，有问题
+        /// 1.嵌套相同括号的话无法读取
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         public static string GetMangaName (string name)
         {
-            var array = new int[Length];
+            var _name = name.Trim();
 
-            foreach (var c in name)
+            var leftbracketindex = _name.IndexOfAny([.. LeftBrackets]);
+
+            switch (leftbracketindex)
             {
-                var index = name.IndexOfAny([.. LeftBrackets]);
-                switch (index)
-                {
-                    case 0:
+                case 0:
+                    var leftbracketchar = _name[leftbracketindex];
 
-                        var right = RightBrackets[index];
-                        var rightindex = name.IndexOf(right);
-                        var subname = name.Substring(rightindex + 1);
-                        return GetMangaName(subname);
+                    var index = LeftBrackets.IndexOf(leftbracketchar);
+                    var rightbracket = RightBrackets[index];
+                    var rightindex = _name.IndexOf(rightbracket);
+                    var subname = _name.Substring(rightindex + 1);
+                    return GetMangaName(subname);
 
-                    case > 0:
-                        // 有问题，传入index有问题
-                        return name.Substring(0 , index).Trim();
-                }
+                case > 0:
+                    return _name.Substring(0 , leftbracketindex).Trim();
             }
-            return name;
+
+            return name.Trim();
         }
 
         /// <summary>
