@@ -170,6 +170,10 @@ namespace EroMangaManager.Core.MangaParser
         /// <returns></returns>
         public static string GetMangaName_Recursion (string name)
         {
+            if (!CanbePair(name))
+            {
+                return name;
+            }
             var _name = name.Trim();
 
             var leftbracketindex = _name.IndexOfAny([.. LeftBrackets]);
