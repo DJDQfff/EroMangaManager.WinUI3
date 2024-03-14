@@ -31,7 +31,7 @@ public partial class MangaBook : ObservableObject
         set
         {
             SetProperty(ref filepath , value);
-            var tags = NameParser.SplitAndParser(FileDisplayName);
+            var tags = NameParser.GetMangaNameAndTags(FileDisplayName);
             MangaTagsIncludedInFileName = [.. tags.Item2];
             MangaName = tags.Item1;
         }

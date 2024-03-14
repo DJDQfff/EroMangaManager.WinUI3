@@ -1,4 +1,7 @@
-﻿namespace EroMangaManager.Core.MangaParser
+﻿using System.Text;
+using System.Text.RegularExpressions;
+
+namespace EroMangaManager.Core.MangaParser
 {
     /// <summary>
     /// 对基于tag的本子名的相关操作的帮助整合类
@@ -21,22 +24,29 @@
         /// 所有括号
         /// </summary>
         public const string LeftRightBrackets = LeftBrackets + RightBrackets;
-
         /// <summary>
-        /// 按左右括号分离tag并解析
+        /// 先获取本子名和tag，在分开
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static (string, List<string>) GetMangaNameAndTags2 (string input)
+
+        {
+            var manganame = GetMangaName_Recursion(input);
+            var tags = SplitByBrackets(input);
+            tags.Remove(manganame);
+            return (manganame, tags);
+        }
+        /// <summary>
+        /// 获取本子名和tag，同时进行
         /// </summary>
         /// <param name="_FileDisplayName">传入漫画文件名（不带后缀）</param>
         /// <returns>第一个是MangaName，后面的是tag</returns>
-        public static (string, List<string>) SplitAndParser (string _FileDisplayName)
+        public static (string, List<string>) GetMangaNameAndTags (string _FileDisplayName)
         {
             bool findmanganame = false;
             string manganame = default;
-            var tagslist =
-                _FileDisplayName.Trim()
-                .Split(LeftRightBrackets.ToCharArray())      // 按括号分解为tag
-                .Where(x => !string.IsNullOrWhiteSpace(x))// 移除所有为空白的tag
-                .Select(x => x.Trim())                  // 所有移除首尾空白
-                .ToList();
+            List<string> tagslist = SplitByBrackets(_FileDisplayName);
             //var startwithleftbrackets = LeftBrackets.Contains(_FileDisplayName[0]);
             //var endwithrightbrackets = RightBrackets.Contains(_FileDisplayName[ _FileDisplayName.Length - 1]);
             foreach (var tag in tagslist)                    // 查找漫画名Tag，只能找出正常模式下的本子名
@@ -84,14 +94,81 @@
 
             return (manganame, tagslist);
         }
-
         /// <summary>
-        /// 另一种推导本子名的方法，有问题
+        /// 按括号分解
+        /// </summary>
+        /// <param name="_FileDisplayName"></param>
+        /// <returns></returns>
+        private static List<string> SplitByBrackets (string _FileDisplayName)
+        {
+            var tagslist =
+                _FileDisplayName.Trim()
+                .Split(LeftRightBrackets.ToCharArray())      // 按括号分解为tag
+                .Where(x => !string.IsNullOrWhiteSpace(x))// 移除所有为空白的tag
+                .Select(x => x.Trim())                  // 所有移除首尾空白
+                .ToList();
+            return tagslist;
+        }
+        /// <summary>
+        /// 使用正则表达式获取本子名
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string GetMangaName_Regex (string name)
+        {
+            var pattern = @"([\]】）\)\}]|)[^\[【（\(\{\]】）\)\}]+([\[【（\(\{]|)";
+            var pattern2 = @"([\]】）\)\}]|)\S+([\[【（\(\{]|)";
+            var regex = new Regex(pattern);
+            var regex2 = new Regex(pattern2);
+            var a = regex.Matches(name);
+            List<string> strings = [];
+            foreach (Match t in a)
+            {
+                var str = t.Value;
+                strings.Add(str);
+            }
+            strings.Sort((x , y) => -x.Length + y.Length);
+            return strings.First();
+        }
+        /// <summary>
+        /// 通过堆栈获取本子名
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string GetMangaName_Stack (string name)
+        {
+            Stack<char> lefts = new();
+            List<string> tags = [];
+            StringBuilder stringBuilder = new();
+            int start;
+            for (int index = 0 ; index < name.Length ; index++)
+            {
+                var c = name[index];
+                if (LeftBrackets.Contains(c))
+                {
+                    lefts.Push(c);
+                    start = index;
+                }
+
+                if (RightBrackets.Contains(c))
+                {
+                    if (c == lefts.Peek())
+                    {
+
+
+                    }
+                }
+            }
+            return null;
+        }
+        // TODO 嵌套相同括号的话无法读取
+        /// <summary>
+        /// 以递归的方式获取本子名
         /// 1.嵌套相同括号的话无法读取
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string GetMangaName (string name)
+        public static string GetMangaName_Recursion (string name)
         {
             var _name = name.Trim();
 
@@ -103,10 +180,12 @@
                     var leftbracketchar = _name[leftbracketindex];
 
                     var index = LeftBrackets.IndexOf(leftbracketchar);
+
                     var rightbracket = RightBrackets[index];
                     var rightindex = _name.IndexOf(rightbracket);
+
                     var subname = _name.Substring(rightindex + 1);
-                    return GetMangaName(subname);
+                    return GetMangaName_Recursion(subname);
 
                 case > 0:
                     return _name.Substring(0 , leftbracketindex).Trim();
@@ -132,7 +211,7 @@
         /// <returns></returns>
         public static bool CanbePair (string tagstring)
         {
-            for (int i = 0 ; i < LeftBrackets.Length ; i++)
+            for (int i = 0 ; i < Length ; i++)
             {
                 int count1 = tagstring.Count(n => n == LeftBrackets[i]);
                 int count2 = tagstring.Count(n => n == RightBrackets[i]);
