@@ -15,3 +15,5 @@ global using EroMangaManager.Core.Models;
 global using MyLibrary.Standard20;
 
 global using SharpCompress.Archives;
+
+global using static EroMangaManager.Core.MangaParser.NameParser;

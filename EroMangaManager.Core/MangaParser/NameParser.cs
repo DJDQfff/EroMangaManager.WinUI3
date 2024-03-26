@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 namespace EroMangaManager.Core.MangaParser
 {
     /// <summary>
-    /// 对基于tag的本子名的相关操作的帮助整合类
+    /// 对基于tag的本子名的解析类
     /// </summary>
     public static class NameParser
     {
@@ -39,7 +39,7 @@ namespace EroMangaManager.Core.MangaParser
             return (manganame, tags);
         }
         /// <summary>
-        /// 递归获取括号tag
+        /// 递归获取括号tag，未完成
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -48,7 +48,7 @@ namespace EroMangaManager.Core.MangaParser
             return null;
         }
         /// <summary>
-        /// 获取本子名和tag，同时进行
+        /// 获取本子名和tag，同时进行，有缺陷
         /// </summary>
         /// <param name="_FileDisplayName">传入漫画文件名（不带后缀）</param>
         /// <returns>第一个是MangaName，后面的是tag</returns>
@@ -120,7 +120,7 @@ namespace EroMangaManager.Core.MangaParser
             return tagslist;
         }
         /// <summary>
-        /// 使用正则表达式获取本子名
+        /// 使用正则表达式获取本子名，有问题
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -141,12 +141,16 @@ namespace EroMangaManager.Core.MangaParser
             return strings.First();
         }
         /// <summary>
-        /// 
+        /// 是否包含在一对括号中（不要求首位括号是相对应的类型）
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static bool IsIncludedInBracketPair (string name)
+        public static bool IsIncludedInBracketPair (this string name)
         {
+            if (name.Length < 2)
+            {
+                return false;
+            }
             var start = name[0];
             var end = name[name.Length - 1];
             if (LeftRightBrackets.Contains(start) && LeftRightBrackets.Contains(end))
@@ -155,18 +159,22 @@ namespace EroMangaManager.Core.MangaParser
             }
             return false;
         }
-        public static string RemoveBracket (string name)
+        /// <summary>
+        /// 移除首位括号
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string TrimBracket (string name)
         {
-            string newname;
             if (IsIncludedInBracketPair(name))
             {
                 var n = name.Substring(1 , name.Length - 2);
-                return RemoveBracket(n);
+                return TrimBracket(n);
             }
             return name;
         }
         /// <summary>
-        /// 按空格解析，把连续空格视为整体，左右边是否为括号来判断是否可以在此拆分
+        /// 按空格解析拆分，tag和manganame需要在外部分离
         /// </summary>
         /// <param name="_FileDisplayName"></param>
         /// <returns></returns>
@@ -203,7 +211,7 @@ namespace EroMangaManager.Core.MangaParser
             return tags;
         }
         /// <summary>
-        /// 通过堆栈获取本子名
+        /// 通过堆栈获取本子名，未完成
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -281,7 +289,7 @@ namespace EroMangaManager.Core.MangaParser
         }
 
         /// <summary>
-        /// 是否左右括号成对
+        /// 左右括号成对，入成对，则返回多少对，否则返回-1
         /// </summary>
         /// <param name="tagstring"></param>
         /// <returns></returns>

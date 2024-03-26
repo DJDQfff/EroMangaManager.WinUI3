@@ -30,10 +30,29 @@ public partial class MangaBook : ObservableObject
         get => filepath;
         set
         {
+            Debug.WriteLine(value);
             SetProperty(ref filepath , value);
-            var tags = NameParser.GetNameAndTags2(FileDisplayName);
-            MangaTagsIncludedInFileName = [.. tags.Item2];
-            MangaName = tags.Item1;
+            //var tags = NameParser.GetNameAndTags2(FileDisplayName);
+            //MangaTagsIncludedInFileName = [.. tags.Item2];
+            //MangaName = tags.Item1;
+
+            var pieces = NameParser.SplitByBlank(FileDisplayName);
+            var name = pieces.FirstOrDefault(piece => !piece.IsIncludedInBracketPair());
+            if (name == null)
+            {
+                name = GetName_Recursion(FileDisplayName);
+                if (name == null)
+                {
+                    name = NameParser.GetNameAndTags2(FileDisplayName).Item1;
+                }
+            }
+            MangaName = name;
+
+            MangaTagsIncludedInFileName = pieces.Where(piece => piece.IsIncludedInBracketPair()).Select(x => TrimBracket(x)).ToArray();
+
+
+
+
         }
     }
 
