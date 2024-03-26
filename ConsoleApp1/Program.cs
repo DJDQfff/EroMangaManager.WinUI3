@@ -9,18 +9,26 @@ string[] testfiles2 = [
     @"D:\\Downloads\\本子二审\\本子\\[140kmh (赤城あさひと)](C95) [不良ちゃんとコタツでヌクヌクする大晦日。 [中国翻訳].zip",
 // 不良前面多了个括号，不对称
 ];
+var translator = new SimpleTranslator("20210219000701366" , "VkerV4o1qG1TK6mUlbr_" , ServerHost.Https);
 
 foreach (var testfile in testfiles)
 {
-
-    var ispair = CanbePair(testfile);
+    var ispair = IsCorrectBracketPair(testfile);
     if (!ispair)
     {
         //Console.WriteLine(testfile);
         continue;
     }
-    var parse1 = GetMangaNameAndTags(testfile);
-    var parse2 = GetMangaNameAndTags2(testfile);
+    {
+        var name = GetName_Recursion(testfile);
+        var translatedname = await translator.CommonTextTranslateAsync(name);
+        Console.WriteLine(testfile);
+        Console.WriteLine(name);
+        Console.WriteLine(translatedname);
+    }
+    continue;
+    var parse1 = GetNameAndTags(testfile);
+    var parse2 = GetNameAndTags2(testfile);
     //var name3 = GetMangaName_Regex(testfile);
     if (parse1.Item2 != parse2.Item2)
     {
@@ -45,6 +53,6 @@ foreach (var testfile in testfiles)
         //Console.WriteLine("\t" + name3);
 
         Console.WriteLine();
-        _ = GetMangaName_Regex(testfile);
+        _ = GetName_Regex(testfile);
     }
 }

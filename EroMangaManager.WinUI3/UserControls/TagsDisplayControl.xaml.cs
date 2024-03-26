@@ -18,7 +18,7 @@ namespace EroMangaManager.WinUI3.UserControls
         {
             set
             {
-                var temp = NameParser.GetMangaNameAndTags2(value);
+                var temp = NameParser.GetNameAndTags2(value);
                 tags.Clear();
                 tags.AddRange(temp.Item2);
             }

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DJDQfff.BaiduTranslateAPI" Version="1.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EroMangaDatabase\EroMangaDatabase.csproj" />
     <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
   </ItemGroup>

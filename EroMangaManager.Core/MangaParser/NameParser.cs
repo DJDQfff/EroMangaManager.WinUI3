@@ -29,20 +29,29 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static (string, List<string>) GetMangaNameAndTags2 (string input)
+        public static (string, List<string>) GetNameAndTags2 (string input)
 
         {
-            var manganame = GetMangaName_Recursion(input);
+            var manganame = GetName_Recursion(input);
             var tags = SplitByBrackets(input);
             tags.Remove(manganame);
             return (manganame, tags);
+        }
+        /// <summary>
+        /// 递归获取括号tag
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> GetTags_Recursion (string input)
+        {
+            return null;
         }
         /// <summary>
         /// 获取本子名和tag，同时进行
         /// </summary>
         /// <param name="_FileDisplayName">传入漫画文件名（不带后缀）</param>
         /// <returns>第一个是MangaName，后面的是tag</returns>
-        public static (string, List<string>) GetMangaNameAndTags (string _FileDisplayName)
+        public static (string, List<string>) GetNameAndTags (string _FileDisplayName)
         {
             bool findmanganame = false;
             string manganame = default;
@@ -80,7 +89,7 @@ namespace EroMangaManager.Core.MangaParser
                     manganame = _FileDisplayName;
                     tagslist.Clear();
                 }
-                if (CanbePair(_FileDisplayName))
+                if (IsCorrectBracketPair(_FileDisplayName))
                 {
                     //  所有tag都被括号包起来了，本子名应该未包含在括号里面，这样无法识别
                     Debug.WriteLine($"无法解析出MangaName：\n{_FileDisplayName}");
@@ -114,7 +123,7 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string GetMangaName_Regex (string name)
+        public static string GetName_Regex (string name)
         {
             var pattern = @"([\]】）\)\}]|)[^\[【（\(\{\]】）\)\}]+([\[【（\(\{]|)";
             var pattern2 = @"([\]】）\)\}]|)\S+([\[【（\(\{]|)";
@@ -131,11 +140,20 @@ namespace EroMangaManager.Core.MangaParser
             return strings.First();
         }
         /// <summary>
+        /// 按空格解析，把连续空格视为整体，左右边是否为括号来判断是否可以在此拆分
+        /// </summary>
+        /// <param name="_FileDisplayName"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> SplitByBlank (string _FileDisplayName)
+        {
+            return null;
+        }
+        /// <summary>
         /// 通过堆栈获取本子名
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string GetMangaName_Stack (string name)
+        public static string GetName_Stack (string name)
         {
             Stack<char> lefts = new();
             List<string> tags = [];
@@ -168,9 +186,9 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string GetMangaName_Recursion (string name)
+        public static string GetName_Recursion (string name)
         {
-            if (!CanbePair(name))
+            if (!IsCorrectBracketPair(name))
             {
                 return name;
             }
@@ -189,7 +207,7 @@ namespace EroMangaManager.Core.MangaParser
                     var rightindex = _name.IndexOf(rightbracket);
 
                     var subname = _name.Substring(rightindex + 1);
-                    return GetMangaName_Recursion(subname);
+                    return GetName_Recursion(subname);
 
                 case > 0:
                     return _name.Substring(0 , leftbracketindex).Trim();
@@ -213,7 +231,7 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="tagstring"></param>
         /// <returns></returns>
-        public static bool CanbePair (string tagstring)
+        public static bool IsCorrectBracketPair (string tagstring)
         {
             for (int i = 0 ; i < Length ; i++)
             {
