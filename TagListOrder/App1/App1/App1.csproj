@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="UserControl1.xaml" />
     <None Remove="UserControl2.xaml" />
+    <None Remove="UserControl3.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\TagListOrder\TagListOrder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EroMangaManager.Core">
+      <HintPath>..\..\..\EroMangaManager.Core\bin\Debug\netstandard2.0\EroMangaManager.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="UserControl3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

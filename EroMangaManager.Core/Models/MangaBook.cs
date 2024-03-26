@@ -25,6 +25,7 @@ public partial class MangaBook : ObservableObject
     private string filepath;
 
     /// <summary> 漫画文件路径 </summary>
+
     public string FilePath
     {
         get => filepath;
@@ -50,7 +51,7 @@ public partial class MangaBook : ObservableObject
 
             MangaTagsIncludedInFileName = pieces.Where(piece => piece.IsIncludedInBracketPair()).Select(x => TrimBracket(x)).ToArray();
 
-
+            OnPropertyChanged("");
 
 
         }

@@ -43,11 +43,14 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
 
             var book = button.DataContext as MangaBook;
 
-            var control = stackpanel.FindName("renamecontrol") as RenameMangaBookByString;
-
-            if (control.IsNewnameOK)
+            var control = stackpanel.FindName("newnameBox") as TextBox;
+            var text = control.Text;
+            if (string.IsNullOrWhiteSpace(text))
             {
-                var text = control.NewDisplayName;
+                return;
+            }
+            else
+            {
                 try
                 {
                     // TODO 重命名可能存在bug，如重复名称
@@ -71,6 +74,14 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             var book = button.DataContext as MangaBook;
 
             RepaetBooks.Remove(book);
+        }
+
+        private void TagListOrder_Loaded (object sender , RoutedEventArgs e)
+        {
+            var order = sender as DJDQfff.TagListOrder;
+            var manga = order.DataContext as MangaBook;
+            var items = NameParser.SplitByBlank(manga.FileDisplayName);
+            order.Sources = items;
         }
     }
 }

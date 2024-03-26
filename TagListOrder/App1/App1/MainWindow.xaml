@@ -7,19 +7,21 @@
     xmlns:local="using:App1"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:t="using:TagListOrder"
+    xmlns:djdq="using:DJDQfff"
     mc:Ignorable="d">
     <StackPanel Orientation="Vertical">
         <StackPanel.Resources>
             <x:String x:Key="name1">(C73)[T2 ART WORKS (Tony)] きてるよ! 竹内くんっ (バンブーブレード) [无修正]</x:String>
         </StackPanel.Resources>
-
-        <local:UserControl2 Source="{StaticResource name1}" SplitFunc="a_SplitFunc" />
+        <djdq:TagListOrder x:Name="control3"/>
 
         <StackPanel x:Name="dontload"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             x:Load="False"
             Orientation="Vertical">
+            <local:UserControl2 Source="{StaticResource name1}"
+                                SplitFunc="a_SplitFunc" />
 
             <ListView
                 x:Name="aa"

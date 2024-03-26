@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 
+using EroMangaManager.Core.MangaParser;
+using EroMangaManager.Core.Models;
+
 using Microsoft.UI.Xaml;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -11,9 +14,13 @@ namespace App1;
 /// </summary>
 public sealed partial class MainWindow : Window
 {
+    string path = @"(C73)[T2 ART WORKS (Tony)] ¤­¤Æ¤ë¤è! ÖñÄÚ¤¯¤ó¤Ã (¥Ð¥ó¥Ö©`¥Ö¥ì©`¥É) [ÎÞÐÞÕý]";
     public MainWindow ()
     {
         this.InitializeComponent();
+
+        var pieces = new MangaBook(path);
+        control3.Sources = NameParser.SplitByBlank(path);
     }
 
 
