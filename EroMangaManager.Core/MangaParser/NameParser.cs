@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 
+
 namespace EroMangaManager.Core.MangaParser
 {
     /// <summary>
@@ -89,7 +90,7 @@ namespace EroMangaManager.Core.MangaParser
                     manganame = _FileDisplayName;
                     tagslist.Clear();
                 }
-                if (IsCorrectBracketPair(_FileDisplayName))
+                if (CorrectBracketPairConut(_FileDisplayName) != -1)
                 {
                     //  所有tag都被括号包起来了，本子名应该未包含在括号里面，这样无法识别
                     Debug.WriteLine($"无法解析出MangaName：\n{_FileDisplayName}");
@@ -140,13 +141,66 @@ namespace EroMangaManager.Core.MangaParser
             return strings.First();
         }
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static bool IsIncludedInBracketPair (string name)
+        {
+            var start = name[0];
+            var end = name[name.Length - 1];
+            if (LeftRightBrackets.Contains(start) && LeftRightBrackets.Contains(end))
+            {
+                return true;
+            }
+            return false;
+        }
+        public static string RemoveBracket (string name)
+        {
+            string newname;
+            if (IsIncludedInBracketPair(name))
+            {
+                var n = name.Substring(1 , name.Length - 2);
+                return RemoveBracket(n);
+            }
+            return name;
+        }
+        /// <summary>
         /// 按空格解析，把连续空格视为整体，左右边是否为括号来判断是否可以在此拆分
         /// </summary>
         /// <param name="_FileDisplayName"></param>
         /// <returns></returns>
         public static IEnumerable<string> SplitByBlank (string _FileDisplayName)
         {
-            return null;
+            var stringBuilder = new StringBuilder();
+            var tags = new List<string>();
+            var n = new StringBuilder(_FileDisplayName);
+            for (int i = n.Length - 1 ; i > 0 ; i--)
+            {
+                if (LeftRightBrackets.Contains(n[i]))
+                {
+                    n.Insert(i + 1 , " ");
+
+                    n.Insert(i , ' ');
+                }
+            }
+            var pieces = n.ToString().Split([' '] , StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var tag in pieces)
+            {
+                stringBuilder.Append(tag);
+                var result = stringBuilder.ToString();
+                if (CorrectBracketPairConut(result) != -1)
+                {
+                    tags.Add(result);
+                    stringBuilder.Clear();
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return tags;
         }
         /// <summary>
         /// 通过堆栈获取本子名
@@ -188,7 +242,7 @@ namespace EroMangaManager.Core.MangaParser
         /// <returns></returns>
         public static string GetName_Recursion (string name)
         {
-            if (!IsCorrectBracketPair(name))
+            if (CorrectBracketPairConut(name) == -1)
             {
                 return name;
             }
@@ -231,18 +285,23 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="tagstring"></param>
         /// <returns></returns>
-        public static bool IsCorrectBracketPair (string tagstring)
+        public static int CorrectBracketPairConut (string tagstring)
         {
+            int brackettype = 0;
             for (int i = 0 ; i < Length ; i++)
             {
                 int count1 = tagstring.Count(n => n == LeftBrackets[i]);
                 int count2 = tagstring.Count(n => n == RightBrackets[i]);
                 if (count1 != count2)
                 {
-                    return false;
+                    return -1;
+                }
+                if (count1 != 0)
+                {
+                    brackettype++;
                 }
             }
-            return true;
+            return brackettype;
         }
     }
 }
