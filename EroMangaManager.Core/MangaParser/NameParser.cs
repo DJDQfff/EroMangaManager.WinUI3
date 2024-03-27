@@ -19,7 +19,7 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         public const string RightBrackets = "]】）)}";
 
-        private static int Length = LeftBrackets.Length;
+        private static readonly int Length = LeftBrackets.Length;
 
         /// <summary>
         /// 所有括号
@@ -217,28 +217,28 @@ namespace EroMangaManager.Core.MangaParser
         /// <returns></returns>
         public static string GetName_Stack (string name)
         {
-            Stack<char> lefts = new();
-            List<string> tags = [];
-            StringBuilder stringBuilder = new();
-            int start;
-            for (int index = 0 ; index < name.Length ; index++)
-            {
-                var c = name[index];
-                if (LeftBrackets.Contains(c))
-                {
-                    lefts.Push(c);
-                    start = index;
-                }
+            //Stack<char> lefts = new();
+            //List<string> tags = [];
+            //StringBuilder stringBuilder = new();
+            //int start;
+            //for (int index = 0 ; index < name.Length ; index++)
+            //{
+            //    var c = name[index];
+            //    if (LeftBrackets.Contains(c))
+            //    {
+            //        lefts.Push(c);
+            //        start = index;
+            //    }
 
-                if (RightBrackets.Contains(c))
-                {
-                    if (c == lefts.Peek())
-                    {
+            //    if (RightBrackets.Contains(c))
+            //    {
+            //        if (c == lefts.Peek())
+            //        {
 
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
             return null;
         }
         // TODO 嵌套相同括号的话无法读取

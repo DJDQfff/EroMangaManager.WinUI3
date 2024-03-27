@@ -42,10 +42,7 @@ public partial class MangaBook : ObservableObject
             if (name == null)
             {
                 name = GetName_Recursion(FileDisplayName);
-                if (name == null)
-                {
-                    name = NameParser.GetNameAndTags2(FileDisplayName).Item1;
-                }
+                name ??= NameParser.GetNameAndTags2(FileDisplayName).Item1;
             }
             MangaName = name;
 
