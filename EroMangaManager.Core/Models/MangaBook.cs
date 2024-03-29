@@ -38,13 +38,8 @@ public partial class MangaBook : ObservableObject
             //MangaName = tags.Item1;
 
             var pieces = NameParser.SplitByBlank(FileDisplayName);
-            var name = pieces.FirstOrDefault(piece => !piece.IsIncludedInBracketPair());
-            if (name == null)
-            {
-                name = GetName_Recursion(FileDisplayName);
-                name ??= NameParser.GetNameAndTags2(FileDisplayName).Item1;
-            }
-            MangaName = name;
+            //var name = pieces.FirstOrDefault(piece => !piece.IsIncludedInBracketPair());
+            MangaName ??= GetName_Recursion(FileDisplayName);
 
             MangaTagsIncludedInFileName = pieces.Where(piece => piece.IsIncludedInBracketPair()).Select(x => TrimBracket(x)).ToArray();
 

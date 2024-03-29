@@ -29,7 +29,9 @@
 ## Issues
 
 * [x] UWP中，efcore默认数据文件在数据LocaStata中，WinUI3 中，数据库文件在C:\Users\27431\AppData\Local\VirtualStore\Windows\SysWOW64\localdatabase.db这个文件夹里面
-- [ ] 搜索Orange，会把一个包含在tag的本子搜出来
+- [x] 搜索Orange，会把一个包含在tag的本子搜出来
+  
+  > 修改本子名解析方法后，这个问题就消失了
 
 - [x] 迁移到WinUI后，暂时懒得弄文件类型关联了，反正也不是用来看本子的
 
@@ -53,9 +55,9 @@
 
 - [ ] 查找相同本子页面，添加相似查找，及翻译查找，为MangaBook的相同BookName设计一个模糊匹配算法
 
-- [ ] 移除重复Tag功能界面，添加自动化功能，不然一个一个手动弄搞到什么时候
+- [x] 移除重复Tag功能界面，添加自动化功能，不然一个一个手动弄搞到什么时候
 
-- [ ] 添加界面化文件名Tag修改界面
+- [x] 添加界面化文件名Tag修改界面
 
 - [ ] 在初始化GlobalViewModel时添加文件夹的话，会报错（被修改的集合、原来的MangasFolder不初始化）
 

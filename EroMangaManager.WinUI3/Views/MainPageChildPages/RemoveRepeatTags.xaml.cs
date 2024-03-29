@@ -65,6 +65,11 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
                 {
                 }
             }
+            if (!book.MangaTagsIncludedInFileName.ContainRepeat())
+            {
+                RepaetBooks.Remove(book);
+            }
+
         }
 
         private void Button_Click (object sender , RoutedEventArgs e)

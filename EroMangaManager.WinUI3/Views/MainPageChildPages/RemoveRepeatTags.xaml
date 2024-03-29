@@ -42,11 +42,11 @@
                             Grid.Column="1" Grid.Row="1"
                             DataContext="{x:Bind}"
                             Loaded="TagListOrder_Loaded" />
-                        <TextBlock Text="{x:Bind FileDisplayName,Mode=OneWay}" FontSize="16"
+                        <TextBlock Text="{x:Bind FileDisplayName,Mode=OneWay}" TextWrapping="Wrap" FontSize="16"
                                    Grid.Column="1"
                                    Grid.Row="0" />
                         <TextBox x:Name="newnameBox" Text="{Binding ElementName=order,Path=NewName,Mode=OneWay}"
-                                 Grid.Column="1"
+                                 Grid.Column="1" TextWrapping="Wrap"
                                  FontSize="16"
                                  Grid.Row="2" />
 
