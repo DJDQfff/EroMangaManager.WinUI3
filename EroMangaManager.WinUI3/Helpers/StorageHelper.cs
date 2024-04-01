@@ -47,7 +47,7 @@ internal class StorageHelper
 
         var temp2 = App.Current.AppConfig.AppConfig.General.StorageFileDeleteOption;
 
-        _ = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
+        var deletemode = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
 
         bool deleteResult = false;
         if (!temp1)
@@ -61,13 +61,7 @@ internal class StorageHelper
             {
                 case ContentDialogResult.Primary:
                     App.Current.GlobalViewModel.RemoveManga(eroManga);
-                    try
-                    {
-                        System.IO.File.Delete(eroManga.FilePath);
-                    }
-                    catch
-                    {
-                    }
+                    await Delete(eroManga , deletemode);
                     deleteResult = true;
                     break;
 
@@ -77,17 +71,28 @@ internal class StorageHelper
         }
         else
         {
-            App.Current.GlobalViewModel.RemoveManga(eroManga);
-            try
-            {
-                System.IO.File.Delete(eroManga.FilePath);
-            }
-            catch
-            {
-            }
+            await Delete(eroManga , deletemode);
+
             deleteResult = true;
         }
 
         return deleteResult;
+
+        static async Task Delete (MangaBook eroManga , StorageDeleteOption deletemode)
+        {
+            try
+            {
+#if WINDOWS
+                var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(eroManga.FilePath);
+                await file.DeleteAsync(deletemode);
+#else
+                        System.IO.File.Delete(eroManga.FilePath);
+
+#endif
+            }
+            catch
+            {
+            }
+        }
     }
 }
