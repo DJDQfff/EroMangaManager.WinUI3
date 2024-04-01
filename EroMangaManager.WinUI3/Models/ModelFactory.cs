@@ -25,6 +25,7 @@ namespace EroMangaManager.WinUI3.Models
 
         public static async Task InitialEachFolders (this ObservableCollectionVM ViewModel)
         {
+            // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
             foreach (var folder in ViewModel.MangaFolders)
             {
                 await folder.Initial();

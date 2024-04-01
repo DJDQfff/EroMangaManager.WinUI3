@@ -57,8 +57,6 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
                     string oldname = book.FilePath;
                     string newname = Path.Combine(Path.GetDirectoryName(oldname) , text + ".zip");
                     System.IO.File.Move(oldname , newname);
-
-                    book.MangaName = text;
                     book.FilePath = Path.Combine(book.FolderPath , text + ".zip");
                 }
                 catch

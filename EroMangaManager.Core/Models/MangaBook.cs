@@ -22,32 +22,12 @@ public partial class MangaBook : ObservableObject
     /// </summary>
     public long FileSize { get; set; }
 
-    private string filepath;
-
     /// <summary> 漫画文件路径 </summary>
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(MangaName))]
+    [NotifyPropertyChangedFor(nameof(MangaTagsIncludedInFileName))]
+    string filePath;
 
-    public string FilePath
-    {
-        get => filepath;
-        set
-        {
-            Debug.WriteLine(value);
-            SetProperty(ref filepath , value);
-            //var tags = NameParser.GetNameAndTags2(FileDisplayName);
-            //MangaTagsIncludedInFileName = [.. tags.Item2];
-            //MangaName = tags.Item1;
-
-            var pieces = NameParser.SplitByBlank(FileDisplayName);
-            //var name = pieces.FirstOrDefault(piece => !piece.IsIncludedInBracketPair());
-            MangaName ??= GetName_Recursion(FileDisplayName);
-
-            MangaTagsIncludedInFileName = pieces.Where(piece => piece.IsIncludedInBracketPair()).Select(x => TrimBracket(x)).ToArray();
-
-            OnPropertyChanged("");
-
-
-        }
-    }
 
     /// <summary> 获取文件的扩展名 </summary>
     public string FileExtension => Path.GetExtension(FilePath).ToLower();
@@ -62,12 +42,15 @@ public partial class MangaBook : ObservableObject
     public string FileFullName => Path.GetFileName(FilePath);
 
     /// <summary> 本子名字 </summary>
-    [ObservableProperty]
-    private string mangaName;
+    public string MangaName => GetName_Recursion(FileDisplayName);
 
-    /// <summary> 包含在文件名中的本子Tag </summary>
-    [ObservableProperty]
-    private string[] mangaTagsIncludedInFileName;
+    /// <summary> 文件名中包含在括号的本子Tag </summary>
+    public string[] MangaTagsIncludedInFileName =>
+        NameParser.SplitByBlank(FileDisplayName)
+                 .Where(piece => piece.IsIncludedInBracketPair())
+                 .Select(x => TrimBracket(x))
+                 .ToArray();
+
 
     /// <summary> 漫画翻译后的名称 </summary>
     [ObservableProperty]

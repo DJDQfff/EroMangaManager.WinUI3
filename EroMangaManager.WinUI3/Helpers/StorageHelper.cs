@@ -31,7 +31,6 @@ internal class StorageHelper
                 File.Move(oldname , newname);
             }
             catch { }
-            eroManga.MangaName = text;
             eroManga.FilePath = Path.Combine(eroManga.FolderPath , text + ".zip");
         }
     }
