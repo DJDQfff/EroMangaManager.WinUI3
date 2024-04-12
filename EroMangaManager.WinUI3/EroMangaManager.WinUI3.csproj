@@ -68,6 +68,7 @@
     <None Remove="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml" />
     <None Remove="Views\ContentDialogPages\OverviewInformation.xaml" />
     <None Remove="Views\ContentDialogPages\RenameDialog.xaml" />
+    <None Remove="Views\ContentDialogPages\SettingDialog.xaml" />
     <None Remove="Views\MainPage.xaml" />
     <None Remove="Views\MainPageChildPages\Bookcase.xaml" />
     <None Remove="Views\MainPageChildPages\FindSameManga.xaml" />
@@ -771,6 +772,11 @@
     <Reference Include="ShellAPI">
       <HintPath>..\..\MyLibrary\SHOpenFolderAndSelectItems\bin\Release\netstandard2.0\ShellAPI.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\ContentDialogPages\SettingDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml">

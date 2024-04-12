@@ -109,7 +109,7 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="_FileDisplayName"></param>
         /// <returns></returns>
-        private static List<string> SplitByBrackets (string _FileDisplayName)
+        public static List<string> SplitByBrackets (string _FileDisplayName)
         {
             var tagslist =
                 _FileDisplayName.Trim()

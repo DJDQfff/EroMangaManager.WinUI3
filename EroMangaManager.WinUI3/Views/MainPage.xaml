@@ -15,7 +15,7 @@
                         d:PaneDisplayMode="Left"
                         x:FieldModifier="public"
                         FlowDirection="LeftToRight"
-                        IsBackButtonVisible="Collapsed"
+                        IsBackButtonVisible="Collapsed" 
                         IsSettingsVisible="True"
                         ItemInvoked="MainNavigationView_ItemInvoked"
                         OpenPaneLength="200"

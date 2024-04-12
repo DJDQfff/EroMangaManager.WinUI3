@@ -45,11 +45,22 @@ public partial class MangaBook : ObservableObject
     public string MangaName => GetName_Recursion(FileDisplayName);
 
     /// <summary> 文件名中包含在括号的本子Tag </summary>
-    public string[] MangaTagsIncludedInFileName =>
-        NameParser.SplitByBlank(FileDisplayName)
-                 .Where(piece => piece.IsIncludedInBracketPair())
-                 .Select(x => TrimBracket(x))
-                 .ToArray();
+    public string[] MangaTagsIncludedInFileName
+    {
+        get
+        {
+            var a = SplitByBlank(FileDisplayName)
+                      .Where(piece => piece.IsIncludedInBracketPair());
+            var list = new List<string>();
+            foreach (var aa in a)
+            {
+                var aaa = SplitByBrackets(aa);
+                aaa.ForEach(x => list.Add(x));
+            }
+            return list.ToArray();
+
+        }
+    }
 
 
     /// <summary> 漫画翻译后的名称 </summary>
