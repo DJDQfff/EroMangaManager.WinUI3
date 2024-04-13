@@ -25,6 +25,7 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
         protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
             foreach (var book in App.Current.GlobalViewModel.MangaList)
             {
                 if (book.MangaTagsIncludedInFileName.ContainRepeat())
@@ -33,11 +34,11 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
                 }
             }
 
-            listview.ItemsSource = RepaetBooks;
         }
 
         private void SingleMangaBookRename_New (object sender , RoutedEventArgs e)
         {
+
             var button = sender as Button;
             var stackpanel = button.Parent as StackPanel;
 
@@ -45,6 +46,13 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
 
             var control = stackpanel.FindName("newnameBox") as TextBox;
             var text = control.Text;
+            TrySetNewName(book , text);
+            RemoveIfTagRepeat(book);
+
+        }
+
+        private void TrySetNewName (MangaBook book , string text)
+        {
             if (string.IsNullOrWhiteSpace(text))
             {
                 return;
@@ -63,13 +71,16 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
                 {
                 }
             }
+        }
+
+        void RemoveIfTagRepeat (MangaBook book)
+        {
             if (!book.MangaTagsIncludedInFileName.ContainRepeat())
             {
                 RepaetBooks.Remove(book);
             }
 
         }
-
         private void Button_Click (object sender , RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -85,6 +96,17 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             var manga = order.DataContext as MangaBook;
             var items = NameParser.SplitByBlank(manga.FileDisplayName);
             order.Sources = items;
+        }
+
+        private void newnameBox_TextChanged (object sender , TextChangedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            var book = textbox.DataContext as MangaBook;
+
+            var text = textbox.Text;
+            TrySetNewName(book , text);
+            RemoveIfTagRepeat(book);
+
         }
     }
 }

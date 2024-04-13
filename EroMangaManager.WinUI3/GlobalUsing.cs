@@ -19,7 +19,6 @@ global using EroMangaManager.Core.ViewModels;
 global using EroMangaManager.WinUI3.Commands;
 global using EroMangaManager.WinUI3.Helpers;
 global using EroMangaManager.WinUI3.Models;
-global using EroMangaManager.WinUI3.UserControls;
 global using EroMangaManager.WinUI3.Views;
 global using EroMangaManager.WinUI3.Views.ContentDialogPages;
 global using EroMangaManager.WinUI3.Views.FunctionChildPages;
