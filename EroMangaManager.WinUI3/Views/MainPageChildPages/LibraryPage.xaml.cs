@@ -65,7 +65,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             folderPicker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
             var selectedRootFolder = await folderPicker.PickSingleFolderAsync();
             var selectedfolderpath = selectedRootFolder?.Path;
-            var reservedFolders = DatabaseController.MangaFolder_GetAllPaths();
 
             if (selectedfolderpath != null)
             {
@@ -75,11 +74,13 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     var fs = Directory.GetDirectories(selectedfolderpath , "*" , SearchOption.AllDirectories);
                     folderws.AddRange(fs);
                 }
+
+                var reservedFolders = DatabaseController.MangaFolder_GetAllPaths();
                 foreach (var folder in folderws)
                 {
                     if (!reservedFolders.Contains(folder))
                     {
-                        DatabaseController.MangaFolder_AddSingle(folder);
+                        _ = DatabaseController.MangaFolder_AddSingle(folder);
                     }
                 }
                 foreach (var folder in folderws)
@@ -114,14 +115,15 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             {
                 var folder = datacontext.FolderPath;
                 var chidlfolders = Directory.GetDirectories(folder);
+
+                var reservedFolders = DatabaseController.MangaFolder_GetAllPaths();
+
                 foreach (var chidlfolder in chidlfolders)
                 {
-                    if (DatabaseController.MangaFolder_GetAllPaths().Contains(chidlfolder))
+                    if (!reservedFolders.Contains(chidlfolder))
                     {
-                        // 跳过已存在于数据库里的文件夹
-                        return;
+                        _ = DatabaseController.MangaFolder_AddSingle(chidlfolder);
                     }
-
                     if (!App.Current.GlobalViewModel.EnsureAddFolder(chidlfolder , out MangasGroup mangaFolder))
                     {
                         await mangaFolder.Initial();

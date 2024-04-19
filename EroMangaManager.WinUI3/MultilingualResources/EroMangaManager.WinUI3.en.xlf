@@ -392,6 +392,10 @@
           <source>需要重启</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">A reboot is required</target>
         </trans-unit>
+        <trans-unit id="Library" translate="yes" xml:space="preserve">
+          <source>库</source>
+          <target state="new">库</target>
+        </trans-unit>
       </group>
     </body>
   </file>

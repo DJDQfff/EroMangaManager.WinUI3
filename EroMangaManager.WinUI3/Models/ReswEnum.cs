@@ -56,6 +56,7 @@
     public enum UI
     {
         NeedRestart,
+        Library,
         AddExe,
         InternalReadPage,
         CustomExe,

@@ -64,7 +64,7 @@
     <None Remove="UserControls\RenameMangaBookByString.xaml" />
     <None Remove="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml" />
     <None Remove="UserControls\TagInfo.xaml" />
-    <None Remove="UserControls\TagsDisplayControl.xaml" />
+    <None Remove="UserControls\TagListOrder.xaml" />
     <None Remove="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml" />
     <None Remove="Views\ContentDialogPages\OverviewInformation.xaml" />
     <None Remove="Views\ContentDialogPages\RenameDialog.xaml" />
@@ -114,7 +114,6 @@
     <ProjectReference Include="..\..\MyLibrary\MyLibrary.Standard20\MyLibrary.Standard20.csproj" />
     <ProjectReference Include="..\..\RepeatItemChecker\GroupedItemsLibrary\GroupedItemsLibrary.csproj" />
     <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
-    <ProjectReference Include="..\TagListOrder\TagListOrder\TagListOrder.csproj" />
   </ItemGroup>
   <ItemGroup>
     <XliffResource Include="MultilingualResources\EroMangaManager.WinUI3.en.xlf" />
@@ -137,6 +136,10 @@
     </Page>
     <Page Update="ResourceDictionarys\ValueConverters.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UserControls\TagListOrder.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -191,9 +194,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Page>
     <Page Update="Views\ContentDialogPages\RenameDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="UserControls\TagsDisplayControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="UserControls\TagInfo.xaml">

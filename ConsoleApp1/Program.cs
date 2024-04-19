@@ -1,7 +1,10 @@
-﻿var testfolder = @"D:\test";
-var testfolder2 = @"D:\Downloads\本子二审\本子";
-var testfiles = Directory.GetFiles(testfolder2 , "*.zip").Select(x => Path.GetFileNameWithoutExtension(x));
-string[] testfiles2 = [
+﻿using EroMangaManager.Core.MangaParser;
+
+var foldertest = @"D:\test";
+var folderersheng = @"D:\Downloads\本子二审";
+var filesersheng = Directory.GetFiles(folderersheng , "*.zip")
+    .Select(x => Path.GetFileNameWithoutExtension(x));
+string[] fileserror = [
     @"[sin-maniax (轟真)] (アズールレーン) [中国翻訳] [DL版]",
 @"[鹤崎贵大&苍津ウミヒト&川上なち助&しののめしの&ダコワズ&雪月佳&结城心一&毒でんぱ]异世界跟奴隶做色色事情漫画短篇集异世界 で奴隷とエロいことしちゃうアンソロジーコミック",
     @"[ZOAL (LEN[A-7])](コミティア125)ヌーディストビーチ にて",//也是嵌套相同括号的问题
@@ -11,59 +14,19 @@ string[] testfiles2 = [
     @"[140kmh (赤城あさひと)](C95) [不良ちゃんとコタツでヌクヌクする大晦日。 [中国翻訳].zip",
 // 不良前面多了个括号，不对称
 ];
-var translator = new SimpleTranslator("20210219000701366" , "VkerV4o1qG1TK6mUlbr_" , ServerHost.Https);
+//var translator = new SimpleTranslator("20210219000701366" , "VkerV4o1qG1TK6mUlbr_" , ServerHost.Https);
 
-foreach (var testfile in testfiles)
+foreach (var testfile in filesersheng)
 {
-    //var ispair = CorrectBracketPairConut(testfile);
-    //if (ispair == -1)
-    //{
-    //    //Console.WriteLine(testfile);
-    //    continue;
-    //}
-    //else
+    var ispair = CorrectBracketPairConut(testfile);
+    if (ispair != -1)
     {
         Console.WriteLine(testfile);
+        var suggestedname = NameParser.RemoveRepeatTag(testfile);
+        Console.WriteLine(suggestedname);
 
-        var a = SplitByBlank(testfile);
-        foreach (var tag in a)
-        {
-            Console.WriteLine(TrimBracket(tag));
-        }
         Console.WriteLine();
-        continue;
-        var name = GetName_Recursion(testfile);
-        var translatedname = await translator.CommonTextTranslateAsync(name);
-        Console.WriteLine(name);
-        Console.WriteLine(translatedname);
-    }
-    continue;
-    var parse1 = GetNameAndTags(testfile);
-    var parse2 = GetNameAndTags2(testfile);
-    //var name3 = GetMangaName_Regex(testfile);
-    if (parse1.Item2 != parse2.Item2)
-    {
-        parse1.Item2.ForEach(x => Console.Write(x + "\t"));
-        Console.WriteLine();
-        parse2.Item2.ForEach(x => Console.Write(x + "\t"));
-        Console.WriteLine();
-        continue;
-
     }
 
 
-    var name1 = parse1.Item1;
-    var name2 = parse2.Item1;
-
-    if (name1 != name2 /*|| name2 != name3 || name1 != name3*/)
-    {
-        Console.WriteLine(testfile);
-
-        Console.WriteLine("\t" + name1);
-        Console.WriteLine("\t" + name2);
-        //Console.WriteLine("\t" + name3);
-
-        Console.WriteLine();
-        _ = GetName_Regex(testfile);
-    }
 }

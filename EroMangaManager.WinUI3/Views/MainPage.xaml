@@ -39,12 +39,11 @@
 
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="BookcaseItem"
-                                    Content="{uid:UI Uid=Bookcase}"
-                                    Icon="Library"
+                                    Content="{uid:UI Uid=Bookcase}" Icon="ViewAll"
                                     IsSelected="True" />
                 <NavigationViewItem x:Name="ListItem"
-                                    Content="{uid:UI Uid=Folders}"
-                                    Icon="List" />
+                                    Content="{uid:UI Uid=Library}"
+                                    Icon="Library" />
                 <NavigationViewItem x:Name="SearchMangaPage"
                                     Content="{uid:UI Uid=Search}"
                                     Icon="Find" />

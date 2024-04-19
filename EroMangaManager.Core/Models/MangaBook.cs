@@ -26,6 +26,7 @@ public partial class MangaBook : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(MangaName))]
     [NotifyPropertyChangedFor(nameof(MangaTagsIncludedInFileName))]
+    [NotifyPropertyChangedFor(nameof(FileDisplayName))]
     string filePath;
 
 
@@ -51,12 +52,8 @@ public partial class MangaBook : ObservableObject
         {
             var a = SplitByBlank(FileDisplayName)
                       .Where(piece => piece.IsIncludedInBracketPair());
-            var list = new List<string>();
-            foreach (var aa in a)
-            {
-                var aaa = SplitByBrackets(aa);
-                aaa.ForEach(x => list.Add(x));
-            }
+
+            List<string> list = a.astag();
             return list.ToArray();
 
         }

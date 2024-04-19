@@ -25,24 +25,13 @@ namespace EroMangaManager.Core.MangaParser
         /// 所有括号
         /// </summary>
         public const string LeftRightBrackets = LeftBrackets + RightBrackets;
-        /// <summary>
-        /// 先获取本子名和tag，在分开
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static (string, List<string>) GetNameAndTags2 (string input)
 
-        {
-            var manganame = GetName_Recursion(input);
-            var tags = SplitByBrackets(input);
-            tags.Remove(manganame);
-            return (manganame, tags);
-        }
         /// <summary>
         /// 递归获取括号tag，未完成
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Obsolete("功能未完成" , true)]
         public static IEnumerable<string> GetTags_Recursion (string input)
         {
             return null;
@@ -124,6 +113,7 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
+        [Obsolete("功能未完成" , true)]
         public static string GetName_Regex (string name)
         {
             var pattern = @"([\]】）\)\}]|)[^\[【（\(\{\]】）\)\}]+([\[【（\(\{]|)";
@@ -178,7 +168,7 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="_FileDisplayName"></param>
         /// <returns></returns>
-        public static IEnumerable<string> SplitByBlank (string _FileDisplayName)
+        public static List<string> SplitByBlank (string _FileDisplayName)
         {
             var stringBuilder = new StringBuilder();
             var tags = new List<string>();
@@ -215,6 +205,7 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
+        [Obsolete("功能未完成" , true)]
         public static string GetName_Stack (string name)
         {
             //Stack<char> lefts = new();
@@ -285,7 +276,37 @@ namespace EroMangaManager.Core.MangaParser
         public static string RemoveRepeatTag (string oldname)
         {
             // TODO 输入一个包含重复tag的名称，算出一个去掉重复tag的名称
+            var pieces = NameParser.SplitByBlank(oldname);
+            var pieces2 = pieces.astag();
+            for (int index = 0 ; index < pieces2.Count ; index++)
+            {
+                var current = pieces2[index];
+                var index2 = pieces2.IndexOf(current , index);
+                if (index2 != -1)
+                {
+
+                }
+            }
             return oldname;
+        }
+
+
+
+        /// <summary>
+        /// 移除一个字符串集合的所有括号
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static List<string> astag (this IEnumerable<string> a)
+        {
+            var list = new List<string>();
+            foreach (var aa in a)
+            {
+                var aaa = SplitByBrackets(aa);
+                aaa.ForEach(x => list.Add(x));
+            }
+
+            return list;
         }
 
         /// <summary>

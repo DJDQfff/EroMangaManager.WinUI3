@@ -213,6 +213,9 @@
   <data name="IsEmptyFolderShow" xml:space="preserve">
     <value>是否显示空文件夹</value>
   </data>
+  <data name="Library" xml:space="preserve">
+    <value>库</value>
+  </data>
   <data name="LoadSubDirectory" xml:space="preserve">
     <value>加载子文件夹</value>
   </data>

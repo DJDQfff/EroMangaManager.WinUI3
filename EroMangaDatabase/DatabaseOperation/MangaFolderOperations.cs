@@ -17,14 +17,21 @@ namespace EroMangaDatabase
         }
 
         /// <summary>
-        /// 添加单个文件夹
+        /// 添加单个文件夹，如果数据库已存在相同路径，则跳过。
+        /// 添加成功则返回true
         /// </summary>
         /// <param name="path"></param>
-        public void MangaFolder_AddSingle (string path)
+        public bool MangaFolder_AddSingle (string path)
         {
-            var folder = new MangaFolder() { Path = path };
-            database.MangaFolders.Add(folder);
-            database.SaveChanges();
+            var a = database.MangaFolders.FirstOrDefault(x => x.Path == path);
+            if (a is null)
+            {
+                var folder = new MangaFolder() { Path = path };
+                database.MangaFolders.Add(folder);
+                database.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         /// <summary>

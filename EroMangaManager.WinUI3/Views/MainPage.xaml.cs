@@ -36,15 +36,15 @@ namespace EroMangaManager.WinUI3.Views
 
         private async void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
         {
-            if (args.IsSettingsInvoked)
-            {
-                var dialog = new SettingDialog()
-                {
-                    XamlRoot = App.Current.MainWindow.Content.XamlRoot ,
-                };
-                await dialog.ShowAsync();
-                return;
-            }
+            //if (args.IsSettingsInvoked)
+            //{
+            //    var dialog = new SettingDialog()
+            //    {
+            //        XamlRoot = App.Current.MainWindow.Content.XamlRoot ,
+            //    };
+            //    await dialog.ShowAsync();
+            //    return;
+            //}
             Type type = args.InvokedItemContainer.Name switch
             {
                 nameof(BookcaseItem) => typeof(Bookcase),
