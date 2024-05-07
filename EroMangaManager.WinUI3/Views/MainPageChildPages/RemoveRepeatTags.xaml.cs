@@ -108,5 +108,12 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             RemoveIfTagRepeat(book);
 
         }
+
+        private void newnameBox_Loaded (object sender , RoutedEventArgs e)
+        {
+            var box = sender as TextBox;
+            var manga = box.DataContext as MangaBook;
+            box.Text = NameParser.RemoveRepeatTag(manga.FileDisplayName);
+        }
     }
 }

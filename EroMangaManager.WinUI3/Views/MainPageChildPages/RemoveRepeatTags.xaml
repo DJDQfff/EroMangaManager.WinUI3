@@ -32,7 +32,8 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MangaBook"  >
-                        <Grid Margin="12">
+                    <UserControl>
+                                                <Grid Margin="12">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="5*" />
@@ -48,17 +49,19 @@
                                    Grid.Row="0"
                                    Grid.RowSpan="3" />
 
-                            <djdqfff:TagListOrder x:Name="order"
-                                                  Grid.Column="1"
-                                                  Grid.Row="1"
-                                                  DataContext="{x:Bind}"
-                                                  Loaded="TagListOrder_Loaded" />
                             <TextBlock Text="{x:Bind FileDisplayName,Mode=OneWay}"
                                        TextWrapping="Wrap"
                                        FontSize="16"
                                        Grid.Column="1"
-                                       Grid.Row="0" />
-                            <TextBox x:Name="newnameBox"
+                                   Grid.Row="0" />
+                        <djdqfff:TagListOrder x:Load="False"
+                                              x:Name="order"
+                                              Grid.Column="1"
+                                              Grid.Row="1"
+                                              DataContext="{x:Bind}"
+                                              Loaded="TagListOrder_Loaded" />
+
+                        <TextBox x:Name="newnameBox"
                                      Text="{Binding ElementName=order,Path=NewName,Mode=OneWay}"
                                      Grid.Column="1"
                                      TextWrapping="Wrap"
@@ -87,6 +90,8 @@
                                         Content="{uid:UI Uid=Remove}" />
                             </StackPanel>
                         </Grid>
+
+                    </UserControl>
 
                 </DataTemplate>
             </ListView.ItemTemplate>

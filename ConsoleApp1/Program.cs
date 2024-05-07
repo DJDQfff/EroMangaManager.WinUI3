@@ -1,7 +1,5 @@
-﻿using EroMangaManager.Core.MangaParser;
-
-var foldertest = @"D:\test";
-var folderersheng = @"D:\Downloads\本子二审";
+﻿var foldertest = @"D:\test";
+var folderersheng = @"D:\本子\本子二审";
 var filesersheng = Directory.GetFiles(folderersheng , "*.zip")
     .Select(x => Path.GetFileNameWithoutExtension(x));
 string[] fileserror = [
@@ -22,7 +20,7 @@ foreach (var testfile in filesersheng)
     if (ispair != -1)
     {
         Console.WriteLine(testfile);
-        var suggestedname = NameParser.RemoveRepeatTag(testfile);
+        var suggestedname = RemoveRepeatTag(testfile);
         Console.WriteLine(suggestedname);
 
         Console.WriteLine();

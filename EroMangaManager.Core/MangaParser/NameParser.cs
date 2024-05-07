@@ -154,14 +154,14 @@ namespace EroMangaManager.Core.MangaParser
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string TrimBracket (string name)
+        public static string TrimBracket (this string name)
         {
             if (IsIncludedInBracketPair(name))
             {
                 var n = name.Substring(1 , name.Length - 2);
                 return TrimBracket(n);
             }
-            return name;
+            return name.Trim();
         }
         /// <summary>
         /// 按空格解析拆分，tag和manganame需要在外部分离
@@ -276,28 +276,41 @@ namespace EroMangaManager.Core.MangaParser
         public static string RemoveRepeatTag (string oldname)
         {
             // TODO 输入一个包含重复tag的名称，算出一个去掉重复tag的名称
-            var pieces = NameParser.SplitByBlank(oldname);
-            var pieces2 = pieces.astag();
-            for (int index = 0 ; index < pieces2.Count ; index++)
+            var pieces = SplitByBlank(oldname);
+            for (var index = 0 ; index < pieces.Count ; index++)
             {
-                var current = pieces2[index];
-                var index2 = pieces2.IndexOf(current , index);
-                if (index2 != -1)
+                var piece = pieces[index];
+                var behind = pieces.GetRange(index , pieces.Count);
+                if (piece.IsIncludedInBracketPair())
                 {
-
+                    var piecewithoutbracket = piece.TrimBracket();
+                    //foreach(var tag in pieces.)
                 }
             }
-            return oldname;
+
+
+
+            return null;
         }
+        /// <summary>
+        /// 使用splitbyblank的分离，保留包括在括号中的项，然后移除每个项的括号
+        /// </summary>
+        /// <param name="FileDisplayName"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> GetTagByBlank_RemoveBracket (this string FileDisplayName)
+        {
+            return SplitByBlank(FileDisplayName)
+          .Where(piece => piece.IsIncludedInBracketPair())
+          .RemoveBracketForEachString();
 
-
+        }
 
         /// <summary>
         /// 移除一个字符串集合的所有括号
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-        public static List<string> astag (this IEnumerable<string> a)
+        public static List<string> RemoveBracketForEachString (this IEnumerable<string> a)
         {
             var list = new List<string>();
             foreach (var aa in a)

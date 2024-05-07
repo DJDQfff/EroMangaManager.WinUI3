@@ -48,15 +48,7 @@ public partial class MangaBook : ObservableObject
     /// <summary> 文件名中包含在括号的本子Tag </summary>
     public string[] MangaTagsIncludedInFileName
     {
-        get
-        {
-            var a = SplitByBlank(FileDisplayName)
-                      .Where(piece => piece.IsIncludedInBracketPair());
-
-            List<string> list = a.astag();
-            return list.ToArray();
-
-        }
+        get => FileDisplayName.GetTagByBlank_RemoveBracket().ToArray();
     }
 
 
