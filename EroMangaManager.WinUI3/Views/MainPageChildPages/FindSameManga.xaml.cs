@@ -30,7 +30,10 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             if (e.Parameter is List<MangaBook> books)
             {
                 mangaBooks = books;
-                mangaBookViewModel = new ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup>(mangaBooks , n => n.MangaName);
+
+                mangaBookViewModel = new ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup>(mangaBooks , n => n.MangaName , x => !string.IsNullOrWhiteSpace(x.Key));
+
+
                 listView.ItemsSource = mangaBookViewModel.RepeatPairs;
             }
         }
@@ -43,6 +46,7 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             if (await StorageHelper.DeleteSourceFile(manga))
             {
                 mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
+                App.Current.GlobalViewModel.RemoveManga(manga);
             }
         }
     }

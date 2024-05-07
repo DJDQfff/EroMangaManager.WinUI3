@@ -317,8 +317,9 @@
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Whether to enable single-page filtering (turning this on will slow down the comic opening)</target>
         </trans-unit>
         <trans-unit id="WhetherShowDialogBeforeDelete" translate="yes" xml:space="preserve">
-          <source>是否直接删除</source>
+          <source>删除不需确认</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Whether to delete it directly</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Yes" translate="yes" xml:space="preserve">
           <source>是</source>
@@ -394,7 +395,7 @@
         </trans-unit>
         <trans-unit id="Library" translate="yes" xml:space="preserve">
           <source>库</source>
-          <target state="new">库</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">storehouse</target>
         </trans-unit>
       </group>
     </body>

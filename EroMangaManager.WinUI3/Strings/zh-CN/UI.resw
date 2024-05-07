@@ -349,7 +349,7 @@
     <value>是否添加子文件夹</value>
   </data>
   <data name="WhetherShowDialogBeforeDelete" xml:space="preserve">
-    <value>是否直接删除</value>
+    <value>删除不需确认</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>是</value>
