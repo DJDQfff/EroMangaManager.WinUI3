@@ -22,7 +22,7 @@
             Height="192"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Source="{x:Bind MangaBook.CoverPath, Mode=OneTime}"
+            Source="{x:Bind MangaBook.CoverPath, Mode=OneWay}"
             Stretch="Uniform" />
         <TextBlock
             Grid.Row="1"
@@ -39,6 +39,6 @@
         <TextBlock
             Grid.Row="2"
             Margin="2"
-            Text="{x:Bind MangaBook.FileSize, Mode=OneTime, Converter={StaticResource filesizeConverter}}" />
+            Text="{x:Bind MangaBook.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
     </Grid>
 </UserControl>

@@ -22,12 +22,12 @@
             Grid.Row="0"
             Grid.RowSpan="2"
             Grid.Column="0"
-            Source="{x:Bind MangaBook. CoverPath}" />
+            Source="{x:Bind MangaBook. CoverPath,Mode=OneWay}" />
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"
             FontSize="22"
-            Text="{x:Bind MangaBook.MangaName}" />
+            Text="{x:Bind MangaBook.MangaName,Mode=OneWay}" />
         <ItemsRepeater
             x:Name="WrapRepeater"
             Grid.Row="1"
