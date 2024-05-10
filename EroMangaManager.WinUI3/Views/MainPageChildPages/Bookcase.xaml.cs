@@ -5,23 +5,18 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
+    [INotifyPropertyChanged]
     public sealed partial class Bookcase : Page
     {
-        private MangasGroup _data;
+        [ObservableProperty]
+        private MangasGroup mangasGroup;
 
-        internal MangasGroup BindMangasFolder
+        partial void OnMangasGroupChanged (MangasGroup value)
         {
-            set
-            {
-                _data = value;
-                Bookcase_GridView.ItemsSource = value.MangaBooks;
-                Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
-            }
-            get
-            {
-                return _data;
-            }
+            Bookcase_GridView.ItemsSource = value.MangaBooks;
+            Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
         }
+
 
         /// <summary>
         ///
@@ -47,7 +42,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             switch (e.Parameter)
             {
                 case MangasGroup mangasFolder:
-                    BindMangasFolder = mangasFolder;
+                    MangasGroup = mangasFolder;
                     CommandText.Text = mangasFolder.ShowString;
                     break;
             }
@@ -106,7 +101,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void Order (object sender , RoutedEventArgs e)
         {
-            BindMangasFolder?.SortMangaBooks(x => x.FileSize);
+            MangasGroup?.SortMangaBooks(x => x.FileSize);
         }
 
         private async void OverviewInformation (object sender , RoutedEventArgs e)
