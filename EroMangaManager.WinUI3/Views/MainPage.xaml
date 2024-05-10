@@ -1,25 +1,27 @@
-﻿<Page x:Class="EroMangaManager.WinUI3.Views.MainPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:app="using:EroMangaManager.WinUI3"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
-      Background="Transparent"
-      NavigationCacheMode="Required"
-      mc:Ignorable="d">
+﻿<Page
+    x:Class="EroMangaManager.WinUI3.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="using:EroMangaManager.WinUI3"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    Background="Transparent"
+    NavigationCacheMode="Required"
+    mc:Ignorable="d">
     <Grid>
 
-        <NavigationView x:Name="MainNavigationView"
-                        VerticalAlignment="Stretch"
-                        d:PaneDisplayMode="Left"
-                        x:FieldModifier="public"
-                        FlowDirection="LeftToRight"
-                        IsBackButtonVisible="Collapsed" 
-                        IsSettingsVisible="True"
-                        ItemInvoked="MainNavigationView_ItemInvoked"
-                        OpenPaneLength="200"
-                        PaneDisplayMode="Auto">
+        <NavigationView
+            x:Name="MainNavigationView"
+            VerticalAlignment="Stretch"
+            d:PaneDisplayMode="Left"
+            x:FieldModifier="public"
+            FlowDirection="LeftToRight"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="True"
+            ItemInvoked="MainNavigationView_ItemInvoked"
+            OpenPaneLength="200"
+            PaneDisplayMode="Auto">
 
             <!--<NavigationView.Header>
             进度条，以后优化界面
@@ -38,47 +40,63 @@
             </NavigationView.Header>-->
 
             <NavigationView.MenuItems>
-                <NavigationViewItem x:Name="BookcaseItem"
-                                    Content="{uid:UI Uid=Bookcase}" Icon="ViewAll"
-                                    IsSelected="True" />
-                <NavigationViewItem x:Name="ListItem"
-                                    Content="{uid:UI Uid=Library}"
-                                    Icon="Library" />
-                <NavigationViewItem x:Name="SearchMangaPage"
-                                    Content="{uid:UI Uid=Search}"
-                                    Icon="Find" />
+                <NavigationViewItem
+                    x:Name="BookcaseItem"
+                    Content="{uid:UI Uid=Bookcase}"
+                    Icon="ViewAll"
+                    IsSelected="True" />
+                <NavigationViewItem
+                    x:Name="ListItem"
+                    Content="{uid:UI Uid=Library}"
+                    Icon="Library" />
+                <NavigationViewItem
+                    x:Name="SearchMangaPage"
+                    Content="{uid:UI Uid=Search}"
+                    Icon="Find" />
                 <!--  TODO 弄这个的话要搞数据库，还得先把MangaTagEdit的页面调好  -->
-                <NavigationViewItem x:Name="TagsManagePage"
-                                    Content="{uid:UI Uid=Tags}"
-                                    Icon="Tag" />
-                <NavigationViewItem x:Name="FindSameMangaByName"
-                                    Content="{uid:UI Uid=FindSameMangaByName}"
-                                    Icon="Copy" />
-                <NavigationViewItem x:Name="RemoveRepeatTags"
-                                    Content="{uid:UI Uid=RemoveRepeatTags}"
-                                    Icon="Tag" />
+                <NavigationViewItem
+                    x:Name="TagsManagePage"
+                    Content="{uid:UI Uid=Tags}"
+                    Icon="Tag" />
+
+                <NavigationViewItem x:Name="IrregularFileNames" Content="不规则名称" Icon="Edit" />
+
+                <NavigationViewItem
+                    x:Name="FindSameMangaByName"
+                    Content="{uid:UI Uid=FindSameMangaByName}"
+                    Icon="Copy" />
+                <NavigationViewItem
+                    x:Name="RemoveRepeatTags"
+                    Content="{uid:UI Uid=RemoveRepeatTags}"
+                    Icon="Tag" />
 
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
             <NavigationView.Content>
-                <Frame x:Name="MainFrame"
-                       Margin="36,0,0,0"
-                       x:FieldModifier="public" />
+                <Frame
+                    x:Name="MainFrame"
+                    Margin="36,0,0,0"
+                    x:FieldModifier="public" />
             </NavigationView.Content>
 
             <NavigationView.PaneFooter>
-                <StackPanel Margin="0"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Orientation="Vertical">
-                    <NavigationViewItem x:Name="UsageButton"
-                                        Content="{uid:UI Uid=Usage}"
-                                        Icon="Help"
-                                        Tapped="UsageButton_Tapped" />
-                    <NavigationViewItem x:Name="UpdateRecordItem"
-                                        Content="{uid:UI Uid=UpdateRecords}"
-                                        Icon="ShowResults"
-                                        Tapped="UpdateRecordItem_Tapped" />
+                <StackPanel
+                    Margin="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Orientation="Vertical">
+
+                    <NavigationViewItem
+                        x:Name="UsageButton"
+                        Content="{uid:UI Uid=Usage}"
+                        Icon="Help"
+                        Tapped="UsageButton_Tapped" />
+                    <NavigationViewItem
+                        x:Name="UpdateRecordItem"
+                        Content="{uid:UI Uid=UpdateRecords}"
+                        Icon="ShowResults"
+                        Tapped="UpdateRecordItem_Tapped" />
+
                 </StackPanel>
             </NavigationView.PaneFooter>
         </NavigationView>

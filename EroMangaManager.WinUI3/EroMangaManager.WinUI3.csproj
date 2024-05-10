@@ -73,6 +73,7 @@
     <None Remove="Views\MainPageChildPages\Bookcase.xaml" />
     <None Remove="Views\MainPageChildPages\FindSameManga.xaml" />
     <None Remove="Views\MainPageChildPages\FunctionPageShower.xaml" />
+    <None Remove="Views\MainPageChildPages\IrregularNameSearch.xaml" />
     <None Remove="Views\MainPageChildPages\LibraryPage.xaml" />
     <None Remove="Views\MainPageChildPages\RemoveRepeatTags.xaml" />
     <None Remove="Views\MainPageChildPages\SearchMangaPage.xaml" />
@@ -772,6 +773,11 @@
     <Reference Include="ShellAPI">
       <HintPath>..\..\MyLibrary\SHOpenFolderAndSelectItems\bin\Release\netstandard2.0\ShellAPI.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPageChildPages\IrregularNameSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\ContentDialogPages\SettingDialog.xaml">

@@ -8,7 +8,6 @@ namespace EroMangaManager.WinUI3.Views.ContentDialogPages
     /// </summary>
     public sealed partial class RenameDialog : ContentDialog
     {
-        private readonly string defaultPrimaryButtonTest = null;
 
         /// <summary>
         /// 新名称
@@ -31,12 +30,7 @@ namespace EroMangaManager.WinUI3.Views.ContentDialogPages
         public RenameDialog (MangaBook mangaBook)
         {
             this.InitializeComponent();
-
-            defaultPrimaryButtonTest = PrimaryButtonText;
             this.renamecontrol.MangaBook = mangaBook;
-
-            renamecontrol.WrongInput += () => PrimaryButtonText = "";
-            renamecontrol.CorrectInput += () => PrimaryButtonText = defaultPrimaryButtonTest;
         }
     }
 }

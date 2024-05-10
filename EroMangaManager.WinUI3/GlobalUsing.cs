@@ -6,6 +6,7 @@ global using System.IO;
 global using System.Linq;
 global using System.Threading.Tasks;
 
+global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.WinUI.Notifications;
 global using CommunityToolkit.WinUI.UI.Controls;
 

@@ -6,8 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
     xmlns:usercontrol="using:EroMangaManager.WinUI3.UserControls"
-    PrimaryButtonText="{uid:UI Uid=Yes}"
-    SecondaryButtonText="{uid:UI Uid=CancleEdit}"
+   CloseButtonText="关闭"
     mc:Ignorable="d">
     <usercontrol:RenameMangaBookByString x:Name="renamecontrol" />
 </ContentDialog>

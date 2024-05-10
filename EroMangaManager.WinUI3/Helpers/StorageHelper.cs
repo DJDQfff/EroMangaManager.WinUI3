@@ -17,22 +17,9 @@ internal class StorageHelper
         {
             XamlRoot = App.Current.MainWindow.Content.XamlRoot
         };
-        var result = await renameDialog.ShowAsync();
-        if (result == ContentDialogResult.Primary)
-        {
-            // text是否合法由对话框保证
-            var text = renameDialog.NewDisplayName;
 
-            try
-            {
-                // TODO 重命名可能存在bug，如重复名称
-                string oldname = eroManga.FilePath;
-                string newname = Path.Combine(Path.GetDirectoryName(oldname) , text + ".zip");
-                File.Move(oldname , newname);
-            }
-            catch { }
-            eroManga.FilePath = Path.Combine(eroManga.FolderPath , text + ".zip");
-        }
+        _ = await renameDialog.ShowAsync();
+
     }
 
     /// <summary>

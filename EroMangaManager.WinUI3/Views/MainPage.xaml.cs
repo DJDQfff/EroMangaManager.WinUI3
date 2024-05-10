@@ -34,7 +34,7 @@ namespace EroMangaManager.WinUI3.Views
             MainFrame.Navigate(typeof(Bookcase) , defaultfolder);
         }
 
-        private async void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
+        private void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
         {
             //if (args.IsSettingsInvoked)
             //{
@@ -53,6 +53,7 @@ namespace EroMangaManager.WinUI3.Views
                 nameof(SearchMangaPage) => typeof(SearchMangaPage),
                 nameof(FindSameMangaByName) => typeof(FindSameManga),
                 nameof(RemoveRepeatTags) => typeof(RemoveRepeatTags),
+                nameof(IrregularFileNames) => typeof(IrregularNameSearch),
                 _ => typeof(SettingPage)
             };
 

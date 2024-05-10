@@ -1,30 +1,13 @@
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
-
 namespace EroMangaManager.WinUI3.UserControls;
 
+[INotifyPropertyChanged]
 public sealed partial class RenameMangaBookByString : UserControl
 {
-    private MangaBook book;
-
-    /// <summary>
-    ///
-    /// </summary>
-    public MangaBook MangaBook
+    [ObservableProperty]
+    private MangaBook mangaBook;
+    partial void OnMangaBookChanged (MangaBook value)
     {
-        set
-        {
-            book = value;
-            textbox.Text = value.FileDisplayName;
-
-            //指定默认新名字，按移除重复标签方法对待
-            textbox.Text = NameParser.RemoveRepeatTag(value.FileDisplayName);
-
-            Bindings.Update();
-        }
-        get => book;
+        textbox.Text = value.FileDisplayName;
     }
 
     private bool isnewnameok;
@@ -76,6 +59,9 @@ public sealed partial class RenameMangaBookByString : UserControl
     {
         InitializeComponent();
         MangaBook = mangaBook;
+        //CorrectInput += () => RenameButton.IsEnabled = true;
+        //WrongInput += () => RenameButton.IsEnabled = false;
+
     }
 
     /// <summary>
@@ -97,30 +83,51 @@ public sealed partial class RenameMangaBookByString : UserControl
 
     private void TextBox_TextChanged (object sender , TextChangedEventArgs e)
     {
-        var bool1 = string.IsNullOrWhiteSpace(NewDisplayName);
-        var invalidChars = Path.GetInvalidFileNameChars();
-        var bool2 = NewDisplayName.Any(c => invalidChars.Contains(c));
-        if (bool1)
+        if (string.IsNullOrWhiteSpace(NewDisplayName))
         {
             // 检查文件名是非为空
+
             hinttextblock.Text = ResourceLoader.GetForViewIndependentUse("Strings").GetString("DontUseEmptyString");
             IsNewnameOK = false;
+            RenameButton.IsEnabled = false;
             WrongInput?.Invoke();
+
         }
-        else if (bool2)
+        else if (NewDisplayName.Any(c => Path.GetInvalidFileNameChars().Contains(c)))
         {
             // 检查文件是否含有非法字符
+
             hinttextblock.Text = ResourceLoader.GetForViewIndependentUse("Strings").GetString("ContainInvalaidChar");
             IsNewnameOK = false;
-
+            RenameButton.IsEnabled = false;
             WrongInput?.Invoke();
         }
         else
         {
+            // 以上都没问题，那就认为正确
             hinttextblock.Text = string.Empty;
             IsNewnameOK = true;
-
+            RenameButton.IsEnabled = true;
             CorrectInput?.Invoke();
+
         }
+
+
+    }
+
+    private void RenameButton_Click (object sender , RoutedEventArgs e)
+    {
+        var text = NewDisplayName;
+
+        try
+        {
+            // TODO 重命名可能存在bug，如重复名称
+            string oldname = MangaBook.FilePath;
+            string newname = Path.Combine(Path.GetDirectoryName(oldname) , text + ".zip");
+            File.Move(oldname , newname);
+        }
+        catch { }
+        MangaBook.FilePath = Path.Combine(MangaBook.FolderPath , text + ".zip");
+
     }
 }
