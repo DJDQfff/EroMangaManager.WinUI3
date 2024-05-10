@@ -96,27 +96,9 @@
                     HorizontalTextAlignment="Center"
                     TextAlignment="Center" />
             </CommandBar.Content>
-
-            <AppBarButton
-                AllowFocusOnInteraction="True"
-                Icon="OpenWith"
-                Label="{uid:UI Uid=MangaOpenWay}">
-                <AppBarButton.Flyout>
-                    <Flyout>
-                        <ListBox
-                            Background="Transparent"
-                            ItemsSource="{x:Bind app:App.Current.AppConfig.ExePaths, Mode=OneWay}"
-                            SelectedIndex="{x:Bind app:App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}"
-                            SelectionMode="Single">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate x:DataType="x:String">
-                                    <TextBlock Text="{x:Bind Converter={StaticResource shortopenway}}" />
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Flyout>
-                </AppBarButton.Flyout>
-            </AppBarButton>
+            <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
+                <usercontrols:MangaOpenButton   />
+            </AppBarElementContainer>
             <AppBarButton
                 AllowFocusOnInteraction="True"
                 Icon="Switch"

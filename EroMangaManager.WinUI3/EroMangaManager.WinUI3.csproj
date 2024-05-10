@@ -60,6 +60,7 @@
     <None Remove="UserControls\MangaBookBriefInfo.xaml" />
     <None Remove="UserControls\MangaBookCoverTags.xaml" />
     <None Remove="UserControls\MangaBookDetailInfo.xaml" />
+    <None Remove="UserControls\MangaOpenButton.xaml" />
     <None Remove="UserControls\QATextBlock.xaml" />
     <None Remove="UserControls\RenameMangaBookByString.xaml" />
     <None Remove="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml" />
@@ -773,6 +774,11 @@
     <Reference Include="ShellAPI">
       <HintPath>..\..\MyLibrary\SHOpenFolderAndSelectItems\bin\Release\netstandard2.0\ShellAPI.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MangaOpenButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\MainPageChildPages\IrregularNameSearch.xaml">
