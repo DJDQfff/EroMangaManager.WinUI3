@@ -13,12 +13,12 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition  />
+            <RowDefinition Height="auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0">
             <CommandBar.Content>
-                <TextBlock VerticalAlignment="Center"  Text="{x:Bind RepaetBooks.Count,Mode=OneWay}" />
+                <TextBlock VerticalAlignment="Center" Text="{x:Bind RepaetBooks.Count, Mode=OneWay}" />
             </CommandBar.Content>
             <CommandBar.PrimaryCommands>
                 <!--<AppBarToggleButton Icon="Switch" x:Name="switchbutton" />-->
@@ -26,14 +26,14 @@
         </CommandBar>
         <ListView
             x:Name="listview"
-            ItemsSource="{x:Bind RepaetBooks,Mode=OneWay}"
             Grid.Row="1"
+            ItemsSource="{x:Bind RepaetBooks, Mode=OneWay}"
             SelectionMode="None">
 
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:MangaBook"  >
+                <DataTemplate x:DataType="model:MangaBook">
                     <UserControl>
-                                                <Grid Margin="12">
+                        <Grid Margin="12">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="5*" />
@@ -44,50 +44,57 @@
                                 <RowDefinition Height="2*" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <Image Source="{x:Bind CoverPath}"
-                                   Grid.Column="0"
-                                   Grid.Row="0"
-                                   Grid.RowSpan="3" />
+                            <Image
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Grid.Column="0"
+                                Source="{x:Bind CoverPath}" />
 
-                            <TextBlock Text="{x:Bind FileDisplayName,Mode=OneWay}"
-                                       TextWrapping="Wrap"
-                                       FontSize="16"
-                                       Grid.Column="1"
-                                   Grid.Row="0" />
-                        <djdqfff:TagListOrder x:Load="False"
-                                              x:Name="order"
-                                              Grid.Column="1"
-                                              Grid.Row="1"
-                                              DataContext="{x:Bind}"
-                                              Loaded="TagListOrder_Loaded" />
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontSize="16"
+                                Text="{x:Bind FileDisplayName, Mode=OneWay}"
+                                TextWrapping="Wrap" />
+                            <djdqfff:TagListOrder
+                                x:Name="order"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                x:Load="False"
+                                DataContext="{x:Bind}"
+                                Loaded="TagListOrder_Loaded" />
 
-                        <TextBox x:Name="newnameBox"
-                                     Text="{Binding ElementName=order,Path=NewName,Mode=OneWay}"
-                                     Grid.Column="1"
-                                     TextWrapping="Wrap"
-                                     DataContext="{x:Bind}"
-                                     TextChanged="newnameBox_TextChanged"
-                                     FontSize="16"
-                                     Grid.Row="2" />
+                            <TextBox
+                                x:Name="newnameBox"
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                DataContext="{x:Bind}"
+                                FontSize="16"
+                                Text="{Binding ElementName=order, Path=NewName, Mode=OneWay}"
+                                TextChanged="newnameBox_TextChanged"
+                                TextWrapping="Wrap" />
 
                             <!--<usercontrol:RenameMangaBookByString x:Name="renamecontrol"
                                                              Grid.Column="2"
                                                              MangaBook="{x:Bind Mode=OneWay}" />-->
-                            <StackPanel Grid.Column="2"
-                                        Grid.Row="0"
-                                        Grid.RowSpan="3"
-                                        Visibility="Collapsed"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Center"
-                                        Orientation="Vertical">
-                                <Button Grid.Row="0"
-                                        HorizontalAlignment="Stretch"
-                                        Click="SingleMangaBookRename_New"
-                                        Content="{uid:UI Uid=RenameFile}" />
-                                <Button Grid.Row="1"
-                                        HorizontalAlignment="Stretch"
-                                        Click="Button_Click"
-                                        Content="{uid:UI Uid=Remove}" />
+                            <StackPanel
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Grid.Column="2"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Orientation="Vertical"
+                                Visibility="Collapsed">
+                                <Button
+                                    Grid.Row="0"
+                                    HorizontalAlignment="Stretch"
+                                    Click="SingleMangaBookRename_New"
+                                    Content="{uid:UI Uid=RenameFile}" />
+                                <Button
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Stretch"
+                                    Click="Button_Click"
+                                    Content="{uid:UI Uid=Remove}" />
                             </StackPanel>
                         </Grid>
 

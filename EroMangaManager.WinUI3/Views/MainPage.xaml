@@ -59,7 +59,10 @@
                     Content="{uid:UI Uid=Tags}"
                     Icon="Tag" />
 
-                <NavigationViewItem x:Name="IrregularFileNames" Content="不规则名称" Icon="Edit" />
+                <NavigationViewItem
+                    x:Name="IrregularFileNames"
+                    Content="不规则名称"
+                    Icon="Edit" />
 
                 <NavigationViewItem
                     x:Name="FindSameMangaByName"

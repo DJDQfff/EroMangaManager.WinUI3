@@ -1,7 +1,4 @@
-﻿
-using static MyLibrary.WinUI3.StorageFolderHelper;
-
-namespace EroMangaManager.WinUI3.Views.SettingPageChildPages
+﻿namespace EroMangaManager.WinUI3.Views.SettingPageChildPages
 {
     /// <summary>
     /// 文件信息类

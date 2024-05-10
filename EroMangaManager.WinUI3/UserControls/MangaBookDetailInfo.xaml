@@ -13,16 +13,16 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Source="{x:Bind MangaBook.CoverPath,Mode=OneWay}" />
+        <Image Grid.Column="0" Source="{x:Bind MangaBook.CoverPath, Mode=OneWay}" />
         <StackPanel Grid.Column="1" Orientation="Vertical">
             <TextBlock
                 FontSize="20"
-                       Text="{x:Bind MangaBook.FolderPath,Mode=OneWay}"
+                Text="{x:Bind MangaBook.FolderPath, Mode=OneWay}"
                 TextWrapping="Wrap" />
 
             <TextBlock
                 FontSize="20"
-                Text="{x:Bind MangaBook.FileFullName}"
+                Text="{x:Bind MangaBook.FileFullName, Mode=OneWay}"
                 TextWrapping="Wrap" />
             <TextBlock Text="{x:Bind MangaBook.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
         </StackPanel>

@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <ComboBox Header="分类" />-->
         <ScrollViewer x:Name="WrapScrollParent" Grid.Column="1">
-            <ItemsRepeater x:Name="WrapRepeater"  ItemsSource="{x:Bind ColorsCollection, Mode=OneWay}">
+            <ItemsRepeater x:Name="WrapRepeater" ItemsSource="{x:Bind ColorsCollection, Mode=OneWay}">
                 <ItemsRepeater.Layout>
                     <controls:WrapLayout
                         x:Name="Wrap"

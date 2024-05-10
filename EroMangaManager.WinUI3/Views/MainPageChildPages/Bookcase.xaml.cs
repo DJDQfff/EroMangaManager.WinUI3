@@ -112,7 +112,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             {
                 XamlRoot = App.Current.MainWindow.Content.XamlRoot
             };
-            await dialog.ShowAsync();
+            _ = await dialog.ShowAsync();
         }
 
         private void MangaBookBriefInfo_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)

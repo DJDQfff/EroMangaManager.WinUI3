@@ -7,7 +7,7 @@
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
     xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
     Title="{x:Bind MangaBook.MangaName}"
-    PrimaryButtonText="{uid:UI Uid=Yes}"
+    CloseButtonText="{uid:UI Uid=Close}"
     mc:Ignorable="d">
     <usercontrols:MangaBookDetailInfo MangaBook="{x:Bind MangaBook}" />
 </ContentDialog>

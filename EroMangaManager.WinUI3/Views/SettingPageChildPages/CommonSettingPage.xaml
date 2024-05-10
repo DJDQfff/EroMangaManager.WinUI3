@@ -41,7 +41,7 @@
                     OffContent="{uid:UI Uid=No}"
                     OnContent="{uid:UI Uid=Yes}" />
             </setting:SettingsCard>
-            <setting:SettingsCard  Header="{uid:UI Uid=DeleteMode}">
+            <setting:SettingsCard Header="{uid:UI Uid=DeleteMode}">
                 <ToggleSwitch
                     IsOn="{x:Bind app:App.Current.AppConfig.AppConfig.General.StorageDeleteOption, Mode=TwoWay}"
                     OffContent="{uid:UI Uid=DeleteMode_MoveTo}"

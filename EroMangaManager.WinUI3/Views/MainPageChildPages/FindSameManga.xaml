@@ -21,14 +21,12 @@
             SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:RepeatMangaBookGroup">
-                    <StackPanel  Orientation="Vertical">
+                    <StackPanel Orientation="Vertical">
                         <TextBlock
                             Margin="20"
                             FontSize="24"
                             Text="{x:Bind Key}" />
-                        <ListView
-                            ItemsSource="{x:Bind}"
-                            SelectionMode="None">
+                        <ListView ItemsSource="{x:Bind}" SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="coremodel:MangaBook">
                                     <Grid Margin="2">
@@ -52,9 +50,10 @@
                                                 Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
                                                 CommandParameter="{x:Bind}"
                                                 Content="{uid:UI Uid=OpenFolder}" />
-                                            <Button Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
-                                                            CommandParameter="{x:Bind}"
-                                                            Content="{uid:UI Uid=RenameFile}" />
+                                            <Button
+                                                Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
+                                                CommandParameter="{x:Bind}"
+                                                Content="{uid:UI Uid=RenameFile}" />
 
                                         </StackPanel>
                                     </Grid>
