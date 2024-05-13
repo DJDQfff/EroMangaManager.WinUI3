@@ -397,6 +397,14 @@
           <source>库</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">storehouse</target>
         </trans-unit>
+        <trans-unit id="IrregularName" translate="yes" xml:space="preserve">
+          <source>不规则名称</source>
+          <target state="new">不规则名称</target>
+        </trans-unit>
+        <trans-unit id="SeriesMangas" translate="yes" xml:space="preserve">
+          <source>系列漫画</source>
+          <target state="new">系列漫画</target>
+        </trans-unit>
       </group>
     </body>
   </file>

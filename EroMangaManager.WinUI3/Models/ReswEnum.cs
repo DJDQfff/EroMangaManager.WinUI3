@@ -55,6 +55,8 @@
     ///<summary> </summary>
     public enum UI
     {
+        IrregularName,
+        SeriesMangas,
         NeedRestart,
         Library,
         AddExe,

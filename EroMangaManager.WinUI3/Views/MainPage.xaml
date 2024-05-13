@@ -14,7 +14,6 @@
         <NavigationView
             x:Name="MainNavigationView"
             VerticalAlignment="Stretch"
-            d:PaneDisplayMode="Left"
             x:FieldModifier="public"
             FlowDirection="LeftToRight"
             IsBackButtonVisible="Collapsed"
@@ -61,18 +60,19 @@
 
                 <NavigationViewItem
                     x:Name="IrregularFileNames"
-                    Content="不规则名称"
+                    Content="{uid:UI Uid=IrregularName}"
                     Icon="Edit" />
 
                 <NavigationViewItem
                     x:Name="FindSameMangaByName"
                     Content="{uid:UI Uid=FindSameMangaByName}"
                     Icon="Copy" />
-                <NavigationViewItem
+                <NavigationViewItem Visibility="Collapsed"
                     x:Name="RemoveRepeatTags"
                     Content="{uid:UI Uid=RemoveRepeatTags}"
                     Icon="Tag" />
-
+                <NavigationViewItem x:Name="SeriesMangas" Visibility="Collapsed"
+                                    Content="{uid:UI  Uid=SeriesMangas}" Icon="List"/>
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
             <NavigationView.Content>

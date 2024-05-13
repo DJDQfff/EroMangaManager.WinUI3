@@ -210,6 +210,9 @@
   <data name="InternalReadPage" xml:space="preserve">
     <value>内置阅读页</value>
   </data>
+  <data name="IrregularName" xml:space="preserve">
+    <value>不规则名称</value>
+  </data>
   <data name="IsEmptyFolderShow" xml:space="preserve">
     <value>是否显示空文件夹</value>
   </data>
@@ -308,6 +311,9 @@
   </data>
   <data name="SelectExe" xml:space="preserve">
     <value>选择exe程序</value>
+  </data>
+  <data name="SeriesMangas" xml:space="preserve">
+    <value>系列漫画</value>
   </data>
   <data name="SetAsDefaultBookcaseFolder" xml:space="preserve">
     <value>设置为默认展示文件夹</value>

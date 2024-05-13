@@ -78,6 +78,7 @@
     <None Remove="Views\MainPageChildPages\LibraryPage.xaml" />
     <None Remove="Views\MainPageChildPages\RemoveRepeatTags.xaml" />
     <None Remove="Views\MainPageChildPages\SearchMangaPage.xaml" />
+    <None Remove="Views\MainPageChildPages\SeriesMangas.xaml" />
     <None Remove="Views\MainPageChildPages\SettingPage.xaml" />
     <None Remove="Views\MainPageChildPages\TagsManagePage.xaml" />
     <None Remove="Views\ReadPage.xaml" />
@@ -774,6 +775,11 @@
     <Reference Include="ShellAPI">
       <HintPath>..\..\MyLibrary\SHOpenFolderAndSelectItems\bin\Release\netstandard2.0\ShellAPI.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPageChildPages\SeriesMangas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="UserControls\MangaOpenButton.xaml">

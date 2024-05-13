@@ -104,16 +104,12 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             var book = textbox.DataContext as MangaBook;
 
             var text = textbox.Text;
-            TrySetNewName(book , text);
+            // TODO 这有严重bug，每次文字切换，会直接改名
+            //TrySetNewName(book , text);
             RemoveIfTagRepeat(book);
 
         }
 
-        private void newnameBox_Loaded (object sender , RoutedEventArgs e)
-        {
-            var box = sender as TextBox;
-            var manga = box.DataContext as MangaBook;
-            box.Text = NameParser.RemoveRepeatTag(manga.FileDisplayName);
-        }
+
     }
 }
