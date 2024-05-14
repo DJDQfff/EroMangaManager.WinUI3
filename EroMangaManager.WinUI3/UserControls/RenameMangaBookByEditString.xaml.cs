@@ -1,7 +1,7 @@
 namespace EroMangaManager.WinUI3.UserControls;
 
 [INotifyPropertyChanged]
-public sealed partial class RenameMangaBookByString : UserControl
+public sealed partial class RenameMangaBookByEditString : UserControl
 {
     [ObservableProperty]
     private MangaBook mangaBook;
@@ -46,7 +46,7 @@ public sealed partial class RenameMangaBookByString : UserControl
     /// <summary>
     ///
     /// </summary>
-    public RenameMangaBookByString ()
+    public RenameMangaBookByEditString ()
     {
         InitializeComponent();
     }
@@ -55,7 +55,7 @@ public sealed partial class RenameMangaBookByString : UserControl
     /// 不指定新名字，默认去除重复标签
     /// </summary>
     /// <param name="mangaBook"></param>
-    public RenameMangaBookByString (MangaBook mangaBook)
+    public RenameMangaBookByEditString (MangaBook mangaBook)
     {
         InitializeComponent();
         MangaBook = mangaBook;
@@ -69,7 +69,7 @@ public sealed partial class RenameMangaBookByString : UserControl
     /// </summary>
     /// <param name="mangaBook"></param>
     /// <param name="suggestedname"></param>
-    public RenameMangaBookByString (MangaBook mangaBook , string suggestedname) : base()
+    public RenameMangaBookByEditString (MangaBook mangaBook , string suggestedname) : base()
     {
         if (suggestedname == null)
         {
@@ -117,17 +117,8 @@ public sealed partial class RenameMangaBookByString : UserControl
 
     private void RenameButton_Click (object sender , RoutedEventArgs e)
     {
-        var text = NewDisplayName;
+        StorageOperation.RenameMange(MangaBook , NewDisplayName);
 
-        try
-        {
-            // TODO 重命名可能存在bug，如重复名称
-            string oldname = MangaBook.FilePath;
-            string newname = Path.Combine(Path.GetDirectoryName(oldname) , text + ".zip");
-            File.Move(oldname , newname);
-        }
-        catch { }
-        MangaBook.FilePath = Path.Combine(MangaBook.FolderPath , text + ".zip");
 
     }
 }

@@ -252,4 +252,10 @@
   <data name="Library" xml:space="preserve">
     <value>storehouse</value>
   </data>
+  <data name="IrregularName" xml:space="preserve">
+    <value>Irregular name</value>
+  </data>
+  <data name="SeriesMangas" xml:space="preserve">
+    <value>Comic series</value>
+  </data>
 </root>

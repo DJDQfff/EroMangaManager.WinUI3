@@ -23,7 +23,7 @@ public sealed partial class TagListOrder : UserControl
         }
 
     }
-    private void AddButton_Click (object sender , Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void AddButton_Click (object sender , RoutedEventArgs e)
     {
         if (sender is Button button)
         {
@@ -36,7 +36,7 @@ public sealed partial class TagListOrder : UserControl
         }
         SetNewName();
     }
-    private void RemoveButton_Click (object sender , Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void RemoveButton_Click (object sender , RoutedEventArgs e)
     {
         if (sender is Button button)
         {

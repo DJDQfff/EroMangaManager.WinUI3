@@ -43,7 +43,7 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             var button = sender as Button;
             var manga = button.DataContext as MangaBook;
 
-            if (await StorageHelper.DeleteSourceFile(manga))
+            if (await DialogHelper.ConfirmDeleteSourceFileDialog(manga))
             {
                 mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
                 App.Current.GlobalViewModel.RemoveManga(manga);

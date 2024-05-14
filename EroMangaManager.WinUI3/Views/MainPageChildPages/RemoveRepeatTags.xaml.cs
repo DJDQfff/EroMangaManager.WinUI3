@@ -110,6 +110,10 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
 
         }
 
-
+        private void UserControl_Loaded (object sender , RoutedEventArgs e)
+        {
+            var control = sender as UserControl;
+            var newnamebox = control.FindName("newnamebox");
+        }
     }
 }

@@ -67,7 +67,8 @@
                     x:Name="FindSameMangaByName"
                     Content="{uid:UI Uid=FindSameMangaByName}"
                     Icon="Copy" />
-                <NavigationViewItem Visibility="Collapsed"
+                <NavigationViewItem 
+                    Visibility="Collapsed"
                     x:Name="RemoveRepeatTags"
                     Content="{uid:UI Uid=RemoveRepeatTags}"
                     Icon="Tag" />

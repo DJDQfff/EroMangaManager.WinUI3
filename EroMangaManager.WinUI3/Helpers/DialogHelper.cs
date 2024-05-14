@@ -1,16 +1,16 @@
 ﻿namespace EroMangaManager.WinUI3.Helpers;
 
 /// <summary>
-/// 操作文件时，还要与用户进行交互，以及一些别的操作
+/// 需要通过对话框用户进行交互，以及一些读取程序设置的操作
 /// </summary>
-internal class StorageHelper
+internal class DialogHelper
 {
     /// <summary>
     /// 修改文件名
     /// </summary>
     /// <param name="eroManga"></param>
     /// <returns></returns>
-    public static async Task RenameSourceFile (MangaBook eroManga)
+    public static async Task RenameSourceFileInDialog (MangaBook eroManga)
     {
         // TODO 暂时放弃，不会写页面UI，写出来也丑。等EditTag功能好了，在改回EditTag页面
         var renameDialog = new RenameDialog(eroManga)
@@ -22,12 +22,13 @@ internal class StorageHelper
 
     }
 
+
     /// <summary>
     /// 删除源文件时，会触发删除确认弹框，删除模式，这两个参数都是从程序设置中读取的，因此封装到助手类里面
     /// </summary>
     /// <param name="eroManga"></param>
     /// <returns></returns>
-    public static async Task<bool> DeleteSourceFile (MangaBook eroManga)
+    public static async Task<bool> ConfirmDeleteSourceFileDialog (MangaBook eroManga)
     {
         var temp1 = App.Current.AppConfig.AppConfig.General.WhetherShowDialogBeforeDelete;
 
@@ -47,7 +48,7 @@ internal class StorageHelper
             {
                 case ContentDialogResult.Primary:
                     App.Current.GlobalViewModel.RemoveManga(eroManga);
-                    await Delete(eroManga , deletemode);
+                    await StorageOperation.Delete(eroManga , deletemode);
                     deleteResult = true;
                     break;
 
@@ -57,28 +58,12 @@ internal class StorageHelper
         }
         else
         {
-            await Delete(eroManga , deletemode);
+            await StorageOperation.Delete(eroManga , deletemode);
 
             deleteResult = true;
         }
 
         return deleteResult;
-
-        static async Task Delete (MangaBook eroManga , StorageDeleteOption deletemode)
-        {
-            try
-            {
-#if WINDOWS
-                var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(eroManga.FilePath);
-                await file.DeleteAsync(deletemode);
-#else
-                        System.IO.File.Delete(eroManga.FilePath);
-
-#endif
-            }
-            catch
-            {
-            }
-        }
     }
+
 }

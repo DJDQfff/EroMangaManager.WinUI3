@@ -16,7 +16,7 @@
         <ListView ItemsSource="{x:Bind books, Mode=OneWay}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MangaBook">
-                    <usercontrol:RenameMangaBookByString
+                    <usercontrol:RenameMangaBookByEditString
                         Margin="12"
                         HorizontalAlignment="Stretch"
                         MangaBook="{x:Bind}" />

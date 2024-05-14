@@ -62,7 +62,7 @@
     <None Remove="UserControls\MangaBookDetailInfo.xaml" />
     <None Remove="UserControls\MangaOpenButton.xaml" />
     <None Remove="UserControls\QATextBlock.xaml" />
-    <None Remove="UserControls\RenameMangaBookByString.xaml" />
+    <None Remove="UserControls\RenameMangaBookByDragTag.xaml" />
     <None Remove="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml" />
     <None Remove="UserControls\TagInfo.xaml" />
     <None Remove="UserControls\TagListOrder.xaml" />
@@ -77,6 +77,7 @@
     <None Remove="Views\MainPageChildPages\IrregularNameSearch.xaml" />
     <None Remove="Views\MainPageChildPages\LibraryPage.xaml" />
     <None Remove="Views\MainPageChildPages\RemoveRepeatTags.xaml" />
+    <None Remove="Views\MainPageChildPages\RemoveRepeatTags2.xaml" />
     <None Remove="Views\MainPageChildPages\SearchMangaPage.xaml" />
     <None Remove="Views\MainPageChildPages\SeriesMangas.xaml" />
     <None Remove="Views\MainPageChildPages\SettingPage.xaml" />
@@ -244,10 +245,10 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
-    <CustomAdditionalCompileInputs Remove="UserControls\RenameMangaBookByString.xaml" />
+    <CustomAdditionalCompileInputs Remove="UserControls\RenameMangaBookByEditString.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Remove="UserControls\RenameMangaBookByString.xaml" />
+    <Resource Remove="UserControls\RenameMangaBookByEditString.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
@@ -775,6 +776,16 @@
     <Reference Include="ShellAPI">
       <HintPath>..\..\MyLibrary\SHOpenFolderAndSelectItems\bin\Release\netstandard2.0\ShellAPI.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\RenameMangaBookByDragTag.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPageChildPages\RemoveRepeatTags2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\MainPageChildPages\SeriesMangas.xaml">

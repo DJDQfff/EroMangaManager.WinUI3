@@ -32,7 +32,7 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MangaBook">
-                    <UserControl>
+                    <UserControl Loaded="UserControl_Loaded">
                         <Grid Margin="12">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -74,9 +74,7 @@
                                 TextChanged="newnameBox_TextChanged"
                                 TextWrapping="Wrap" />
 
-                            <!--<usercontrol:RenameMangaBookByString x:Name="renamecontrol"
-                                                             Grid.Column="2"
-                                                             MangaBook="{x:Bind Mode=OneWay}" />-->
+
                             <StackPanel
                                 Grid.Row="0"
                                 Grid.RowSpan="3"

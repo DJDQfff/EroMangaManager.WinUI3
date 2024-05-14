@@ -164,14 +164,15 @@ namespace EroMangaManager.Core.MangaParser
             return name.Trim();
         }
         /// <summary>
-        /// 按空格解析拆分，tag和manganame需要在外部分离
+        /// 按空格把整个字符串打散。要区分tag和manganame的话得另行处理
         /// </summary>
+        /// 
         /// <param name="_FileDisplayName"></param>
         /// <returns></returns>
         public static List<string> SplitByBlank (string _FileDisplayName)
         {
             var stringBuilder = new StringBuilder();
-            var tags = new List<string>();
+            var pieces = new List<string>();
             var n = new StringBuilder(_FileDisplayName);
             for (int i = n.Length - 1 ; i > 0 ; i--)
             {
@@ -182,15 +183,16 @@ namespace EroMangaManager.Core.MangaParser
                     n.Insert(i , ' ');
                 }
             }
-            var pieces = n.ToString().Split([' '] , StringSplitOptions.RemoveEmptyEntries);
+            // 这一步会把tag中的空格给消除，是一个小缺陷
+            var _pieces = n.ToString().Split([' '] , StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (var tag in pieces)
+            foreach (var piece in _pieces)
             {
-                stringBuilder.Append(tag);
+                stringBuilder.Append(piece);
                 var result = stringBuilder.ToString();
                 if (CorrectBracketPairConut(result) != -1)
                 {
-                    tags.Add(result);
+                    pieces.Add(result);
                     stringBuilder.Clear();
                 }
                 else
@@ -198,7 +200,7 @@ namespace EroMangaManager.Core.MangaParser
                     continue;
                 }
             }
-            return tags;
+            return pieces;
         }
         /// <summary>
         /// 通过堆栈获取本子名，未完成
@@ -209,7 +211,7 @@ namespace EroMangaManager.Core.MangaParser
         public static string GetName_Stack (string name)
         {
             //Stack<char> lefts = new();
-            //List<string> tags = [];
+            //List<string> pieces = [];
             //StringBuilder stringBuilder = new();
             //int start;
             //for (int index = 0 ; index < name.Length ; index++)
@@ -284,7 +286,7 @@ namespace EroMangaManager.Core.MangaParser
                 if (piece.IsIncludedInBracketPair())
                 {
                     var piecewithoutbracket = piece.TrimBracket();
-                    //foreach(var tag in pieces.)
+                    //foreach(var piece in _pieces.)
                 }
             }
 

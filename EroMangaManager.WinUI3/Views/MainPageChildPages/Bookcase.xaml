@@ -54,6 +54,7 @@
                             CommandParameter="{x:Bind}"
                             Text="{uid:UI Uid=OpenFolder}" />
                         <MenuFlyoutItem
+                            
                             Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
                             CommandParameter="{x:Bind}"
                             Text="{uid:UI Uid=RenameFile}" />

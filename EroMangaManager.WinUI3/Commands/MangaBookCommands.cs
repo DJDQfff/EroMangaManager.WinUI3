@@ -44,18 +44,20 @@ internal class MangaBookCommands
             switch (args.Parameter)
             {
                 case MangaBook book:
-                    _ = await StorageHelper.DeleteSourceFile(book);
+                    _ = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
                     break;
             }
         };
 
         Instance.StorageCommandRename.ExecuteRequested += async (sender , args) =>
         {
+
             switch (args.Parameter)
             {
                 case MangaBook book:
-                    await StorageHelper.RenameSourceFile(book);
+                    await DialogHelper.RenameSourceFileInDialog(book);
                     break;
+
             }
         };
         Instance.StorageCommandRename.IconSource = new SymbolIconSource()
