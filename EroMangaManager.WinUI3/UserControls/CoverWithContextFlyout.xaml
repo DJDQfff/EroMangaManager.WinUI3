@@ -7,29 +7,31 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
-             xmlns:commands="using:EroMangaManager.WinUI3.Commands"
+             xmlns:commands="using:EroMangaManager.WinUI3.Commands" DoubleTapped="UserControl_DoubleTapped"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <MenuFlyout x:Key="flyout">
+            <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.OpenManga}"
+                            CommandParameter="{x:Bind Source,Mode=OneWay}"/>
+            <MenuFlyoutItem Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
+                            CommandParameter="{x:Bind Source,Mode=OneWay}"
+                            Text="{uid:UI Uid=OverviewInformation}" />
+            <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
+                            CommandParameter="{x:Bind Source,Mode=OneWay}"
+                            Text="{uid:UI Uid=OpenFolder}" />
+            <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
+                            CommandParameter="{x:Bind Source,Mode=OneWay}"
+                            Text="{uid:UI Uid=RenameFile}" />
 
-    <Image  Source="{x:Bind MangaBook.CoverPath,Mode=OneWay}">
-        <Image.ContextFlyout>
-            <MenuFlyout>
-                <MenuFlyoutItem Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
-                                CommandParameter="{x:Bind MangaBook,Mode=OneWay}"
-                                Text="{uid:UI Uid=OverviewInformation}" />
-                <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
-                                CommandParameter="{x:Bind MangaBook,Mode=OneWay}"
-                                Text="{uid:UI Uid=OpenFolder}" />
-                <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
-                                CommandParameter="{x:Bind MangaBook,Mode=OneWay}"
-                                Text="{uid:UI Uid=RenameFile}" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.ExportPDF}"
+                            CommandParameter="{x:Bind Source,Mode=OneWay}"
+                            Text="{uid:UI Uid=ExportToPDF}" />
+            <!--</MenuFlyoutSubItem>-->
+        </MenuFlyout>
 
-                <MenuFlyoutSeparator />
-                <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.ExportPDF}"
-                                CommandParameter="{x:Bind MangaBook,Mode=OneWay}"
-                                Text="{uid:UI Uid=ExportToPDF}" />
-                <!--</MenuFlyoutSubItem>-->
-            </MenuFlyout>
+    </UserControl.Resources>
+    <Image  Source="{x:Bind Source.CoverPath,Mode=OneWay}" ContextFlyout="{StaticResource flyout}" x:Name="image">
 
-        </Image.ContextFlyout>
     </Image>
 </UserControl>

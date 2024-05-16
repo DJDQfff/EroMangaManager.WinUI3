@@ -43,7 +43,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             {
                 case MangasGroup mangasFolder:
                     MangasGroup = mangasFolder;
-                    CommandText.Text = mangasFolder.ShowString;
                     break;
             }
         }
@@ -79,14 +78,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         }
 
 
-        private void MangaBookBriefInfo_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)
-        {
-            var control = sender as GridView;
 
-            var mangaBook = control.SelectedItem as MangaBook;
-
-            Commands.MangaBookCommands.Instance.OpenManga.Execute(mangaBook);
-        }
 
         private void Bookcase_GridView_Loaded (object sender , RoutedEventArgs e)
         {

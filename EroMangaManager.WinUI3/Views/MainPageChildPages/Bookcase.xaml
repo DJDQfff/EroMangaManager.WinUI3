@@ -14,56 +14,11 @@
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="BookcaseTemplate1" x:DataType="models:MangaBook">
-            <usercontrols:MangaBookCoverTags MangaBook="{x:Bind}">
-                <usercontrols:MangaBookCoverTags.ContextFlyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
-                                        CommandParameter="{x:Bind}"
-                                        Text="{uid:UI Uid=OverviewInformation}" />
-                        <MenuFlyoutItem
-                            Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
-                            CommandParameter="{x:Bind}"
-                            Text="{uid:UI Uid=OpenFolder}" />
-                        <MenuFlyoutItem
-                            Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
-                            CommandParameter="{x:Bind}"
-                            Text="{uid:UI Uid=RenameFile}" />
-
-                        <MenuFlyoutSeparator />
-                        <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.ExportPDF}"
-                                        CommandParameter="{x:Bind}"
-                                        Text="{uid:UI Uid=ExportToPDF}" />
-                        <!--</MenuFlyoutSubItem>-->
-                    </MenuFlyout>
-                </usercontrols:MangaBookCoverTags.ContextFlyout>
-            </usercontrols:MangaBookCoverTags>
+            <usercontrols:MangaBookCoverTags MangaBook="{x:Bind}" />
         </DataTemplate>
 
         <DataTemplate x:Key="BookcaseTemplate0" x:DataType="models:MangaBook">
-            <usercontrols:MangaBookBriefInfo MangaBook="{x:Bind}">
-                <usercontrols:MangaBookBriefInfo.ContextFlyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
-                                        CommandParameter="{x:Bind}"
-                                        Text="{uid:UI Uid=OverviewInformation}" />
-                        <MenuFlyoutItem
-                            Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
-                            CommandParameter="{x:Bind}"
-                            Text="{uid:UI Uid=OpenFolder}" />
-                        <MenuFlyoutItem
-                            
-                            Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
-                            CommandParameter="{x:Bind}"
-                            Text="{uid:UI Uid=RenameFile}" />
-
-                        <MenuFlyoutSeparator />
-                        <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.ExportPDF}"
-                                        CommandParameter="{x:Bind}"
-                                        Text="{uid:UI Uid=ExportToPDF}" />
-                        <!--</MenuFlyoutSubItem>-->
-                    </MenuFlyout>
-                </usercontrols:MangaBookBriefInfo.ContextFlyout>
-            </usercontrols:MangaBookBriefInfo>
+            <usercontrols:MangaBookBriefInfo MangaBook="{x:Bind}" />
         </DataTemplate>
     </Page.Resources>
 
@@ -91,10 +46,11 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     HorizontalTextAlignment="Center"
+                    Text="{x:Bind MangasGroup.ShowString,Mode=OneWay}"
                     TextAlignment="Center" />
             </CommandBar.Content>
             <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
-                <usercontrols:MangaOpenButton   />
+                <usercontrols:MangaOpenButton />
             </AppBarElementContainer>
             <AppBarButton
                 AllowFocusOnInteraction="True"
@@ -126,21 +82,17 @@
                 Label="{uid:UI Uid=Translate}" />
         </CommandBar>
 
-        <GridView x:Name="Bookcase_GridView"
-                  Grid.Row="1"
-                  Margin="4"
-                  x:FieldModifier="public"
-                  DoubleTapped="MangaBookBriefInfo_DoubleTapped"
-                  IsItemClickEnabled="True"
-                  ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
-                  SelectionMode="Single">
-                              <!--Loaded="Bookcase_GridView_Loaded"-->
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="models:MangaBook">
-                    <usercontrols:CoverWithContextFlyout MangaBook="{x:Bind Mode=OneWay}" />
-                </DataTemplate>
-            </GridView.ItemTemplate>
+        <GridView
+            x:Name="Bookcase_GridView"
+            Grid.Row="1"
+            Margin="4"
+            x:FieldModifier="public"
+            IsItemClickEnabled="True"
+            ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
+            Loaded="Bookcase_GridView_Loaded"
+            SelectionMode="Single">
+
         </GridView>
-            
+
     </Grid>
 </Page>

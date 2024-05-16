@@ -15,15 +15,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Image
+        <local:CoverWithContextFlyout
             x:Name="image"
             Grid.Row="0"
             Width="166"
             Height="192"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Source="{x:Bind MangaBook.CoverPath, Mode=OneWay}"
-            Stretch="Uniform" />
+            Source="{x:Bind MangaBook, Mode=OneWay}"/>
         <TextBlock
             Grid.Row="1"
             Width="150"
@@ -34,7 +33,7 @@
             <Run
                 x:Name="runtext"
                 IsTextScaleFactorEnabled="True"
-                Text="{x:Bind MangaBook.MangaName, Mode=OneWay}" />
+                Text="{x:Bind MangaBook.MangaName ,Mode=OneWay}" />
         </TextBlock>
         <TextBlock
             Grid.Row="2"

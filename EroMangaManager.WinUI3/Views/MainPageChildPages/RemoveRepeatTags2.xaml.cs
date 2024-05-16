@@ -21,10 +21,7 @@ public sealed partial class RemoveRepeatTags2 : Page
             {
                 RepaetBooks.Add(book);
             }
-            if (RepaetBooks.Count == 100)
-            {
-                return;
-            }
+
         }
 
     }

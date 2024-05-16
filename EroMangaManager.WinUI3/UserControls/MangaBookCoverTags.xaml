@@ -18,11 +18,11 @@
             <RowDefinition Height="40" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Image
+        <local:CoverWithContextFlyout
             Grid.Row="0"
             Grid.RowSpan="2"
             Grid.Column="0"
-            Source="{x:Bind MangaBook. CoverPath, Mode=OneWay}" />
+            Source="{x:Bind MangaBook ,Mode=OneWay}" />
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"

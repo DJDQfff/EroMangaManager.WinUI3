@@ -7,7 +7,7 @@
     xmlns:local="using:EroMangaManager.WinUI3.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+<!--这个控件是专门用来给overviewinformation调用的，所以不能用coverwithcontextflyout控件-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />

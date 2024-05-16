@@ -27,7 +27,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-        <Image x:Name="coverimage" Source="{x:Bind MangaBook.CoverPath, Mode=OneWay}" />
+        <local:CoverWithContextFlyout x:Name="coverimage" Source="{x:Bind MangaBook, Mode=OneWay}" />
         <Grid Grid.Column="1" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

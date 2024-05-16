@@ -22,10 +22,10 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Image                                 Grid.Row="0"
+        <local:CoverWithContextFlyout                                 Grid.Row="0"
                                                Grid.RowSpan="3"
                                                Grid.Column="0"
-                                               Source="{x:Bind MangaBook.CoverPath, Mode=OneWay}" />
+                                               Source="{x:Bind MangaBook ,Mode=OneWay}" />
         <TextBlock                                 Grid.Row="0"
                                                    Grid.Column="1"
                                                    Margin="4"
