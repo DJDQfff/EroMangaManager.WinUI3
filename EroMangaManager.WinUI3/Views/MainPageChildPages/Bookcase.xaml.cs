@@ -73,32 +73,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             button.IsEnabled = true;
         }
 
-        private async void ExportPDF (object sender , RoutedEventArgs e)
-        {
-            var menuFlyout = sender as MenuFlyoutItem;
-            var mangaBook = menuFlyout.DataContext as MangaBook;
-
-            var fileSavePicker = new FileSavePicker();
-            fileSavePicker.FileTypeChoices.Add("PDF" , new List<string> { ".pdf" });
-            fileSavePicker.SuggestedFileName = mangaBook.FileDisplayName;
-
-            var handle = WindowNative.GetWindowHandle(App.Current.MainWindow);
-            InitializeWithWindow.Initialize(fileSavePicker , handle);
-
-            var storageFile = await fileSavePicker.PickSaveFileAsync();
-            try
-            {
-                await Task.Run(() => Exporter.ExportAsPDF(mangaBook , storageFile.Path));
-                string done = ResourceLoader.GetForViewIndependentUse("Strings").GetString("ExportDone");
-                App.Current.GlobalViewModel.WorkDone(done);
-            }
-            catch
-            {
-                string failed = ResourceLoader.GetForViewIndependentUse("Strings").GetString("ExportFailed");
-                App.Current.GlobalViewModel.WorkFailed(failed);
-            }
-        }
-
         private void Order (object sender , RoutedEventArgs e)
         {
             MangasGroup?.SortMangaBooks(x => x.FileSize);

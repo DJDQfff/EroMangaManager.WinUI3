@@ -1,6 +1,29 @@
 ﻿namespace EroMangaManager.WinUI3.Helpers;
 internal class StorageOperation
 {
+    internal static async Task ExportAsPDFAsync (MangaBook mangaBook)
+    {
+        var fileSavePicker = new FileSavePicker();
+        fileSavePicker.FileTypeChoices.Add("PDF" , new List<string> { ".pdf" });
+        fileSavePicker.SuggestedFileName = mangaBook.FileDisplayName;
+
+        var handle = WindowNative.GetWindowHandle(App.Current.MainWindow);
+        InitializeWithWindow.Initialize(fileSavePicker , handle);
+
+        var storageFile = await fileSavePicker.PickSaveFileAsync();
+        try
+        {
+            await Task.Run(() => Exporter.ExportAsPDF(mangaBook , storageFile.Path));
+            string done = ResourceLoader.GetForViewIndependentUse("Strings").GetString("ExportDone");
+            App.Current.GlobalViewModel.WorkDone(done);
+        }
+        catch
+        {
+            string failed = ResourceLoader.GetForViewIndependentUse("Strings").GetString("ExportFailed");
+            App.Current.GlobalViewModel.WorkFailed(failed);
+        }
+
+    }
     internal static async Task Delete (MangaBook eroManga , StorageDeleteOption deletemode)
     {
         try

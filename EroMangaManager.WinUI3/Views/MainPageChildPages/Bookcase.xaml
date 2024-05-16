@@ -31,10 +31,9 @@
                             Text="{uid:UI Uid=RenameFile}" />
 
                         <MenuFlyoutSeparator />
-                        <MenuFlyoutItem
-                            Click="ExportPDF"
-                            Icon="Save"
-                            Text="{uid:UI Uid=ExportToPDF}" />
+                        <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.ExportPDF}"
+                                        CommandParameter="{x:Bind}"
+                                        Text="{uid:UI Uid=ExportToPDF}" />
                         <!--</MenuFlyoutSubItem>-->
                     </MenuFlyout>
                 </usercontrols:MangaBookCoverTags.ContextFlyout>
@@ -60,10 +59,9 @@
                             Text="{uid:UI Uid=RenameFile}" />
 
                         <MenuFlyoutSeparator />
-                        <MenuFlyoutItem
-                            Click="ExportPDF"
-                            Icon="Save"
-                            Text="{uid:UI Uid=ExportToPDF}" />
+                        <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.ExportPDF}"
+                                        CommandParameter="{x:Bind}"
+                                        Text="{uid:UI Uid=ExportToPDF}" />
                         <!--</MenuFlyoutSubItem>-->
                     </MenuFlyout>
                 </usercontrols:MangaBookBriefInfo.ContextFlyout>

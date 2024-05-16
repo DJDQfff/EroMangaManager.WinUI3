@@ -11,7 +11,7 @@ internal class MangaBookCommands
     public StandardUICommand StorageCommandRename = new();
 
     public StandardUICommand OpenManga = new(StandardUICommandKind.Open);
-
+    public StandardUICommand ExportPDF = new();
     public static void Initial ()
     {
         Instance ??= new MangaBookCommands();
@@ -106,5 +106,21 @@ internal class MangaBookCommands
                     }
                 }
             };
+
+        Instance.ExportPDF.ExecuteRequested += async (sender , args) =>
+        {
+            switch (args.Parameter)
+            {
+                case MangaBook book:
+                    await StorageOperation.ExportAsPDFAsync(book);
+                    break;
+            }
+        };
+        Instance.ExportPDF.IconSource = new SymbolIconSource()
+        {
+            Symbol = Symbol.Save ,
+        };
     }
+
+
 }
