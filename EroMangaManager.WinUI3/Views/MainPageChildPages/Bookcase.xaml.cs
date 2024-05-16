@@ -78,16 +78,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             MangasGroup?.SortMangaBooks(x => x.FileSize);
         }
 
-        private async void OverviewInformation (object sender , RoutedEventArgs e)
-        {
-            var menuFlyout = sender as MenuFlyoutItem;
-            var manga = menuFlyout.DataContext as MangaBook;
-            var dialog = new OverviewInformation(manga)
-            {
-                XamlRoot = App.Current.MainWindow.Content.XamlRoot
-            };
-            _ = await dialog.ShowAsync();
-        }
 
         private void MangaBookBriefInfo_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)
         {

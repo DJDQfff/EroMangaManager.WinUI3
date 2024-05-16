@@ -17,10 +17,9 @@
             <usercontrols:MangaBookCoverTags MangaBook="{x:Bind}">
                 <usercontrols:MangaBookCoverTags.ContextFlyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem
-                            Click="OverviewInformation"
-                            Icon="More"
-                            Text="{uid:UI Uid=OverviewInformation}" />
+                        <MenuFlyoutItem Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
+                                        CommandParameter="{x:Bind}"
+                                        Text="{uid:UI Uid=OverviewInformation}" />
                         <MenuFlyoutItem
                             Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
                             CommandParameter="{x:Bind}"
@@ -44,10 +43,9 @@
             <usercontrols:MangaBookBriefInfo MangaBook="{x:Bind}">
                 <usercontrols:MangaBookBriefInfo.ContextFlyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem
-                            Click="OverviewInformation"
-                            Icon="More"
-                            Text="{uid:UI Uid=OverviewInformation}" />
+                        <MenuFlyoutItem Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
+                                        CommandParameter="{x:Bind}"
+                                        Text="{uid:UI Uid=OverviewInformation}" />
                         <MenuFlyoutItem
                             Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
                             CommandParameter="{x:Bind}"

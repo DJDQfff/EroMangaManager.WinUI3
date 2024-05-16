@@ -14,7 +14,7 @@ internal class MangaBookCommands
     public StandardUICommand ExportPDF = new();
     public static void Initial ()
     {
-        Instance ??= new MangaBookCommands();
+        Instance ??= new();
 
         Instance.OpenFolderInOutside.ExecuteRequested += (sender , args) =>
         {
@@ -120,6 +120,7 @@ internal class MangaBookCommands
         {
             Symbol = Symbol.Save ,
         };
+
     }
 
 

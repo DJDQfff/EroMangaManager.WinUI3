@@ -57,6 +57,7 @@
     <None Remove="ResourceDictionarys\NamedControlStyle.xaml" />
     <None Remove="ResourceDictionarys\TitleContentPairTheme.xaml" />
     <None Remove="ResourceDictionarys\ValueConverters.xaml" />
+    <None Remove="UserControls\CoverWithContextFlyout.xaml" />
     <None Remove="UserControls\MangaBookBriefInfo.xaml" />
     <None Remove="UserControls\MangaBookCoverTags.xaml" />
     <None Remove="UserControls\MangaBookDetailInfo.xaml" />
@@ -776,6 +777,11 @@
     <Reference Include="ShellAPI">
       <HintPath>..\..\MyLibrary\SHOpenFolderAndSelectItems\bin\Release\netstandard2.0\ShellAPI.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\CoverWithContextFlyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="UserControls\RenameMangaBookByDragTag.xaml">

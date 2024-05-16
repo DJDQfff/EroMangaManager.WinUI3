@@ -42,6 +42,7 @@ public partial class App : Application
 #endif
 
         MangaBookCommands.Initial();
+        UICommands.Initial();
 
         GlobalViewModel = new ObservableCollectionVM();
 
