@@ -126,15 +126,21 @@
                 Label="{uid:UI Uid=Translate}" />
         </CommandBar>
 
-        <GridView
-            x:Name="Bookcase_GridView"
-            Grid.Row="1"
-            Margin="4"
-            x:FieldModifier="public"
-            DoubleTapped="MangaBookBriefInfo_DoubleTapped"
-            IsItemClickEnabled="True"
-            ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
-            Loaded="Bookcase_GridView_Loaded"
-            SelectionMode="Single" />
+        <GridView x:Name="Bookcase_GridView"
+                  Grid.Row="1"
+                  Margin="4"
+                  x:FieldModifier="public"
+                  DoubleTapped="MangaBookBriefInfo_DoubleTapped"
+                  IsItemClickEnabled="True"
+                  ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
+                  SelectionMode="Single">
+                              <!--Loaded="Bookcase_GridView_Loaded"-->
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:MangaBook">
+                    <usercontrols:CoverWithContextFlyout MangaBook="{x:Bind Mode=OneWay}" />
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+            
     </Grid>
 </Page>

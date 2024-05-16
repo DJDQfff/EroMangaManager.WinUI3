@@ -5,9 +5,11 @@
 
 namespace EroMangaManager.WinUI3.UserControls;
 
+[INotifyPropertyChanged]
 public sealed partial class CoverWithContextFlyout : UserControl
 {
-    public MangaBook MangaBook { set; get; }
+    [ObservableProperty]
+    MangaBook mangaBook;
     public CoverWithContextFlyout ()
     {
         this.InitializeComponent();

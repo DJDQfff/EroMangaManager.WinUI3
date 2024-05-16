@@ -14,18 +14,18 @@
         <Image.ContextFlyout>
             <MenuFlyout>
                 <MenuFlyoutItem Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
-                                CommandParameter="{x:Bind}"
+                                CommandParameter="{x:Bind MangaBook,Mode=OneWay}"
                                 Text="{uid:UI Uid=OverviewInformation}" />
                 <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
-                                CommandParameter="{x:Bind}"
+                                CommandParameter="{x:Bind MangaBook,Mode=OneWay}"
                                 Text="{uid:UI Uid=OpenFolder}" />
                 <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
-                                CommandParameter="{x:Bind}"
+                                CommandParameter="{x:Bind MangaBook,Mode=OneWay}"
                                 Text="{uid:UI Uid=RenameFile}" />
 
                 <MenuFlyoutSeparator />
                 <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.ExportPDF}"
-                                CommandParameter="{x:Bind}"
+                                CommandParameter="{x:Bind MangaBook,Mode=OneWay}"
                                 Text="{uid:UI Uid=ExportToPDF}" />
                 <!--</MenuFlyoutSubItem>-->
             </MenuFlyout>
