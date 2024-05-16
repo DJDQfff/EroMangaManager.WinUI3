@@ -8,34 +8,47 @@
     xmlns:local="using:EroMangaManager.WinUI3.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
-    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
 
-    <StackPanel Height="300" Orientation="Horizontal">
-        <Image Width="200" Source="{x:Bind MangaBook.CoverPath, Mode=OneWay}" />
-        <StackPanel Orientation="Vertical">
-            <TextBlock
-                Margin="4"
-                FontSize="16"
+    <Grid Margin="12">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="5*" />
+            <!--<ColumnDefinition />-->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="2*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Image                                 Grid.Row="0"
+                                               Grid.RowSpan="3"
+                                               Grid.Column="0"
+                                               Source="{x:Bind MangaBook.CoverPath, Mode=OneWay}" />
+        <TextBlock                                 Grid.Row="0"
+                                                   Grid.Column="1"
+                                                   Margin="4"
                 Text="{x:Bind MangaBook.FileDisplayName, Mode=OneWay}"
                 TextWrapping="Wrap" />
-            <GridView x:Name="order" DataContext="{x:Bind MangaBook, Mode=OneWay}" />
-            <!--<djdqfff:TagListOrder
-                x:Name="order"
-                Margin="4"
-                DataContext="{x:Bind MangaBook, Mode=OneWay}" />-->
+            <djdqfff:TagListOrder                                 Grid.Row="1"
+                                                                  Grid.Column="1"
+                                                                  x:Name="order"
+                    Margin="4"
+                    DataContext="{x:Bind MangaBook, Mode=OneWay}" />
 
 
-            <TextBox
-                x:Name="newnameBox"
+        <TextBox                                 Grid.Row="2"
+                                                 Grid.Column="1"
+                                                 x:Name="newnameBox"
                 Margin="4"
                 DataContext="{x:Bind MangaBook, Mode=OneWay}"
                 FontSize="16"
+                Text="{Binding ElementName=order, Path=NewName, Mode=OneWay}"
                 TextChanged="newnameBox_TextChanged"
                 TextWrapping="Wrap" />
-            <!--  Text="{Binding ElementName=order, Path=NewName, Mode=OneWay}"  -->
 
-            <StackPanel
+            <!--<StackPanel
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 Orientation="Vertical"
@@ -46,11 +59,8 @@
                     Click="SingleMangaBookRename_New"
                     Content="{uid:UI Uid=RenameFile}" />
                 <Button HorizontalAlignment="Stretch" Content="{uid:UI Uid=Remove}" />
-            </StackPanel>
+            </StackPanel>-->
 
-        </StackPanel>
-    </StackPanel>
-
-
+    </Grid>
 
 </UserControl>

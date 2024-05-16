@@ -6,16 +6,21 @@ public sealed partial class RenameMangaBookByDragTag : UserControl
 {
     [ObservableProperty]
     private MangaBook mangaBook;
+    public event Action<MangaBook> NameChanged;
+    partial void OnMangaBookChanged (MangaBook value)
+    {
+        order.Sources = NameParser.SplitByBlank(MangaBook.FileDisplayName);
+    }
     public RenameMangaBookByDragTag ()
     {
         this.InitializeComponent();
     }
-    private void SingleMangaBookRename_New (object sender , RoutedEventArgs e)
-    {
+    //private void SingleMangaBookRename_New (object sender , RoutedEventArgs e)
+    //{
 
-        var text = newnameBox.Text;
+    //    var text = newnameBox.Text;
 
-    }
+    //}
 
 
 
@@ -24,17 +29,19 @@ public sealed partial class RenameMangaBookByDragTag : UserControl
         var book = newnameBox.DataContext as MangaBook;
 
         var text = newnameBox.Text;
-        // TODO 这有严重bug，每次文字切换，会直接改名
-        //TrySetNewName(book , text);
-
+        StorageOperation.RenameMange(book , text);
+        NameChanged?.Invoke(book);
     }
 
+
+    [Obsolete("注意这里出过bug，调用loaded函数的时候，Mangabook可能属性还没刷新" , true)]
     private void UserControl_Loaded (object sender , RoutedEventArgs e)
     {
-        var manga = order.DataContext as MangaBook;
-        var items = NameParser.SplitByBlank(manga.FileDisplayName);
-        order.ItemsSource = items;
-
+        // 注意这里出过bug，调用loaded函数的时候，mangabook可能属性还没刷新
+        //var a = NameParser.SplitByBlank(MangaBook.FileDisplayName);
+        //textblock.Text = MangaBook.FileDisplayName;
+        //order.Sources = a;
+        //orde.ItemsSource = a;
     }
 
 

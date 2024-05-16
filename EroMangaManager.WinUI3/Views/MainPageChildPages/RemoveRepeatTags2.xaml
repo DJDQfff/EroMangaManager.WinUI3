@@ -9,13 +9,14 @@
       xmlns:model="using:EroMangaManager.Core.Models"
     xmlns:usercontrol="using:EroMangaManager.WinUI3.UserControls"
       mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      NavigationCacheMode="Disabled"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <ListView ItemsSource="{x:Bind RepaetBooks}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MangaBook">
-                    <usercontrol:RenameMangaBookByDragTag MangaBook="{x:Bind }"/>
+                    <usercontrol:RenameMangaBookByDragTag MangaBook="{x:Bind }" NameChanged="RemoveIfTagRepeat"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
