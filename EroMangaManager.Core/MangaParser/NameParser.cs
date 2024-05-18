@@ -178,13 +178,13 @@ namespace EroMangaManager.Core.MangaParser
             {
                 if (LeftRightBrackets.Contains(n[i]))
                 {
-                    n.Insert(i + 1 , " ");
+                    n.Insert(i + 1 , '/');
 
-                    n.Insert(i , ' ');
+                    n.Insert(i , '/');
                 }
             }
             // 这一步会把tag中的空格给消除，是一个小缺陷
-            var _pieces = n.ToString().Split([' '] , StringSplitOptions.RemoveEmptyEntries);
+            var _pieces = n.ToString().Split(['/']).Where(x => !string.IsNullOrWhiteSpace(x));
 
             foreach (var piece in _pieces)
             {
