@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 
-
 namespace EroMangaManager.Core.MangaParser
 {
     /// <summary>
@@ -94,7 +93,47 @@ namespace EroMangaManager.Core.MangaParser
             return (manganame, tagslist);
         }
         /// <summary>
-        /// 按括号分解
+        /// 按左右括号分离，保留括号
+        /// </summary>
+        ///
+        /// <param name="_FileDisplayName"></param>
+        /// <returns></returns>
+        public static List<string> SplitByBrackets_Reserve (string _FileDisplayName)
+        {
+            var stringBuilder = new StringBuilder();
+            var pieces = new List<string>();
+            var n = new StringBuilder(_FileDisplayName);
+            for (int i = n.Length - 1 ; i > 0 ; i--)
+            {
+                if (LeftRightBrackets.Contains(n[i]))
+                {
+                    n.Insert(i + 1 , '/');
+
+                    n.Insert(i , '/');
+                }
+            }
+            // 这一步会把tag中的空格给消除，是一个小缺陷。以前使用空格有这个问题，现在换了个字符不知道有没有
+            var _pieces = n.ToString().Split(['/']).Where(x => !string.IsNullOrWhiteSpace(x));
+
+            foreach (var piece in _pieces)
+            {
+                stringBuilder.Append(piece);
+                var result = stringBuilder.ToString();
+                if (CorrectBracketPairConut(result) != -1)
+                {
+                    pieces.Add(result);
+                    stringBuilder.Clear();
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return pieces;
+        }
+
+        /// <summary>
+        /// 按括号进行分解，移除括号
         /// </summary>
         /// <param name="_FileDisplayName"></param>
         /// <returns></returns>
@@ -162,45 +201,6 @@ namespace EroMangaManager.Core.MangaParser
                 return TrimBracket(n);
             }
             return name.Trim();
-        }
-        /// <summary>
-        /// 按空格把整个字符串打散。要区分tag和manganame的话得另行处理
-        /// </summary>
-        /// 
-        /// <param name="_FileDisplayName"></param>
-        /// <returns></returns>
-        public static List<string> SplitByBlank (string _FileDisplayName)
-        {
-            var stringBuilder = new StringBuilder();
-            var pieces = new List<string>();
-            var n = new StringBuilder(_FileDisplayName);
-            for (int i = n.Length - 1 ; i > 0 ; i--)
-            {
-                if (LeftRightBrackets.Contains(n[i]))
-                {
-                    n.Insert(i + 1 , '/');
-
-                    n.Insert(i , '/');
-                }
-            }
-            // 这一步会把tag中的空格给消除，是一个小缺陷
-            var _pieces = n.ToString().Split(['/']).Where(x => !string.IsNullOrWhiteSpace(x));
-
-            foreach (var piece in _pieces)
-            {
-                stringBuilder.Append(piece);
-                var result = stringBuilder.ToString();
-                if (CorrectBracketPairConut(result) != -1)
-                {
-                    pieces.Add(result);
-                    stringBuilder.Clear();
-                }
-                else
-                {
-                    continue;
-                }
-            }
-            return pieces;
         }
         /// <summary>
         /// 通过堆栈获取本子名，未完成
@@ -278,7 +278,7 @@ namespace EroMangaManager.Core.MangaParser
         public static string RemoveRepeatTag (string oldname)
         {
             // TODO 输入一个包含重复tag的名称，算出一个去掉重复tag的名称
-            var pieces = SplitByBlank(oldname);
+            var pieces = SplitByBrackets_Reserve(oldname);
             for (var index = 0 ; index < pieces.Count ; index++)
             {
                 var piece = pieces[index];
@@ -301,7 +301,7 @@ namespace EroMangaManager.Core.MangaParser
         /// <returns></returns>
         public static IEnumerable<string> GetTagByBlank_RemoveBracket (this string FileDisplayName)
         {
-            return SplitByBlank(FileDisplayName)
+            return SplitByBrackets_Reserve(FileDisplayName)
           .Where(piece => piece.IsIncludedInBracketPair())
           .RemoveBracketForEachString();
 
