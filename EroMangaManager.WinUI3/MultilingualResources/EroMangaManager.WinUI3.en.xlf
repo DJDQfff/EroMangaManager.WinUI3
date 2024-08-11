@@ -405,6 +405,10 @@
           <source>系列漫画</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Comic series</target>
         </trans-unit>
+        <trans-unit id="NameWithoutBrackets" translate="yes" xml:space="preserve">
+          <source>文件名无括号</source>
+          <target state="new">文件名无括号</target>
+        </trans-unit>
       </group>
     </body>
   </file>

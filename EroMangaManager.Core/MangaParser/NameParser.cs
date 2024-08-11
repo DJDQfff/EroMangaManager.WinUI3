@@ -93,6 +93,20 @@ namespace EroMangaManager.Core.MangaParser
             return (manganame, tagslist);
         }
         /// <summary>
+        /// 字符串中是否还有任意括号
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool ContainBracket (string str)
+        {
+            foreach (var b in LeftRightBrackets)
+            {
+                if (str.Contains(b))
+                    return true;
+            }
+            return false;
+        }
+        /// <summary>
         /// 按左右括号分离，保留括号
         /// </summary>
         ///
@@ -294,18 +308,7 @@ namespace EroMangaManager.Core.MangaParser
 
             return null;
         }
-        /// <summary>
-        /// 使用splitbyblank的分离，保留包括在括号中的项，然后移除每个项的括号
-        /// </summary>
-        /// <param name="FileDisplayName"></param>
-        /// <returns></returns>
-        public static IEnumerable<string> GetTagByBlank_RemoveBracket (this string FileDisplayName)
-        {
-            return SplitByBrackets_Reserve(FileDisplayName)
-          .Where(piece => piece.IsIncludedInBracketPair())
-          .RemoveBracketForEachString();
 
-        }
 
         /// <summary>
         /// 移除一个字符串集合的所有括号

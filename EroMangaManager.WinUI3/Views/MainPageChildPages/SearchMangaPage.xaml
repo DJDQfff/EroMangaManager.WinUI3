@@ -9,6 +9,7 @@
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
     xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
     <Grid Margin="36">

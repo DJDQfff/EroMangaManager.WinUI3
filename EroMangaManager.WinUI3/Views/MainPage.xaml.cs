@@ -14,7 +14,7 @@ namespace EroMangaManager.WinUI3.Views
         /// <summary>
         ///
         /// </summary>
-        public MainPage ()
+        public MainPage()
         {
             InitializeComponent();
 
@@ -25,16 +25,19 @@ namespace EroMangaManager.WinUI3.Views
         ///
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
             var defaultfolder = App.Current.GlobalViewModel.MangaFolders.FirstOrDefault();
 
-            MainFrame.Navigate(typeof(Bookcase) , defaultfolder);
+            MainFrame.Navigate(typeof(Bookcase), defaultfolder);
         }
 
-        private void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
+        public void MainNavigationView_ItemInvoked(
+            NavigationView sender,
+            NavigationViewItemInvokedEventArgs args
+        )
         {
             //if (args.IsSettingsInvoked)
             //{
@@ -55,21 +58,22 @@ namespace EroMangaManager.WinUI3.Views
                 nameof(RemoveRepeatTags) => typeof(RemoveRepeatTags2),
                 nameof(IrregularFileNames) => typeof(IrregularNameSearch),
                 nameof(SeriesMangas) => typeof(SeriesMangas),
+                nameof(MangasWithoutBrackets) => typeof(MangasWithoutBrackets),
                 _ => typeof(SettingPage)
             };
 
             if (!type.Equals(MainFrame.CurrentSourcePageType))
             {
-                MainFrame.Navigate(type , App.Current.GlobalViewModel.MangaList);
+                MainFrame.Navigate(type, App.Current.GlobalViewModel.MangaList);
             }
         }
 
-        private void UpdateRecordItem_Tapped (object sender , TappedRoutedEventArgs e)
+        private void UpdateRecordItem_Tapped(object sender, TappedRoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(UpdateRecordsPage));
         }
 
-        private void UsageButton_Tapped (object sender , TappedRoutedEventArgs e)
+        private void UsageButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(UsageDocumentPage));
         }

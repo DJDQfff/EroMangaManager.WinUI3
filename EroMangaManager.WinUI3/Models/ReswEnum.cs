@@ -17,9 +17,11 @@
         public Appxmanifest Uid { get; set; }
 
         ///<summary> </summary>
-        protected override object ProvideValue ()
+        protected override object ProvideValue()
         {
-            return ResourceLoader.GetForViewIndependentUse("Appxmanifest").GetString(Uid.ToString());
+            return ResourceLoader
+                .GetForViewIndependentUse("Appxmanifest")
+                .GetString(Uid.ToString());
         }
     }
 
@@ -46,7 +48,7 @@
         public Strings Uid { get; set; }
 
         ///<summary> </summary>
-        protected override object ProvideValue ()
+        protected override object ProvideValue()
         {
             return ResourceLoader.GetForViewIndependentUse("Strings").GetString(Uid.ToString());
         }
@@ -55,6 +57,7 @@
     ///<summary> </summary>
     public enum UI
     {
+        NameWithoutBrackets,
         IrregularName,
         SeriesMangas,
         NeedRestart,
@@ -277,7 +280,7 @@
         public UI Uid { get; set; }
 
         ///<summary> </summary>
-        protected override object ProvideValue ()
+        protected override object ProvideValue()
         {
             return ResourceLoader.GetForViewIndependentUse("UI").GetString(Uid.ToString());
         }
@@ -356,9 +359,11 @@ namespace EroMangaManager.WinUI3.LocalizationWords
         public QuestionAndAnswers Uid { get; set; }
 
         ///<summary> </summary>
-        protected override object ProvideValue ()
+        protected override object ProvideValue()
         {
-            return ResourceLoader.GetForViewIndependentUse("QuestionAndAnswers").GetString(Uid.ToString());
+            return ResourceLoader
+                .GetForViewIndependentUse("QuestionAndAnswers")
+                .GetString(Uid.ToString());
         }
     }
 }

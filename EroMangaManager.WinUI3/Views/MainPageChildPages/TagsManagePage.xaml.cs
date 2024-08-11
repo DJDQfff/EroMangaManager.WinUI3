@@ -12,7 +12,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         /// <summary>
         ///
         /// </summary>
-        public TagsManagePage ()
+        public TagsManagePage()
         {
             InitializeComponent();
             var tags = App.Current.GlobalViewModel.AllTags;
@@ -20,16 +20,13 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             Debug.WriteLine(ColorsCollection.Count);
         }
 
-        private void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
             var item = sender as MenuFlyoutItem;
             if (item.DataContext is string str)
             {
-                var a = new SearchParameter()
-                {
-                    Tags = new List<string> { str }
-                };
-                MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage) , a);
+                var a = new SearchParameter() { Tags = new List<string> { str } };
+                MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage), a);
             }
         }
     }

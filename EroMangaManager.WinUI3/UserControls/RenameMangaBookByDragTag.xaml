@@ -20,27 +20,38 @@
             <RowDefinition />
             <RowDefinition Height="2*" />
             <RowDefinition />
+
         </Grid.RowDefinitions>
 
-        <local:CoverWithContextFlyout                                 Grid.Row="0"
-                                               Grid.RowSpan="3"
-                                               Grid.Column="0"
-                                               Source="{x:Bind MangaBook ,Mode=OneWay}" />
-        <TextBlock                                 Grid.Row="0"
-                                                   Grid.Column="1"
-                                                   Margin="4"
-                Text="{x:Bind MangaBook.FileDisplayName, Mode=OneWay}"
-                TextWrapping="Wrap" />
-            <djdqfff:TagListOrder                                 Grid.Row="1"
-                                                                  Grid.Column="1"
-                                                                  x:Name="order"
-                    Margin="4"
-                    DataContext="{x:Bind MangaBook, Mode=OneWay}" />
+        <local:CoverWithContextFlyout
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            Source="{x:Bind MangaBook, Mode=OneWay}" />
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="4"
+            Text="{x:Bind MangaBook.FileDisplayName, Mode=OneWay}"
+            TextWrapping="Wrap" />
+        <djdqfff:TagListOrder
+            x:Name="order"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="4"
+            DataContext="{x:Bind MangaBook, Mode=OneWay}" />
 
 
-        <TextBox                                 Grid.Row="2"
-                                                 Grid.Column="1"
-                                                 x:Name="newnameBox"
+
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Orientation="Vertical"
+            Visibility="Visible">
+            <TextBox
+                x:Name="newnameBox"
                 Margin="4"
                 DataContext="{x:Bind MangaBook, Mode=OneWay}"
                 FontSize="16"
@@ -48,18 +59,13 @@
                 TextChanged="newnameBox_TextChanged"
                 TextWrapping="Wrap" />
 
-            <!--<StackPanel
+            <Button
+                x:Name="renamebutton"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Orientation="Vertical"
-                Visibility="Collapsed">
-                <Button
-                    x:Name="renamebutton"
-                    HorizontalAlignment="Stretch"
-                    Click="SingleMangaBookRename_New"
-                    Content="{uid:UI Uid=RenameFile}" />
-                <Button HorizontalAlignment="Stretch" Content="{uid:UI Uid=Remove}" />
-            </StackPanel>-->
+                Click="SingleMangaBookRename_New"
+                Content="{uid:UI Uid=RenameFile}" />
+            <Button HorizontalAlignment="Stretch" Visibility="Collapsed" Content="{uid:UI Uid=Remove}" />
+        </StackPanel>
 
     </Grid>
 

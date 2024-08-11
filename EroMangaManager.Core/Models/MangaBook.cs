@@ -4,7 +4,7 @@
 public partial class MangaBook : ObservableObject
 {
     /// <summary> 实例化EroManga </summary>
-    public MangaBook (string filepath)
+    public MangaBook(string filepath)
     {
         //FileSize = (new FileInfo(filepath)).Length;
         FilePath = filepath;
@@ -29,7 +29,6 @@ public partial class MangaBook : ObservableObject
     [NotifyPropertyChangedFor(nameof(FileDisplayName))]
     string filePath;
 
-
     /// <summary> 获取文件的扩展名 </summary>
     public string FileExtension => Path.GetExtension(FilePath).ToLower();
 
@@ -46,11 +45,11 @@ public partial class MangaBook : ObservableObject
     public string MangaName => GetName_Recursion(FileDisplayName);
 
     /// <summary> 文件名中包含在括号的本子Tag </summary>
-    public string[] MangaTagsIncludedInFileName
-    {
-        get => FileDisplayName.GetTagByBlank_RemoveBracket().ToArray();
-    }
-
+    public string[] MangaTagsIncludedInFileName =>
+        SplitByBrackets_Reserve(FileDisplayName)
+            .Where(piece => piece.IsIncludedInBracketPair())
+            .RemoveBracketForEachString()
+            .ToArray();
 
     /// <summary> 漫画翻译后的名称 </summary>
     [ObservableProperty]

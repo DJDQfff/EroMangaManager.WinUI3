@@ -61,7 +61,7 @@
         /// <summary>
         /// app默认UI语言
         /// </summary>
-        [Obsolete("使用LanguageIndex" , true)]
+        [Obsolete("使用LanguageIndex", true)]
         [DefaultValue(DefaultAppUILanguageStrings.zhCN)]
         string DefaultAppUILanguage { set; get; }
 
