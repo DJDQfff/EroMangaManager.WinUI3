@@ -366,4 +366,7 @@
   <data name="zhCN" xml:space="preserve">
     <value>简中</value>
   </data>
+  <data name="AddCategory" xml:space="preserve">
+    <value>添加分类</value>
+  </data>
 </root>

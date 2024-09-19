@@ -8,17 +8,17 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// </summary>
     public sealed partial class SearchMangaPage : Page
     {
-        private MangaSearchViewModel searchMangaViewModel;
+        private MangaSearchViewModel viewmodel;
 
         /// <summary>
         ///
         /// </summary>
-        public SearchMangaPage ()
+        public SearchMangaPage()
         {
             InitializeComponent();
         }
 
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -27,55 +27,64 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             {
                 case SearchParameter searchParameter:
                     var tags = searchParameter.Tags;
-                    searchMangaViewModel = new MangaSearchViewModel(tags);
+                    viewmodel = new MangaSearchViewModel(tags);
 
                     foreach (var tag in tags)
                     {
                         MangaTagTokenizingTextBox.AddTokenItem(tag);
                     }
-                    SearchStartButton_Click(SearchStartButton , new RoutedEventArgs());
+                    SearchStartButton_Click(SearchStartButton, new RoutedEventArgs());
                     break;
 
                 //TODO 这里如果用var的话，tags会一直为null
                 default:
                     var tags2 = App.Current.GlobalViewModel.AllTags;
-                    searchMangaViewModel = new MangaSearchViewModel(tags2);
+                    viewmodel = new MangaSearchViewModel(tags2);
 
                     break;
             }
         }
 
-        private void MangaTagTokenBox_TextChanged (AutoSuggestBox sender , AutoSuggestBoxTextChangedEventArgs args)
+        private void MangaTagTokenBox_TextChanged(
+            AutoSuggestBox sender,
+            AutoSuggestBoxTextChangedEventArgs args
+        )
         {
             var a = sender.Text;
-            MangaTagTokenizingTextBox.SuggestedItemsSource = searchMangaViewModel.Search(a);
+            MangaTagTokenizingTextBox.SuggestedItemsSource = viewmodel.Search(a);
         }
 
-        private void MangaTagTokenBox_TokenItemAdding (TokenizingTextBox sender , TokenItemAddingEventArgs args)
+        private void MangaTagTokenBox_TokenItemAdding(
+            TokenizingTextBox sender,
+            TokenItemAddingEventArgs args
+        )
         {
             var t = args.TokenText;
-            if (!searchMangaViewModel.AllTags.Contains(t))
+            if (!viewmodel.AllTags.Contains(t))
             {
                 args.Cancel = true;
             }
         }
 
-        private void MangaTagTokenBox_TokenItemAdded (TokenizingTextBox sender , object args)
+        private void MangaTagTokenBox_TokenItemAdded(TokenizingTextBox sender, object args)
         {
             var token = args as string;
-            searchMangaViewModel.SelectedTags.Add(token);
-            searchMangaViewModel.HideTag(token);
+            viewmodel.SelectedTags.Add(token);
+            viewmodel.HideTag(token);
         }
 
-        private void MangaTagTokenBox_TokenItemRemoved (TokenizingTextBox sender , object args)
+        private void MangaTagTokenBox_TokenItemRemoved(TokenizingTextBox sender, object args)
         {
             var token = args as string;
 
-            searchMangaViewModel.SelectedTags.Remove(token);
-            searchMangaViewModel.CancelHideTag(token);
+            viewmodel.SelectedTags.Remove(token);
+            viewmodel.CancelHideTag(token);
         }
 
-        private void MangaNameAugoSuggestBox_TextChanged (AutoSuggestBox sender , AutoSuggestBoxTextChangedEventArgs args)
+        private void MangaNameAugoSuggestBox_TextChanged(
+            AutoSuggestBox sender,
+            AutoSuggestBoxTextChangedEventArgs args
+        )
         {
             var text = sender.Text;
             if (text != null)
@@ -90,28 +99,24 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-        private void SearchStartButton_Click (object sender , RoutedEventArgs e)
+        private void SearchStartButton_Click(object sender, RoutedEventArgs e)
         {
             var manganame = MangaNameAugoSuggestBox.Text;
 
-            var tags = new List<string>(searchMangaViewModel.SelectedTags)
-            {
-                manganame
-            };
+            var tags = new List<string>(viewmodel.SelectedTags) { manganame };
 
             var requiredMatchCount = tags.Count;
 
             var allmangas = App.Current.GlobalViewModel.MangaList;
 
-            var conditions =
-                allmangas
-                .Where(x => tags
-                .Count(y => x.FileDisplayName.Contains(y)) == requiredMatchCount);
+            var conditions = allmangas.Where(
+                x => tags.Count(y => x.FileDisplayName.Contains(y)) == requiredMatchCount
+            );
 
             ResultGridView.ItemsSource = conditions;
         }
 
-        private void ShowInBookcaseButton_Click (object sender , RoutedEventArgs e)
+        private void ShowInBookcaseButton_Click(object sender, RoutedEventArgs e)
         {
             var result = ResultGridView.ItemsSource;
 
@@ -119,11 +124,12 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
             var mangasfolder = new MangasGroup()
             {
-                ShowString = (MangaNameAugoSuggestBox.Text + "+" + MangaTagTokenizingTextBox.SelectedTokenText)
-                .Trim('+') ,
+                ShowString = (
+                    MangaNameAugoSuggestBox.Text + "+" + MangaTagTokenizingTextBox.SelectedTokenText
+                ).Trim('+'),
             };
             mangasfolder.MangaBooks.AddRange(condition);
-            MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , mangasfolder);
+            MainPage.Current.MainFrame.Navigate(typeof(Bookcase), mangasfolder);
         }
     }
 }

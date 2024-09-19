@@ -58,6 +58,7 @@
     public enum UI
     {
         NameWithoutBrackets,
+        AddCategory,
         IrregularName,
         SeriesMangas,
         NeedRestart,
