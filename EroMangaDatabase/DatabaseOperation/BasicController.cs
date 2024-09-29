@@ -21,7 +21,7 @@ namespace EroMangaDatabase
         /// </summary>
         public DataBase_Version3 database;
 
-        static BasicController ()
+        static BasicController()
         {
             DatabaseController = new BasicController();
         }
@@ -29,7 +29,7 @@ namespace EroMangaDatabase
         /// <summary>
         /// 私有构造函数
         /// </summary>
-        private BasicController ()
+        private BasicController()
         {
             database = new DataBase_Version3(DatabaseConfig.ConnectingString);
         }
@@ -37,7 +37,7 @@ namespace EroMangaDatabase
         /// <summary>
         /// 数据库版本迁移
         /// </summary>
-        public void Migrate ()
+        public void Migrate()
         {
             database.Database.Migrate();
         }
@@ -45,7 +45,7 @@ namespace EroMangaDatabase
         /// <summary>
         /// 释放数据库资源
         /// </summary>
-        public void Dispose ()
+        public void Dispose()
         {
             database.Dispose();
             GC.SuppressFinalize(database);

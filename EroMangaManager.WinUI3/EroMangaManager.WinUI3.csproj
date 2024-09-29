@@ -50,6 +50,7 @@
     <None Remove="Assets\AppIcons\StoreLogo.scale-400.png" />
     <None Remove="Assets\SVGs\book.svg" />
     <None Remove="Assets\SVGs\error.svg" />
+    <None Remove="author.txt" />
     <None Remove="MultilingualResources\EroMangaManager.WinUI3.en.xlf" />
     <None Remove="ResourceDictionarys\DefaultControlStyle.xaml" />
     <None Remove="ResourceDictionarys\FunctionShowerControl.xaml" />

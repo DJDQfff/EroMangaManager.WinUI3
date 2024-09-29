@@ -138,4 +138,7 @@
   <data name="OpenFailed" xml:space="preserve">
     <value>打开失败</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>作者</value>
+  </data>
 </root>

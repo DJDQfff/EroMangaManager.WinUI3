@@ -28,6 +28,8 @@
     ///<summary> </summary>
     public enum Strings
     {
+        Author,
+
         ///<summary></summary>
         ContainInvalaidChar,
 

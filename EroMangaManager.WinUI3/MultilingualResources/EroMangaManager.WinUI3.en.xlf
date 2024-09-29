@@ -42,6 +42,10 @@
           <source>语言</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">language</target>
         </trans-unit>
+        <trans-unit id="Author" translate="yes" xml:space="preserve">
+          <source>作者</source>
+          <target state="new">作者</target>
+        </trans-unit>
       </group>
     </body>
   </file>
