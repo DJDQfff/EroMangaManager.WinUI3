@@ -8,9 +8,13 @@ namespace EroMangaManager.Core.ViewModels;
 
 public partial class ManageTagsViewModel : ObservableObject
 {
-    public ObservableCollection<string> Categorys { get; set; }
+    /// <summary>
+    ///
+    /// </summary>
+    public string[] Categorys => keyValuePairs.Keys.ToArray();
 
-    [ObservableProperty]
+    public event Action CategorysChanged;
+
     Dictionary<string, ObservableCollection<string>> keyValuePairs;
 
     /// <summary>
@@ -24,12 +28,15 @@ public partial class ManageTagsViewModel : ObservableObject
     [ObservableProperty]
     ObservableCollection<string> displayedTags;
 
+    /// <summary>
+    ///
+    /// </summary>
     public ManageTagsViewModel()
     {
         var a = DatabaseController.TagCategory_QueryAll();
 
-        keyValuePairs = a.ToDictionary(x => x.Key, x => new ObservableCollection<string>(x.Value));
-        Categorys = new(a.Keys);
+        keyValuePairs = a.ToDictionary(x => x.Key, y => new ObservableCollection<string>(y.Value));
+        //Categorys = new(a.Keys);
     }
 
     /// <summary>
@@ -49,6 +56,10 @@ public partial class ManageTagsViewModel : ObservableObject
         }
     }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="tags"></param>
     public void AddUnCategoryTags(IEnumerable<string> tags)
     {
         var a = tags.Except(Tags).Distinct();
@@ -58,21 +69,33 @@ public partial class ManageTagsViewModel : ObservableObject
 
     partial void OnDisplayedCategoryChanged(string value)
     {
-        DisplayedTags = this[value];
+        if (value is not null)
+        {
+            DisplayedTags = this[value];
+        }
     }
 
-    public ObservableCollection<string> this[string category] => KeyValuePairs[category];
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="category"></param>
+    /// <returns></returns>
+    public ObservableCollection<string> this[string category] => keyValuePairs[category];
 
     /// <summary>
     /// 添加新分类
     /// </summary>
     /// <param name="category"></param>
-    /// <param name="strings"></param>
     /// <returns></returns>
     [RelayCommand]
     public void AddCategory(string category)
     {
-        KeyValuePairs.Add(category, new ObservableCollection<string>());
+        if (!string.IsNullOrWhiteSpace(category))
+        {
+            keyValuePairs.Add(category, new ObservableCollection<string>());
+            OnPropertyChanged(nameof(Categorys));
+            CategorysChanged?.Invoke();
+        }
     }
 
     /// <summary>
@@ -82,8 +105,10 @@ public partial class ManageTagsViewModel : ObservableObject
     [RelayCommand]
     public void DeleteCategory(string category)
     {
-        UnCategoryTags.AddRange(KeyValuePairs[category]);
-        KeyValuePairs.Remove(category);
+        UnCategoryTags.AddRange(keyValuePairs[category]);
+        keyValuePairs.Remove(category);
+        OnPropertyChanged(nameof(Categorys));
+        CategorysChanged?.Invoke();
     }
 
     /// <summary>
@@ -96,8 +121,8 @@ public partial class ManageTagsViewModel : ObservableObject
     {
         foreach (var tag in tags)
         {
-            KeyValuePairs[oldcategory].Remove(tag);
-            KeyValuePairs[newcategory].Add(tag);
+            keyValuePairs[oldcategory].Remove(tag);
+            keyValuePairs[newcategory].Add(tag);
         }
     }
 }

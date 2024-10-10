@@ -9,6 +9,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     {
         ManageTagsViewModel viewmodel = new();
 
+        MenuFlyout menuFlyout = new MenuFlyout();
+
         /// <summary>
         ///
         /// </summary>
@@ -18,6 +20,9 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             var tags = App.Current.GlobalViewModel.AllTags;
 
             viewmodel.AddUnCategoryTags(tags);
+            viewmodel.CategorysChanged += MenuFlyout_SetValue;
+
+            MenuFlyout_SetValue();
         }
 
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
@@ -46,25 +51,33 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
         }
 
-        private void MenuFlyout_Opened(object sender, object e)
+        private void MenuFlyout_SetValue()
         {
-            var control = sender as MenuFlyout;
-            control.Items.Clear();
-            foreach (var b in viewmodel.KeyValuePairs.Keys)
+            menuFlyout.Items.Clear();
+            foreach (var b in viewmodel.Categorys)
             {
                 var c = new MenuFlyoutItem() { DataContext = b };
-                c.Text = b;
 
+                c.Text = b;
+                //TODO c.IsEnabled = viewmodel.DisplayedCategory != b;
                 c.Click += (s, args) =>
                 {
                     var flyoutitem = s as MenuFlyoutItem;
                     var category = flyoutitem.DataContext as string;
-                    var tags = listview.SelectedItems as List<string>;
+                    var tags = Tag_ListView.SelectedItems.Select(x => x as string).ToArray();
 
                     viewmodel.TagChangeCategory(viewmodel.DisplayedCategory, category, tags);
                 };
-                control.Items.Add(c);
+
+                menuFlyout.Items.Add(c);
             }
         }
+
+        private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            viewmodel.DeleteCategory(viewmodel.DisplayedCategory);
+        }
+
+        private void MenuFlyoutItem_Click_2(object sender, RoutedEventArgs e) { }
     }
 }
