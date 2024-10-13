@@ -36,9 +36,12 @@
                 Grid.Row="1"
                 AllowDrop="True"
                 DragOver="Category_ListVIew_DragOver"
-                Drop="Category_ListVIew_Drop"
-                ItemsSource="{x:Bind viewmodel.Categorys, Mode=OneWay}"
+                Drop="Category_ListVIew_Drop" 
+                ItemsSource="{x:Bind viewmodel.Categorys, Mode=OneWay}" 
                 SelectedItem="{x:Bind viewmodel.DisplayedCategory, Mode=TwoWay}">
+                <ListView.Header>
+                    <ListViewItem Content="未定义"   />
+                </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
                         <Grid>

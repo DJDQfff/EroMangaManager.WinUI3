@@ -1,4 +1,7 @@
-﻿namespace EroMangaDatabase.Entities
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace EroMangaDatabase.Entities
 {
     /// <summary>
     /// tag分类
@@ -19,5 +22,9 @@
         /// 第一个：对外显示的
         /// </summary>
         public string Keywords { set; get; }
+
+        [NotMapped]
+        public ObservableCollection<string> Tags =>
+            new ObservableCollection<string>(Keywords.Split('\r'));
     }
 }

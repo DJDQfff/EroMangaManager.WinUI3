@@ -6,12 +6,13 @@ using static EroMangaDatabase.BasicController;
 
 namespace EroMangaManager.Core.ViewModels;
 
+[Obsolete]
 public partial class ManageTagsViewModel : ObservableObject
 {
     /// <summary>
     ///
     /// </summary>
-    public string[] Categorys => keyValuePairs.Keys.ToArray();
+    public ObservableCollection<string> Categorys { get; }
 
     public event Action CategorysChanged;
 
@@ -36,7 +37,7 @@ public partial class ManageTagsViewModel : ObservableObject
         var a = DatabaseController.TagCategory_QueryAll();
 
         keyValuePairs = a.ToDictionary(x => x.Key, y => new ObservableCollection<string>(y.Value));
-        //Categorys = new(a.Keys);
+        Categorys = new(a.Keys);
     }
 
     /// <summary>
@@ -57,7 +58,7 @@ public partial class ManageTagsViewModel : ObservableObject
     }
 
     /// <summary>
-    ///
+    /// 传入tags，先过滤已分类的tag，剩下的全部挪到未分类里面
     /// </summary>
     /// <param name="tags"></param>
     public void AddUnCategoryTags(IEnumerable<string> tags)
@@ -93,6 +94,7 @@ public partial class ManageTagsViewModel : ObservableObject
         if (!string.IsNullOrWhiteSpace(category))
         {
             keyValuePairs.Add(category, new ObservableCollection<string>());
+            Categorys.Add(category);
             OnPropertyChanged(nameof(Categorys));
             CategorysChanged?.Invoke();
         }
@@ -106,6 +108,7 @@ public partial class ManageTagsViewModel : ObservableObject
     public void DeleteCategory(string category)
     {
         UnCategoryTags.AddRange(keyValuePairs[category]);
+        Categorys.Remove(category);
         keyValuePairs.Remove(category);
         OnPropertyChanged(nameof(Categorys));
         CategorysChanged?.Invoke();
