@@ -8,8 +8,63 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
     xmlns:x1="using:System"
+    xmlns:entity="using:EroMangaDatabase.Entities"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:DataType="entity:TagCategory"
+                      x:Key="entity">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{x:Bind CategoryName,Mode=OneWay}" />
+                <Button Grid.Column="1">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Icon="Remove"
+                                            Click="MenuFlyoutItem_Click_1"
+                                            DataContext="{x:Bind }"
+                                            Text="{uid:UI Uid=Remove}" />
+                            <MenuFlyoutItem Click="MenuFlyoutItem_Click_2"
+                                            Icon="Rename"
+                                            Text="重命名"
+                                            Visibility="Collapsed" />
+                        </MenuFlyout>
+
+                    </Button.Flyout>
+                    <SymbolIcon Symbol="More" />
+                </Button>
+            </Grid>
+
+        </DataTemplate>
+        <DataTemplate x:DataType="x:String" x:Key="a">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{x:Bind}" />
+                <Button Grid.Column="1">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Icon="Remove"
+                                            Click="MenuFlyoutItem_Click_1"
+                                            Text="{uid:UI Uid=Remove}" />
+                            <MenuFlyoutItem Click="MenuFlyoutItem_Click_2"
+                                            Icon="Rename"
+                                            Text="重命名"
+                                            Visibility="Collapsed" />
+                        </MenuFlyout>
+
+                    </Button.Flyout>
+                    <SymbolIcon Symbol="More" />
+                </Button>
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -34,42 +89,17 @@
             <ListView
                 x:Name="Category_ListVIew"
                 Grid.Row="1"
+                IsItemClickEnabled="True"
+                ItemClick="Category_ListVIew_ItemClick"
+                SelectionChanged="Category_ListVIew_SelectionChanged"
                 AllowDrop="True"
                 DragOver="Category_ListVIew_DragOver"
                 Drop="Category_ListVIew_Drop" 
-                ItemsSource="{x:Bind viewmodel.Categorys, Mode=OneWay}" 
-                SelectedItem="{x:Bind viewmodel.DisplayedCategory, Mode=TwoWay}">
+                ItemTemplate="{StaticResource entity}"
+                ItemsSource="{x:Bind viewmodel.CategoryTags, Mode=OneWay}" >
                 <ListView.Header>
-                    <ListViewItem Content="未定义"   />
+                    <ListViewItem Content="未定义" Tapped="ListViewItem_Tapped" />
                 </ListView.Header>
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="x:String">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{x:Bind}" />
-                            <Button Grid.Column="1">
-                                <Button.Flyout>
-                                    <MenuFlyout>
-                                        <MenuFlyoutItem
-                                            Icon="Remove"
-                                            Click="MenuFlyoutItem_Click_1"
-                                            Text="{uid:UI Uid=Remove}" />
-                                        <MenuFlyoutItem
-                                            Click="MenuFlyoutItem_Click_2"
-                                            Icon="Rename"
-                                            Text="重命名"
-                                            Visibility="Collapsed" />
-                                    </MenuFlyout>
-
-                                </Button.Flyout>
-                                <SymbolIcon Symbol="More" />
-                            </Button>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
             </ListView>
         </Grid>
         <ListView
@@ -78,8 +108,8 @@
             CanDragItems="True"
             ContextFlyout="{x:Bind menuFlyout}"
             DragItemsCompleted="Tag_ListView_DragItemsCompleted"
+            
             ItemContainerStyle="{StaticResource ListViewItemExpanded}"
-            ItemsSource="{x:Bind viewmodel.DisplayedTags, Mode=OneWay}"
             SelectionMode="Multiple" />
 
     </Grid>

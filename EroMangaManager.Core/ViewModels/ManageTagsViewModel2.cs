@@ -4,8 +4,9 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace EroMangaManager.Core.ViewModels;
 
-internal partial class ManageTagsViewModel2
+public partial class ManageTagsViewModel2
 {
+    public event Action CategorysChanged;
     public ObservableCollection<TagCategory> CategoryTags { get; }
     public ObservableCollection<string> ImCategoryedTags { get; } = [];
     public ManageTagsViewModel2 ()
@@ -39,6 +40,7 @@ internal partial class ManageTagsViewModel2
         var a = tags.Except(Tags).Distinct();
 
         ImCategoryedTags.AddRange(a);
+
     }
     /// <summary>
     /// 添加新分类
@@ -48,9 +50,20 @@ internal partial class ManageTagsViewModel2
     [RelayCommand]
     public void AddCategory (string category)
     {
-        TagCategory tagCategory = new TagCategory();
-        tagCategory.CategoryName = category;
-        CategoryTags.Add(tagCategory);
+        if
+            (category == null)
+            return;
+        if (CategoryTags.FirstOrDefault(x => x.CategoryName == category) is null)
+        {
+            TagCategory tagCategory = new();
+            tagCategory.CategoryName = category;
+            tagCategory.Keywords = string.Empty;
+            CategoryTags.Add(tagCategory);
+
+            CategorysChanged?.Invoke();
+
+        }
+
     }
     /// <summary>
     /// 移除某一分类
@@ -59,10 +72,43 @@ internal partial class ManageTagsViewModel2
     [RelayCommand]
     public void DeleteCategory (string category)
     {
-        TagCategory tagCategory = CategoryTags.Where(x => x.CategoryName == category).FirstOrDefault();
+        TagCategory tagCategory = CategoryTags.FirstOrDefault(x => x.CategoryName == category);
         if (tagCategory != null)
         {
+            var tags = tagCategory.Tags;
             CategoryTags.Remove(tagCategory);
+            ImCategoryedTags.AddRange(tags);
+            CategorysChanged?.Invoke();
+
+        }
+
+    }
+    /// <summary>
+    /// 改变某一tag的分类
+    /// </summary>
+    /// <param name="oldcategory"></param>
+    /// <param name="newcategory"></param>
+    /// <param name="tags"></param>
+    public void TagChangeCategory (TagCategory oldcategory , TagCategory newcategory , IList<string> tags)
+    {
+        if (oldcategory is null)
+        {
+            foreach (var tag in tags)
+            {
+                ImCategoryedTags.Remove(tag);
+                newcategory.Tags.Add(tag);
+            }
+
+
+        }
+        else
+        {
+            foreach (var tag in tags)
+            {
+                oldcategory.Tags.Remove(tag);
+                newcategory.Tags.Add(tag);
+            }
+
         }
 
     }

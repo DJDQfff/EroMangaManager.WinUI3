@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using MyLibrary.Standard20;
+
 namespace EroMangaDatabase.Entities
 {
     /// <summary>
@@ -22,9 +24,23 @@ namespace EroMangaDatabase.Entities
         /// 第一个：对外显示的
         /// </summary>
         public string Keywords { set; get; }
+        private ObservableCollection<string> tags;
 
         [NotMapped]
-        public ObservableCollection<string> Tags =>
-            new ObservableCollection<string>(Keywords.Split('\r'));
+        public ObservableCollection<string> Tags
+        {
+            get
+            {
+                if (tags is null)
+                {
+                    var ss = Keywords.Split('\r');
+
+                    tags = new ObservableCollection<string>(ss);
+                    tags.RemoveEmptyLine();
+                }
+
+                return tags;
+            }
+        }
     }
 }

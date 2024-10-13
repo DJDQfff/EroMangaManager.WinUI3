@@ -7,7 +7,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// </summary>
     public sealed partial class TagsManagePage : Page
     {
-        ManageTagsViewModel viewmodel = new();
+        ManageTagsViewModel2 viewmodel = new();
 
         MenuFlyout menuFlyout = new MenuFlyout();
 
@@ -41,7 +41,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             DragItemsCompletedEventArgs args
         )
         {
-            viewmodel.DisplayedTags.Remove(args.Items[0] as string);
+            //viewmodel.DisplayedTags.Remove(args.Items[0] as string);
         }
 
         private void Category_ListVIew_Drop(object sender, DragEventArgs e) { }
@@ -54,30 +54,52 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private void MenuFlyout_SetValue()
         {
             menuFlyout.Items.Clear();
-            foreach (var b in viewmodel.Categorys)
+            foreach (var tagcategory in viewmodel.CategoryTags)
             {
-                var c = new MenuFlyoutItem() { DataContext = b };
+                var item = new MenuFlyoutItem() { DataContext = tagcategory };
 
-                c.Text = b;
-                //TODO c.IsEnabled = viewmodel.DisplayedCategory != b;
-                c.Click += (s, args) =>
+                item.Text = tagcategory.CategoryName;
+                //TODO item.IsEnabled = viewmodel.DisplayedCategory != tagcategory;
+                item.Click += (s, args) =>
                 {
                     var flyoutitem = s as MenuFlyoutItem;
-                    var category = flyoutitem.DataContext as string;
+                    var category = flyoutitem.DataContext as TagCategory;
                     var tags = Tag_ListView.SelectedItems.Select(x => x as string).ToArray();
 
-                    viewmodel.TagChangeCategory(viewmodel.DisplayedCategory, category, tags);
+                    var selectedCategory = Category_ListVIew.SelectedItem as TagCategory;
+
+                    viewmodel.TagChangeCategory(selectedCategory, category, tags);
                 };
 
-                menuFlyout.Items.Add(c);
+                menuFlyout.Items.Add(item);
             }
         }
 
         private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
         {
-            viewmodel.DeleteCategory(viewmodel.DisplayedCategory);
+            var item = sender as MenuFlyoutItem;
+            var tagcategory = item.DataContext as TagCategory;
+
+            viewmodel.DeleteCategory(tagcategory.CategoryName);
         }
 
         private void MenuFlyoutItem_Click_2(object sender, RoutedEventArgs e) { }
+
+        private void ListViewItem_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Tag_ListView.ItemsSource = viewmodel.ImCategoryedTags;
+            Category_ListVIew.SelectedItem = null;
+        }
+
+        private void Category_ListVIew_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var a = e.ClickedItem as TagCategory;
+            Tag_ListView.ItemsSource = a.Tags;
+        }
+
+        private void Category_ListVIew_SelectionChanged(
+            object sender,
+            SelectionChangedEventArgs e
+        ) { }
     }
 }
