@@ -1,19 +1,20 @@
-﻿using System.Collections.ObjectModel;
-
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 
 namespace EroMangaManager.Core.ViewModels;
 
 public partial class ManageTagsViewModel2
 {
-    public event Action CategorysChanged;
-    public ObservableCollection<TagCategory> CategoryTags { get; }
-    public ObservableCollection<string> ImCategoryedTags { get; } = [];
     public ManageTagsViewModel2 ()
     {
-        var a = EroMangaDatabase.BasicController.DatabaseController.database.TagCategorys.ToArray();
+        var a = DatabaseController.database.TagCategorys.ToArray();
         CategoryTags = new(a);
     }
+
+    public event Action CategorysChanged;
+
+    public ObservableCollection<TagCategory> CategoryTags { get; }
+    public ObservableCollection<string> ImCategoryedTags { get; } = [];
+
     /// <summary>
     /// 已分类的tag
     /// </summary>
@@ -32,6 +33,26 @@ public partial class ManageTagsViewModel2
     }
 
     /// <summary>
+    /// 添加新分类
+    /// </summary>
+    /// <param name="category"></param>
+    /// <returns></returns>
+    [RelayCommand]
+    public async void AddCategory (string category)
+    {
+        if (string.IsNullOrWhiteSpace(category))
+            return;
+        if (CategoryTags.FirstOrDefault(x => x.CategoryName == category) is null)
+        {
+            var tagCategory = DatabaseController.TagCategory_AddCategorySingle(category);
+
+            CategoryTags.Add(tagCategory);
+
+            CategorysChanged?.Invoke();
+        }
+    }
+
+    /// <summary>
     /// 传入tags，先过滤已分类的tag，剩下的全部挪到未分类里面
     /// </summary>
     /// <param name="tags"></param>
@@ -40,31 +61,8 @@ public partial class ManageTagsViewModel2
         var a = tags.Except(Tags).Distinct();
 
         ImCategoryedTags.AddRange(a);
-
     }
-    /// <summary>
-    /// 添加新分类
-    /// </summary>
-    /// <param name="category"></param>
-    /// <returns></returns>
-    [RelayCommand]
-    public void AddCategory (string category)
-    {
-        if
-            (category == null)
-            return;
-        if (CategoryTags.FirstOrDefault(x => x.CategoryName == category) is null)
-        {
-            TagCategory tagCategory = new();
-            tagCategory.CategoryName = category;
-            tagCategory.Keywords = string.Empty;
-            CategoryTags.Add(tagCategory);
 
-            CategorysChanged?.Invoke();
-
-        }
-
-    }
     /// <summary>
     /// 移除某一分类
     /// </summary>
@@ -77,12 +75,22 @@ public partial class ManageTagsViewModel2
         {
             var tags = tagCategory.Tags;
             CategoryTags.Remove(tagCategory);
+            DatabaseController.TagCategory_RemoveCategory(tagCategory);
             ImCategoryedTags.AddRange(tags);
             CategorysChanged?.Invoke();
-
         }
-
     }
+
+    [RelayCommand]
+    public async void SaveToDatabase ()
+    {
+        foreach (var tagcategory in CategoryTags)
+        {
+            tagcategory.Keywords = string.Join("\r" , tagcategory.Tags);
+        }
+        await DatabaseController.database.SaveChangesAsync();
+    }
+
     /// <summary>
     /// 改变某一tag的分类
     /// </summary>
@@ -98,8 +106,6 @@ public partial class ManageTagsViewModel2
                 ImCategoryedTags.Remove(tag);
                 newcategory.Tags.Add(tag);
             }
-
-
         }
         else
         {
@@ -108,9 +114,6 @@ public partial class ManageTagsViewModel2
                 oldcategory.Tags.Remove(tag);
                 newcategory.Tags.Add(tag);
             }
-
         }
-
     }
-
 }

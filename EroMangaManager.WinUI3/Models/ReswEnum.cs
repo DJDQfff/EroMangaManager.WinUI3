@@ -11,21 +11,6 @@
     }
 
     ///<summary> </summary>
-    public class AppxmanifestExtension : MarkupExtension
-    {
-        ///<summary> </summary>
-        public Appxmanifest Uid { get; set; }
-
-        ///<summary> </summary>
-        protected override object ProvideValue()
-        {
-            return ResourceLoader
-                .GetForViewIndependentUse("Appxmanifest")
-                .GetString(Uid.ToString());
-        }
-    }
-
-    ///<summary> </summary>
     public enum Strings
     {
         Author,
@@ -44,21 +29,10 @@
     }
 
     ///<summary> </summary>
-    public class StringsExtension : MarkupExtension
-    {
-        ///<summary> </summary>
-        public Strings Uid { get; set; }
-
-        ///<summary> </summary>
-        protected override object ProvideValue()
-        {
-            return ResourceLoader.GetForViewIndependentUse("Strings").GetString(Uid.ToString());
-        }
-    }
-
-    ///<summary> </summary>
     public enum UI
     {
+        UnCategoryed,
+        Save,
         NameWithoutBrackets,
         AddCategory,
         IrregularName,
@@ -277,13 +251,41 @@
     }
 
     ///<summary> </summary>
+    public class AppxmanifestExtension : MarkupExtension
+    {
+        ///<summary> </summary>
+        public Appxmanifest Uid { get; set; }
+
+        ///<summary> </summary>
+        protected override object ProvideValue ()
+        {
+            return ResourceLoader
+                .GetForViewIndependentUse("Appxmanifest")
+                .GetString(Uid.ToString());
+        }
+    }
+
+    ///<summary> </summary>
+    public class StringsExtension : MarkupExtension
+    {
+        ///<summary> </summary>
+        public Strings Uid { get; set; }
+
+        ///<summary> </summary>
+        protected override object ProvideValue ()
+        {
+            return ResourceLoader.GetForViewIndependentUse("Strings").GetString(Uid.ToString());
+        }
+    }
+
+    ///<summary> </summary>
     public class UIExtension : MarkupExtension
     {
         ///<summary> </summary>
         public UI Uid { get; set; }
 
         ///<summary> </summary>
-        protected override object ProvideValue()
+        protected override object ProvideValue ()
         {
             return ResourceLoader.GetForViewIndependentUse("UI").GetString(Uid.ToString());
         }
@@ -362,7 +364,7 @@ namespace EroMangaManager.WinUI3.LocalizationWords
         public QuestionAndAnswers Uid { get; set; }
 
         ///<summary> </summary>
-        protected override object ProvideValue()
+        protected override object ProvideValue ()
         {
             return ResourceLoader
                 .GetForViewIndependentUse("QuestionAndAnswers")

@@ -1,5 +1,6 @@
 ﻿global using System;
 global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.Diagnostics;
 global using System.IO;
@@ -16,4 +17,5 @@ global using MyLibrary.Standard20;
 
 global using SharpCompress.Archives;
 
+global using static EroMangaDatabase.BasicController;
 global using static EroMangaManager.Core.MangaParser.NameParser;

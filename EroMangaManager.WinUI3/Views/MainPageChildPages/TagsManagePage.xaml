@@ -4,66 +4,39 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:entity="using:EroMangaDatabase.Entities"
     xmlns:local="using:EroMangaManager.WinUI3.Views.MainPageChildPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
     xmlns:x1="using:System"
-    xmlns:entity="using:EroMangaDatabase.Entities"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:DataType="entity:TagCategory"
-                      x:Key="entity">
+        <DataTemplate x:Key="entity" x:DataType="entity:TagCategory">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="{x:Bind CategoryName,Mode=OneWay}" />
+                <TextBlock Text="{x:Bind CategoryName, Mode=OneWay}" />
                 <Button Grid.Column="1">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Icon="Remove"
-                                            Click="MenuFlyoutItem_Click_1"
-                                            DataContext="{x:Bind }"
-                                            Text="{uid:UI Uid=Remove}" />
-                            <MenuFlyoutItem Click="MenuFlyoutItem_Click_2"
-                                            Icon="Rename"
-                                            Text="重命名"
-                                            Visibility="Collapsed" />
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click_1"
+                                DataContext="{x:Bind}"
+                                Icon="Remove"
+                                Text="{uid:UI Uid=Remove}" />
+                            <MenuFlyoutItem
+                                Icon="Rename"
+                                Text="重命名"
+                                Visibility="Collapsed" />
                         </MenuFlyout>
-
-                    </Button.Flyout>
-                    <SymbolIcon Symbol="More" />
-                </Button>
-            </Grid>
-
-        </DataTemplate>
-        <DataTemplate x:DataType="x:String" x:Key="a">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="{x:Bind}" />
-                <Button Grid.Column="1">
-                    <Button.Flyout>
-                        <MenuFlyout>
-                            <MenuFlyoutItem Icon="Remove"
-                                            Click="MenuFlyoutItem_Click_1"
-                                            Text="{uid:UI Uid=Remove}" />
-                            <MenuFlyoutItem Click="MenuFlyoutItem_Click_2"
-                                            Icon="Rename"
-                                            Text="重命名"
-                                            Visibility="Collapsed" />
-                        </MenuFlyout>
-
                     </Button.Flyout>
                     <SymbolIcon Symbol="More" />
                 </Button>
             </Grid>
         </DataTemplate>
-
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -77,28 +50,35 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
                 <TextBox x:Name="NewCategoryTextBox" HorizontalAlignment="Stretch" />
                 <Button
-                    HorizontalAlignment="Stretch"
+                    Grid.Column="1"
                     Command="{x:Bind viewmodel.AddCategoryCommand}"
                     CommandParameter="{Binding ElementName=NewCategoryTextBox, Path=Text, Mode=OneWay}"
                     Content="{uid:UI Uid=AddCategory}" />
-
-            </StackPanel>
+                <Button
+                    Grid.Column="2"
+                    Command="{x:Bind viewmodel.SaveToDatabaseCommand}"
+                    Content="{uid:UI Uid=Save}" />
+            </Grid>
             <ListView
                 x:Name="Category_ListVIew"
                 Grid.Row="1"
-                IsItemClickEnabled="True"
-                ItemClick="Category_ListVIew_ItemClick"
-                SelectionChanged="Category_ListVIew_SelectionChanged"
                 AllowDrop="True"
                 DragOver="Category_ListVIew_DragOver"
-                Drop="Category_ListVIew_Drop" 
+                Drop="Category_ListVIew_Drop"
+                IsItemClickEnabled="True"
+                ItemClick="Category_ListVIew_ItemClick"
                 ItemTemplate="{StaticResource entity}"
-                ItemsSource="{x:Bind viewmodel.CategoryTags, Mode=OneWay}" >
+                ItemsSource="{x:Bind viewmodel.CategoryTags, Mode=OneWay}">
                 <ListView.Header>
-                    <ListViewItem Content="未定义" Tapped="ListViewItem_Tapped" />
+                    <ListViewItem Content="{uid:UI Uid=UnCategoryed}" Tapped="ListViewItem_Tapped" />
                 </ListView.Header>
             </ListView>
         </Grid>
@@ -108,10 +88,8 @@
             CanDragItems="True"
             ContextFlyout="{x:Bind menuFlyout}"
             DragItemsCompleted="Tag_ListView_DragItemsCompleted"
-            
             ItemContainerStyle="{StaticResource ListViewItemExpanded}"
             SelectionMode="Multiple" />
-
     </Grid>
     <!--<Grid>
         <Grid.ColumnDefinitions>
@@ -152,6 +130,5 @@
                 </ItemsRepeater.ItemTemplate>
             </ItemsRepeater>
         </ScrollViewer>
-
     </Grid>-->
 </Page>

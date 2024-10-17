@@ -369,4 +369,10 @@
   <data name="AddCategory" xml:space="preserve">
     <value>添加分类</value>
   </data>
+  <data name="UnCategoryed" xml:space="preserve">
+    <value>未分类</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
 </root>

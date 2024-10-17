@@ -67,16 +67,20 @@
                     x:Name="FindSameMangaByName"
                     Content="{uid:UI Uid=FindSameMangaByName}"
                     Icon="Copy" />
-                <NavigationViewItem 
-                    Visibility="Visible"
+                <NavigationViewItem
                     x:Name="RemoveRepeatTags"
                     Content="{uid:UI Uid=RemoveRepeatTags}"
-                    Icon="Tag" />
-                <NavigationViewItem x:Name="SeriesMangas" Visibility="Collapsed"
-                                    Content="{uid:UI  Uid=SeriesMangas}" Icon="List"/>
-                <NavigationViewItem x:Name="MangasWithoutBrackets"
-                                    Content="{uid:UI  Uid=NameWithoutBrackets}"
-                                    Icon="List" />
+                    Icon="Tag"
+                    Visibility="Visible" />
+                <NavigationViewItem
+                    x:Name="SeriesMangas"
+                    Content="{uid:UI Uid=SeriesMangas}"
+                    Icon="List"
+                    Visibility="Collapsed" />
+                <NavigationViewItem
+                    x:Name="MangasWithoutBrackets"
+                    Content="{uid:UI Uid=NameWithoutBrackets}"
+                    Icon="List" />
 
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
@@ -104,7 +108,6 @@
                         Content="{uid:UI Uid=UpdateRecords}"
                         Icon="ShowResults"
                         Tapped="UpdateRecordItem_Tapped" />
-
                 </StackPanel>
             </NavigationView.PaneFooter>
         </NavigationView>

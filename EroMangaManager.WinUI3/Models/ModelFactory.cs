@@ -7,6 +7,24 @@ namespace EroMangaManager.WinUI3.Models
     /// </summary>
     internal static class ModelFactory
     {
+        /// <summary>
+        /// 初始化MangaBook，同时初始化FileSize
+        /// </summary>
+        /// <param name="storageFile"></param>
+        /// <returns></returns>
+        public static MangaBook CreateMangaBook (string filepath)
+        {
+            var mangaBook = new MangaBook(filepath)
+            {
+                FileSize = new FileInfo(filepath).Length ,
+
+                //CoverPath = CoverHelper.DefaultCoverPath
+                //这个的赋值放到上面方法里面去
+            };
+
+            return mangaBook;
+        }
+
         /// <summary>ViewModel初始化</summary>
         public static void GetAllFolders (this ObservableCollectionVM ViewModel , IEnumerable<string> storageFolders)
         {
@@ -20,15 +38,6 @@ namespace EroMangaManager.WinUI3.Models
                     var mangasFolder = new MangasGroup(folder);
                     ViewModel.MangaFolders.Add(mangasFolder);
                 }
-            }
-        }
-
-        public static async Task InitialEachFolders (this ObservableCollectionVM ViewModel)
-        {
-            // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
-            foreach (var folder in ViewModel.MangaFolders.ToArray())
-            {
-                await folder.Initial();
             }
         }
 
@@ -69,22 +78,13 @@ namespace EroMangaManager.WinUI3.Models
             mangasFolder.IsInitialing = false;
         }
 
-        /// <summary>
-        /// 初始化MangaBook，同时初始化FileSize
-        /// </summary>
-        /// <param name="storageFile"></param>
-        /// <returns></returns>
-        public static MangaBook CreateMangaBook (string filepath)
+        public static async Task InitialEachFolders (this ObservableCollectionVM ViewModel)
         {
-            var mangaBook = new MangaBook(filepath)
+            // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
+            foreach (var folder in ViewModel.MangaFolders.ToArray())
             {
-                FileSize = new FileInfo(filepath).Length ,
-
-                //CoverPath = CoverHelper.DefaultCoverPath
-                //这个的赋值放到上面方法里面去
-            };
-
-            return mangaBook;
+                await folder.Initial();
+            }
         }
     }
 }

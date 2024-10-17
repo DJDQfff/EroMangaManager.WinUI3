@@ -417,6 +417,14 @@
           <source>添加分类</source>
           <target state="new">添加分类</target>
         </trans-unit>
+        <trans-unit id="UnCategoryed" translate="yes" xml:space="preserve">
+          <source>未分类</source>
+          <target state="new">未分类</target>
+        </trans-unit>
+        <trans-unit id="Save" translate="yes" xml:space="preserve">
+          <source>保存</source>
+          <target state="new">保存</target>
+        </trans-unit>
       </group>
     </body>
   </file>
