@@ -1,19 +1,38 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using System.Threading.Tasks;
+
+using CommunityToolkit.Mvvm.Input;
 
 namespace EroMangaManager.Core.ViewModels;
 
 public partial class ManageTagsViewModel2
 {
+    /// <summary>
+    /// 从数据库读取category以初始化
+    /// </summary>
     public ManageTagsViewModel2 ()
     {
         var a = DatabaseController.database.TagCategorys.ToArray();
         CategoryTags = new(a);
     }
 
+    /// <summary>
+    /// 分类改变事件
+    /// </summary>
     public event Action CategorysChanged;
 
+    /// <summary>
+    /// 已分类的tagcategory
+    /// </summary>
     public ObservableCollection<TagCategory> CategoryTags { get; }
+
+    /// <summary>
+    /// 未分类的tag
+    /// </summary>
     public ObservableCollection<string> ImCategoryedTags { get; } = [];
+
+    /// <summary>
+    /// 选中的tagcategory，其实可以view的字段，但是有bug，所以单独弄了一个
+    /// </summary>
     public TagCategory selectedTagCategory { set; get; }
 
     /// <summary>
@@ -39,7 +58,7 @@ public partial class ManageTagsViewModel2
     /// <param name="category"></param>
     /// <returns></returns>
     [RelayCommand]
-    public async void AddCategory (string category)
+    public void AddCategory (string category)
     {
         if (string.IsNullOrWhiteSpace(category))
             return;
@@ -82,8 +101,11 @@ public partial class ManageTagsViewModel2
         }
     }
 
+    /// <summary>
+    /// 保存修改结果
+    /// </summary>
     [RelayCommand]
-    public async void SaveToDatabase ()
+    public async Task SaveToDatabase ()
     {
         foreach (var tagcategory in CategoryTags)
         {
