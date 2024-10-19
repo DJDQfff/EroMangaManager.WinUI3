@@ -14,6 +14,7 @@ public partial class ManageTagsViewModel2
 
     public ObservableCollection<TagCategory> CategoryTags { get; }
     public ObservableCollection<string> ImCategoryedTags { get; } = [];
+    public TagCategory selectedTagCategory { set; get; }
 
     /// <summary>
     /// 已分类的tag

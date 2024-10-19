@@ -6,6 +6,10 @@
 
 ## Bugs
 
+- [ ] 标签管理页面有三个控件无法显示英文
+  
+  > resw文件修改了，一运行就会变成修改前的内容
+
 - [ ] RemoveRepeatTags页面不知道为什么总是会串
 
 - [x] RepaeatPage的button事件方法有bug，无法解决，StackOverflow上有回复，但还是无法解决

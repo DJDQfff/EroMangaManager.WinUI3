@@ -10,7 +10,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private MenuFlyout menuFlyout = new MenuFlyout();
 
         // 这个本来是用tagcategory.selecteditem属性的，但是不知道为什么一直为null，才额外加了一个变量
-        private TagCategory tagCategory;
 
         private ManageTagsViewModel2 viewmodel = new();
 
@@ -39,14 +38,14 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private void Category_ListVIew_ItemClick (object sender , ItemClickEventArgs e)
         {
             var a = e.ClickedItem as TagCategory;
-            tagCategory = a;
+            viewmodel.selectedTagCategory = a;
             Tag_ListView.ItemsSource = a.Tags;
         }
 
         private void ListViewItem_Tapped (object sender , TappedRoutedEventArgs e)
         {
             Tag_ListView.ItemsSource = viewmodel.ImCategoryedTags;
-            tagCategory = null;
+            viewmodel.selectedTagCategory = null;
         }
 
         private void MenuFlyout_SetValue ()
@@ -90,7 +89,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             var tagcategory = item.DataContext as TagCategory;
 
             viewmodel.DeleteCategory(tagcategory.CategoryName);
-            if (tagcategory == tagCategory)
+            if (tagcategory == viewmodel.selectedTagCategory)
             {
                 Tag_ListView.ItemsSource = null;
             }
