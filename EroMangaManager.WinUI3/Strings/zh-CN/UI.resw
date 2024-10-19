@@ -375,4 +375,7 @@
   <data name="Save" xml:space="preserve">
     <value>保存</value>
   </data>
+  <data name="Rename" xml:space="preserve">
+    <value>重命名</value>
+  </data>
 </root>

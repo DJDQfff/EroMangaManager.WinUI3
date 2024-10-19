@@ -31,6 +31,7 @@
     ///<summary> </summary>
     public enum UI
     {
+        Rename,
         UnCategoryed,
         Save,
         NameWithoutBrackets,

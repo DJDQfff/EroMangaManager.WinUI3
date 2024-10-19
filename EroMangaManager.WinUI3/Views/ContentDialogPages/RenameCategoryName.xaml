@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentDialog
+    x:Class="EroMangaManager.WinUI3.Views.ContentDialogPages.RenameCategoryName"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:EroMangaManager.WinUI3.Views.ContentDialogPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    CloseButtonText="{uid:UI Uid=Close}"
+    IsPrimaryButtonEnabled="{x:Bind CheckNameValid(RenameBox.Text), Mode=OneWay}"
+    PrimaryButtonText="{uid:UI Uid=Rename}"
+    mc:Ignorable="d">
+
+    <Grid>
+
+        <TextBox x:Name="RenameBox" />
+    </Grid>
+</ContentDialog>

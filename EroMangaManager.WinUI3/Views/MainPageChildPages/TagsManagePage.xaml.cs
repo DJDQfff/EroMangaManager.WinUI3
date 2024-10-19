@@ -27,14 +27,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             MenuFlyout_SetValue();
         }
 
-        private void Category_ListVIew_DragOver (object sender , DragEventArgs e)
-        {
-            e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
-        }
-
-        private void Category_ListVIew_Drop (object sender , DragEventArgs e)
-        { }
-
         private void Category_ListVIew_ItemClick (object sender , ItemClickEventArgs e)
         {
             var a = e.ClickedItem as TagCategory;
@@ -95,12 +87,20 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-        private void Tag_ListView_DragItemsCompleted (
-                            ListViewBase sender ,
-            DragItemsCompletedEventArgs args
-        )
+        private async void RenameTagContentDialog (object sender , RoutedEventArgs e)
         {
-            //viewmodel.DisplayedTags.Remove(args.Items[0] as string);
+            var dialog = new RenameCategoryName()
+            {
+                XamlRoot = App.Current.MainWindow.Content.XamlRoot
+            };
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                var item = sender as MenuFlyoutItem;
+                var category = item.DataContext as TagCategory;
+                category.CategoryName = dialog.Newname;
+                item.UpdateLayout();
+            }
         }
     }
 }

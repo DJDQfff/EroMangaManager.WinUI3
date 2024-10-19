@@ -28,9 +28,10 @@
                                 Icon="Remove"
                                 Text="{uid:UI Uid=Remove}" />
                             <MenuFlyoutItem
+                                Click="RenameTagContentDialog"
+                                DataContext="{x:Bind}"
                                 Icon="Rename"
-                                Text="重命名"
-                                Visibility="Collapsed" />
+                                Text="{uid:UI Uid=Rename}" />
                         </MenuFlyout>
                     </Button.Flyout>
                     <SymbolIcon Symbol="More" />
@@ -70,9 +71,6 @@
             <ListView
                 x:Name="Category_ListVIew"
                 Grid.Row="1"
-                AllowDrop="True"
-                DragOver="Category_ListVIew_DragOver"
-                Drop="Category_ListVIew_Drop"
                 IsItemClickEnabled="True"
                 ItemClick="Category_ListVIew_ItemClick"
                 ItemTemplate="{StaticResource entity}"
@@ -85,9 +83,7 @@
         <ListView
             x:Name="Tag_ListView"
             Grid.Column="1"
-            CanDragItems="True"
             ContextFlyout="{x:Bind menuFlyout}"
-            DragItemsCompleted="Tag_ListView_DragItemsCompleted"
             ItemContainerStyle="{StaticResource ListViewItemExpanded}"
             SelectionMode="Multiple" />
     </Grid>

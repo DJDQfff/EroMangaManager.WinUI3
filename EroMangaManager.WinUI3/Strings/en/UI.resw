@@ -369,6 +369,9 @@
   <data name="NameWithoutBrackets" xml:space="preserve">
     <value>NameWithoutBrackets</value>
   </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
