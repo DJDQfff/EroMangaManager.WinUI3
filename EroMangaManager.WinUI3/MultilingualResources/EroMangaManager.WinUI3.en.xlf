@@ -44,7 +44,7 @@
         </trans-unit>
         <trans-unit id="Author" translate="yes" xml:space="preserve">
           <source>作者</source>
-          <target state="new">作者</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">author</target>
         </trans-unit>
       </group>
     </body>
@@ -411,19 +411,19 @@
         </trans-unit>
         <trans-unit id="NameWithoutBrackets" translate="yes" xml:space="preserve">
           <source>文件名无括号</source>
-          <target state="new">文件名无括号</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">The file name is unparenthesed</target>
         </trans-unit>
         <trans-unit id="AddCategory" translate="yes" xml:space="preserve">
           <source>添加分类</source>
-          <target state="new">添加分类</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Add a taxonomy</target>
         </trans-unit>
         <trans-unit id="UnCategoryed" translate="yes" xml:space="preserve">
           <source>未分类</source>
-          <target state="new">未分类</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Uncategorized</target>
         </trans-unit>
         <trans-unit id="Save" translate="yes" xml:space="preserve">
           <source>保存</source>
-          <target state="new">保存</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Save</target>
         </trans-unit>
       </group>
     </body>
