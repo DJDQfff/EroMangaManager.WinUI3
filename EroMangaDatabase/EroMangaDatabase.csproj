@@ -7,12 +7,14 @@
 
 	<ItemGroup>
 	  <None Remove="author.txt" />
+	  <None Remove="translator.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Include="author.txt">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="translator.txt" />
 	</ItemGroup>
 
 	<ItemGroup>

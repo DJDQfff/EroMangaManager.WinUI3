@@ -141,4 +141,7 @@
   <data name="Author" xml:space="preserve">
     <value>author</value>
   </data>
+  <data name="Translator" xml:space="preserve">
+    <value>Translator</value>
+  </data>
 </root>

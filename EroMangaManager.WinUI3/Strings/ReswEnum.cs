@@ -14,6 +14,7 @@
     public enum Strings
     {
         Author,
+        Translator,
 
         ///<summary></summary>
         ContainInvalaidChar,

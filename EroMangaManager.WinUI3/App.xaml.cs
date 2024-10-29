@@ -11,7 +11,7 @@ namespace EroMangaManager.WinUI3;
 public partial class App : Application
 {
     public Window MainWindow;
-    internal static new App Current;
+    internal new static App Current;
     internal ObservableCollectionVM GlobalViewModel { get; private set; }
 
     internal SettingViewModel AppConfig { get; private set; }
@@ -22,7 +22,7 @@ public partial class App : Application
     /// Initializes the singleton application object.  This is the first line of authored code
     /// executed, and as such is the logical equivalent of main() or WinMain().
     /// </summary>
-    public App()
+    public App ()
     {
         InitializeComponent();
 
@@ -33,7 +33,7 @@ public partial class App : Application
     /// Invoked when the application is launched.
     /// </summary>
     /// <param name="args">Details about the launch request and process.</param>
-    protected override async void OnLaunched(LaunchActivatedEventArgs args)
+    protected override async void OnLaunched (LaunchActivatedEventArgs args)
     {
         #region 快速执行
 
@@ -49,7 +49,7 @@ public partial class App : Application
         DatabaseConfig.ConnectingString = $"Data Source={LocalFolder}\\localdatabase.db";
         DatabaseController.Migrate();
 
-        AppConfigPath = Path.Combine(LocalFolder, "AppConfig.ini");
+        AppConfigPath = Path.Combine(LocalFolder , "AppConfig.ini");
         AppConfig = new SettingViewModel(AppConfigPath);
 
         var language = App.Current.AppConfig.AppConfig.General.LanguageIndex switch
@@ -58,13 +58,13 @@ public partial class App : Application
             _ => "zhCN"
         };
         Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue(
-            "Language",
+            "Language" ,
             language
         );
 
         CoverHelper.InitialDefaultCover();
 
-        EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
+        EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
 
         #region 事件赋值
 
@@ -117,6 +117,9 @@ public partial class App : Application
         DatabaseController.InitializeCategoryAuthor(
             ResourceLoader.GetForViewIndependentUse("Strings").GetString("Author")
         );
+        DatabaseController.InitializeCategoryTranslator(
+            ResourceLoader.GetForViewIndependentUse("Strings").GetString("Translator")
+        );
         await GlobalViewModel.InitialEachFolders();
 
         #endregion 需要后台执行
@@ -125,7 +128,7 @@ public partial class App : Application
     /// <summary>
     /// 初始化文件夹目录
     /// </summary>
-    private void InitializeGlobalViewModel()
+    private void InitializeGlobalViewModel ()
     {
         var folders = DatabaseController.MangaFolder_GetAllPaths().ToList();
         var defaultpath = AppConfig.AppConfig.General.DefaultBookcaseFolder;
@@ -134,13 +137,13 @@ public partial class App : Application
         if (f != null)
         {
             folders.Remove(f);
-            folders.Insert(0, f);
+            folders.Insert(0 , f);
         }
 
         GlobalViewModel.GetAllFolders(folders);
     }
 
-    private void Toast(string message)
+    private void Toast (string message)
     {
         new ToastContentBuilder().AddText(message).Show();
     }

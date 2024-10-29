@@ -11,7 +11,7 @@ namespace EroMangaDatabase
 {
     public partial class BasicController
     {
-        public void InitializeCategoryAuthor(string categoryname)
+        public void InitializeCategoryAuthor (string categoryname)
         {
             if (database.TagCategorys.FirstOrDefault(x => x.CategoryName == categoryname) != null)
             {
@@ -24,13 +24,31 @@ namespace EroMangaDatabase
             var a = sr.ReadToEnd();
             Debug.WriteLine(a);
 
-            var tagcategory = new TagCategory() { CategoryName = categoryname, Keywords = a };
+            var tagcategory = new TagCategory() { CategoryName = categoryname , Keywords = a };
+            database.TagCategorys.Add(tagcategory);
+            database.SaveChanges();
+        }
+
+        public void InitializeCategoryTranslator (string categoryname)
+        {
+            if (database.TagCategorys.FirstOrDefault(x => x.CategoryName == categoryname) != null)
+            {
+                return;
+            }
+            var assembly = typeof(BasicController).Assembly;
+
+            var txt = assembly.GetManifestResourceStream("EroMangaDatabase.translator.txt");
+            StreamReader sr = new StreamReader(txt);
+            var a = sr.ReadToEnd();
+            Debug.WriteLine(a);
+
+            var tagcategory = new TagCategory() { CategoryName = categoryname , Keywords = a };
             database.TagCategorys.Add(tagcategory);
             database.SaveChanges();
         }
 
         /// <summary> 并初始化默认数据 </summary>
-        public async Task InitializeDefaultData()
+        public async Task InitializeDefaultData ()
         {
             // 初始化数据
             List<string>[] vs = new List<string>[]
@@ -65,7 +83,7 @@ namespace EroMangaDatabase
                 {
                     string tagname = list[0];
                     list.RemoveAt(0);
-                    var one = EntityFactory.TagCategoryFactory.Creat(tagname, list);
+                    var one = EntityFactory.TagCategoryFactory.Creat(tagname , list);
                     database.TagCategorys.Add(one);
                 }
             }
