@@ -144,4 +144,7 @@
   <data name="Translator" xml:space="preserve">
     <value>译者</value>
   </data>
+  <data name="ChineseTranslateTeam" xml:space="preserve">
+    <value>汉化组</value>
+  </data>
 </root>

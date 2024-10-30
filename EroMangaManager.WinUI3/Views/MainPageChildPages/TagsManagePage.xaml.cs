@@ -1,5 +1,4 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-
 namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 {
     /// <summary>......................................................................................................................................................................
@@ -27,11 +26,29 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             MenuFlyout_SetValue();
         }
 
+        private void Button_Click (object sender , RoutedEventArgs e)
+        {
+            _ = viewmodel.AddCategory(NewCategoryTextBox.Text);
+        }
+
         private void Category_ListVIew_ItemClick (object sender , ItemClickEventArgs e)
         {
             var a = e.ClickedItem as TagCategory;
             viewmodel.selectedTagCategory = a;
             Tag_ListView.ItemsSource = a.Tags;
+        }
+
+        private void ImportAssemblyCategory (object sender , RoutedEventArgs e)
+        {
+            var item = sender as MenuFlyoutItem;
+            var text = item.Text as string;
+            var a = DatabaseController.LoadCategoryFromAssembly(text);
+
+            var b = viewmodel.AddCategory(text);
+            if (b is not null)
+            {
+                b.Keywords = a;
+            }
         }
 
         private void ListViewItem_Tapped (object sender , TappedRoutedEventArgs e)

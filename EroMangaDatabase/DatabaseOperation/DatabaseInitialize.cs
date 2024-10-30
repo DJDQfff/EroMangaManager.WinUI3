@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,42 +10,6 @@ namespace EroMangaDatabase
 {
     public partial class BasicController
     {
-        public void InitializeCategoryAuthor (string categoryname)
-        {
-            if (database.TagCategorys.FirstOrDefault(x => x.CategoryName == categoryname) != null)
-            {
-                return;
-            }
-            var assembly = typeof(BasicController).Assembly;
-
-            var txt = assembly.GetManifestResourceStream("EroMangaDatabase.author.txt");
-            StreamReader sr = new StreamReader(txt);
-            var a = sr.ReadToEnd();
-            Debug.WriteLine(a);
-
-            var tagcategory = new TagCategory() { CategoryName = categoryname , Keywords = a };
-            database.TagCategorys.Add(tagcategory);
-            database.SaveChanges();
-        }
-
-        public void InitializeCategoryTranslator (string categoryname)
-        {
-            if (database.TagCategorys.FirstOrDefault(x => x.CategoryName == categoryname) != null)
-            {
-                return;
-            }
-            var assembly = typeof(BasicController).Assembly;
-
-            var txt = assembly.GetManifestResourceStream("EroMangaDatabase.translator.txt");
-            StreamReader sr = new StreamReader(txt);
-            var a = sr.ReadToEnd();
-            Debug.WriteLine(a);
-
-            var tagcategory = new TagCategory() { CategoryName = categoryname , Keywords = a };
-            database.TagCategorys.Add(tagcategory);
-            database.SaveChanges();
-        }
-
         /// <summary> 并初始化默认数据 </summary>
         public async Task InitializeDefaultData ()
         {
@@ -88,6 +51,17 @@ namespace EroMangaDatabase
                 }
             }
             await database.SaveChangesAsync();
+        }
+
+        public string LoadCategoryFromAssembly (string enbededResourceFileName)
+        {
+            var assembly = typeof(BasicController).Assembly;
+
+            var txt = assembly.GetManifestResourceStream($"EroMangaDatabase.{enbededResourceFileName}.txt");
+            StreamReader sr = new StreamReader(txt);
+            var a = sr.ReadToEnd();
+            sr.Close();
+            return a;
         }
     }
 }

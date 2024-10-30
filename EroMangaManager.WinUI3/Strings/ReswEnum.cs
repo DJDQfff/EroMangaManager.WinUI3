@@ -32,6 +32,8 @@
     ///<summary> </summary>
     public enum UI
     {
+        ChineseTranslateTeam,
+        Import,
         Rename,
         UnCategoryed,
         Save,

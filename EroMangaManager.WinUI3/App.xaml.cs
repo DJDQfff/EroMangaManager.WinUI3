@@ -114,12 +114,6 @@ public partial class App : Application
 
         #region 需要后台执行
 
-        DatabaseController.InitializeCategoryAuthor(
-            ResourceLoader.GetForViewIndependentUse("Strings").GetString("Author")
-        );
-        DatabaseController.InitializeCategoryTranslator(
-            ResourceLoader.GetForViewIndependentUse("Strings").GetString("Translator")
-        );
         await GlobalViewModel.InitialEachFolders();
 
         #endregion 需要后台执行

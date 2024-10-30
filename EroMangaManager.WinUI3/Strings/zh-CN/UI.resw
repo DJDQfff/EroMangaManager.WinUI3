@@ -378,4 +378,10 @@
   <data name="Rename" xml:space="preserve">
     <value>重命名</value>
   </data>
+  <data name="ChineseTranslateTeam" xml:space="preserve">
+    <value>汉化组</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>导入</value>
+  </data>
 </root>

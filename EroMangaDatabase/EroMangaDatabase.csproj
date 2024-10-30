@@ -6,15 +6,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="author.txt" />
-	  <None Remove="translator.txt" />
+	  <None Remove="作者.txt" />
+	  <None Remove="汉化组.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="author.txt">
+	  <EmbeddedResource Include="作者.txt">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
-	  <EmbeddedResource Include="translator.txt" />
+	  <EmbeddedResource Include="汉化组.txt" />
 	</ItemGroup>
 
 	<ItemGroup>

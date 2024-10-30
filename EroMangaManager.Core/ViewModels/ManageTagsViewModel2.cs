@@ -16,6 +16,11 @@ public partial class ManageTagsViewModel2
     }
 
     /// <summary>
+    /// 分类已存在时触发此事件
+    /// </summary>
+    public event Action<string> CategoryAlreadyExists;
+
+    /// <summary>
     /// 分类改变事件
     /// </summary>
     public event Action CategorysChanged;
@@ -57,11 +62,10 @@ public partial class ManageTagsViewModel2
     /// </summary>
     /// <param name="category"></param>
     /// <returns></returns>
-    [RelayCommand]
-    public void AddCategory (string category)
+    public TagCategory AddCategory (string category)
     {
         if (string.IsNullOrWhiteSpace(category))
-            return;
+            return null;
         if (CategoryTags.FirstOrDefault(x => x.CategoryName == category) is null)
         {
             var tagCategory = DatabaseController.TagCategory_AddCategorySingle(category);
@@ -69,6 +73,12 @@ public partial class ManageTagsViewModel2
             CategoryTags.Add(tagCategory);
 
             CategorysChanged?.Invoke();
+            return tagCategory;
+        }
+        else
+        {
+            CategoryAlreadyExists?.Invoke(category);
+            return null;
         }
     }
 
