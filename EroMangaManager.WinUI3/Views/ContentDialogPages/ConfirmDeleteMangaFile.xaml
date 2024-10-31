@@ -5,9 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
-    Title="{uid:UI Uid=DeleteFile}"
-    PrimaryButtonText="{uid:UI Uid=Yes}"
-    SecondaryButtonText="{uid:UI Uid=No}"
+    Title="{uid:Strings Uid=DeleteFile}"
+    PrimaryButtonText="{uid:Strings Uid=Yes}"
+    SecondaryButtonText="{uid:Strings Uid=No}"
     mc:Ignorable="d">
     <ContentDialog.Resources>
         <Style TargetType="TextBlock">

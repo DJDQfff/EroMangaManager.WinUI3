@@ -72,7 +72,7 @@ public partial class App : Application
         {
             new ToastContentBuilder()
                 .AddText(
-                    $"{str}\r{ResourceLoader.GetForViewIndependentUse("Strings").GetString("ErrorString1")}"
+                    $"{str}\r{ResourceLoader.GetForViewIndependentUse().GetString("ErrorString1")}"
                 )
                 .Show();
         };

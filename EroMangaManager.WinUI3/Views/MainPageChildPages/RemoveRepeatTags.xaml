@@ -87,12 +87,12 @@
                                     Grid.Row="0"
                                     HorizontalAlignment="Stretch"
                                     Click="SingleMangaBookRename_New"
-                                    Content="{uid:UI Uid=RenameFile}" />
+                                    Content="{uid:Strings Uid=RenameFile}" />
                                 <Button
                                     Grid.Row="1"
                                     HorizontalAlignment="Stretch"
                                     Click="Button_Click"
-                                    Content="{uid:UI Uid=Remove}" />
+                                    Content="{uid:Strings Uid=Remove}" />
                             </StackPanel>
                         </Grid>
 

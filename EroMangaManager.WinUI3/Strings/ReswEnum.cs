@@ -1,18 +1,72 @@
 ﻿namespace EroMangaManager.WinUI3.LocalizationWords
 {
     ///<summary> </summary>
-    public enum Appxmanifest
-    {
+    public enum Strings
+    {        ///<summary></summary>
+        Answer_SupportedType,
+
+        ///<summary></summary>
+        Answer_WhatISTheApp,
+
+        ///<summary></summary>
+        Answer_WhyZipRatherFolder,
+
+        ///<summary></summary>
+        Description_20221219,
+
+        ///<summary></summary>
+        Description_20221226,
+
+        ///<summary></summary>
+        Description_20230109,
+
+        ///<summary></summary>
+        Description_20230125,
+
+        ///<summary></summary>
+        Description_20230205,
+
+        ///<summary></summary>
+        Description_before,
+
+        ///<summary></summary>
+        Question_SupportedType,
+
+        ///<summary></summary>
+        Question_WhatISTheApp,
+
+        ///<summary></summary>
+        Question_WhyZipRatherFolder,
+
+        ///<summary></summary>
+        Version_20221219,
+
+        ///<summary></summary>
+        Version_20221226,
+
+        ///<summary></summary>
+        Version_20230109,
+
+        ///<summary></summary>
+        Version_20230125,
+
+        ///<summary></summary>
+        Version_20230205,
+
+        ///<summary></summary>
+        Version_before,
+
+        Question_MangaLibrary,
+        Question_Tag,
+        Answer_Tag,
+        Answer_MangaLibrary,
+
         ///<summary></summary>
         AppDisplayName,
 
         ///<summary></summary>
         Description,
-    }
 
-    ///<summary> </summary>
-    public enum Strings
-    {
         Author,
         Translator,
 
@@ -27,11 +81,7 @@
 
         ///<summary></summary>
         ExportDone,
-    }
 
-    ///<summary> </summary>
-    public enum UI
-    {
         ChineseTranslateTeam,
         Import,
         Rename,
@@ -255,21 +305,6 @@
     }
 
     ///<summary> </summary>
-    public class AppxmanifestExtension : MarkupExtension
-    {
-        ///<summary> </summary>
-        public Appxmanifest Uid { get; set; }
-
-        ///<summary> </summary>
-        protected override object ProvideValue ()
-        {
-            return ResourceLoader
-                .GetForViewIndependentUse("Appxmanifest")
-                .GetString(Uid.ToString());
-        }
-    }
-
-    ///<summary> </summary>
     public class StringsExtension : MarkupExtension
     {
         ///<summary> </summary>
@@ -278,101 +313,7 @@
         ///<summary> </summary>
         protected override object ProvideValue ()
         {
-            return ResourceLoader.GetForViewIndependentUse("Strings").GetString(Uid.ToString());
-        }
-    }
-
-    ///<summary> </summary>
-    public class UIExtension : MarkupExtension
-    {
-        ///<summary> </summary>
-        public UI Uid { get; set; }
-
-        ///<summary> </summary>
-        protected override object ProvideValue ()
-        {
-            return ResourceLoader.GetForViewIndependentUse("UI").GetString(Uid.ToString());
-        }
-    }
-}
-
-namespace EroMangaManager.WinUI3.LocalizationWords
-{
-    ///<summary> </summary>
-    public enum QuestionAndAnswers
-    {
-        ///<summary></summary>
-        Answer_SupportedType,
-
-        ///<summary></summary>
-        Answer_WhatISTheApp,
-
-        ///<summary></summary>
-        Answer_WhyZipRatherFolder,
-
-        ///<summary></summary>
-        Description_20221219,
-
-        ///<summary></summary>
-        Description_20221226,
-
-        ///<summary></summary>
-        Description_20230109,
-
-        ///<summary></summary>
-        Description_20230125,
-
-        ///<summary></summary>
-        Description_20230205,
-
-        ///<summary></summary>
-        Description_before,
-
-        ///<summary></summary>
-        Question_SupportedType,
-
-        ///<summary></summary>
-        Question_WhatISTheApp,
-
-        ///<summary></summary>
-        Question_WhyZipRatherFolder,
-
-        ///<summary></summary>
-        Version_20221219,
-
-        ///<summary></summary>
-        Version_20221226,
-
-        ///<summary></summary>
-        Version_20230109,
-
-        ///<summary></summary>
-        Version_20230125,
-
-        ///<summary></summary>
-        Version_20230205,
-
-        ///<summary></summary>
-        Version_before,
-
-        Question_MangaLibrary,
-        Question_Tag,
-        Answer_Tag,
-        Answer_MangaLibrary
-    }
-
-    ///<summary> </summary>
-    public class QuestionAndAnswersExtension : MarkupExtension
-    {
-        ///<summary> </summary>
-        public QuestionAndAnswers Uid { get; set; }
-
-        ///<summary> </summary>
-        protected override object ProvideValue ()
-        {
-            return ResourceLoader
-                .GetForViewIndependentUse("QuestionAndAnswers")
-                .GetString(Uid.ToString());
+            return ResourceLoader.GetForViewIndependentUse().GetString(Uid.ToString());
         }
     }
 }

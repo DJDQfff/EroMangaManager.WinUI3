@@ -9,9 +9,7 @@
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
     Background="Transparent"
     mc:Ignorable="d">
-
     <Grid>
-
         <FlipView
             x:Name="FLIP"
             SelectionChanged="FLIP_SelectionChanged_ByEntry"
@@ -21,8 +19,8 @@
                     <Grid>
                         <Grid.ContextFlyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem Click="FilteThisImageByEntry" Text="{uid:UI Uid=DontShowThisImage}" />
-                                <MenuFlyoutItem Click="SaveImageByEntry" Text="{uid:UI Uid=SaveAs}" />
+                                <MenuFlyoutItem Click="FilteThisImageByEntry" Text="{uid:Strings Uid=DontShowThisImage}" />
+                                <MenuFlyoutItem Click="SaveImageByEntry" Text="{uid:Strings Uid=SaveAs}" />
                             </MenuFlyout>
                         </Grid.ContextFlyout>
                         <ScrollViewer
@@ -47,14 +45,12 @@
                 </Style>
             </FlipView.ItemContainerStyle>
         </FlipView>
-
         <Grid x:Name="ControlsGrid">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-
             <CommandBar
                 x:Name="ReadPageCommand"
                 Grid.Row="0"

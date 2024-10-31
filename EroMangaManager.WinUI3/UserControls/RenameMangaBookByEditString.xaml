@@ -72,7 +72,7 @@
                 x:Name="RenameButton"
                 Grid.Row="3"
                 Click="RenameButton_Click"
-                Content="{uid:UI Uid=RenameFile}" />
+                Content="{uid:Strings Uid=RenameFile}" />
 
 
         </Grid>

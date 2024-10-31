@@ -14,7 +14,7 @@
         <StandardUICommand
             x:Name="AddFolderCommand"
             ExecuteRequested="AddFolder"
-            Label="{uid:UI Uid=AddAFolder}">
+            Label="{uid:Strings Uid=AddAFolder}">
             <StandardUICommand.IconSource>
                 <SymbolIconSource Symbol="Add" />
             </StandardUICommand.IconSource>
@@ -25,27 +25,27 @@
                 VerticalAlignment="Center"
                 Click="SetAsDefaultBookcaseFolder_Click"
                 Icon="Pin"
-                Text="{uid:UI Uid=SetAsDefaultBookcaseFolder}" />
+                Text="{uid:Strings Uid=SetAsDefaultBookcaseFolder}" />
 
             <MenuFlyoutItem
                 x:Name="JumpToBookcaseButton"
                 VerticalAlignment="Center"
                 Click="JumpToBookcaseButton_Click"
                 Icon="Read"
-                Text="{uid:UI Uid=ShowFolderBookcase}" />
+                Text="{uid:Strings Uid=ShowFolderBookcase}" />
 
             <MenuFlyoutItem
                 x:Name="OpenFolderItem"
                 VerticalAlignment="Center"
                 Click="OpenFolderItem_Click"
                 Icon="Folder"
-                Text="{uid:UI Uid=OpenFolder}" />
-            <MenuFlyoutItem Click="LoadSubDIrectory" Text="{uid:UI Uid=LoadSubDirectory}" />
+                Text="{uid:Strings Uid=OpenFolder}" />
+            <MenuFlyoutItem Click="LoadSubDIrectory" Text="{uid:Strings Uid=LoadSubDirectory}" />
             <MenuFlyoutItem
                 x:Name="RemoveFolderButton"
                 Click="RemoveFolderButton_Click"
                 Icon="Remove"
-                Text="{uid:UI Uid=RemoveFolder}" />
+                Text="{uid:Strings Uid=RemoveFolder}" />
         </MenuFlyout>
     </Page.Resources>
 
@@ -79,10 +79,10 @@
                 <ToggleSwitch
                     x:Name="temp"
                     x:Load="False"
-                    Header="{uid:UI Uid=IsEmptyFolderShow}"
+                    Header="{uid:Strings Uid=IsEmptyFolderShow}"
                     Loaded="ToggleSwitch_Loaded"
-                    OffContent="{uid:UI Uid=No}"
-                    OnContent="{uid:UI Uid=Yes}"
+                    OffContent="{uid:Strings Uid=No}"
+                    OnContent="{uid:Strings Uid=Yes}"
                     Toggled="ToggleSwitch_Toggled" />
             </StackPanel>
         </Grid>
@@ -92,7 +92,7 @@
             Grid.Row="3"
             HorizontalAlignment="Center"
             Style="{StaticResource HintTextBlockStyle}"
-            Text="{uid:UI Uid=NoFoldersPleaseAddFirst}"
+            Text="{uid:Strings Uid=NoFoldersPleaseAddFirst}"
             Visibility="{x:Bind app:App.Current.GlobalViewModel.MangaFolders.Count, Converter={StaticResource controlvisibilityconverter}, Mode=OneWay}" />
 
         <ListView

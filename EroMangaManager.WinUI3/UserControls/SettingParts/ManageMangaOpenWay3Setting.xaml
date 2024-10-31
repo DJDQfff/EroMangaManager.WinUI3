@@ -11,7 +11,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <setting:SettingsExpander x:Name="MangaOpenWay" Header="{uid:UI Uid=MangaOpenWay}">
+        <setting:SettingsExpander x:Name="MangaOpenWay" Header="{uid:Strings Uid=MangaOpenWay}">
             <setting:SettingsExpander.ItemsHeader>
                 <RadioButtons ItemsSource="{x:Bind SettingVM.ExePaths, Mode=OneWay}" SelectedIndex="{x:Bind SettingVM.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}">
                     <RadioButtons.ItemTemplate>
@@ -22,7 +22,7 @@
                                         <MenuFlyoutItem
                                             Click="MenuFlyoutItem_Click"
                                             DataContext="{x:Bind}"
-                                            Text="{uid:UI Uid=Remove}" />
+                                            Text="{uid:Strings Uid=Remove}" />
                                     </MenuFlyout>
                                 </RadioButton.ContextFlyout>
                             </RadioButton>
@@ -34,7 +34,7 @@
                 <Button
                     HorizontalAlignment="Stretch"
                     Click="Button_Click"
-                    Content="{uid:UI Uid=AddExe}" />
+                    Content="{uid:Strings Uid=AddExe}" />
             </setting:SettingsExpander.ItemsFooter>
         </setting:SettingsExpander>
     </Grid>

@@ -19,10 +19,10 @@
             <ToggleSwitch
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Left"
-                Header="{uid:UI Uid=WhetherOpenFilterImageFunction}"
+                Header="{uid:Strings Uid=WhetherOpenFilterImageFunction}"
                 Loaded="ToggleSwitch_Loaded"
-                OffContent="{uid:UI Uid=No}"
-                OnContent="{uid:UI Uid=Yes}"
+                OffContent="{uid:Strings Uid=No}"
+                OnContent="{uid:Strings Uid=Yes}"
                 Toggled="ToggleSwitch_Toggled" />
         </StackPanel>
         <GridView
@@ -47,7 +47,7 @@
             VerticalAlignment="Top"
             Click="Button_Click">
             <StackPanel Orientation="Horizontal">
-                <TextBlock VerticalAlignment="Center" Text="{uid:UI Uid=SetBack}" />
+                <TextBlock VerticalAlignment="Center" Text="{uid:Strings Uid=SetBack}" />
                 <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x2714;" />
             </StackPanel>
         </Button>

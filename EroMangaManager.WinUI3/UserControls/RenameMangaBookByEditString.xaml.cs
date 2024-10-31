@@ -87,7 +87,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl
         {
             // 检查文件名是非为空
 
-            hinttextblock.Text = ResourceLoader.GetForViewIndependentUse("Strings").GetString("DontUseEmptyString");
+            hinttextblock.Text = ResourceLoader.GetForViewIndependentUse().GetString("DontUseEmptyString");
             IsNewnameOK = false;
             RenameButton.IsEnabled = false;
             WrongInput?.Invoke();
@@ -97,7 +97,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl
         {
             // 检查文件是否含有非法字符
 
-            hinttextblock.Text = ResourceLoader.GetForViewIndependentUse("Strings").GetString("ContainInvalaidChar");
+            hinttextblock.Text = ResourceLoader.GetForViewIndependentUse().GetString("ContainInvalaidChar");
             IsNewnameOK = false;
             RenameButton.IsEnabled = false;
             WrongInput?.Invoke();

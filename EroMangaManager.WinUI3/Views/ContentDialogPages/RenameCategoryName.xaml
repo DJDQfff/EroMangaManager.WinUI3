@@ -8,9 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    CloseButtonText="{uid:UI Uid=Close}"
+    CloseButtonText="{uid:Strings Uid=Close}"
     IsPrimaryButtonEnabled="{x:Bind CheckNameValid(RenameBox.Text), Mode=OneWay}"
-    PrimaryButtonText="{uid:UI Uid=Rename}"
+    PrimaryButtonText="{uid:Strings Uid=Rename}"
     mc:Ignorable="d">
 
     <Grid>

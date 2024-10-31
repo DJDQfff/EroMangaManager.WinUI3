@@ -40,20 +40,20 @@
                                                 HorizontalAlignment="Stretch"
                                                 Command="{x:Bind commands:MangaBookCommands.Instance.OpenManga}"
                                                 CommandParameter="{x:Bind}"
-                                                Content="{uid:UI Uid=Open}" />
+                                                Content="{uid:Strings Uid=Open}" />
                                             <Button
                                                 HorizontalAlignment="Stretch"
                                                 Click="DeleteFileClick"
-                                                Content="{uid:UI Uid=DeleteIt}" />
+                                                Content="{uid:Strings Uid=DeleteIt}" />
                                             <Button
                                                 HorizontalAlignment="Stretch"
                                                 Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
                                                 CommandParameter="{x:Bind}"
-                                                Content="{uid:UI Uid=OpenFolder}" />
+                                                Content="{uid:Strings Uid=OpenFolder}" />
                                             <Button
                                                 Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
                                                 CommandParameter="{x:Bind}"
-                                                Content="{uid:UI Uid=RenameFile}" />
+                                                Content="{uid:Strings Uid=RenameFile}" />
 
                                         </StackPanel>
                                     </Grid>

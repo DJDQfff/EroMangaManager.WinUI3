@@ -14,12 +14,12 @@ internal class StorageOperation
         try
         {
             await Task.Run(() => Exporter.ExportAsPDF(mangaBook , storageFile.Path));
-            string done = ResourceLoader.GetForViewIndependentUse("Strings").GetString("ExportDone");
+            string done = ResourceLoader.GetForViewIndependentUse().GetString("ExportDone");
             App.Current.GlobalViewModel.WorkDone(done);
         }
         catch
         {
-            string failed = ResourceLoader.GetForViewIndependentUse("Strings").GetString("ExportFailed");
+            string failed = ResourceLoader.GetForViewIndependentUse().GetString("ExportFailed");
             App.Current.GlobalViewModel.WorkFailed(failed);
         }
 

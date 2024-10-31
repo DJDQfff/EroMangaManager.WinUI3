@@ -14,7 +14,7 @@ public sealed partial class MainWindow : Window
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(newtitlebar);
         AppWindow.SetIcon(CoverHelper.DefaultCoverPath);
-        Title = ResourceLoader.GetForViewIndependentUse("Appxmanifest").GetString("AppDisplayName");
+        Title = ResourceLoader.GetForViewIndependentUse().GetString("AppDisplayName");
         MainWindowFrame.Navigate(typeof(MainPage));
     }
 }

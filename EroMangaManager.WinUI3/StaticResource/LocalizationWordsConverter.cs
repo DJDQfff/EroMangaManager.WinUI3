@@ -7,7 +7,7 @@
         {
             return value switch
             {
-                "InternalReadPage" or "OSRelated" => ResourceLoader.GetForViewIndependentUse("UI").GetString(value as string),
+                "InternalReadPage" or "OSRelated" => ResourceLoader.GetForViewIndependentUse().GetString(value as string),
                 string => value as string,
                 _ => null,
             };

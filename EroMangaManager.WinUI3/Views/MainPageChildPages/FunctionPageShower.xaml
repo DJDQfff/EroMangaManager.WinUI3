@@ -16,7 +16,7 @@
             x:Name="BackButton"
             x:Load="False"
             Click="BackButton_Click"
-            Content="{uid:UI Uid=SetBack}"
+            Content="{uid:Strings Uid=SetBack}"
             IsEnabled="{x:Bind FunctionFrame.CanGoBack, Mode=OneWay}" />
 
         <Frame
@@ -31,7 +31,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock
                     Style="{StaticResource HintTextBlockStyle}"
-                    Text="{uid:UI Uid=NowInitializingMaybeError}"
+                    Text="{uid:Strings Uid=NowInitializingMaybeError}"
                     Visibility="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing, Mode=OneTime, Converter={StaticResource controlvisibilityconverter}}" />
 
                 <GridView Grid.Row="1">
@@ -45,14 +45,14 @@
                         x:Name="Function_FindSameMangaName"
                         Background="{x:Bind Converter={StaticResource randomcolor}, Mode=OneTime}"
                         Click="Button_Click"
-                        Content="{uid:UI Uid=FindSameMangaByName}"
+                        Content="{uid:Strings Uid=FindSameMangaByName}"
                         Style="{StaticResource FunctionShowControl}" />
                     <Button
                         x:Name="Function_RemoveRepeatTags"
                         HorizontalAlignment="Stretch"
                         Background="{x:Bind Converter={StaticResource randomcolor}, Mode=OneTime}"
                         Click="Button_Click"
-                        Content="{uid:UI Uid=RemoveRepeatTags}"
+                        Content="{uid:Strings Uid=RemoveRepeatTags}"
                         Style="{StaticResource FunctionShowControl}" />
                 </GridView>
             </Grid>

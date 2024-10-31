@@ -16,12 +16,10 @@
         <DataTemplate x:Key="BookcaseTemplate1" x:DataType="models:MangaBook">
             <usercontrols:MangaBookCoverTags MangaBook="{x:Bind}" />
         </DataTemplate>
-
         <DataTemplate x:Key="BookcaseTemplate0" x:DataType="models:MangaBook">
             <usercontrols:MangaBookBriefInfo MangaBook="{x:Bind}" />
         </DataTemplate>
     </Page.Resources>
-
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -34,7 +32,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Style="{StaticResource HintTextBlockStyle}"
-            Text="{uid:UI Uid=NoSelectedFolder}"
+            Text="{uid:Strings Uid=NoSelectedFolder}"
             Visibility="Visible" />
         <CommandBar
             x:Name="BookcaseCommandBar"
@@ -46,7 +44,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     HorizontalTextAlignment="Center"
-                    Text="{x:Bind MangasGroup.ShowString,Mode=OneWay}"
+                    Text="{x:Bind MangasGroup.ShowString, Mode=OneWay}"
                     TextAlignment="Center" />
             </CommandBar.Content>
             <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
@@ -55,7 +53,7 @@
             <AppBarButton
                 AllowFocusOnInteraction="True"
                 Icon="Switch"
-                Label="{uid:UI Uid=SwitchViewMode}">
+                Label="{uid:Strings Uid=SwitchViewMode}">
                 <AppBarButton.Flyout>
                     <Flyout>
                         <ListBox
@@ -63,25 +61,23 @@
                             Background="Transparent"
                             SelectionChanged="DataTemplateList_SelectionChanged"
                             SelectionMode="Single">
-                            <ListBoxItem Content="{uid:UI Uid=ThumanailViewMode}" />
-                            <ListBoxItem Content="{uid:UI Uid=TagsViewMode}" />
+                            <ListBoxItem Content="{uid:Strings Uid=ThumanailViewMode}" />
+                            <ListBoxItem Content="{uid:Strings Uid=TagsViewMode}" />
                         </ListBox>
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
-
             <AppBarButton
                 Click="Order"
                 Icon="Sort"
-                Label="{uid:UI Uid=ChangeSortMethod}" />
+                Label="{uid:Strings Uid=ChangeSortMethod}" />
             <AppBarButton
                 x:Name="TranslateButton"
                 x:Load="False"
                 Click="TranslateEachMangaName"
                 Icon="Font"
-                Label="{uid:UI Uid=Translate}" />
+                Label="{uid:Strings Uid=Translate}" />
         </CommandBar>
-
         <GridView
             x:Name="Bookcase_GridView"
             Grid.Row="1"
@@ -90,9 +86,6 @@
             IsItemClickEnabled="True"
             ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
             Loaded="Bookcase_GridView_Loaded"
-            SelectionMode="Single">
-
-        </GridView>
-
+            SelectionMode="Single" />
     </Grid>
 </Page>

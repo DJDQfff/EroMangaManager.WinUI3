@@ -2,16 +2,13 @@
 
 internal class MangaBookCommands
 {
+    public StandardUICommand ExportPDF = new();
+    public StandardUICommand OpenFolderInOutside = new(StandardUICommandKind.Open);
+    public StandardUICommand OpenManga = new(StandardUICommandKind.Open);
+    public StandardUICommand StorageCommandDelete = new(StandardUICommandKind.Delete);
+    public StandardUICommand StorageCommandRename = new();
     public static MangaBookCommands Instance { get; set; }
 
-    public StandardUICommand OpenFolderInOutside = new(StandardUICommandKind.Open);
-
-    public StandardUICommand StorageCommandDelete = new(StandardUICommandKind.Delete);
-
-    public StandardUICommand StorageCommandRename = new();
-
-    public StandardUICommand OpenManga = new(StandardUICommandKind.Open);
-    public StandardUICommand ExportPDF = new();
     public static void Initial ()
     {
         Instance ??= new();
@@ -51,13 +48,11 @@ internal class MangaBookCommands
 
         Instance.StorageCommandRename.ExecuteRequested += async (sender , args) =>
         {
-
             switch (args.Parameter)
             {
                 case MangaBook book:
                     await DialogHelper.RenameSourceFileInDialog(book);
                     break;
-
             }
         };
         Instance.StorageCommandRename.IconSource = new SymbolIconSource()
@@ -101,7 +96,7 @@ internal class MangaBookCommands
                     catch (Exception)
                     {
                         new ToastContentBuilder()
-        .AddText($"{book.MangaName}\r{ResourceLoader.GetForViewIndependentUse("Strings").GetString("OpenFailed")}")
+        .AddText($"{book.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}")
         .Show();
                     }
                 }
@@ -120,8 +115,5 @@ internal class MangaBookCommands
         {
             Symbol = Symbol.Save ,
         };
-
     }
-
-
 }

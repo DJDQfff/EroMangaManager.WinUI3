@@ -33,7 +33,7 @@
                     Grid.Row="0"
                     VerticalAlignment="Top"
                     VerticalContentAlignment="Stretch"
-                    Header="{uid:UI Uid=SearchByMangaName}"
+                    Header="{uid:Strings Uid=SearchByMangaName}"
                     QueryIcon="Find"
                     TextChanged="MangaNameAugoSuggestBox_TextChanged" />
                 <toolkit:TokenizingTextBox
@@ -41,7 +41,7 @@
                     Grid.Row="1"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Header="{uid:UI Uid=SearchByTag}"
+                    Header="{uid:Strings Uid=SearchByTag}"
                     TextChanged="MangaTagTokenBox_TextChanged"
                     TokenDelimiter="+"
                     TokenItemAdded="MangaTagTokenBox_TokenItemAdded"
@@ -67,11 +67,11 @@
                 x:Name="SearchStartButton"
                 VerticalAlignment="Stretch"
                 Click="SearchStartButton_Click"
-                Content="{uid:UI Uid=Search}" />
+                Content="{uid:Strings Uid=Search}" />
             <Button
                 x:Name="ShowInBookcaseButton"
                 Click="ShowInBookcaseButton_Click"
-                Content="{uid:UI Uid=ShowFolderBookcase}" />
+                Content="{uid:Strings Uid=ShowFolderBookcase}" />
         </StackPanel>
         <GridView x:Name="ResultGridView" Grid.Row="2">
             <GridView.ItemTemplate>

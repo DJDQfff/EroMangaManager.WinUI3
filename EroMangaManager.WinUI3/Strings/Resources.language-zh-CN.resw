@@ -120,11 +120,38 @@
   <data name="AddAFolder" xml:space="preserve">
     <value>添加文件夹</value>
   </data>
+  <data name="AddCategory" xml:space="preserve">
+    <value>添加分类</value>
+  </data>
   <data name="AddExe" xml:space="preserve">
     <value>添加exe</value>
   </data>
+  <data name="Answer_MangaLibrary" xml:space="preserve">
+    <value>按文件夹对本子进行区分管理</value>
+  </data>
+  <data name="Answer_SupportedType" xml:space="preserve">
+    <value>zip和7z。对于保存本子而言，zip是个最好的选择。其他格式（如rar，7z）当然可以，但并不是最优解。zip格式是一种免费开源的压缩档案格式，windows内置支持zip，具有较好的解压缩速度和压缩率。</value>
+  </data>
+  <data name="Answer_Tag" xml:space="preserve">
+    <value>本子标签从本子名读取。如文件"[玉砂糖] キミ色保護色 (COMIC BAVEL 2021年6月号) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip"，在本软件中，包含在一对括号中的内容将被识别为Tag，未包含在括号中的内容将被识别为本子名称。这不一定100%正确识别。</value>
+  </data>
+  <data name="Answer_WhatISTheApp" xml:space="preserve">
+    <value>这是一个用于管理本地收藏的压缩格式的本子的软件。如果你不知道什么是本子，那么你大概率用不上本软件。</value>
+  </data>
+  <data name="Answer_WhyZipRatherFolder" xml:space="preserve">
+    <value>使用文件夹，会有大量散乱的单个图片文件。大量零散文件及其不容易管理（如复制粘贴时会拖累系统速度），而且也利于收藏。</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>本子管理器</value>
+  </data>
   <data name="AppUILanguage" xml:space="preserve">
     <value>语言</value>
+  </data>
+  <data name="AppUILanguage1" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>作者</value>
   </data>
   <data name="Bookcase" xml:space="preserve">
     <value>书架</value>
@@ -138,6 +165,12 @@
   <data name="ChangeSortMethod" xml:space="preserve">
     <value>切换排序</value>
   </data>
+  <data name="ChineseTranslateTeam" xml:space="preserve">
+    <value>汉化组</value>
+  </data>
+  <data name="ChineseTranslateTeam1" xml:space="preserve">
+    <value>汉化组</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>关闭</value>
   </data>
@@ -146,6 +179,9 @@
   </data>
   <data name="ConfirmEdit" xml:space="preserve">
     <value>确认调整</value>
+  </data>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>包含非法字符</value>
   </data>
   <data name="CustomExe" xml:space="preserve">
     <value>自定义exe</value>
@@ -171,8 +207,32 @@
   <data name="DeleteSourceFile" xml:space="preserve">
     <value>删除源文件</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png、webp格式</value>
+  </data>
+  <data name="Description_20221219" xml:space="preserve">
+    <value>添加导出PDF功能</value>
+  </data>
+  <data name="Description_20221226" xml:space="preserve">
+    <value>修复了一些bug;添加更新日志</value>
+  </data>
+  <data name="Description_20230109" xml:space="preserve">
+    <value>添加重复本子查找功能</value>
+  </data>
+  <data name="Description_20230125" xml:space="preserve">
+    <value>阅读页面全屏功能；默认书架</value>
+  </data>
+  <data name="Description_20230205" xml:space="preserve">
+    <value>优化启动速度</value>
+  </data>
+  <data name="Description_before" xml:space="preserve">
+    <value>更早的记录</value>
+  </data>
   <data name="DontShowThisImage" xml:space="preserve">
     <value>不显示此图</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>请勿使用空内容</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>编辑</value>
@@ -180,8 +240,17 @@
   <data name="en" xml:space="preserve">
     <value>英文</value>
   </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>出错啦，无法打开</value>
+  </data>
   <data name="ErrorZips" xml:space="preserve">
     <value>异常Zip</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>导出完成</value>
+  </data>
+  <data name="ExportFailed" xml:space="preserve">
+    <value>导出失败</value>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
     <value>导出为PDF</value>
@@ -206,6 +275,9 @@
   </data>
   <data name="GitHubFeedBack" xml:space="preserve">
     <value>Github反馈</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>导入</value>
   </data>
   <data name="InternalReadPage" xml:space="preserve">
     <value>内置阅读页</value>
@@ -261,6 +333,12 @@
   <data name="Open" xml:space="preserve">
     <value>打开</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>作为zip压缩包漫画打开</value>
+  </data>
+  <data name="OpenFailed" xml:space="preserve">
+    <value>打开失败</value>
+  </data>
   <data name="OpenFile" xml:space="preserve">
     <value>打开文件</value>
   </data>
@@ -285,6 +363,21 @@
   <data name="PinnedFolders" xml:space="preserve">
     <value>已固定文件夹</value>
   </data>
+  <data name="Question_MangaLibrary" xml:space="preserve">
+    <value>本子库</value>
+  </data>
+  <data name="Question_SupportedType" xml:space="preserve">
+    <value>支持的类型</value>
+  </data>
+  <data name="Question_Tag" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="Question_WhatISTheApp" xml:space="preserve">
+    <value>这是什么软件？</value>
+  </data>
+  <data name="Question_WhyZipRatherFolder" xml:space="preserve">
+    <value>为什么使用压缩格式而不是文件夹</value>
+  </data>
   <data name="Refresh" xml:space="preserve">
     <value>刷新</value>
   </data>
@@ -297,8 +390,14 @@
   <data name="RemoveRepeatTags" xml:space="preserve">
     <value>移除重复本子标签</value>
   </data>
+  <data name="Rename" xml:space="preserve">
+    <value>重命名</value>
+  </data>
   <data name="RenameFile" xml:space="preserve">
     <value>重命名文件</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
   </data>
   <data name="SaveAs" xml:space="preserve">
     <value>另存为</value>
@@ -345,11 +444,35 @@
   <data name="Translate" xml:space="preserve">
     <value>翻译</value>
   </data>
+  <data name="Translator" xml:space="preserve">
+    <value>译者</value>
+  </data>
+  <data name="UnCategoryed" xml:space="preserve">
+    <value>未分类</value>
+  </data>
   <data name="UpdateRecords" xml:space="preserve">
     <value>更新记录</value>
   </data>
   <data name="Usage" xml:space="preserve">
     <value>使用说明</value>
+  </data>
+  <data name="Version_20221219" xml:space="preserve">
+    <value>2022.12.19</value>
+  </data>
+  <data name="Version_20221226" xml:space="preserve">
+    <value>2022.12.26</value>
+  </data>
+  <data name="Version_20230109" xml:space="preserve">
+    <value>2023.01.09</value>
+  </data>
+  <data name="Version_20230125" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
+  <data name="Version_20230205" xml:space="preserve">
+    <value>2023.2.5</value>
+  </data>
+  <data name="Version_before" xml:space="preserve">
+    <value>更早的版本</value>
   </data>
   <data name="WhetherOpenFilterImageFunction" xml:space="preserve">
     <value>是否启用单页过滤功能（开启此功能将减慢漫画打开速度）</value>
@@ -366,22 +489,7 @@
   <data name="zhCN" xml:space="preserve">
     <value>简中</value>
   </data>
-  <data name="AddCategory" xml:space="preserve">
-    <value>添加分类</value>
-  </data>
-  <data name="UnCategoryed" xml:space="preserve">
-    <value>未分类</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>保存</value>
-  </data>
-  <data name="Rename" xml:space="preserve">
-    <value>重命名</value>
-  </data>
-  <data name="ChineseTranslateTeam" xml:space="preserve">
-    <value>汉化组</value>
-  </data>
-  <data name="Import" xml:space="preserve">
-    <value>导入</value>
+  <data name="ZipComic" xml:space="preserve">
+    <value>zip漫画包</value>
   </data>
 </root>

@@ -26,12 +26,12 @@
                                 Click="MenuFlyoutItem_Click_1"
                                 DataContext="{x:Bind}"
                                 Icon="Remove"
-                                Text="{uid:UI Uid=Remove}" />
+                                Text="{uid:Strings Uid=Remove}" />
                             <MenuFlyoutItem
                                 Click="RenameTagContentDialog"
                                 DataContext="{x:Bind}"
                                 Icon="Rename"
-                                Text="{uid:UI Uid=Rename}" />
+                                Text="{uid:Strings Uid=Rename}" />
                         </MenuFlyout>
                     </Button.Flyout>
                     <SymbolIcon Symbol="More" />
@@ -57,11 +57,11 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="{uid:UI Uid=Import}">
+                <Button Grid.Column="0" Content="{uid:Strings Uid=Import}">
                     <Button.Flyout>
                         <MenuFlyout>
                             <MenuFlyoutItem Click="ImportAssemblyCategory" Text="{uid:Strings Uid=Author}" />
-                            <MenuFlyoutItem Click="ImportAssemblyCategory" Text="{uid:UI Uid=ChineseTranslateTeam}" />
+                            <MenuFlyoutItem Click="ImportAssemblyCategory" Text="{uid:Strings Uid=ChineseTranslateTeam}" />
                         </MenuFlyout>
                     </Button.Flyout>
                 </Button>
@@ -72,11 +72,11 @@
                 <Button
                     Grid.Column="2"
                     Click="Button_Click"
-                    Content="{uid:UI Uid=AddCategory}" />
+                    Content="{uid:Strings Uid=AddCategory}" />
                 <Button
                     Grid.Column="3"
                     Command="{x:Bind viewmodel.SaveToDatabaseCommand}"
-                    Content="{uid:UI Uid=Save}" />
+                    Content="{uid:Strings Uid=Save}" />
             </Grid>
             <ListView
                 x:Name="Category_ListVIew"
@@ -86,7 +86,7 @@
                 ItemTemplate="{StaticResource entity}"
                 ItemsSource="{x:Bind viewmodel.CategoryTags, Mode=OneWay}">
                 <ListView.Header>
-                    <ListViewItem Content="{uid:UI Uid=UnCategoryed}" Tapped="ListViewItem_Tapped" />
+                    <ListViewItem Content="{uid:Strings Uid=UnCategoryed}" Tapped="ListViewItem_Tapped" />
                 </ListView.Header>
             </ListView>
         </Grid>
