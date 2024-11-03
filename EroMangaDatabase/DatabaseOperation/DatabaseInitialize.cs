@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 using EroMangaDatabase.Entities;
 
+using SharpCompress.Archives;
+using SharpCompress.Readers;
+
 namespace EroMangaDatabase
 {
     public partial class BasicController
@@ -57,8 +60,22 @@ namespace EroMangaDatabase
         {
             var assembly = typeof(BasicController).Assembly;
 
-            var txt = assembly.GetManifestResourceStream($"EroMangaDatabase.{enbededResourceFileName}.txt");
-            StreamReader sr = new StreamReader(txt);
+            var zip = assembly.GetManifestResourceStream($"EroMangaDatabase.{enbededResourceFileName}.7z");
+            zip.Position = 0;
+            ReaderOptions readerOptions = new ReaderOptions()
+            {
+                Password = "F9429775-6EAB-48FC-9F8A-4E079F90AF3F"
+            };
+            var stream = new MemoryStream();
+            var archive = ArchiveFactory.Open(zip , readerOptions);
+
+            foreach (var item in archive.Entries)
+            {
+                item.WriteTo(stream);
+                stream.Position = 0;
+                break;
+            }
+            StreamReader sr = new StreamReader(stream);
             var a = sr.ReadToEnd();
             sr.Close();
             return a;
