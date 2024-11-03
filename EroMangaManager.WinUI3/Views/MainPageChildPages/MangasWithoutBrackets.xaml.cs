@@ -15,7 +15,7 @@ public sealed partial class MangasWithoutBrackets : Page
         this.InitializeComponent();
         foreach (var book in App.Current.GlobalViewModel.MangaList)
         {
-            if (!NameParser.ContainBracket(book.FileDisplayName)) //.MangaTagsIncludedInFileName.ContainRepeat())
+            if (!BracketBasedStringParser.ContainAnyBrackets(book.FileDisplayName)) //.MangaTagsIncludedInFileName.ContainRepeat())
             {
                 //book.FileDisplayName.ToArray().Contain(,)
                 RepaetBooks.Add(book);
@@ -25,7 +25,7 @@ public sealed partial class MangasWithoutBrackets : Page
 
     void RemoveIfTagRepeat(MangaBook book)
     {
-        if (NameParser.ContainBracket(book.FileDisplayName))
+        if (BracketBasedStringParser.ContainAnyBrackets(book.FileDisplayName))
         {
             _ = RepaetBooks.Remove(book);
         }

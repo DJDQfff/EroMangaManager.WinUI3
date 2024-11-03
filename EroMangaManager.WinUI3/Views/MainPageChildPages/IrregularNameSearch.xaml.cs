@@ -18,7 +18,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             base.OnNavigatedTo(e);
             foreach (var book in App.Current.GlobalViewModel.MangaList)
             {
-                if (NameParser.CorrectBracketPairConut(book.FileDisplayName) == -1)
+                if (BracketBasedStringParser.CorrectBracketPairConut(book.FileDisplayName) == -1)
                 {
                     books.Add(book);
                 }

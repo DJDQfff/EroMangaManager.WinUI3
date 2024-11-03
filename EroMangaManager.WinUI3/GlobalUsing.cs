@@ -14,7 +14,7 @@ global using EroMangaDatabase.Entities;
 global using EroMangaDatabase.Tables;
 
 global using EroMangaManager.Core.Helpers;
-global using EroMangaManager.Core.MangaParser;
+global using EroMangaManager.Core.StringParser;
 global using EroMangaManager.Core.Models;
 global using EroMangaManager.Core.ViewModels;
 global using EroMangaManager.WinUI3.Commands;

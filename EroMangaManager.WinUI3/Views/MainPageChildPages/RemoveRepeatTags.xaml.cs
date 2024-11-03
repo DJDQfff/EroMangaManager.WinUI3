@@ -94,7 +94,7 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
         {
             var order = sender as DJDQfff.TagListOrder;
             var manga = order.DataContext as MangaBook;
-            var items = NameParser.SplitByBrackets_Reserve(manga.FileDisplayName);
+            var items = BracketBasedStringParser.SplitByBrackets_Reserve(manga.FileDisplayName);
             order.Sources = items;
         }
 

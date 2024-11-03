@@ -1,24 +1,19 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 
-namespace EroMangaManager.Core.MangaParser
+namespace EroMangaManager.Core.StringParser
 {
     /// <summary>
-    /// 对基于tag的本子名的解析类
+    /// 基于成对的括号进行解析。将子字符串分类InsideContent和OutsideContent
     /// </summary>
-    public static class NameParser
+    public static class BracketBasedStringParser
     {
+        private static readonly int Length = LeftBrackets.Length;
+
         /// <summary>
         /// 左括号
         /// </summary>
         public const string LeftBrackets = "[【（({";
-
-        /// <summary>
-        /// 右括号
-        /// </summary>
-        public const string RightBrackets = "]】）)}";
-
-        private static readonly int Length = LeftBrackets.Length;
 
         /// <summary>
         /// 所有括号
@@ -26,21 +21,55 @@ namespace EroMangaManager.Core.MangaParser
         public const string LeftRightBrackets = LeftBrackets + RightBrackets;
 
         /// <summary>
-        /// 递归获取括号tag，未完成
+        /// 右括号
         /// </summary>
-        /// <param name="input"></param>
+        public const string RightBrackets = "]】）)}";
+
+        /// <summary>
+        /// 字符串中是否含有任意括号
+        /// </summary>
+        /// <param name="str"></param>
         /// <returns></returns>
-        [Obsolete("功能未完成" , true)]
-        public static IEnumerable<string> GetTags_Recursion (string input)
+        public static bool ContainAnyBrackets (string str)
         {
-            return null;
+            foreach (var b in LeftRightBrackets)
+            {
+                if (str.Contains(b))
+                    return true;
+            }
+            return false;
         }
+
+        /// <summary>
+        /// 左右括号成对，入成对，则返回多少对，否则返回-1
+        /// </summary>
+        /// <param name="tagstring"></param>
+        /// <returns></returns>
+        public static int CorrectBracketPairConut (string tagstring)
+        {
+            int brackettype = 0;
+            for (int i = 0 ; i < Length ; i++)
+            {
+                int count1 = tagstring.Count(n => n == LeftBrackets[i]);
+                int count2 = tagstring.Count(n => n == RightBrackets[i]);
+                if (count1 != count2)
+                {
+                    return -1;
+                }
+                if (count1 != 0)
+                {
+                    brackettype++;
+                }
+            }
+            return brackettype;
+        }
+
         /// <summary>
         /// 获取本子名和tag，同时进行，有缺陷
         /// </summary>
         /// <param name="_FileDisplayName">传入漫画文件名（不带后缀）</param>
         /// <returns>第一个是MangaName，后面的是tag</returns>
-        public static (string, List<string>) GetNameAndTags (string _FileDisplayName)
+        public static (string, List<string>) Get_BothContetn (string _FileDisplayName)
         {
             bool findmanganame = false;
             string manganame = default;
@@ -92,20 +121,184 @@ namespace EroMangaManager.Core.MangaParser
 
             return (manganame, tagslist);
         }
+
         /// <summary>
-        /// 字符串中是否还有任意括号
+        /// 递归获取括号tag，未完成
         /// </summary>
-        /// <param name="str"></param>
+        /// <param name="input"></param>
         /// <returns></returns>
-        public static bool ContainBracket (string str)
+        [Obsolete("功能未完成" , true)]
+        public static IEnumerable<string> Get_InsideContent_Recursion (string input)
         {
-            foreach (var b in LeftRightBrackets)
+            return null;
+        }
+
+        // TODO 嵌套相同括号的话无法读取
+        /// <summary>
+        /// 以递归的方式获取未包含在括号内的字符串
+        /// 1.嵌套相同括号的话无法读取
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string Get_OutsideContent_Recursion (string name)
+        {
+            if (CorrectBracketPairConut(name) == -1)
             {
-                if (str.Contains(b))
-                    return true;
+                return name;
+            }
+            var _name = name.Trim();
+
+            var leftbracketindex = _name.IndexOfAny([.. LeftBrackets]);
+
+            switch (leftbracketindex)
+            {
+                case 0:
+                    var leftbracketchar = _name[leftbracketindex];
+
+                    var index = LeftBrackets.IndexOf(leftbracketchar);
+
+                    var rightbracket = RightBrackets[index];
+                    var rightindex = _name.IndexOf(rightbracket);
+
+                    var subname = _name.Substring(rightindex + 1);
+                    return Get_OutsideContent_Recursion(subname);
+
+                case > 0:
+                    return _name.Substring(0 , leftbracketindex).Trim();
+            }
+
+            return name.Trim();
+        }
+
+        /// <summary>
+        /// 使用正则表达式获取非括号内内容，有问题
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        [Obsolete("功能未完成" , true)]
+        public static string Get_OutsideContent_Regex (string name)
+        {
+            var pattern = @"([\]】）\)\}]|)[^\[【（\(\{\]】）\)\}]+([\[【（\(\{]|)";
+            var pattern2 = @"([\]】）\)\}]|)\S+([\[【（\(\{]|)";
+            var regex = new Regex(pattern);
+            var regex2 = new Regex(pattern2);
+            var a = regex.Matches(name);
+            List<string> strings = [];
+            foreach (Match t in a)
+            {
+                var str = t.Value;
+                strings.Add(str);
+            }
+            strings.Sort((x , y) => -x.Length + y.Length);
+            return strings.First();
+        }
+
+        /// <summary>
+        /// 通过堆栈获取括号外字符串，未完成
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        [Obsolete("功能未完成" , true)]
+        public static string Get_OutsideContent_Stack (string name)
+        {
+            //Stack<char> lefts = new();
+            //List<string> pieces = [];
+            //StringBuilder stringBuilder = new();
+            //int start;
+            //for (int index = 0 ; index < name.Length ; index++)
+            //{
+            //    var c = name[index];
+            //    if (LeftBrackets.Contains(c))
+            //    {
+            //        lefts.Push(c);
+            //        start = index;
+            //    }
+
+            //    if (RightBrackets.Contains(c))
+            //    {
+            //        if (c == lefts.Peek())
+            //        {
+            //        }
+            //    }
+            //}
+            return null;
+        }
+
+        /// <summary>
+        /// 是否包含在一对括号中（不要求首位括号是相对应的类型）
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static bool IsIncludedInBracketPair (this string name)
+        {
+            if (name.Length < 2)
+            {
+                return false;
+            }
+            var start = name[0];
+            var end = name[name.Length - 1];
+            if (LeftRightBrackets.Contains(start) && LeftRightBrackets.Contains(end))
+            {
+                return true;
             }
             return false;
         }
+
+        /// <summary>
+        /// 移除一个字符串集合的所有括号
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static List<string> RemoveBracketForEachString (this IEnumerable<string> a)
+        {
+            var list = new List<string>();
+            foreach (var aa in a)
+            {
+                var aaa = SplitByBrackets(aa);
+                aaa.ForEach(x => list.Add(x));
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        ///移除其中包含的重复tag
+        /// </summary>
+        /// <param name="oldname">旧的名字</param>
+        public static string RemoveRepeatTag (string oldname)
+        {
+            // TODO 输入一个包含重复tag的名称，算出一个去掉重复tag的名称
+            var pieces = SplitByBrackets_Reserve(oldname);
+            for (var index = 0 ; index < pieces.Count ; index++)
+            {
+                var piece = pieces[index];
+                var behind = pieces.GetRange(index , pieces.Count);
+                if (piece.IsIncludedInBracketPair())
+                {
+                    var piecewithoutbracket = piece.TrimBracket();
+                    //foreach(var piece in _pieces.)
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 按括号进行分解，移除括号
+        /// </summary>
+        /// <param name="_FileDisplayName"></param>
+        /// <returns></returns>
+        public static List<string> SplitByBrackets (string _FileDisplayName)
+        {
+            var tagslist =
+                _FileDisplayName.Trim()
+                .Split(LeftRightBrackets.ToCharArray())      // 按括号分解为tag
+                .Where(x => !string.IsNullOrWhiteSpace(x))// 移除所有为空白的tag
+                .Select(x => x.Trim())                  // 所有移除首尾空白
+                .ToList();
+            return tagslist;
+        }
+
         /// <summary>
         /// 按左右括号分离，保留括号
         /// </summary>
@@ -147,62 +340,6 @@ namespace EroMangaManager.Core.MangaParser
         }
 
         /// <summary>
-        /// 按括号进行分解，移除括号
-        /// </summary>
-        /// <param name="_FileDisplayName"></param>
-        /// <returns></returns>
-        public static List<string> SplitByBrackets (string _FileDisplayName)
-        {
-            var tagslist =
-                _FileDisplayName.Trim()
-                .Split(LeftRightBrackets.ToCharArray())      // 按括号分解为tag
-                .Where(x => !string.IsNullOrWhiteSpace(x))// 移除所有为空白的tag
-                .Select(x => x.Trim())                  // 所有移除首尾空白
-                .ToList();
-            return tagslist;
-        }
-        /// <summary>
-        /// 使用正则表达式获取本子名，有问题
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        [Obsolete("功能未完成" , true)]
-        public static string GetName_Regex (string name)
-        {
-            var pattern = @"([\]】）\)\}]|)[^\[【（\(\{\]】）\)\}]+([\[【（\(\{]|)";
-            var pattern2 = @"([\]】）\)\}]|)\S+([\[【（\(\{]|)";
-            var regex = new Regex(pattern);
-            var regex2 = new Regex(pattern2);
-            var a = regex.Matches(name);
-            List<string> strings = [];
-            foreach (Match t in a)
-            {
-                var str = t.Value;
-                strings.Add(str);
-            }
-            strings.Sort((x , y) => -x.Length + y.Length);
-            return strings.First();
-        }
-        /// <summary>
-        /// 是否包含在一对括号中（不要求首位括号是相对应的类型）
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public static bool IsIncludedInBracketPair (this string name)
-        {
-            if (name.Length < 2)
-            {
-                return false;
-            }
-            var start = name[0];
-            var end = name[name.Length - 1];
-            if (LeftRightBrackets.Contains(start) && LeftRightBrackets.Contains(end))
-            {
-                return true;
-            }
-            return false;
-        }
-        /// <summary>
         /// 移除首位括号
         /// </summary>
         /// <param name="name"></param>
@@ -215,140 +352,6 @@ namespace EroMangaManager.Core.MangaParser
                 return TrimBracket(n);
             }
             return name.Trim();
-        }
-        /// <summary>
-        /// 通过堆栈获取本子名，未完成
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        [Obsolete("功能未完成" , true)]
-        public static string GetName_Stack (string name)
-        {
-            //Stack<char> lefts = new();
-            //List<string> pieces = [];
-            //StringBuilder stringBuilder = new();
-            //int start;
-            //for (int index = 0 ; index < name.Length ; index++)
-            //{
-            //    var c = name[index];
-            //    if (LeftBrackets.Contains(c))
-            //    {
-            //        lefts.Push(c);
-            //        start = index;
-            //    }
-
-            //    if (RightBrackets.Contains(c))
-            //    {
-            //        if (c == lefts.Peek())
-            //        {
-
-
-            //        }
-            //    }
-            //}
-            return null;
-        }
-        // TODO 嵌套相同括号的话无法读取
-        /// <summary>
-        /// 以递归的方式获取本子名
-        /// 1.嵌套相同括号的话无法读取
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public static string GetName_Recursion (string name)
-        {
-            if (CorrectBracketPairConut(name) == -1)
-            {
-                return name;
-            }
-            var _name = name.Trim();
-
-            var leftbracketindex = _name.IndexOfAny([.. LeftBrackets]);
-
-            switch (leftbracketindex)
-            {
-                case 0:
-                    var leftbracketchar = _name[leftbracketindex];
-
-                    var index = LeftBrackets.IndexOf(leftbracketchar);
-
-                    var rightbracket = RightBrackets[index];
-                    var rightindex = _name.IndexOf(rightbracket);
-
-                    var subname = _name.Substring(rightindex + 1);
-                    return GetName_Recursion(subname);
-
-                case > 0:
-                    return _name.Substring(0 , leftbracketindex).Trim();
-            }
-
-            return name.Trim();
-        }
-
-        /// <summary>
-        ///移除其中包含的重复tag
-        /// </summary>
-        /// <param name="oldname">旧的名字</param>
-        public static string RemoveRepeatTag (string oldname)
-        {
-            // TODO 输入一个包含重复tag的名称，算出一个去掉重复tag的名称
-            var pieces = SplitByBrackets_Reserve(oldname);
-            for (var index = 0 ; index < pieces.Count ; index++)
-            {
-                var piece = pieces[index];
-                var behind = pieces.GetRange(index , pieces.Count);
-                if (piece.IsIncludedInBracketPair())
-                {
-                    var piecewithoutbracket = piece.TrimBracket();
-                    //foreach(var piece in _pieces.)
-                }
-            }
-
-
-
-            return null;
-        }
-
-
-        /// <summary>
-        /// 移除一个字符串集合的所有括号
-        /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
-        public static List<string> RemoveBracketForEachString (this IEnumerable<string> a)
-        {
-            var list = new List<string>();
-            foreach (var aa in a)
-            {
-                var aaa = SplitByBrackets(aa);
-                aaa.ForEach(x => list.Add(x));
-            }
-
-            return list;
-        }
-
-        /// <summary>
-        /// 左右括号成对，入成对，则返回多少对，否则返回-1
-        /// </summary>
-        /// <param name="tagstring"></param>
-        /// <returns></returns>
-        public static int CorrectBracketPairConut (string tagstring)
-        {
-            int brackettype = 0;
-            for (int i = 0 ; i < Length ; i++)
-            {
-                int count1 = tagstring.Count(n => n == LeftBrackets[i]);
-                int count2 = tagstring.Count(n => n == RightBrackets[i]);
-                if (count1 != count2)
-                {
-                    return -1;
-                }
-                if (count1 != 0)
-                {
-                    brackettype++;
-                }
-            }
-            return brackettype;
         }
     }
 }

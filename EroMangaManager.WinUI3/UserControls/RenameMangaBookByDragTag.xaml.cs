@@ -11,7 +11,7 @@ public sealed partial class RenameMangaBookByDragTag : UserControl
 
     partial void OnMangaBookChanged(MangaBook value)
     {
-        order.Sources = NameParser.SplitByBrackets_Reserve(MangaBook.FileDisplayName); //value.MangaTagsIncludedInFileName;
+        order.Sources = BracketBasedStringParser.SplitByBrackets_Reserve(MangaBook.FileDisplayName); //value.MangaTagsIncludedInFileName;
     }
 
     public RenameMangaBookByDragTag()
@@ -37,7 +37,7 @@ public sealed partial class RenameMangaBookByDragTag : UserControl
     private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
         // 注意这里出过bug，调用loaded函数的时候，mangabook可能属性还没刷新
-        //var a = NameParser.SplitByBrackets_Reserve(MangaBook.FileDisplayName);
+        //var a = BracketBasedStringParser.SplitByBrackets_Reserve(MangaBook.FileDisplayName);
         //textblock.Text = MangaBook.FileDisplayName;
         //order.Sources = a;
         //orde.ItemsSource = a;
