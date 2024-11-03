@@ -10,11 +10,15 @@
             if (mb > 1000)
             {
                 var gb = mb >> 10;
-                return gb + "GB";
+                return gb + " GB";
             }
             else
             {
-                return mb + "MB";
+                if (mb == 0)
+                {
+                    return "<1 MB";
+                }
+                return mb + " MB";
             }
         }
 
