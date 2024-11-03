@@ -147,9 +147,6 @@
   <data name="AppUILanguage" xml:space="preserve">
     <value>语言</value>
   </data>
-  <data name="AppUILanguage1" xml:space="preserve">
-    <value>语言</value>
-  </data>
   <data name="Author" xml:space="preserve">
     <value>作者</value>
   </data>
@@ -166,9 +163,6 @@
     <value>切换排序</value>
   </data>
   <data name="ChineseTranslateTeam" xml:space="preserve">
-    <value>汉化组</value>
-  </data>
-  <data name="ChineseTranslateTeam1" xml:space="preserve">
     <value>汉化组</value>
   </data>
   <data name="Close" xml:space="preserve">
