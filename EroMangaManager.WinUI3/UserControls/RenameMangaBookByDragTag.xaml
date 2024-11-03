@@ -7,7 +7,7 @@
     xmlns:djdqfff="using:DJDQfff"
     xmlns:local="using:EroMangaManager.WinUI3.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     mc:Ignorable="d">
 
     <Grid Margin="12">
@@ -64,7 +64,10 @@
                 HorizontalAlignment="Stretch"
                 Click="SingleMangaBookRename_New"
                 Content="{uid:Strings Uid=RenameFile}" />
-            <Button HorizontalAlignment="Stretch" Visibility="Collapsed" Content="{uid:Strings Uid=Remove}" />
+            <Button
+                HorizontalAlignment="Stretch"
+                Content="{uid:Strings Uid=Remove}"
+                Visibility="Collapsed" />
         </StackPanel>
 
     </Grid>

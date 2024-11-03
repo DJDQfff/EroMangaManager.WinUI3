@@ -7,7 +7,7 @@
     xmlns:local="using:EroMangaManager.WinUI3.Views.ContentDialogPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="using:EroMangaManager.WinUI3.Views.MainPageChildPages"
-    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     PrimaryButtonText="{uid:Strings Uid=Yes}"
     mc:Ignorable="d">
     <pages:SettingPage />

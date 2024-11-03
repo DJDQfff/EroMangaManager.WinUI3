@@ -7,7 +7,7 @@
     xmlns:local="using:EroMangaManager.WinUI3.UserControls.SettingParts"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:setting="using:CommunityToolkit.WinUI.Controls"
-    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     mc:Ignorable="d">
 
     <Grid>

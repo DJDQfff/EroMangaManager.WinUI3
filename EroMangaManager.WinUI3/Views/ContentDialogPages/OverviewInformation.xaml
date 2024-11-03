@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
     Title="{x:Bind MangaBook.MangaName}"
     CloseButtonText="{uid:Strings Uid=Close}"
     mc:Ignorable="d">
-    <usercontrols:MangaBookDetailInfo MangaBook="{x:Bind MangaBook}"  />
+    <usercontrols:MangaBookDetailInfo MangaBook="{x:Bind MangaBook}" />
 </ContentDialog>

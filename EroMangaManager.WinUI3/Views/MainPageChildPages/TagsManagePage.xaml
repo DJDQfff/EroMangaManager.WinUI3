@@ -1,18 +1,18 @@
-﻿<Page
-    x:Class="EroMangaManager.WinUI3.Views.MainPageChildPages.TagsManagePage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:entity="using:EroMangaDatabase.Entities"
-    xmlns:local="using:EroMangaManager.WinUI3.Views.MainPageChildPages"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
-    xmlns:x1="using:System"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    mc:Ignorable="d">
+﻿<Page x:Class="EroMangaManager.WinUI3.Views.MainPageChildPages.TagsManagePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:entity="using:EroMangaDatabase.Entities"
+      xmlns:local="using:EroMangaManager.WinUI3.Views.MainPageChildPages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+      xmlns:x1="using:System"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="entity" x:DataType="entity:TagCategory">
+        <DataTemplate x:Key="entity"
+                      x:DataType="entity:TagCategory">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -22,16 +22,14 @@
                 <Button Grid.Column="1">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem
-                                Click="MenuFlyoutItem_Click_1"
-                                DataContext="{x:Bind}"
-                                Icon="Remove"
-                                Text="{uid:Strings Uid=Remove}" />
-                            <MenuFlyoutItem
-                                Click="RenameTagContentDialog"
-                                DataContext="{x:Bind}"
-                                Icon="Rename"
-                                Text="{uid:Strings Uid=Rename}" />
+                            <MenuFlyoutItem Click="MenuFlyoutItem_Click_1"
+                                            DataContext="{x:Bind}"
+                                            Icon="Remove"
+                                            Text="{uid:Strings Uid=Remove}" />
+                            <MenuFlyoutItem Click="RenameTagContentDialog"
+                                            DataContext="{x:Bind}"
+                                            Icon="Rename"
+                                            Text="{uid:Strings Uid=Rename}" />
                         </MenuFlyout>
                     </Button.Flyout>
                     <SymbolIcon Symbol="More" />
@@ -57,45 +55,44 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="{uid:Strings Uid=Import}">
+                <Button Grid.Column="0"
+                        Content="{uid:Strings Uid=Import}">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Click="ImportAssemblyCategory" Text="{uid:Strings Uid=Author}" />
-                            <MenuFlyoutItem Click="ImportAssemblyCategory" Text="{uid:Strings Uid=ChineseTranslateTeam}" />
+                            <MenuFlyoutItem Click="ImportAssemblyCategory"
+                                            Text="{uid:Strings Uid=Author}" />
+                            <MenuFlyoutItem Click="ImportAssemblyCategory"
+                                            Text="{uid:Strings Uid=ChineseTranslateTeam}" />
                         </MenuFlyout>
                     </Button.Flyout>
                 </Button>
-                <TextBox
-                    x:Name="NewCategoryTextBox"
-                    Grid.Column="1"
-                    HorizontalAlignment="Stretch" />
-                <Button
-                    Grid.Column="2"
-                    Click="Button_Click"
-                    Content="{uid:Strings Uid=AddCategory}" />
-                <Button
-                    Grid.Column="3"
-                    Command="{x:Bind viewmodel.SaveToDatabaseCommand}"
-                    Content="{uid:Strings Uid=Save}" />
+                <TextBox x:Name="NewCategoryTextBox"
+                         Grid.Column="1"
+                         HorizontalAlignment="Stretch" />
+                <Button Grid.Column="2"
+                        Click="Button_Click"
+                        Content="{uid:Strings Uid=AddCategory}" />
+                <Button Grid.Column="3"
+                        Command="{x:Bind viewmodel.SaveToDatabaseCommand}"
+                        Content="{uid:Strings Uid=Save}" />
             </Grid>
-            <ListView
-                x:Name="Category_ListVIew"
-                Grid.Row="1"
-                IsItemClickEnabled="True"
-                ItemClick="Category_ListVIew_ItemClick"
-                ItemTemplate="{StaticResource entity}"
-                ItemsSource="{x:Bind viewmodel.CategoryTags, Mode=OneWay}">
+            <ListView x:Name="Category_ListVIew"
+                      Grid.Row="1"
+                      IsItemClickEnabled="True"
+                      ItemClick="Category_ListVIew_ItemClick"
+                      ItemTemplate="{StaticResource entity}"
+                      ItemsSource="{x:Bind viewmodel.CategoryTags, Mode=OneWay}">
                 <ListView.Header>
-                    <ListViewItem Content="{uid:Strings Uid=UnCategoryed}" Tapped="ListViewItem_Tapped" />
+                    <ListViewItem Content="{uid:Strings Uid=UnCategoryed}"
+                                  Tapped="ListViewItem_Tapped" />
                 </ListView.Header>
             </ListView>
         </Grid>
-        <ListView
-            x:Name="Tag_ListView"
-            Grid.Column="1"
-            ContextFlyout="{x:Bind menuFlyout}"
-            ItemContainerStyle="{StaticResource ListViewItemExpanded}"
-            SelectionMode="Multiple" />
+        <ListView x:Name="Tag_ListView"
+                  Grid.Column="1"
+                  ContextFlyout="{x:Bind menuFlyout}"
+                  ItemContainerStyle="{StaticResource ListViewItemExpanded}"
+                  SelectionMode="Multiple" />
     </Grid>
     <!--<Grid>
         <Grid.ColumnDefinitions>

@@ -1,3 +1,2 @@
-﻿global using DJDQfff.BaiduTranslateAPI;
-
+﻿global using static ConsoleApp1.Configurations;
 global using static EroMangaManager.Core.MangaParser.NameParser;

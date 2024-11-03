@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:EroMangaManager.WinUI3.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     mc:Ignorable="d">
 
     <UserControl.Resources>

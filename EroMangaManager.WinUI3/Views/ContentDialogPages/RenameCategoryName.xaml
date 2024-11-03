@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:EroMangaManager.WinUI3.Views.ContentDialogPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:uid="using:EroMangaManager.WinUI3.LocalizationWords"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     CloseButtonText="{uid:Strings Uid=Close}"
     IsPrimaryButtonEnabled="{x:Bind CheckNameValid(RenameBox.Text), Mode=OneWay}"
