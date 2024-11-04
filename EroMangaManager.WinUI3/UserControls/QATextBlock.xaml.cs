@@ -4,9 +4,6 @@ namespace EroMangaManager.WinUI3.UserControls
 {
     public sealed partial class QATextBlock : UserControl
     {
-        private string answer;
-        private string question;
-
         public QATextBlock ()
         {
             InitializeComponent();
@@ -22,8 +19,7 @@ namespace EroMangaManager.WinUI3.UserControls
         {
             set
             {
-                answer = value;
-                AnswerTextBlock.Text = ResourceLoader.GetForViewIndependentUse().GetString(answer);
+                AnswerTextBlock.Text = value;
             }
         }
 
@@ -31,8 +27,7 @@ namespace EroMangaManager.WinUI3.UserControls
         {
             set
             {
-                question = value;
-                QuestionTextBlock.Text = ResourceLoader.GetForViewIndependentUse().GetString(question);
+                QuestionTextBlock.Text = value;
             }
         }
     }
