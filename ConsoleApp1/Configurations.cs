@@ -2,6 +2,9 @@
 
 internal class Configurations
 {
+    public static string Folder_ersheng = @"D:\本子\本子二审";
+    public static string Folder_test = @"D:\test";
+
     public static string[] File_error = [
         @"[sin-maniax (轟真)] (アズールレーン) [中国翻訳] [DL版]",
 @"[鹤崎贵大&苍津ウミヒト&川上なち助&しののめしの&ダコワズ&雪月佳&结城心一&毒でんぱ]异世界跟奴隶做色色事情漫画短篇集异世界 で奴隷とエロいことしちゃうアンソロジーコミック",
@@ -16,6 +19,4 @@ internal class Configurations
     public static IEnumerable<string> File_ersheng = Directory.GetFiles(Folder_ersheng , "*.zip")
         .Select(x => Path.GetFileNameWithoutExtension(x));
 
-    public static string Folder_ersheng = @"D:\本子\本子二审";
-    public static string Folder_test = @"D:\test";
 }

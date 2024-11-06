@@ -1,4 +1,4 @@
-﻿using static EroMangaManager.Core.StringParser.BracketBasedStringParser;
+﻿using EroMangaManager.Core.StringParser;
 
 namespace EroMangaManager.Core.Models;
 
@@ -24,7 +24,7 @@ public partial class MangaBook : ObservableObject
     private string translatedMangaName;
 
     /// <summary> 实例化EroManga </summary>
-    public MangaBook (string filepath)
+    public MangaBook(string filepath)
     {
         //FileSize = (new FileInfo(filepath)).Length;
         FilePath = filepath;
@@ -48,13 +48,13 @@ public partial class MangaBook : ObservableObject
     public string FolderPath => Path.GetDirectoryName(FilePath);
 
     /// <summary> 本子名字 </summary>
-    public string MangaName => Get_OutsideContent_Recursion(FileDisplayName);
+    public string MangaName =>
+        BracketBasedStringParser2.Get_OutsideContent_Recursion(FileDisplayName);
 
     /// <summary> 文件名中包含在括号的本子Tag </summary>
     public string[] MangaTagsIncludedInFileName =>
-        SplitByBrackets_Reserve(FileDisplayName)
-            .Where(piece => piece.IsIncludedInBracketPair())
-            .RemoveBracketForEachString()
+        EroMangaManager.Core.StringParser.BracketBasedStringParser
+            .Get_InsideContent(FileDisplayName)
             .ToArray();
 
     //TODO 翻译漫画名的功能

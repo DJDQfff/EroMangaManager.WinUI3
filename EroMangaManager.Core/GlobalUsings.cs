@@ -17,3 +17,4 @@ global using MyLibrary.Standard20;
 global using SharpCompress.Archives;
 
 global using static EroMangaDatabase.BasicController;
+global using static EroMangaManager.Core.StringParser.BracketBasedStringParser;
