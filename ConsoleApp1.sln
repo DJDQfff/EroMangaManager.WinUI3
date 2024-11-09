@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EroMangaDatabase", "EroMang
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EroMangaManager.Core", "EroMangaManager.Core\EroMangaManager.Core.csproj", "{2C04F7C8-3D3E-4CD0-8021-FAC9C55B53E5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonLibrary", "..\MyLibrary\CommonLibrary\CommonLibrary.csproj", "{A831A55E-3D46-4F42-BCB5-F16F417F4159}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2C04F7C8-3D3E-4CD0-8021-FAC9C55B53E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C04F7C8-3D3E-4CD0-8021-FAC9C55B53E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C04F7C8-3D3E-4CD0-8021-FAC9C55B53E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A831A55E-3D46-4F42-BCB5-F16F417F4159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A831A55E-3D46-4F42-BCB5-F16F417F4159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A831A55E-3D46-4F42-BCB5-F16F417F4159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A831A55E-3D46-4F42-BCB5-F16F417F4159}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

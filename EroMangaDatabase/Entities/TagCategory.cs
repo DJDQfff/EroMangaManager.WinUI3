@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using MyLibrary.Standard20;
+using CommonLibrary;
 
 namespace EroMangaDatabase.Entities
 {
@@ -23,14 +23,11 @@ namespace EroMangaDatabase.Entities
         /// <summary> 自定义Tag分类名称 </summary>
         public string CategoryName
         {
-            get
-            {
-                return name;
-            }
+            get { return name; }
             set
             {
                 name = value;
-                PropertyChanged?.Invoke(this , new PropertyChangedEventArgs("CategoryName"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CategoryName"));
             }
         }
 

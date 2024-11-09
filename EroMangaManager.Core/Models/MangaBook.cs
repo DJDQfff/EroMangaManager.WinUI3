@@ -1,4 +1,4 @@
-﻿using EroMangaManager.Core.StringParser;
+﻿using CommonLibrary.StringParser;
 
 namespace EroMangaManager.Core.Models;
 
@@ -49,13 +49,11 @@ public partial class MangaBook : ObservableObject
 
     /// <summary> 本子名字 </summary>
     public string MangaName =>
-        BracketBasedStringParser2.Get_OutsideContent_Recursion(FileDisplayName);
+        BracketBasedStringParser.Get_OutsideContent_Recursion(FileDisplayName);
 
     /// <summary> 文件名中包含在括号的本子Tag </summary>
     public string[] MangaTagsIncludedInFileName =>
-        EroMangaManager.Core.StringParser.BracketBasedStringParser
-            .Get_InsideContent(FileDisplayName)
-            .ToArray();
+        BracketBasedStringParser.Get_InsideContent(FileDisplayName).ToArray();
 
     //TODO 翻译漫画名的功能
 }

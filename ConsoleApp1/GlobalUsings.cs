@@ -1,2 +1,2 @@
-﻿global using static ConsoleApp1.Configurations;
-global using static EroMangaManager.Core.StringParser.BracketBasedStringParser;
+﻿global using static CommonLibrary.StringParser.BracketBasedStringParser;
+global using static ConsoleApp1.Configurations;

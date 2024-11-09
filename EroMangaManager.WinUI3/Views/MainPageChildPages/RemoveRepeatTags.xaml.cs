@@ -1,113 +1,111 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-using MyLibrary.Standard20;
 
-namespace EroMangaManager.WinUI3.Views.FunctionChildPages
+namespace EroMangaManager.WinUI3.Views.FunctionChildPages;
+
+/// <summary>
+/// 可用于自身或导航至 Frame 内部的空白页。
+/// </summary>
+public sealed partial class RemoveRepeatTags : Page
 {
+    private ObservableCollection<MangaBook> RepaetBooks { get; } = new();
+
     /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
+    ///
     /// </summary>
-    public sealed partial class RemoveRepeatTags : Page
+    public RemoveRepeatTags()
     {
-        private ObservableCollection<MangaBook> RepaetBooks { get; } = new();
+        InitializeComponent();
+    }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public RemoveRepeatTags()
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="e"></param>
+    protected override void OnNavigatedTo(NavigationEventArgs e)
+    {
+        base.OnNavigatedTo(e);
+
+        foreach (var book in App.Current.GlobalViewModel.MangaList)
         {
-            InitializeComponent();
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            foreach (var book in App.Current.GlobalViewModel.MangaList)
+            if (book.MangaTagsIncludedInFileName.ContainRepeat())
             {
-                if (book.MangaTagsIncludedInFileName.ContainRepeat())
-                {
-                    RepaetBooks.Add(book);
-                }
+                RepaetBooks.Add(book);
             }
         }
+    }
 
-        private void SingleMangaBookRename_New(object sender, RoutedEventArgs e)
+    private void SingleMangaBookRename_New(object sender, RoutedEventArgs e)
+    {
+        var button = sender as Button;
+        var stackpanel = button.Parent as StackPanel;
+
+        var book = button.DataContext as MangaBook;
+
+        var control = stackpanel.FindName("newnameBox") as TextBox;
+        var text = control.Text;
+        TrySetNewName(book, text);
+        RemoveIfTagRepeat(book);
+    }
+
+    private void TrySetNewName(MangaBook book, string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
         {
-            var button = sender as Button;
-            var stackpanel = button.Parent as StackPanel;
-
-            var book = button.DataContext as MangaBook;
-
-            var control = stackpanel.FindName("newnameBox") as TextBox;
-            var text = control.Text;
-            TrySetNewName(book, text);
-            RemoveIfTagRepeat(book);
+            return;
         }
-
-        private void TrySetNewName(MangaBook book, string text)
+        else
         {
-            if (string.IsNullOrWhiteSpace(text))
+            try
             {
-                return;
+                // TODO 重命名可能存在bug，如重复名称
+                string oldname = book.FilePath;
+                string newname = Path.Combine(Path.GetDirectoryName(oldname), text + ".zip");
+                System.IO.File.Move(oldname, newname);
+                book.FilePath = Path.Combine(book.FolderPath, text + ".zip");
             }
-            else
-            {
-                try
-                {
-                    // TODO 重命名可能存在bug，如重复名称
-                    string oldname = book.FilePath;
-                    string newname = Path.Combine(Path.GetDirectoryName(oldname), text + ".zip");
-                    System.IO.File.Move(oldname, newname);
-                    book.FilePath = Path.Combine(book.FolderPath, text + ".zip");
-                }
-                catch { }
-            }
+            catch { }
         }
+    }
 
-        void RemoveIfTagRepeat(MangaBook book)
+    void RemoveIfTagRepeat(MangaBook book)
+    {
+        if (!book.MangaTagsIncludedInFileName.ContainRepeat())
         {
-            if (!book.MangaTagsIncludedInFileName.ContainRepeat())
-            {
-                RepaetBooks.Remove(book);
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-
-            var book = button.DataContext as MangaBook;
-
             RepaetBooks.Remove(book);
         }
+    }
 
-        private void TagListOrder_Loaded(object sender, RoutedEventArgs e)
-        {
-            var order = sender as DJDQfff.TagListOrder;
-            var manga = order.DataContext as MangaBook;
-            var items = BracketBasedStringParser.SplitByBrackets_KeepBracket(manga.FileDisplayName);
-            order.Sources = items;
-        }
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        var button = sender as Button;
 
-        private void newnameBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textbox = sender as TextBox;
-            var book = textbox.DataContext as MangaBook;
+        var book = button.DataContext as MangaBook;
 
-            var text = textbox.Text;
-            //TODO 这有严重bug，每次文字切换，会直接改名
-            TrySetNewName(book, text);
-            RemoveIfTagRepeat(book);
-        }
+        RepaetBooks.Remove(book);
+    }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            var control = sender as UserControl;
-            var newnamebox = control.FindName("newnamebox");
-        }
+    private void TagListOrder_Loaded(object sender, RoutedEventArgs e)
+    {
+        var order = sender as DJDQfff.TagListOrder;
+        var manga = order.DataContext as MangaBook;
+        var items = BracketBasedStringParser.SplitByBrackets_KeepBracket(manga.FileDisplayName);
+        order.Sources = items;
+    }
+
+    private void newnameBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var textbox = sender as TextBox;
+        var book = textbox.DataContext as MangaBook;
+
+        var text = textbox.Text;
+        //TODO 这有严重bug，每次文字切换，会直接改名
+        TrySetNewName(book, text);
+        RemoveIfTagRepeat(book);
+    }
+
+    private void UserControl_Loaded(object sender, RoutedEventArgs e)
+    {
+        var control = sender as UserControl;
+        var newnamebox = control.FindName("newnamebox");
     }
 }

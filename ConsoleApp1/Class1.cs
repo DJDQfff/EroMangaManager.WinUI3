@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1;
 
-internal class Test1
+internal class Class1
 {
     public static void Run (string[] args)
     {

@@ -9,11 +9,11 @@ internal class MangaBookCommands
     public StandardUICommand StorageCommandRename = new();
     public static MangaBookCommands Instance { get; set; }
 
-    public static void Initial ()
+    public static void Initial()
     {
         Instance ??= new();
 
-        Instance.OpenFolderInOutside.ExecuteRequested += (sender , args) =>
+        Instance.OpenFolderInOutside.ExecuteRequested += (sender, args) =>
         {
             string folderpath = args.Parameter switch
             {
@@ -27,16 +27,14 @@ internal class MangaBookCommands
             {
                 try
                 {
-                    DJDQfff.ShellAPI.ExplorerFile.ExplorerSelectFile(folderpath);
+                    ExplorerFile.ExplorerSelectFile(folderpath);
                 }
-                catch
-                {
-                }
+                catch { }
             }
             //System.Diagnostics.Process.Start("explorer" , $"/select , {folderpath}");
         };
 
-        Instance.StorageCommandDelete.ExecuteRequested += async (sender , args) =>
+        Instance.StorageCommandDelete.ExecuteRequested += async (sender, args) =>
         {
             switch (args.Parameter)
             {
@@ -46,7 +44,7 @@ internal class MangaBookCommands
             }
         };
 
-        Instance.StorageCommandRename.ExecuteRequested += async (sender , args) =>
+        Instance.StorageCommandRename.ExecuteRequested += async (sender, args) =>
         {
             switch (args.Parameter)
             {
@@ -60,49 +58,51 @@ internal class MangaBookCommands
             Symbol = Symbol.Rename
         };
 
-        Instance.OpenManga.ExecuteRequested += (sender , args) =>
+        Instance.OpenManga.ExecuteRequested += (sender, args) =>
+        {
+            if (args.Parameter is MangaBook book)
             {
-                if (args.Parameter is MangaBook book)
+                var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex;
+
+                try
                 {
-                    var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex;
-
-                    try
+                    switch (wayindex)
                     {
-                        switch (wayindex)
-                        {
-                            case 0:
+                        case 0:
                             RunDefault:
-                                WindowHelper.ShowReadWindow(book);
-                                break;
+                            WindowHelper.ShowReadWindow(book);
+                            break;
 
-                            case 1:
+                        case 1:
 
-                                Process.Start("explorer" , book.FilePath);
-                                break;
+                            Process.Start("explorer", book.FilePath);
+                            break;
 
-                            case > 1:
-                                var SelectedExePath = App.Current.AppConfig.ExePaths.ToList()[wayindex];
-                                if (!File.Exists(SelectedExePath))
-                                {
-                                    goto RunDefault;
-                                }
-                                else
-                                {
-                                    Process.Start(SelectedExePath , $"\"{book.FilePath}\"");
-                                }
-                                break;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        new ToastContentBuilder()
-        .AddText($"{book.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}")
-        .Show();
+                        case > 1:
+                            var SelectedExePath = App.Current.AppConfig.ExePaths.ToList()[wayindex];
+                            if (!File.Exists(SelectedExePath))
+                            {
+                                goto RunDefault;
+                            }
+                            else
+                            {
+                                Process.Start(SelectedExePath, $"\"{book.FilePath}\"");
+                            }
+                            break;
                     }
                 }
-            };
+                catch (Exception)
+                {
+                    new ToastContentBuilder()
+                        .AddText(
+                            $"{book.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}"
+                        )
+                        .Show();
+                }
+            }
+        };
 
-        Instance.ExportPDF.ExecuteRequested += async (sender , args) =>
+        Instance.ExportPDF.ExecuteRequested += async (sender, args) =>
         {
             switch (args.Parameter)
             {
@@ -111,9 +111,6 @@ internal class MangaBookCommands
                     break;
             }
         };
-        Instance.ExportPDF.IconSource = new SymbolIconSource()
-        {
-            Symbol = Symbol.Save ,
-        };
+        Instance.ExportPDF.IconSource = new SymbolIconSource() { Symbol = Symbol.Save, };
     }
 }

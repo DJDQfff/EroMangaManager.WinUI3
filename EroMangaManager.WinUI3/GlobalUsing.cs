@@ -6,6 +6,9 @@ global using System.IO;
 global using System.Linq;
 global using System.Threading.Tasks;
 
+global using CommonLibrary;
+global using CommonLibrary.StringParser;
+
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.WinUI.Notifications;
 global using CommunityToolkit.WinUI.UI.Controls;
@@ -14,7 +17,6 @@ global using EroMangaDatabase.Entities;
 global using EroMangaDatabase.Tables;
 
 global using EroMangaManager.Core.Helpers;
-global using EroMangaManager.Core.StringParser;
 global using EroMangaManager.Core.Models;
 global using EroMangaManager.Core.ViewModels;
 global using EroMangaManager.WinUI3.Commands;
@@ -52,7 +54,7 @@ global using Windows.Storage.Streams;
 
 global using WinRT.Interop;
 
+global using static CommonLibrary.HashComputer;
 global using static EroMangaDatabase.BasicController;
 global using static EroMangaManager.Core.SettingEnums.FolderEnum;
-global using static MyLibrary.Standard20.HashComputer;
 global using static MyLibrary.WinUI3.StorageFolderHelper;
