@@ -1,5 +1,9 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
+using CommonLibrary.CollectionFindRepeat;
+
+using static CommonLibrary.StringParser.BracketBasedStringParser;
+
 namespace EroMangaManager.WinUI3.Views.FunctionChildPages
 {
     /// <summary>
@@ -7,38 +11,17 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
     /// </summary>
     public sealed partial class FindSameManga : Page
     {
-        private ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup> mangaBookViewModel;
-
-        private List<MangaBook> mangaBooks;
+        private ItemsGroupsViewModel<string, MangaBook, RepeatMangaBookGroup> mangaBookViewModel;
 
         /// <summary>
         ///
         /// </summary>
-        public FindSameManga ()
+        public FindSameManga()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnNavigatedTo (NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            if (e.Parameter is List<MangaBook> books)
-            {
-                mangaBooks = books;
-
-                mangaBookViewModel = new ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup>(mangaBooks , n => n.MangaName , x => !string.IsNullOrWhiteSpace(x.Key));
-
-
-                listView.ItemsSource = mangaBookViewModel.RepeatPairs;
-            }
-        }
-
-        private async void DeleteFileClick (object sender , RoutedEventArgs e)
+        private async void DeleteFileClick(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var manga = button.DataContext as MangaBook;
@@ -47,6 +30,53 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             {
                 mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
                 App.Current.GlobalViewModel.RemoveManga(manga);
+            }
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            var index = combobox.SelectedIndex;
+            var mangaList = App.Current.GlobalViewModel.MangaList;
+            switch (index)
+            {
+                case 0:
+
+                    {
+                        mangaBookViewModel = new ItemsGroupsViewModel<
+                            string,
+                            MangaBook,
+                            RepeatMangaBookGroup
+                        >(mangaList, n => n.MangaName, x => !string.IsNullOrWhiteSpace(x.Key));
+
+                        listView.ItemsSource = mangaBookViewModel.RepeatPairs;
+                    }
+                    ;
+                    break;
+                case 1:
+
+                    {
+                        var dic = StringArrayCollection.Run<MangaBook>(
+                            mangaList,
+                            x =>
+                                Get_OutsideContent(x.FileDisplayName)
+                                    .SelectMany(x => x.Split(' ', '-', '+', '~'))
+                        );
+                        Func<MangaBook, string> func = x =>
+                        {
+                            var piece = Get_OutsideContent(x.FileDisplayName)
+                                .FirstOrDefault(x => dic.ContainsKey(x));
+                            return piece;
+                        };
+
+                        mangaBookViewModel = new ItemsGroupsViewModel<
+                            string,
+                            MangaBook,
+                            RepeatMangaBookGroup
+                        >(mangaList, func, x => !string.IsNullOrWhiteSpace(x.Key));
+
+                        listView.ItemsSource = mangaBookViewModel.RepeatPairs;
+                    }
+                    break;
             }
         }
     }

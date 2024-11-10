@@ -14,6 +14,15 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <ComboBox x:Name="combobox" SelectedIndex="0">
+                <x:String>方法1</x:String>
+                <x:String>方法2</x:String>
+            </ComboBox>
+            <AppBarButton Click="AppBarButton_Click"
+                          Content="开始"
+                          Icon="GoToStart" />
+        </StackPanel>
         <ListView x:Name="listView"
                   Grid.Row="1"
                   SelectionMode="None">
