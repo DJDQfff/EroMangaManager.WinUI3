@@ -2,7 +2,8 @@
 {
     ///<summary> </summary>
     public enum StringsEnum
-    {        ///<summary></summary>
+    {
+        ///<summary></summary>
         Answer_SupportedType,
 
         ///<summary></summary>
@@ -182,6 +183,9 @@
 
         ///<summary></summary>
         FilteredImages,
+        Method1,
+        Method2,
+        Start,
 
         ///<summary></summary>
         FindSameMangaByName,

@@ -33,7 +33,7 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             }
         }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             var index = combobox.SelectedIndex;
             var mangaList = App.Current.GlobalViewModel.MangaList;

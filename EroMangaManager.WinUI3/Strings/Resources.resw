@@ -304,7 +304,7 @@
     <value>标签管理</value>
   </data>
   <data name="NameWithoutBrackets" xml:space="preserve">
-    <value>文件名无括号</value>
+    <value>无括号名称</value>
   </data>
   <data name="NeedRestart" xml:space="preserve">
     <value>需要重启</value>
@@ -485,5 +485,14 @@
   </data>
   <data name="ZipComic" xml:space="preserve">
     <value>zip漫画包</value>
+  </data>
+  <data name="Method1" xml:space="preserve">
+    <value>方法1</value>
+  </data>
+  <data name="Method2" xml:space="preserve">
+    <value>方法2</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>开始</value>
   </data>
 </root>

@@ -15,13 +15,13 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <ComboBox x:Name="combobox" SelectedIndex="0">
-                <x:String>方法1</x:String>
-                <x:String>方法2</x:String>
+            <ComboBox x:Name="combobox" Width="100" SelectedIndex="0">
+                <TextBlock  Text="{uid:Strings Uid=Method1}"/>
+                <TextBlock Text="{uid:Strings Uid=Method2}"/>
             </ComboBox>
-            <AppBarButton Click="AppBarButton_Click"
-                          Content="开始"
-                          Icon="GoToStart" />
+            <Button 
+                    Click="Button_Click"
+                          Content="{uid:Strings Uid=Start}"/>
         </StackPanel>
         <ListView x:Name="listView"
                   Grid.Row="1"

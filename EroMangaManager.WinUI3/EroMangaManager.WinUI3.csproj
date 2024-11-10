@@ -313,4 +313,241 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
 </Project>
