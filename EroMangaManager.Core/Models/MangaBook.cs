@@ -47,7 +47,7 @@ public partial class MangaBook : ObservableObject
     /// <summary> 漫画文件所在文件夹路径 </summary>
     public string FolderPath => Path.GetDirectoryName(FilePath);
 
-    /// <summary> 本子名字 </summary>
+    /// <summary> 本子名字。第一个括号外的内容（括号外内容可能有多个） </summary>
     public string MangaName =>
         BracketBasedStringParser.Get_OutsideContent_Recursion(FileDisplayName);
 
