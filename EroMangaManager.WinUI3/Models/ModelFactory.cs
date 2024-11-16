@@ -1,4 +1,6 @@
-﻿namespace EroMangaManager.WinUI3.Models;
+﻿using System.Threading;
+
+namespace EroMangaManager.WinUI3.Models;
 
 /// <summary>
 /// 基于该平台的实例创建方法
@@ -48,44 +50,41 @@ internal static class ModelFactory
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
     /// <returns></returns>
-    public static async Task Initial(this MangasGroup mangasFolder)
+    public static async Task Initial(
+        this MangasGroup mangasFolder,
+        CancellationTokenSource cancellationToken
+    )
     {
         string[] OkExtension = new string[] { ".zip", ".7z" };
         mangasFolder.IsInitialing = true;
         if (Directory.Exists(mangasFolder.FolderPath))
         {
+            //var a = DatabaseController.database.FilteredImages.ToArray();
+
             var files = Directory.GetFiles(mangasFolder.FolderPath);
             var filteredfiles = files
                 .Where(x => OkExtension.Contains(Path.GetExtension(x).ToLower()))
-                .ToList();
-
-            var a = DatabaseController.database.FilteredImages.ToArray();
-            var tasks = new List<Task>();
-
-            var lcts = new LimitedConcurrencyLevelTaskScheduler(2);
-            var taskFactory = new TaskFactory(lcts);
-            foreach (var storageFile in filteredfiles)
+                .Select(x => CreateMangaBook(x));
+            foreach (var x in filteredfiles)
             {
-                var file = storageFile;
-
-                var manga = CreateMangaBook(file);
-                manga.CoverPath =
-                    (await CoverHelper.TryCreatCoverFileAsync(file, a))
+                x.CoverPath =
+                    await CoverHelper.TryCreatCoverFileAsync(x.FilePath, null)
                     ?? CoverHelper.DefaultCoverPath;
-                mangasFolder.MangaBooks.Add(manga);
+                mangasFolder.MangaBooks.Add(x);
             }
-
-            await Task.WhenAll(tasks);
         }
         mangasFolder.IsInitialing = false;
     }
 
-    public static async Task InitialEachFolders(this ObservableCollectionVM ViewModel)
+    public static async void InitialEachFolders(this ObservableCollectionVM ViewModel)
     {
         // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
         foreach (var folder in ViewModel.MangaFolders.ToArray())
         {
-            await folder.Initial();
+            var token = new CancellationTokenSource();
+            App.Current.Tokens.TryAdd(folder, token);
+
+            await folder.Initial(token);
         }
     }
 }
