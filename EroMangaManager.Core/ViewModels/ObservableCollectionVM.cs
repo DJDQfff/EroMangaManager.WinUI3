@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Threading;
 
 namespace EroMangaManager.Core.ViewModels
 {
@@ -22,10 +22,13 @@ namespace EroMangaManager.Core.ViewModels
 
         public event Action<string> WorkFailedEvent;
 
+        public Action<MangaBook> FastSetAction;
+        public Action<MangaBook> SlowSetAction;
         /// <summary>
         /// 本子文件夹集合
         /// </summary>
         public ObservableCollection<MangasGroup> MangaFolders { get; } = [];
+        private Dictionary<MangasGroup , CancellationTokenSource> tokenDic = new();
 
         /// <summary>
         /// 无法找到的文件夹
@@ -92,6 +95,15 @@ namespace EroMangaManager.Core.ViewModels
                 return false;
             }
         }
+        public void StartGroup (MangasGroup group)
+        {
+            if (tokenDic.ContainsKey(group))
+            {
+                CancellationTokenSource cancellationTokenSource = new();
+
+                tokenDic.Add(group , cancellationTokenSource);
+            }
+        }
 
         /// <summary>
         /// 移除文件夹，并从集合中移除文件夹及下属漫画 （只移除，不删除）
@@ -99,9 +111,16 @@ namespace EroMangaManager.Core.ViewModels
         /// 2.从FolderList里移除
         /// 3.从MangaList里移除文件夹下属漫画
         /// </summary>
-        public void RemoveFolder (MangasGroup mangasfolder)
+        public void RemoveFolder (MangasGroup group)
         {
-            MangaFolders.Remove(mangasfolder);
+            if (tokenDic.TryGetValue(group , out var value))
+            {
+                tokenDic.Remove(group);
+
+                value.Cancel();
+            }
+
+            MangaFolders.Remove(group);
         }
 
         /// <summary>
