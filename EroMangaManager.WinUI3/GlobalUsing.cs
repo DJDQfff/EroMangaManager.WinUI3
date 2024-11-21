@@ -10,8 +10,9 @@ global using CommonLibrary;
 global using CommonLibrary.StringParser;
 
 global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.WinUI;
+global using CommunityToolkit.WinUI.Controls;
 global using CommunityToolkit.WinUI.Notifications;
-global using CommunityToolkit.WinUI.UI.Controls;
 
 global using EroMangaDatabase.Entities;
 global using EroMangaDatabase.Tables;

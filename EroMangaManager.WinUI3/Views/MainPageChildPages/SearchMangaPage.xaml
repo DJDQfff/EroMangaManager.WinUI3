@@ -4,7 +4,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:model="using:EroMangaManager.Core.Models"
-      xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
+      xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
       xmlns:uid="using:EroMangaManager.WinUI3.Strings"
       xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"

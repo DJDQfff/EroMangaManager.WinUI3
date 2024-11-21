@@ -1,5 +1,9 @@
 # EroMangaManager.WinUI3
 
+## 注意
+
+communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916，更高级的版本无法获取到控件的引用
+
 ## UserFeedBack
 
 - [x] 首先这个没有子文件夹检测，只能识别你选定的这个文件夹内的zip格式数量，识别不到子文件夹内的zip压缩包。他没有打标签功能，分类要自己整理完再压缩成zip格式，希望更新一个打标签功能，可以按标签进行分类，筛选同一标签下的本子观看。还有一个很大的问题，我用的是7z压成aip格式，在应用内打开图片顺序是混乱的，这个不知道是不是bug。

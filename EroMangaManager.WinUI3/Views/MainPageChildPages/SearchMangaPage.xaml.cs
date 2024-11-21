@@ -1,5 +1,4 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-
 namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 {
     /// <summary>
@@ -75,7 +74,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private void MangaTagTokenBox_TokenItemRemoved(TokenizingTextBox sender, object args)
         {
             var token = args as string;
-
             viewmodel.SelectedTags.Remove(token);
             viewmodel.CancelHideTag(token);
         }

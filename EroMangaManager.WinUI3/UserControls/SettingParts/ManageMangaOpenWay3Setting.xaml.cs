@@ -7,17 +7,17 @@ namespace EroMangaManager.WinUI3.UserControls.SettingParts
     {
         public SettingViewModel SettingVM { set; get; }
 
-        public ManageMangaOpenWay3Setting ()
+        public ManageMangaOpenWay3Setting()
         {
             this.InitializeComponent();
         }
 
-        private async void Button_Click (object sender , RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var picker = new FileOpenPicker();
             picker.FileTypeFilter.Add(".exe");
             var handle = WindowNative.GetWindowHandle(App.Current.MainWindow);
-            InitializeWithWindow.Initialize(picker , handle);
+            InitializeWithWindow.Initialize(picker, handle);
             var file = await picker.PickSingleFileAsync();
             if (file is not null)
             {
@@ -25,7 +25,7 @@ namespace EroMangaManager.WinUI3.UserControls.SettingParts
             }
         }
 
-        private void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
             if (sender is MenuFlyoutItem item)
             {
