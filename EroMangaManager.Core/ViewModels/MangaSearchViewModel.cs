@@ -27,7 +27,7 @@
         /// 搜索ViewModel
         /// </summary>
         /// <param name="strings"></param>
-        public MangaSearchViewModel (IEnumerable<string> strings) => AllTags = new List<string>(strings);
+        public MangaSearchViewModel (IEnumerable<string> strings) => AllTags = new(strings);
 
         /// <summary>
         /// 对外公开的所有项

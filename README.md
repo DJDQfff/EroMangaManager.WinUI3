@@ -1,5 +1,11 @@
 # EroMangaManager.WinUI3
 
+自用本子管理器。以本地开发位置，解决方案混乱，从github编译较为麻烦，microsoft商店可下载
+
+ https://apps.microsoft.com/detail/9N7C8ZDQ1TJ8?hl=zh-cn&gl=CN&ocid=pdpshare
+
+
+
 ## 注意
 
 communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916，更高级的版本无法获取到控件的引用
