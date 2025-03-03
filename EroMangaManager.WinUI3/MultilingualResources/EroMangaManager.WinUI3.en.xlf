@@ -40,7 +40,7 @@
         </trans-unit>
         <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
           <source>本子管理器</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">This sub-manager</target>
+          <target state="final" state-qualifier="mt-suggestion">Doujinshi Manager</target>
         </trans-unit>
         <trans-unit id="AppUILanguage" translate="yes" xml:space="preserve">
           <source>语言</source>
