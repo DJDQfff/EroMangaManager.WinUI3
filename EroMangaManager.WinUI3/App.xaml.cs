@@ -15,7 +15,6 @@ public partial class App : Application
     public Window MainWindow;
     internal static new App Current;
     internal ObservableCollectionVM GlobalViewModel { get; private set; }
-    internal Dictionary<MangasGroup, CancellationTokenSource> Tokens { get; private set; } = new();
     internal SettingViewModel AppConfig { get; private set; }
     internal string AppConfigPath { get; private set; }
     internal string LocalFolder = ApplicationData.Current.LocalFolder.Path;
@@ -116,7 +115,8 @@ public partial class App : Application
 
         #region 需要后台执行
 
-        GlobalViewModel.InitialEachFolders();
+        await GlobalViewModel.StartInitial();
+        //GlobalViewModel.InitialEachFolders();
 
         #endregion 需要后台执行
     }
@@ -137,6 +137,7 @@ public partial class App : Application
         }
 
         GlobalViewModel.GetAllFolders(folders);
+        GlobalViewModel.InitialGroup += ModelFactory.Initial;
     }
 
     private void Toast(string message)

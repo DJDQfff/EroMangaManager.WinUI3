@@ -1,6 +1,3 @@
-﻿namespace EroMangaManager.WinUI3.Models
-{
-    internal class RepeatMangaBookGroup : ItemsGroup<string , MangaBook>
-    {
-    }
-}
+﻿namespace EroMangaManager.WinUI3.Models;
+
+internal class RepeatMangaBookGroup : ItemsGroup<string , MangaBook> { }

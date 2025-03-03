@@ -12,11 +12,11 @@ internal static class ModelFactory
     /// </summary>
     /// <param name="storageFile"></param>
     /// <returns></returns>
-    public static MangaBook CreateMangaBook(string filepath)
+    public static MangaBook CreateMangaBook (string filepath)
     {
         var mangaBook = new MangaBook(filepath)
         {
-            FileSize = new FileInfo(filepath).Length,
+            FileSize = new FileInfo(filepath).Length ,
 
             //CoverPath = CoverHelper.DefaultCoverPath
             //这个的赋值放到上面方法里面去
@@ -26,8 +26,8 @@ internal static class ModelFactory
     }
 
     /// <summary>ViewModel初始化</summary>
-    public static void GetAllFolders(
-        this ObservableCollectionVM ViewModel,
+    public static void GetAllFolders (
+        this ObservableCollectionVM ViewModel ,
         IEnumerable<string> storageFolders
     )
     {
@@ -50,13 +50,13 @@ internal static class ModelFactory
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
     /// <returns></returns>
-    public static async Task Initial(
-        this MangasGroup mangasFolder,
-        CancellationTokenSource cancellationToken
+    public static async Task Initial (
+        this MangasGroup mangasFolder
     )
     {
-        string[] OkExtension = new string[] { ".zip", ".7z" };
+        string[] OkExtension = [".zip" , ".7z"];
         mangasFolder.IsInitialing = true;
+        mangasFolder.UpdateState = UpdateState.Ing;
         if (Directory.Exists(mangasFolder.FolderPath))
         {
             //var a = DatabaseController.database.FilteredImages.ToArray();
@@ -68,23 +68,25 @@ internal static class ModelFactory
             foreach (var x in filteredfiles)
             {
                 x.CoverPath =
-                    await CoverHelper.TryCreatCoverFileAsync(x.FilePath, null)
+                    await CoverHelper.TryCreatCoverFileAsync(x.FilePath , null)
                     ?? CoverHelper.DefaultCoverPath;
                 mangasFolder.MangaBooks.Add(x);
             }
         }
+        mangasFolder.UpdateState = UpdateState.Over;
         mangasFolder.IsInitialing = false;
     }
 
-    public static async void InitialEachFolders(this ObservableCollectionVM ViewModel)
+    [Obsolete]
+    public static async void InitialEachFolders (this ObservableCollectionVM ViewModel)
     {
         // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
         foreach (var folder in ViewModel.MangaFolders.ToArray())
         {
             var token = new CancellationTokenSource();
-            App.Current.Tokens.TryAdd(folder, token);
+            //App.Current.Tokens.TryAdd(folder , token);
 
-            await folder.Initial(token);
+            await folder.Initial();
         }
     }
 }

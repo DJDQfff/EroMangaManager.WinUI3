@@ -1,5 +1,3 @@
-
-
 ## 注意
 
 communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916，更高级的版本无法获取到控件的引用
@@ -81,7 +79,7 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
 
 - [x] 添加界面化文件名Tag修改界面
 
-- [ ] 在初始化GlobalViewModel时添加文件夹的话，会报错（被修改的集合、原来的MangasFolder不初始化）
+- [x] 在初始化GlobalViewModel时添加文件夹的话，会报错（被修改的集合、原来的MangasFolder不初始化）
 
 - [x] Tag管理页面：用于管理所有Tag，
 
@@ -107,12 +105,17 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
 
 ## NeedOptimization
 
+- [ ] MnagsGroup的UpdateStates属性和IsInitialing属性看看存在功能重叠看看能不能消掉IsInitialing
+
+- [ ] 若一个文件夹加载时，取消此文件夹，后台任务不会取消
 * [ ] 显示单个文件夹改为勾选哪些文件夹显示
 
 * [ ] 把所有异常解析的MangaName收集到一个文件
-- [ ] 对文件夹的初始化使用多线程同时加载
+- [x] 对文件夹的初始化使用多线程同时加载
   
   > 因为涉及UI更新，所以无法直接多线程初始化，可以尝试并行任务（还没试过）
+  
+  > 改为队列加载了，队列中前一个groups没加载完，后一个不会开始加载。
 
 - [ ] 需要优化ReaderVM的实例释放问题，disposs
   
@@ -124,6 +127,12 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
 - [ ] 更新页面和软件说明页面的内容可以转为自动化生成，免得每次都手动更新xaml
 
 ## UpdateChanges
+
+## 2025.3.3
+
+* 删除app.cs里的tokens属性，修改加载方式后，不需要token来管理这个
+
+* 原来添加文件夹后，直接开始加载里面的本子。现在改为：先获取所有文件夹，再按顺序加载每个文件夹的本子，再加载的时候添加新文件夹，也按照顺序等待前面的执行完毕，而不是是立即开始加载。
 
 ### 2024.2.25
 

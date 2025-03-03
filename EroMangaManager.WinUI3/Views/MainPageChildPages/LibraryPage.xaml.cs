@@ -24,7 +24,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
                 App.Current!.GlobalViewModel.RemoveFolder(storageFolder);
 
-                App.Current.Tokens[storageFolder].Cancel();
+                //App.Current.Tokens[storageFolder].Cancel();
             }
         }
 
@@ -101,11 +101,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                         )
                     )
                     {
-                        var token = new CancellationTokenSource();
-
-                        App.Current.Tokens.TryAdd(mangasFolder, token);
-
-                        await mangasFolder.Initial(token);
+                        await App.Current.GlobalViewModel.StartInitial();
                     }
                     ;
                 }
@@ -150,11 +146,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                         )
                     )
                     {
-                        var token = new CancellationTokenSource();
-
-                        App.Current.Tokens.TryAdd(mangaFolder, token);
-
-                        await mangaFolder.Initial(token);
+                        await App.Current.GlobalViewModel.StartInitial();
                     }
                 }
             }

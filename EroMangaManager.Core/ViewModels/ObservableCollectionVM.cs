@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace EroMangaManager.Core.ViewModels
 {
@@ -28,7 +29,6 @@ namespace EroMangaManager.Core.ViewModels
         /// 本子文件夹集合
         /// </summary>
         public ObservableCollection<MangasGroup> MangaFolders { get; } = [];
-        private Dictionary<MangasGroup , CancellationTokenSource> tokenDic = new();
 
         /// <summary>
         /// 无法找到的文件夹
@@ -95,15 +95,6 @@ namespace EroMangaManager.Core.ViewModels
                 return false;
             }
         }
-        public void StartGroup (MangasGroup group)
-        {
-            if (tokenDic.ContainsKey(group))
-            {
-                CancellationTokenSource cancellationTokenSource = new();
-
-                tokenDic.Add(group , cancellationTokenSource);
-            }
-        }
 
         /// <summary>
         /// 移除文件夹，并从集合中移除文件夹及下属漫画 （只移除，不删除）
@@ -113,12 +104,6 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
         public void RemoveFolder (MangasGroup group)
         {
-            if (tokenDic.TryGetValue(group , out var value))
-            {
-                tokenDic.Remove(group);
-
-                value.Cancel();
-            }
 
             MangaFolders.Remove(group);
         }
@@ -152,6 +137,29 @@ namespace EroMangaManager.Core.ViewModels
         public void ErrorMangaEvent (string manganame)
         {
             ErrorZipEvent?.Invoke(manganame);
+        }
+        /// <summary>
+        /// 后台更新MangasGroup的Func
+        /// </summary>
+        public Func<MangasGroup , Task> InitialGroup;
+        /// <summary>
+        /// 开始初始化所有MangasGroup，会以自我递归的方式，初始化所有groups
+        /// </summary>
+        /// <returns></returns>
+        public async Task StartInitial ()
+        {
+            if (MangaFolders.Any(x => x.UpdateState == UpdateState.Ing))
+            {
+                return;
+            }
+            var group = MangaFolders.FirstOrDefault(x => x.UpdateState == UpdateState.Ready);
+
+            if (group is not null)
+            {
+                await InitialGroup.Invoke(group);
+
+                await StartInitial();
+            }
         }
     }
 }
