@@ -8,10 +8,10 @@
 
 [本子管理器| Microsoft Store](https://apps.microsoft.com/detail/9N7C8ZDQ1TJ8?hl=zh-cn&gl=CN&ocid=pdpshare)
 
-![](软件截图\中\使用说明.png)
+![使用说明](软件截图/中/使用说明.png)
 
-![设置](软件截图\中\设置.png)
+![设置](软件截图/中/设置.png)
 
-![书架](软件截图\中\书架.png)
+![书架](软件截图/中/书架.png)
 
-![文件夹库](软件截图\中\文件夹库.png)
+![文件夹库](软件截图/中/文件夹库.png)
