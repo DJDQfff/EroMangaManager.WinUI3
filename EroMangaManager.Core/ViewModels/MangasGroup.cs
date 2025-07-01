@@ -60,7 +60,10 @@ public partial class MangasGroup : ObservableObject
         get
         {
             List<string> tags = [];
-            MangaBooks.ForEach(X => tags.AddRange(X.MangaTagsIncludedInFileName));
+            foreach (var x in MangaBooks)
+            {
+                tags.AddRange(x.MangaTagsIncludedInFileName);
+            }
             return tags;
         }
     }

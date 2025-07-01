@@ -10,17 +10,19 @@ namespace EroMangaManager.WinUI3.Helpers
     {
         /// <summary> 翻译多个本子名 </summary>
         /// <returns> </returns>
-        public static async Task TranslateAllMangaName ()
+        public static async Task TranslateAllMangaName()
         {
             var names = App.Current.GlobalViewModel.MangaList.Select(n => n.MangaName).ToList();
 
             List<trans_result> results = null;
 
-            using (var controller = new SimpleTranslator("20210219000701366" , "VkerV4o1qG1TK6mUlbr_"))
+            using (
+                var controller = new SimpleTranslator("20210219000701366", "VkerV4o1qG1TK6mUlbr_")
+            )
             {
                 try
                 {
-                    results = await controller.CommonTranslateAsync(names);
+                    results = await controller.CommonTextTranslateAsync(names);
                 }
                 catch (Exception)
                 {
