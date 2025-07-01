@@ -8,13 +8,13 @@ namespace EroMangaManager.WinUI3;
 /// </summary>
 public sealed partial class MainWindow : Window
 {
-    public MainWindow ()
+    public MainWindow()
     {
         InitializeComponent();
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(newtitlebar);
         AppWindow.SetIcon(CoverHelper.DefaultCoverPath);
         Title = ResourceLoader.GetForViewIndependentUse().GetString("AppDisplayName");
-        MainWindowFrame.Navigate(typeof(MainPage));
+        MainWindowFrame.Navigate(typeof(Views.MainPage));
     }
 }

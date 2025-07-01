@@ -51,6 +51,7 @@ namespace EroMangaManager.Core.ViewModels
         public ReaderVM (MangaBook _manga)
         {
             Manga = _manga;
+
             Stream = new FileStream(Manga.FilePath , FileMode.Open , FileAccess.Read);
             ZipArchive = ArchiveFactory.Open(Stream);
             AllEntries = ZipArchive.Entries.ToList();

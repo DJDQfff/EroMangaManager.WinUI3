@@ -30,8 +30,20 @@ public partial class MangaBook : ObservableObject
         FilePath = filepath;
     }
 
+    public string MangaType { get; set; }
+
     /// <summary> 文件Display名（不带扩展名） </summary>
-    public string FileDisplayName => Path.GetFileNameWithoutExtension(FilePath);
+    public string FileDisplayName
+    {
+        get
+        {
+            if (Directory.Exists(FilePath))
+                return Path.GetFileName(FilePath);
+            if (File.Exists(FilePath))
+                return Path.GetFileNameWithoutExtension(FilePath);
+            throw new Exception();
+        }
+    }
 
     /// <summary> 获取文件的扩展名 </summary>
     public string FileExtension => Path.GetExtension(FilePath).ToLower();

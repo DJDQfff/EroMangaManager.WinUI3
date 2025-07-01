@@ -1,4 +1,6 @@
-﻿namespace EroMangaManager.Core.Helpers
+﻿using EroMangaManager.Core.Setting;
+
+namespace EroMangaManager.Core.Helpers
 {
     /// <summary>
     ///
@@ -40,7 +42,7 @@
         /// <returns></returns>
         public static bool EntryFilter (this IArchiveEntry entry , FilteredImage[] filteredImages)
         {
-            string[] okimageextension = [".jpg" , ".jpeg" , ".png" , ".bmp" , ".webp"];
+
             bool canuse = true;
 
             if (entry.IsDirectory)                      // 排除文件夹entry
@@ -48,7 +50,7 @@
 
             string extension = Path.GetExtension(entry.Key).ToLower();
 
-            if (!okimageextension.Contains(extension))
+            if (!SupportedType.ImageType.Contains(extension))
             {
                 return false;
             }

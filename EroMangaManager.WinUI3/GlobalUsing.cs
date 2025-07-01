@@ -19,6 +19,7 @@ global using EroMangaDatabase.Tables;
 
 global using EroMangaManager.Core.Helpers;
 global using EroMangaManager.Core.Models;
+global using EroMangaManager.Core.Setting;
 global using EroMangaManager.Core.ViewModels;
 global using EroMangaManager.WinUI3.Commands;
 global using EroMangaManager.WinUI3.Helpers;
@@ -57,5 +58,5 @@ global using WinRT.Interop;
 
 global using static CommonLibrary.HashComputer;
 global using static EroMangaDatabase.BasicController;
-global using static EroMangaManager.Core.SettingEnums.FolderEnum;
+global using static EroMangaManager.Core.Setting.FolderEnum;
 global using static MyLibrary.WinUI3.StorageFolderHelper;

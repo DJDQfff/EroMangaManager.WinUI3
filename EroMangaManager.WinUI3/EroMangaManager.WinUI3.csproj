@@ -76,6 +76,7 @@
     <None Remove="Views\MainPageChildPages\IrregularNameSearch.xaml" />
     <None Remove="Views\MainPageChildPages\LibraryPage.xaml" />
     <None Remove="Views\MainPageChildPages\MangasWithoutBrackets.xaml" />
+    <None Remove="Views\MainPageChildPages\MnagaFolderReOrganize.xaml" />
     <None Remove="Views\MainPageChildPages\RemoveRepeatTags.xaml" />
     <None Remove="Views\MainPageChildPages\RemoveRepeatTags2.xaml" />
     <None Remove="Views\MainPageChildPages\SearchMangaPage.xaml" />
@@ -548,5 +549,10 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Remove="Strings\Resources.language-en.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPageChildPages\MnagaFolderReOrganize.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

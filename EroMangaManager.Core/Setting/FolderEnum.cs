@@ -1,4 +1,4 @@
-﻿namespace EroMangaManager.Core.SettingEnums
+﻿namespace EroMangaManager.Core.Setting
 {
     /// <summary>
     /// 需要在应用数据文件夹下创建的子文件夹

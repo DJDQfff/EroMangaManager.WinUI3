@@ -1,33 +1,17 @@
 ﻿using System.Threading;
 
+using SharpCompress.Common;
+
 namespace EroMangaManager.WinUI3.Models;
 
 /// <summary>
 /// 基于该平台的实例创建方法
 /// </summary>
-internal static class ModelFactory
+internal static class MangaFactory
 {
-    /// <summary>
-    /// 初始化MangaBook，同时初始化FileSize
-    /// </summary>
-    /// <param name="storageFile"></param>
-    /// <returns></returns>
-    public static MangaBook CreateMangaBook (string filepath)
-    {
-        var mangaBook = new MangaBook(filepath)
-        {
-            FileSize = new FileInfo(filepath).Length ,
-
-            //CoverPath = CoverHelper.DefaultCoverPath
-            //这个的赋值放到上面方法里面去
-        };
-
-        return mangaBook;
-    }
-
     /// <summary>ViewModel初始化</summary>
-    public static void GetAllFolders (
-        this ObservableCollectionVM ViewModel ,
+    public static void GetAllFolders(
+        this ObservableCollectionVM ViewModel,
         IEnumerable<string> storageFolders
     )
     {
@@ -50,26 +34,44 @@ internal static class ModelFactory
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
     /// <returns></returns>
-    public static async Task Initial (
-        this MangasGroup mangasFolder
-    )
+    public static async Task Initial(this MangasGroup mangasFolder)
     {
-        string[] OkExtension = [".zip" , ".7z"];
         mangasFolder.IsInitialing = true;
         mangasFolder.UpdateState = UpdateState.Ing;
+
         if (Directory.Exists(mangasFolder.FolderPath))
         {
             //var a = DatabaseController.database.FilteredImages.ToArray();
 
+            //所有子文件作为mangabook
             var files = Directory.GetFiles(mangasFolder.FolderPath);
-            var filteredfiles = files
-                .Where(x => OkExtension.Contains(Path.GetExtension(x).ToLower()))
-                .Select(x => CreateMangaBook(x));
-            foreach (var x in filteredfiles)
+            var filteredfiles = files.Where(
+                x => SupportedType.MangaType.Contains(Path.GetExtension(x).ToLower())
+            );
+            foreach (var xfile in filteredfiles)
             {
+                var x = new MangaBook(xfile);
+
+                x.MangaType = Path.GetExtension(xfile).ToLower();
+                var fileinfo = new FileInfo(x.FilePath);
+                x.FileSize = fileinfo.Length;
+                fileinfo = null;
                 x.CoverPath =
-                    await CoverHelper.TryCreatCoverFileAsync(x.FilePath , null)
+                    await CoverHelper.TryCreatCoverFileAsync(x.FilePath, null)
                     ?? CoverHelper.DefaultCoverPath;
+                mangasFolder.MangaBooks.Add(x);
+            }
+            //所有子文件夹作为mangabook
+            var folders = Directory
+                .GetDirectories(mangasFolder.FolderPath)
+                .Select(x => new MangaBook(x));
+            foreach (var x in folders)
+            {
+                x.MangaType = string.Empty;
+                x.CoverPath =
+                    CoverHelper.LoadCoverFromInternalFolder(x.FilePath)
+                    ?? CoverHelper.DefaultCoverPath;
+
                 mangasFolder.MangaBooks.Add(x);
             }
         }
@@ -78,7 +80,7 @@ internal static class ModelFactory
     }
 
     [Obsolete]
-    public static async void InitialEachFolders (this ObservableCollectionVM ViewModel)
+    public static async void InitialEachFolders(this ObservableCollectionVM ViewModel)
     {
         // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
         foreach (var folder in ViewModel.MangaFolders.ToArray())

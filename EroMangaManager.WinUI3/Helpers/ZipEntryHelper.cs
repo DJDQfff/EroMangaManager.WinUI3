@@ -12,7 +12,7 @@ namespace EroMangaManager.WinUI3.Helpers
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
-        public static async Task<BitmapImage> ToBitmapImage (this IArchiveEntry entry)
+        public static async Task<BitmapImage> ToBitmapImage(this IArchiveEntry entry)
         {
             // TODO 内部可以优化，试试不复制内存流直接读取
             var bitmapImage = new BitmapImage();
@@ -24,6 +24,7 @@ namespace EroMangaManager.WinUI3.Helpers
 
             IRandomAccessStream randomAccessStream;
 
+            //TODO webp好像可以支持，没试过
             if (Path.GetExtension(entry.Key).ToLower() == ".webp")
             {
                 var image = SixLabors.ImageSharp.Image.Load(imageStream);
@@ -37,7 +38,7 @@ namespace EroMangaManager.WinUI3.Helpers
             }
             randomAccessStream = imageStream.AsRandomAccessStream();
 
-            randomAccessStream.Seek(0);//记得偏移量归零，
+            randomAccessStream.Seek(0); //记得偏移量归零，
 
             await bitmapImage.SetSourceAsync(randomAccessStream);
 

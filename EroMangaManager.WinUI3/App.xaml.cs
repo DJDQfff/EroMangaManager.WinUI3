@@ -137,7 +137,7 @@ public partial class App : Application
         }
 
         GlobalViewModel.GetAllFolders(folders);
-        GlobalViewModel.InitialGroup += ModelFactory.Initial;
+        GlobalViewModel.InitialGroup += MangaFactory.Initial;
     }
 
     private void Toast(string message)

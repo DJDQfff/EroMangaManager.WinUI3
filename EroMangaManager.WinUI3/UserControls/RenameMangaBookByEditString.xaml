@@ -58,7 +58,7 @@
                     Grid.Column="1"
                     VerticalAlignment="Center"
                     x:Load="False"
-                    Text=".zip"
+                    Text="{x:Bind MangaBook.MangaType,Mode=OneTime}"
                     TextWrapping="Wrap" />
             </Grid>
             <TextBlock

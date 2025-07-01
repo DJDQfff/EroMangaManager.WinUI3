@@ -16,18 +16,18 @@ namespace EroMangaManager.WinUI3.Views
         /// <summary>
         /// 构造函数
         /// </summary>
-        public ReadPage ()
+        public ReadPage()
         {
             InitializeComponent();
         }
 
-        public void SetSource (object source)
+        public void SetSource(object source)
         {
             switch (source)
             {
                 // 当从LibraryFolders打开漫画时，传入MangaBook
                 case MangaBook manga:
-                    if (manga != currentManga)                  // 传入新漫画，则设置新源
+                    if (manga != currentManga) // 传入新漫画，则设置新源
                     {
                         currentManga = manga;
                         var oldreader = currentReader;
@@ -38,8 +38,9 @@ namespace EroMangaManager.WinUI3.Views
 
                 // 当从文件关联打开时，传入StorageFile
                 case StorageFile storageFile:
+
                     {
-                        currentManga = ModelFactory.CreateMangaBook(storageFile.Path);
+                        currentManga = new(storageFile.Path);
 
                         currentReader = new ReaderVM(currentManga);
                     }
@@ -62,7 +63,7 @@ namespace EroMangaManager.WinUI3.Views
         /// 导航前初始化
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             SetSource(e.Parameter);
         }
@@ -71,28 +72,31 @@ namespace EroMangaManager.WinUI3.Views
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
 
-        private async void FilteThisImageByEntry (object sender , RoutedEventArgs e)
+        private async void FilteThisImageByEntry(object sender, RoutedEventArgs e)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
 
             currentReader.FilteredArchiveImageEntries.Remove(entry);
             var hash = entry.ComputeHash();
             var length = entry.Size;
-            await DatabaseController.ImageFilter_Add(hash , length);
+            await DatabaseController.ImageFilter_Add(hash, length);
 
             var storageFolder = await GetChildTemporaryFolder(nameof(Filters));
-            var path = Path.Combine(storageFolder.Path , hash + ".jpg");
+            var path = Path.Combine(storageFolder.Path, hash + ".jpg");
             entry.WriteToFile(path);
         }
 
-        private async void SaveImageByEntry (object e , RoutedEventArgs args)
+        private async void SaveImageByEntry(object e, RoutedEventArgs args)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
 
             var picker = new FileSavePicker();
-            picker.FileTypeChoices.Add("图片" , new List<string>() { ".jpg" , ".png" });
+            picker.FileTypeChoices.Add("图片", new List<string>() { ".jpg", ".png" });
             picker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
-            InitializeWithWindow.Initialize(picker , WindowNative.GetWindowHandle(App.Current.MainWindow));
+            InitializeWithWindow.Initialize(
+                picker,
+                WindowNative.GetWindowHandle(App.Current.MainWindow)
+            );
             var storageFile = await picker.PickSaveFileAsync();
 
             if (storageFile != null)
@@ -101,7 +105,7 @@ namespace EroMangaManager.WinUI3.Views
             }
         }
 
-        private void FLIP_Tapped (object sender , TappedRoutedEventArgs e)
+        private void FLIP_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (ControlsGrid.Visibility == Visibility.Collapsed)
             {
@@ -113,17 +117,20 @@ namespace EroMangaManager.WinUI3.Views
             }
         }
 
-        private void AppBarToggleButton_Checked (object sender , RoutedEventArgs e)
+        private void AppBarToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             App.Current.MainWindow.AppWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
         }
 
-        private void AppBarToggleButton_Unchecked (object sender , RoutedEventArgs e)
+        private void AppBarToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             App.Current.MainWindow.AppWindow.SetPresenter(AppWindowPresenterKind.Default);
         }
 
-        private void ReadPositionSlider_ValueChanged (object sender , RangeBaseValueChangedEventArgs e)
+        private void ReadPositionSlider_ValueChanged(
+            object sender,
+            RangeBaseValueChangedEventArgs e
+        )
         {
             var entryindex = Convert.ToInt32(ReadPositionSlider.Value - 1);
             FLIP.SelectedIndex = entryindex;
@@ -133,7 +140,7 @@ namespace EroMangaManager.WinUI3.Views
         ///
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedFrom (NavigationEventArgs e)
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
             currentReader?.Dispose();
@@ -145,7 +152,7 @@ namespace EroMangaManager.WinUI3.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private async void FLIP_SelectionChanged_ByEntry (object sender , SelectionChangedEventArgs e)
+        private async void FLIP_SelectionChanged_ByEntry(object sender, SelectionChangedEventArgs e)
         {
             var selectedEntry = FLIP.SelectedItem as IArchiveEntry;
 
