@@ -47,7 +47,8 @@
                               OnContent="{uid:Strings Uid=DeleteMode_JustDelete}" />
             </setting:SettingsCard>
             <usercontrol:ManageMangaOpenWay3Setting SettingVM="{x:Bind app:App.Current.AppConfig}" />
-            <setting:SettingsCard Header="{uid:Strings Uid=WhetherPickSubFolder}">
+<!--这个功能隐藏了-->
+            <setting:SettingsCard Header="{uid:Strings Uid=WhetherPickSubFolder}" x:Name="aaa" x:Load="False">
                 <ToggleSwitch x:Name="WhetherPickSubFolder"
                               IsOn="{x:Bind app:App.Current.AppConfig.AppConfig.General.WhetherPickSubFolder, Mode=TwoWay}"
                               OffContent="{uid:Strings Uid=No}"

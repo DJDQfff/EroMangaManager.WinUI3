@@ -34,6 +34,7 @@
                             Icon="Folder"
                             Text="{uid:Strings Uid=OpenFolder}" />
             <MenuFlyoutItem Click="LoadSubDIrectory"
+                            x:Load="False" x:Name="xxx"
                             Text="{uid:Strings Uid=LoadSubDirectory}" />
             <MenuFlyoutItem x:Name="RemoveFolderButton"
                             Click="RemoveFolderButton_Click"
