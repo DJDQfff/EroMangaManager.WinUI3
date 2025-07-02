@@ -10,9 +10,6 @@
         Answer_WhatISTheApp,
 
         ///<summary></summary>
-        Answer_WhyZipRatherFolder,
-
-        ///<summary></summary>
         Description_20221219,
 
         ///<summary></summary>
@@ -35,9 +32,6 @@
 
         ///<summary></summary>
         Question_WhatISTheApp,
-
-        ///<summary></summary>
-        Question_WhyZipRatherFolder,
 
         ///<summary></summary>
         Version_20221219,

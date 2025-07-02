@@ -12,7 +12,7 @@
         </trans-unit>
         <trans-unit id="AddCategory" translate="yes" xml:space="preserve">
           <source>添加分类</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Add a taxonomy</target>
+          <target state="needs-review-translation">Add a category</target>
         </trans-unit>
         <trans-unit id="AddExe" translate="yes" xml:space="preserve">
           <source>添加exe</source>
@@ -20,23 +20,19 @@
         </trans-unit>
         <trans-unit id="Answer_MangaLibrary" translate="yes" xml:space="preserve">
           <source>按文件夹对本子进行区分管理</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Separate management of the book by folder</target>
+          <target state="needs-review-translation">Separate management of the doujinshi by folder</target>
         </trans-unit>
         <trans-unit id="Answer_SupportedType" translate="yes" xml:space="preserve">
-          <source>zip和7z。对于保存本子而言，zip是个最好的选择。其他格式（如rar，7z）当然可以，但并不是最优解。zip格式是一种免费开源的压缩档案格式，windows内置支持zip，具有较好的解压缩速度和压缩率。</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">zip and 7z. For saving books,Zip is the best choice.。 Other formats (e.g., RAR, 7Z) are of course possible, but they are not optimal. ZIP format is a free and open source compressed archive format, Windows built-in support for ZIP, with good decompression speed and compression rate.</target>
+          <source>zip、7z和文件夹。对于文件夹类型，图片必须直接包含在文件夹内</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">zip, 7z, and folders. For folder types, the picture must be included directly within the folder</target>
         </trans-unit>
         <trans-unit id="Answer_Tag" translate="yes" xml:space="preserve">
           <source>本子标签从本子名读取。如文件"[玉砂糖] キミ色保護色 (COMIC BAVEL 2021年6月号) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip"，在本软件中，包含在一对括号中的内容将被识别为Tag，未包含在括号中的内容将被识别为本子名称。这不一定100%正确识别。</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">This sub-label is read from the sub-name of this book. For example, in the file "[玉Sugar] キミ色保護色 (COMIC BAVEL June 2021 Issue) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip", in this software, the content contained in a pair of parentheses will be recognized as a Tag, and the content not included in the parentheses will be recognized as the subname of the book. This is not necessarily 100% correctly identifiable.</target>
         </trans-unit>
         <trans-unit id="Answer_WhatISTheApp" translate="yes" xml:space="preserve">
-          <source>这是一个用于管理本地收藏的压缩格式的本子的软件。如果你不知道什么是本子，那么你大概率用不上本软件。</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">This is a software used to manage the compressed format of the book of the local collection.。 If you don't know what a book is,Then there's a high probability you won't use this software.。</target>
-        </trans-unit>
-        <trans-unit id="Answer_WhyZipRatherFolder" translate="yes" xml:space="preserve">
-          <source>使用文件夹，会有大量散乱的单个图片文件。大量零散文件及其不容易管理（如复制粘贴时会拖累系统速度），而且也利于收藏。</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">With folders, there will be a large number of scattered individual picture files. A large number of scattered files and their difficulty in managing (e.g. copying and pasting slows down the system) and are also conducive to collections.</target>
+          <source>这是一个用于管理本地硬盘本子的软件。如果你不知道什么是本子，那么你大概率用不上本软件。</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">This is a software used to manage the local hard disk notebook. If you don't know what a book is,Then there's a high probability you won't use this software.。</target>
         </trans-unit>
         <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
           <source>本子管理器</source>
@@ -341,10 +337,6 @@
         <trans-unit id="Question_WhatISTheApp" translate="yes" xml:space="preserve">
           <source>这是什么软件？</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">What kind of software is it?</target>
-        </trans-unit>
-        <trans-unit id="Question_WhyZipRatherFolder" translate="yes" xml:space="preserve">
-          <source>为什么使用压缩格式而不是文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Why use a compressed format instead of folders</target>
         </trans-unit>
         <trans-unit id="Refresh" translate="yes" xml:space="preserve">
           <source>刷新</source>

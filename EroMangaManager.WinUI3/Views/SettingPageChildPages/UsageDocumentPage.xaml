@@ -13,7 +13,6 @@
             <StackPanel Orientation="Vertical">
                 <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_WhatISTheApp}" Question="{uid:Strings Uid=Question_WhatISTheApp}" />
                 <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_SupportedType}" Question="{uid:Strings Uid=Question_SupportedType}" />
-                <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_WhyZipRatherFolder}" Question="{uid:Strings Uid=Question_WhyZipRatherFolder}" />
                 <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_MangaLibrary}" Question="{uid:Strings Uid=Question_MangaLibrary}" />
                 <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_Tag}" Question="{uid:Strings Uid=Question_Tag}" />
             </StackPanel>

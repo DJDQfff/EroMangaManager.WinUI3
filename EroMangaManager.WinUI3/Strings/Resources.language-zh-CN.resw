@@ -130,16 +130,13 @@
     <value>按文件夹对本子进行区分管理</value>
   </data>
   <data name="Answer_SupportedType" xml:space="preserve">
-    <value>zip和7z。对于保存本子而言，zip是个最好的选择。其他格式（如rar，7z）当然可以，但并不是最优解。zip格式是一种免费开源的压缩档案格式，windows内置支持zip，具有较好的解压缩速度和压缩率。</value>
+    <value>zip、7z和文件夹。对于文件夹类型，图片必须直接包含在文件夹内</value>
   </data>
   <data name="Answer_Tag" xml:space="preserve">
     <value>本子标签从本子名读取。如文件"[玉砂糖] キミ色保護色 (COMIC BAVEL 2021年6月号) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip"，在本软件中，包含在一对括号中的内容将被识别为Tag，未包含在括号中的内容将被识别为本子名称。这不一定100%正确识别。</value>
   </data>
   <data name="Answer_WhatISTheApp" xml:space="preserve">
-    <value>这是一个用于管理本地收藏的压缩格式的本子的软件。如果你不知道什么是本子，那么你大概率用不上本软件。</value>
-  </data>
-  <data name="Answer_WhyZipRatherFolder" xml:space="preserve">
-    <value>使用文件夹，会有大量散乱的单个图片文件。大量零散文件及其不容易管理（如复制粘贴时会拖累系统速度），而且也利于收藏。</value>
+    <value>这是一个用于管理本地硬盘本子的软件。如果你不知道什么是本子，那么你大概率用不上本软件。</value>
   </data>
   <data name="AppDisplayName" xml:space="preserve">
     <value>本子管理器</value>
@@ -368,9 +365,6 @@
   </data>
   <data name="Question_WhatISTheApp" xml:space="preserve">
     <value>这是什么软件？</value>
-  </data>
-  <data name="Question_WhyZipRatherFolder" xml:space="preserve">
-    <value>为什么使用压缩格式而不是文件夹</value>
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>刷新</value>
