@@ -25,7 +25,7 @@
     <value>Separate management of the doujinshi by folder</value>
   </data>
   <data name="Answer_SupportedType" xml:space="preserve">
-    <value>zip, 7z, and folders. For folder types, the picture must be included directly within the folder</value>
+    <value>zip, 7z, and folders. The internal image format is limited to webp, jpg, png, and other formats will cause the software to crash. For folder types, the picture must be included directly within the folder</value>
   </data>
   <data name="Answer_Tag" xml:space="preserve">
     <value>This sub-label is read from the sub-name of this book. For example, in the file "[玉Sugar] キミ色保護色 (COMIC BAVEL June 2021 Issue) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip", in this software, the content contained in a pair of parentheses will be recognized as a Tag, and the content not included in the parentheses will be recognized as the subname of the book. This is not necessarily 100% correctly identifiable.</value>

@@ -65,14 +65,18 @@ internal static class MangaFactory
             var folders = Directory
                 .GetDirectories(mangasFolder.FolderPath)
                 .Select(x => new MangaBook(x));
-            foreach (var x in folders)
+            foreach (var manga in folders)
             {
-                x.MangaType = string.Empty;
-                x.CoverPath =
-                    CoverHelper.LoadCoverFromInternalFolder(x.FilePath)
+                manga.MangaType = string.Empty;
+                manga.FileSize = Directory
+                    .GetFiles(manga.FilePath)
+                    .Sum(x => new FileInfo(x).Length);
+
+                manga.CoverPath =
+                    CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)
                     ?? CoverHelper.DefaultCoverPath;
 
-                mangasFolder.MangaBooks.Add(x);
+                mangasFolder.MangaBooks.Add(manga);
             }
         }
         mangasFolder.UpdateState = UpdateState.Over;
