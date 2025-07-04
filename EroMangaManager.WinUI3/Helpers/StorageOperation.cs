@@ -2,19 +2,19 @@
 
 internal class StorageOperation
 {
-    internal static async Task ExportAsPDFAsync(MangaBook mangaBook)
+    internal static async Task ExportAsPDFAsync (MangaBook mangaBook)
     {
         var fileSavePicker = new FileSavePicker();
-        fileSavePicker.FileTypeChoices.Add("PDF", new List<string> { ".pdf" });
+        fileSavePicker.FileTypeChoices.Add("PDF" , new List<string> { ".pdf" });
         fileSavePicker.SuggestedFileName = mangaBook.FileDisplayName;
 
         var handle = WindowNative.GetWindowHandle(App.Current.MainWindow);
-        InitializeWithWindow.Initialize(fileSavePicker, handle);
+        InitializeWithWindow.Initialize(fileSavePicker , handle);
 
         var storageFile = await fileSavePicker.PickSaveFileAsync();
         try
         {
-            await Task.Run(() => Exporter.ExportAsPDF(mangaBook, storageFile.Path));
+            await Task.Run(() => Exporter.ExportAsPDF(mangaBook , storageFile.Path));
             string done = ResourceLoader.GetForViewIndependentUse().GetString("ExportDone");
             App.Current.GlobalViewModel.WorkDone(done);
         }
@@ -25,11 +25,11 @@ internal class StorageOperation
         }
     }
 
-    internal static async Task Delete(MangaBook eroManga, StorageDeleteOption deletemode)
+    internal static async Task Delete (MangaBook eroManga , StorageDeleteOption deletemode)
     {
         try
         {
-            switch (eroManga.MangaType)
+            switch (eroManga.Type)
             {
                 case "":
 
@@ -38,7 +38,7 @@ internal class StorageOperation
                         var folder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(
                             eroManga.FilePath
                         );
-                        System.IO.Directory.Delete(eroManga.FilePath, true);
+                        System.IO.Directory.Delete(eroManga.FilePath , true);
 
                         await folder.DeleteAsync(deletemode);
 #else
@@ -64,7 +64,7 @@ internal class StorageOperation
         catch { }
     }
 
-    internal static void RenameMange(MangaBook book, string text)
+    internal static void RenameMange (MangaBook book , string text)
     {
         if (string.IsNullOrWhiteSpace(text))
         {
@@ -72,7 +72,7 @@ internal class StorageOperation
         }
         else
         {
-            switch (book.MangaType)
+            switch (book.Type)
             {
                 case "":
 
@@ -80,11 +80,14 @@ internal class StorageOperation
                         // TODO 重命名可能存在bug，如重复名称
                         string oldname = book.FilePath;
                         string newname = Path.Combine(
-                            Path.GetDirectoryName(oldname),
-                            text + book.MangaType
+                            Path.GetDirectoryName(oldname) ,
+                            text + book.Type
                         );
-                        Directory.Move(oldname, newname);
-                        book.FilePath = newname;
+                        if (oldname != newname)
+                        {
+                            Directory.Move(oldname , newname);
+                            book.FilePath = newname;
+                        }
                     }
                     break;
 
@@ -94,10 +97,10 @@ internal class StorageOperation
                         // TODO 重命名可能存在bug，如重复名称
                         string oldname = book.FilePath;
                         string newname = Path.Combine(
-                            Path.GetDirectoryName(oldname),
-                            text + book.MangaType
+                            Path.GetDirectoryName(oldname) ,
+                            text + book.Type
                         );
-                        File.Move(oldname, newname);
+                        File.Move(oldname , newname);
                         book.FilePath = newname;
                     }
                     break;

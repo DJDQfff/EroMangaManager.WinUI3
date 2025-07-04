@@ -24,13 +24,16 @@ public partial class MangaBook : ObservableObject
     private string translatedMangaName;
 
     /// <summary> 实例化EroManga </summary>
-    public MangaBook(string filepath)
+    public MangaBook (string filepath)
     {
         //FileSize = (new FileInfo(filepath)).Length;
         FilePath = filepath;
     }
 
-    public string MangaType { get; set; }
+    /// <summary>
+    ///本子类型，可以为.zip .7z 文件夹，这也是对应的文件后缀名，文件夹的话为“”空字符串
+    /// </summary>
+    public string Type { get; set; }
 
     /// <summary> 文件Display名（不带扩展名） </summary>
     public string FileDisplayName

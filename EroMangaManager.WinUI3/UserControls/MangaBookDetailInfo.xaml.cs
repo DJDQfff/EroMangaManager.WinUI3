@@ -1,12 +1,25 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
+using System.ComponentModel;
+
 namespace EroMangaManager.WinUI3.UserControls;
-[INotifyPropertyChanged]
-public sealed partial class MangaBookDetailInfo : UserControl
+
+public sealed partial class MangaBookDetailInfo : UserControl, INotifyPropertyChanged
 {
-    [ObservableProperty]
     private MangaBook mangaBook;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public MangaBook MangaBook
+    {
+        get => mangaBook;
+        set
+        {
+            mangaBook = value;
+            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangaBook)));
+        }
+    }
 
     public MangaBookDetailInfo ()
     {

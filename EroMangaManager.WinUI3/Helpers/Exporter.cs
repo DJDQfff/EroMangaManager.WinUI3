@@ -11,24 +11,24 @@ namespace EroMangaManager.WinUI3.Helpers
 {
     internal class Exporter
     {
-        internal static void ExportAsPDF(MangaBook mangaBook, string target)
+        internal static void ExportAsPDF (MangaBook mangaBook , string target)
         {
-            switch (mangaBook.MangaType)
+            switch (mangaBook.Type)
             {
                 case "":
-                    FolderToPDF(mangaBook, target);
+                    FolderToPDF(mangaBook , target);
                     break;
                 default:
-                    CompressionFileToPDF(mangaBook, target);
+                    CompressionFileToPDF(mangaBook , target);
 
                     break;
             }
         }
 
-        private static void FolderToPDF(MangaBook mangaBook, string target)
+        private static void FolderToPDF (MangaBook mangaBook , string target)
         {
             var files = Directory.GetFiles(mangaBook.FilePath);
-            var writestream = new FileStream(target, FileMode.Open, FileAccess.Write);
+            var writestream = new FileStream(target , FileMode.Open , FileAccess.Write);
 
             using var writer = new PdfWriter(writestream);
             using var pdfDocument = new PdfDocument(writer);
@@ -56,12 +56,12 @@ namespace EroMangaManager.WinUI3.Helpers
             pdfDocument.Close();
         }
 
-        private static void CompressionFileToPDF(MangaBook mangaBook, string target)
+        private static void CompressionFileToPDF (MangaBook mangaBook , string target)
         {
             using var reader = new ReaderVM(mangaBook);
             reader.SelectEntries(null);
 
-            var writestream = new FileStream(target, FileMode.Open, FileAccess.Write);
+            var writestream = new FileStream(target , FileMode.Open , FileAccess.Write);
 
             using var writer = new PdfWriter(writestream);
             using var pdfDocument = new PdfDocument(writer);
@@ -73,7 +73,7 @@ namespace EroMangaManager.WinUI3.Helpers
                 stream.CopyTo(memoryStream);
                 byte[] b = new byte[memoryStream.Length];
                 memoryStream.Position = 0;
-                memoryStream.Read(b, 0, b.Length);
+                memoryStream.Read(b , 0 , b.Length);
 
                 var imageData = ImageDataFactory.Create(b);
 

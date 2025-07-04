@@ -1,28 +1,42 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
+using System.ComponentModel;
+
 namespace DJDQfff;
 
-[INotifyPropertyChanged]
-public sealed partial class TagListOrder : UserControl
+public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
 {
-
-    [ObservableProperty]
     IEnumerable<string> sources;
-    [ObservableProperty]
+
+    public IEnumerable<string> Sources
+    {
+        set
+        {
+            sources = value;
+            ListView1.Items.Clear();
+            ListView2.Items.Clear();
+            foreach (var ss in value)
+            {
+                ListView1.Items.Add(ss);
+            }
+        }
+        get => sources;
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
     string newName;
 
-    partial void OnSourcesChanged (IEnumerable<string> value)
+    public string NewName
     {
-
-        ListView1.Items.Clear();
-        ListView2.Items.Clear();
-        foreach (var ss in value)
+        get => newName;
+        set
         {
-            ListView1.Items.Add(ss);
+            newName = value;
+            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(NewName)));
         }
-
     }
+
     private void AddButton_Click (object sender , RoutedEventArgs e)
     {
         if (sender is Button button)
@@ -36,6 +50,7 @@ public sealed partial class TagListOrder : UserControl
         }
         SetNewName();
     }
+
     private void RemoveButton_Click (object sender , RoutedEventArgs e)
     {
         if (sender is Button button)
@@ -50,7 +65,7 @@ public sealed partial class TagListOrder : UserControl
         SetNewName();
     }
 
-    void SetNewName ()
+    public void SetNewName ()
     {
         var list = new List<string>();
         foreach (var tag in ListView1.Items)
@@ -64,5 +79,4 @@ public sealed partial class TagListOrder : UserControl
     {
         this.InitializeComponent();
     }
-
 }

@@ -50,8 +50,8 @@ public sealed partial class ReadPage2 : Page
     private void listview_SelectionChanged (object sender , SelectionChangedEventArgs e)
     {
         return;
-        var a = e.AddedItems[0] as string;
-        listview.SelectedItem = a;
-        flipview.SelectedItem = a;
+        //var a = e.AddedItems[0] as string;
+        //listview.SelectedItem = a;
+        //flipview.SelectedItem = a;
     }
 }

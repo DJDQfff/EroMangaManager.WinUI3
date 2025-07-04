@@ -64,7 +64,7 @@
             AllowDrop="True"
             CanDragItems="True"
             CanReorderItems="True"
-            DragItemsCompleted="{x:Bind SetNewName}"
+                  DragItemsCompleted="{x:Bind SetNewName}"
             ItemTemplate="{StaticResource datatemplate}"
             ScrollViewer.HorizontalScrollBarVisibility="Auto"
             ScrollViewer.HorizontalScrollMode="Enabled"
