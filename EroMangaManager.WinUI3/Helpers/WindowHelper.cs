@@ -1,11 +1,27 @@
-﻿namespace EroMangaManager.WinUI3.Helpers
+﻿using Windows.ApplicationModel.Background;
+
+namespace EroMangaManager.WinUI3.Helpers
 {
     internal static class WindowHelper
     {
-        internal static void ShowReadWindow (MangaBook mangaBook)
+        internal static void ShowReadWindow(MangaBook mangaBook)
         {
             var newWindow = new MainWindow();
-            newWindow.MainWindowFrame.Navigate(typeof(ReadPage) , mangaBook);
+            switch (mangaBook.MangaType)
+            {
+                case "":
+
+                    {
+                        newWindow.MainWindowFrame.Navigate(typeof(ReadPage2), mangaBook);
+                    }
+                    break;
+                default:
+
+                    {
+                        newWindow.MainWindowFrame.Navigate(typeof(ReadPage), mangaBook);
+                    }
+                    break;
+            }
             newWindow.Title = mangaBook.FileDisplayName;
 
             newWindow.Activate();

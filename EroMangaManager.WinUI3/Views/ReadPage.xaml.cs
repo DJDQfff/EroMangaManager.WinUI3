@@ -1,9 +1,11 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
+using Windows.ApplicationModel.Background;
+
 namespace EroMangaManager.WinUI3.Views
 {
-    /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
+    /// <summary> 用于查看zip，7z格式的本子 </summary>
     public sealed partial class ReadPage : Page
     {
         private MangaBook currentManga = null;
@@ -14,7 +16,7 @@ namespace EroMangaManager.WinUI3.Views
         public ReaderVM currentReader = null;
 
         /// <summary>
-        /// 构造函数
+        ///
         /// </summary>
         public ReadPage()
         {
