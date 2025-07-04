@@ -24,14 +24,14 @@ global using EroMangaManager.Core.ViewModels;
 global using EroMangaManager.WinUI3.Commands;
 global using EroMangaManager.WinUI3.Helpers;
 global using EroMangaManager.WinUI3.Models;
+global using EroMangaManager.WinUI3.OldLibrary;
 global using EroMangaManager.WinUI3.Views;
 global using EroMangaManager.WinUI3.Views.ContentDialogPages;
 global using EroMangaManager.WinUI3.Views.FunctionChildPages;
 global using EroMangaManager.WinUI3.Views.MainPageChildPages;
 global using EroMangaManager.WinUI3.Views.SettingPageChildPages;
 
-global using GroupedItemsLibrary.Models;
-global using GroupedItemsLibrary.ViewModels;
+global using GroupedItemsLibrary;
 
 global using Microsoft.UI.Windowing;
 global using Microsoft.UI.Xaml;
@@ -43,8 +43,6 @@ global using Microsoft.UI.Xaml.Markup;
 global using Microsoft.UI.Xaml.Media;
 global using Microsoft.UI.Xaml.Media.Imaging;
 global using Microsoft.UI.Xaml.Navigation;
-
-global using MyLibrary.WinUI3;
 
 global using SharpCompress.Archives;
 
@@ -59,4 +57,4 @@ global using WinRT.Interop;
 global using static CommonLibrary.HashComputer;
 global using static EroMangaDatabase.BasicController;
 global using static EroMangaManager.Core.Setting.FolderEnum;
-global using static MyLibrary.WinUI3.StorageFolderHelper;
+global using static EroMangaManager.WinUI3.OldLibrary.StorageFolderHelper;

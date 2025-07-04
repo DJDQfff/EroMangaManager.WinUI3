@@ -6,16 +6,16 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// </summary>
     public sealed partial class TagsManagePage : Page
     {
-        private MenuFlyout menuFlyout = new MenuFlyout();
+        private readonly MenuFlyout menuFlyout = new();
 
         // 这个本来是用tagcategory.selecteditem属性的，但是不知道为什么一直为null，才额外加了一个变量
 
-        private ManageTagsViewModel2 viewmodel = new();
+        private readonly ManageTagsViewModel2 viewmodel = new();
 
         /// <summary>
         ///
         /// </summary>
-        public TagsManagePage ()
+        public TagsManagePage()
         {
             InitializeComponent();
             var tags = App.Current.GlobalViewModel.AllTags;
@@ -26,19 +26,19 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             MenuFlyout_SetValue();
         }
 
-        private void Button_Click (object sender , RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             _ = viewmodel.AddCategory(NewCategoryTextBox.Text);
         }
 
-        private void Category_ListVIew_ItemClick (object sender , ItemClickEventArgs e)
+        private void Category_ListVIew_ItemClick(object sender, ItemClickEventArgs e)
         {
             var a = e.ClickedItem as TagCategory;
             viewmodel.selectedTagCategory = a;
             Tag_ListView.ItemsSource = a.Tags;
         }
 
-        private void ImportAssemblyCategory (object sender , RoutedEventArgs e)
+        private void ImportAssemblyCategory(object sender, RoutedEventArgs e)
         {
             var item = sender as MenuFlyoutItem;
             var text = item.Text as string;
@@ -51,13 +51,13 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-        private void ListViewItem_Tapped (object sender , TappedRoutedEventArgs e)
+        private void ListViewItem_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Tag_ListView.ItemsSource = viewmodel.ImCategoryedTags;
             viewmodel.selectedTagCategory = null;
         }
 
-        private void MenuFlyout_SetValue ()
+        private void MenuFlyout_SetValue()
         {
             menuFlyout.Items.Clear();
             foreach (var tagcategory in viewmodel.CategoryTags)
@@ -66,7 +66,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
                 item.Text = tagcategory.CategoryName;
                 //TODO item.IsEnabled = viewmodel.DisplayedCategory != tagcategory;
-                item.Click += (s , args) =>
+                item.Click += (s, args) =>
                 {
                     var flyoutitem = s as MenuFlyoutItem;
                     var category = flyoutitem.DataContext as TagCategory;
@@ -74,25 +74,25 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
                     var selectedCategory = Category_ListVIew.SelectedItem as TagCategory;
 
-                    viewmodel.TagChangeCategory(selectedCategory , category , tags);
+                    viewmodel.TagChangeCategory(selectedCategory, category, tags);
                 };
 
                 menuFlyout.Items.Add(item);
             }
         }
 
-        private void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
             var item = sender as MenuFlyoutItem;
 
             if (item.DataContext is string str)
             {
                 var a = new SearchParameter() { Tags = new List<string> { str } };
-                MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage) , a);
+                MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage), a);
             }
         }
 
-        private void MenuFlyoutItem_Click_1 (object sender , RoutedEventArgs e)
+        private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
         {
             var item = sender as MenuFlyoutItem;
             var tagcategory = item.DataContext as TagCategory;
@@ -104,7 +104,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-        private async void RenameTagContentDialog (object sender , RoutedEventArgs e)
+        private async void RenameTagContentDialog(object sender, RoutedEventArgs e)
         {
             var dialog = new RenameCategoryName()
             {

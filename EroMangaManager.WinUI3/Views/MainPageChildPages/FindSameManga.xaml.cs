@@ -2,6 +2,8 @@
 
 using CommonLibrary.CollectionFindRepeat;
 
+using GroupedItemsLibrary;
+
 using static CommonLibrary.StringParser.BracketBasedStringParser;
 
 namespace EroMangaManager.WinUI3.Views.FunctionChildPages
@@ -11,17 +13,17 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
     /// </summary>
     public sealed partial class FindSameManga : Page
     {
-        private ItemsGroupsViewModel<string, MangaBook, RepeatMangaBookGroup> mangaBookViewModel;
+        private ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup> mangaBookViewModel;
 
         /// <summary>
         ///
         /// </summary>
-        public FindSameManga()
+        public FindSameManga ()
         {
             InitializeComponent();
         }
 
-        private async void DeleteFileClick(object sender, RoutedEventArgs e)
+        private async void DeleteFileClick (object sender , RoutedEventArgs e)
         {
             var button = sender as Button;
             var manga = button.DataContext as MangaBook;
@@ -33,7 +35,7 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click (object sender , RoutedEventArgs e)
         {
             var index = combobox.SelectedIndex;
             var mangaList = App.Current.GlobalViewModel.MangaList;
@@ -43,10 +45,10 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
 
                     {
                         mangaBookViewModel = new ItemsGroupsViewModel<
-                            string,
-                            MangaBook,
+                            string ,
+                            MangaBook ,
                             RepeatMangaBookGroup
-                        >(mangaList, n => n.MangaName, x => !string.IsNullOrWhiteSpace(x.Key));
+                        >(mangaList , n => n.MangaName , x => !string.IsNullOrWhiteSpace(x.Key));
 
                         listView.ItemsSource = mangaBookViewModel.RepeatPairs;
                     }
@@ -56,12 +58,12 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
 
                     {
                         var dic = StringArrayCollection.Run<MangaBook>(
-                            mangaList,
+                            mangaList ,
                             x =>
                                 Get_OutsideContent(x.FileDisplayName)
-                                    .SelectMany(x => x.Split(' ', '-', '+', '~'))
+                                    .SelectMany(x => x.Split(' ' , '-' , '+' , '~'))
                         );
-                        Func<MangaBook, string> func = x =>
+                        Func<MangaBook , string> func = x =>
                         {
                             var piece = Get_OutsideContent(x.FileDisplayName)
                                 .FirstOrDefault(x => dic.ContainsKey(x));
@@ -69,10 +71,10 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages
                         };
 
                         mangaBookViewModel = new ItemsGroupsViewModel<
-                            string,
-                            MangaBook,
+                            string ,
+                            MangaBook ,
                             RepeatMangaBookGroup
-                        >(mangaList, func, x => !string.IsNullOrWhiteSpace(x.Key));
+                        >(mangaList , func , x => !string.IsNullOrWhiteSpace(x.Key));
 
                         listView.ItemsSource = mangaBookViewModel.RepeatPairs;
                     }

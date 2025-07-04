@@ -105,7 +105,7 @@ public sealed partial class RemoveRepeatTags : Page
 
     private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
-        var control = sender as UserControl;
-        var newnamebox = control.FindName("newnamebox");
+        //var control = sender as UserControl;
+        //var newnamebox = control.FindName("newnamebox");
     }
 }

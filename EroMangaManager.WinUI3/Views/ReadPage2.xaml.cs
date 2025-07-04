@@ -24,7 +24,7 @@ namespace EroMangaManager.WinUI3.Views;
 /// </summary>
 public sealed partial class ReadPage2 : Page
 {
-    private ObservableCollection<string> _list = [];
+    private readonly ObservableCollection<string> _list = [];
     private string folder;
 
     public ReadPage2 ()

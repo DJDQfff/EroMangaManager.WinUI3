@@ -7,7 +7,7 @@ public class GroupWorker
     public static GroupWorker Instance { get; private set; } = new();
     private Queue<MangasGroup> filepaths = new();
 
-    private Dictionary<MangasGroup, CancellationTokenSource> tokenDic = new();
+    private readonly Dictionary<MangasGroup, CancellationTokenSource> tokenDic = new();
 
     public void StartGroup(MangasGroup group)
     {

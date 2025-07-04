@@ -1,3 +1,5 @@
-﻿namespace EroMangaManager.WinUI3.Models;
+﻿using GroupedItemsLibrary;
+
+namespace EroMangaManager.WinUI3.Models;
 
 internal class RepeatMangaBookGroup : ItemsGroup<string , MangaBook> { }
