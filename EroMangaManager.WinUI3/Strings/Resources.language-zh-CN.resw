@@ -130,7 +130,7 @@
     <value>按文件夹对本子进行区分管理</value>
   </data>
   <data name="Answer_SupportedType" xml:space="preserve">
-    <value>zip、7z和文件夹。对于文件夹类型，图片必须直接包含在文件夹内</value>
+    <value>zip、7z和文件夹。内部图片格式仅限webp,jpg,png，其他格式将致软件闪退。对于文件夹类型，图片必须直接包含在文件夹内</value>
   </data>
   <data name="Answer_Tag" xml:space="preserve">
     <value>本子标签从本子名读取。如文件"[玉砂糖] キミ色保護色 (COMIC BAVEL 2021年6月号) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip"，在本软件中，包含在一对括号中的内容将被识别为Tag，未包含在括号中的内容将被识别为本子名称。这不一定100%正确识别。</value>
