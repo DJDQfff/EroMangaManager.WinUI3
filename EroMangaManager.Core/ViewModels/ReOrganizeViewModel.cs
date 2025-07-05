@@ -4,9 +4,17 @@ using System.Text;
 
 namespace EroMangaManager.Core.ViewModels;
 
-public class ReOrganizeViewModel : ObservableObject
+/// <summary>
+/// 重新管理页面
+/// </summary>
+/// <remarks>
+///
+/// </remarks>
+/// <param name="mangas"></param>
+public class ReOrganizeViewModel (IEnumerable<MangaBook> mangas) : ObservableObject
 {
-    public ObservableCollection<Models.MangaBook> contentFolders = new();
-
-    public ReOrganizeViewModel(IEnumerable<MangaBook> mangas) { }
+    /// <summary>
+    ///
+    /// </summary>
+    public ObservableCollection<Models.MangaBook> contentFolders = [];
 }

@@ -7,7 +7,7 @@ namespace EroMangaManager.WinUI3.Views.SettingPageChildPages
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class FiltedImagesPage : Page
     {
-        private readonly ObservableCollection<ImageItem> items = new();
+        private readonly ObservableCollection<ImageItem> items = [];
 
         /// <summary>
         /// 构造函数
@@ -42,7 +42,7 @@ namespace EroMangaManager.WinUI3.Views.SettingPageChildPages
                 hashlist.Add(hash);
                 await imageItem.StorageFile.DeleteAsync(StorageDeleteOption.PermanentDelete);
             }
-            string[] vs = hashlist.ToArray();
+            var vs = hashlist.ToArray();
             await DatabaseController.ImageFilter_Remove(vs);
 
             button.IsEnabled = true;

@@ -3,7 +3,7 @@
     /// <summary>
     /// 进度条可见性
     /// </summary>
-    public class ProgressRingVisibility : IValueConverter
+    public partial class ProgressRingVisibility : IValueConverter
     {
         /// <summary>
         /// 类型转出

@@ -8,9 +8,9 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages;
 /// </summary>
 public sealed partial class MangasWithoutBrackets : Page
 {
-    private ObservableCollection<MangaBook> RepaetBooks { get; } = new();
+    private ObservableCollection<MangaBook> RepaetBooks { get; } = [];
 
-    public MangasWithoutBrackets()
+    public MangasWithoutBrackets ()
     {
         this.InitializeComponent();
         foreach (var book in App.Current.GlobalViewModel.MangaList)
@@ -23,7 +23,7 @@ public sealed partial class MangasWithoutBrackets : Page
         }
     }
 
-    void RemoveIfTagRepeat(MangaBook book)
+    void RemoveIfTagRepeat (MangaBook book)
     {
         if (BracketBasedStringParser.ContainAnyBrackets(book.FileDisplayName))
         {

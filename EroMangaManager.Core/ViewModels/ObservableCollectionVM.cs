@@ -22,9 +22,6 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
 
         public event Action<string> WorkFailedEvent;
-
-        public Action<MangaBook> FastSetAction;
-        public Action<MangaBook> SlowSetAction;
         /// <summary>
         /// 本子文件夹集合
         /// </summary>

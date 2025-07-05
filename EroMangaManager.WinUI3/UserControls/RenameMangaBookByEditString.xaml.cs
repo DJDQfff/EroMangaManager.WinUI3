@@ -1,13 +1,20 @@
+using System.Collections.Specialized;
+using System.ComponentModel;
+
 namespace EroMangaManager.WinUI3.UserControls;
 
-[INotifyPropertyChanged]
-public sealed partial class RenameMangaBookByEditString : UserControl
+public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPropertyChanged
 {
-    [ObservableProperty]
     private MangaBook mangaBook;
-    partial void OnMangaBookChanged (MangaBook value)
+    public MangaBook MangaBook
     {
-        textbox.Text = value.FileDisplayName;
+        get => mangaBook;
+        set
+        {
+            mangaBook = value;
+            textbox.Text = value.FileDisplayName;
+            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangaBook)));
+        }
     }
 
     private bool isnewnameok;
@@ -18,14 +25,8 @@ public sealed partial class RenameMangaBookByEditString : UserControl
     /// </summary>
     public bool IsNewnameOK
     {
-        set
-        {
-            isnewnameok = value;
-        }
-        get
-        {
-            return isnewnameok && (NewDisplayName != MangaBook.FileDisplayName);
-        }
+        set { isnewnameok = value; }
+        get { return isnewnameok && (NewDisplayName != MangaBook.FileDisplayName); }
     }
 
     /// <summary>
@@ -37,6 +38,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl
     /// 输入合法
     /// </summary>
     public event Action CorrectInput;
+    public event PropertyChangedEventHandler PropertyChanged;
 
     /// <summary>
     /// 选择的新名字
@@ -61,7 +63,6 @@ public sealed partial class RenameMangaBookByEditString : UserControl
         MangaBook = mangaBook;
         //CorrectInput += () => RenameButton.IsEnabled = true;
         //WrongInput += () => RenameButton.IsEnabled = false;
-
     }
 
     /// <summary>
@@ -69,7 +70,8 @@ public sealed partial class RenameMangaBookByEditString : UserControl
     /// </summary>
     /// <param name="mangaBook"></param>
     /// <param name="suggestedname"></param>
-    public RenameMangaBookByEditString (MangaBook mangaBook , string suggestedname) : base()
+    public RenameMangaBookByEditString (MangaBook mangaBook , string suggestedname)
+        : base()
     {
         if (suggestedname == null)
         {
@@ -87,17 +89,20 @@ public sealed partial class RenameMangaBookByEditString : UserControl
         {
             // 检查文件名是非为空
 
-            hinttextblock.Text = ResourceLoader.GetForViewIndependentUse().GetString("DontUseEmptyString");
+            hinttextblock.Text = ResourceLoader
+                .GetForViewIndependentUse()
+                .GetString("DontUseEmptyString");
             IsNewnameOK = false;
             RenameButton.IsEnabled = false;
             WrongInput?.Invoke();
-
         }
         else if (NewDisplayName.Any(c => Path.GetInvalidFileNameChars().Contains(c)))
         {
             // 检查文件是否含有非法字符
 
-            hinttextblock.Text = ResourceLoader.GetForViewIndependentUse().GetString("ContainInvalaidChar");
+            hinttextblock.Text = ResourceLoader
+                .GetForViewIndependentUse()
+                .GetString("ContainInvalaidChar");
             IsNewnameOK = false;
             RenameButton.IsEnabled = false;
             WrongInput?.Invoke();
@@ -109,16 +114,11 @@ public sealed partial class RenameMangaBookByEditString : UserControl
             IsNewnameOK = true;
             RenameButton.IsEnabled = true;
             CorrectInput?.Invoke();
-
         }
-
-
     }
 
     private void RenameButton_Click (object sender , RoutedEventArgs e)
     {
         StorageOperation.RenameMange(MangaBook , NewDisplayName);
-
-
     }
 }

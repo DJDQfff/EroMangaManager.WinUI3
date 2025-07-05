@@ -41,8 +41,8 @@ public static class StorageItemIterator
         this StorageFolder rootFolder
     )
     {
-        List<StorageFolder> targetFolders = new();
-        List<StorageFile> targetFiles = new();
+        List<StorageFolder> targetFolders = [];
+        List<StorageFile> targetFiles = [];
 
         await Loop(rootFolder);
 

@@ -1,6 +1,6 @@
 ﻿namespace EroMangaManager.WinUI3.StaticResource
 {
-    internal class ItemsConverter : IValueConverter
+    internal partial class ItemsConverter : IValueConverter
     {
         public object Convert (object value , Type targetType , object parameter , string language)
         {

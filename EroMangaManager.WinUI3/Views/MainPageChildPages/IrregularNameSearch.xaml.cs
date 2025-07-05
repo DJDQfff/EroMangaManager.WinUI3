@@ -8,7 +8,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// </summary>
     public sealed partial class IrregularNameSearch : Page
     {
-        readonly ObservableCollection<MangaBook> books = new();
+        readonly ObservableCollection<MangaBook> books = [];
         public IrregularNameSearch ()
         {
             this.InitializeComponent();

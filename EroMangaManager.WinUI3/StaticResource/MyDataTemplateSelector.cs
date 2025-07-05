@@ -3,7 +3,7 @@
     /// <summary>
     /// 用于ReadPage的数据模板选择器
     /// </summary>
-    public class MyDataTemplateSelector : DataTemplateSelector
+    public partial class MyDataTemplateSelector : DataTemplateSelector
     {
         /// <summary>
         /// 绑定到BitmapImage

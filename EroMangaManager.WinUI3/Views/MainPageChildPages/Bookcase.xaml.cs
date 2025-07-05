@@ -1,22 +1,31 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
+using System.ComponentModel;
+using System.Reflection;
+
 namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    [INotifyPropertyChanged]
-    public sealed partial class Bookcase : Page
+    public sealed partial class Bookcase : Page, INotifyPropertyChanged
     {
-        [ObservableProperty]
         private MangasGroup mangasGroup;
 
-        partial void OnMangasGroupChanged (MangasGroup value)
-        {
-            Bookcase_GridView.ItemsSource = value.MangaBooks;
-            Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        public MangasGroup MangasGroup
+        {
+            get => mangasGroup;
+            set
+            {
+                mangasGroup = value;
+                Bookcase_GridView.ItemsSource = value.MangaBooks;
+                Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
+
+                PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangasGroup)));
+            }
+        }
 
         /// <summary>
         ///
@@ -76,9 +85,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             MangasGroup?.SortMangaBooks(x => x.FileSize);
         }
-
-
-
 
         private void Bookcase_GridView_Loaded (object sender , RoutedEventArgs e)
         {
