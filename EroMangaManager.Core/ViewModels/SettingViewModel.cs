@@ -11,30 +11,36 @@ namespace EroMangaManager.Core.ViewModels
     ///
     /// </remarks>
     /// <param name="iniPath"></param>
-    public class SettingViewModel (string iniPath) : ObservableObject
+    public class SettingViewModel(string iniPath) : ObservableObject
     {
         /// <summary>
         /// 设置数据源
         /// </summary>
-        public IAppConfig AppConfig { get; } = new ConfigurationBuilder<IAppConfig>().UseIniFile(iniPath).Build();
+        public IAppConfig AppConfig { get; } =
+            new ConfigurationBuilder<IAppConfig>().UseIniFile(iniPath).Build();
 
         /// <summary>
         /// 存储的exe路径
         /// </summary>
         public IEnumerable<string> ExePaths
         {
-            get => AppConfig.MangaOpenWay3.OpenWays?.Split('|' , '?')
-                .SkipWhile(x => string.IsNullOrWhiteSpace(x));
+            get =>
+                AppConfig.MangaOpenWay3.OpenWays
+                    ?.Split('|', '?')
+                    .SkipWhile(string.IsNullOrWhiteSpace);
         }
 
         /// <summary>
         /// 移除某exe路径
         /// </summary>
         /// <param name="path"></param>
-        public void RemoveExePath (string path)
+        public void RemoveExePath(string path)
         {
             var str = $"|{path}";
-            AppConfig.MangaOpenWay3.OpenWays = AppConfig.MangaOpenWay3.OpenWays.Replace(str , string.Empty);
+            AppConfig.MangaOpenWay3.OpenWays = AppConfig.MangaOpenWay3.OpenWays.Replace(
+                str,
+                string.Empty
+            );
 
             OnPropertyChanged(nameof(ExePaths));
         }
@@ -43,7 +49,7 @@ namespace EroMangaManager.Core.ViewModels
         /// 添加exe路径
         /// </summary>
         /// <param name="exePath"></param>
-        public void AddExePath (string exePath)
+        public void AddExePath(string exePath)
         {
             if (!AppConfig.MangaOpenWay3.OpenWays.Contains(exePath))
             {

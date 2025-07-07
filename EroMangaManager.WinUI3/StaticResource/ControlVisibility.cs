@@ -1,19 +1,18 @@
-﻿namespace EroMangaManager.WinUI3.StaticResource
-{
-    internal class ControlVisibility : IValueConverter
-    {
-        public object Convert (object value , Type targetType , object parameter , string language)
-        {
-            return value switch
-            {
-                0 or null or true => Visibility.Visible,
-                _ => (object) Visibility.Collapsed,
-            };
-        }
+﻿namespace EroMangaManager.WinUI3.StaticResource;
 
-        public object ConvertBack (object value , Type targetType , object parameter , string language)
+internal class ControlVisibility : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, string language)
+    {
+        return value switch
         {
-            throw new NotImplementedException();
-        }
+            0 or null or true => Visibility.Visible,
+            _ => (object)Visibility.Collapsed,
+        };
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, string language)
+    {
+        throw new NotImplementedException();
     }
 }

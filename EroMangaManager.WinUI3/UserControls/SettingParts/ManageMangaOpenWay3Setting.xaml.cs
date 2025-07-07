@@ -9,7 +9,7 @@ namespace EroMangaManager.WinUI3.UserControls.SettingParts
 
         public ManageMangaOpenWay3Setting()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
