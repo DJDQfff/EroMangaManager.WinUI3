@@ -18,7 +18,7 @@
             <usercontrols:MangaBookCoverTags MangaBook="{x:Bind}" />
         </DataTemplate>
         <DataTemplate x:Key="BookcaseTemplate0" x:DataType="models:MangaBook">
-            <usercontrols:MangaBookBriefInfo MangaBook="{x:Bind}"/>
+            <usercontrols:MangaBookBriefInfo MangaBook="{x:Bind}" />
         </DataTemplate>
     </Page.Resources>
     <Grid Background="Transparent">
@@ -40,11 +40,12 @@
             Grid.Row="0"
             VerticalAlignment="Stretch">
             <CommandBar.Content>
-                    <ComboBox x:Name="combochangefolder"
-                              ItemsSource="{x:Bind app:App.Current.GlobalViewModel.MangaFolders, Mode=OneWay}"
-                              DisplayMemberPath="FolderPath"
-                          SelectedItem="{x:Bind app:App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder,Mode=TwoWay, Converter={StaticResource displayfolder}}"
-                              />
+                <ComboBox
+                    x:Name="combochangefolder"
+                    DisplayMemberPath="FolderPath"
+                    ItemsSource="{x:Bind app:App.Current.GlobalViewModel.MangaFolders, Mode=OneWay}"
+                    SelectedItem="{x:Bind app:App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder, Mode=TwoWay, Converter={StaticResource displayfolder}}"
+                    SelectionChanged="combochangefolder_SelectionChanged" />
                 <!--<TextBlock x:Name="CommandText"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"

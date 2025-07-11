@@ -23,8 +23,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 DatabaseController.MangaFolder_RemoveSingle(storageFolder.FolderPath);
 
                 App.Current!.GlobalViewModel.RemoveFolder(storageFolder);
-
-                //App.Current.Tokens[storageFolder].Cancel();
             }
         }
 

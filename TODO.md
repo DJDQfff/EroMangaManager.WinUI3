@@ -1,12 +1,8 @@
-## 注意
-
-communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916，更高级的版本无法获取到控件的引用
-
-## UserFeedBack
+- [x] communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916，更高级的版本无法获取到控件的引用
+  
+  > 高版本的包好像更新修复了
 
 - [x] 首先这个没有子文件夹检测，只能识别你选定的这个文件夹内的zip格式数量，识别不到子文件夹内的zip压缩包。他没有打标签功能，分类要自己整理完再压缩成zip格式，希望更新一个打标签功能，可以按标签进行分类，筛选同一标签下的本子观看。还有一个很大的问题，我用的是7z压成aip格式，在应用内打开图片顺序是混乱的，这个不知道是不是bug。
-
-## Bugs
 
 - [x] 标签管理页面有三个控件无法显示英文
   
@@ -18,7 +14,7 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
 
 - [x] RepaeatPage的button事件方法有bug，无法解决，StackOverflow上有回复，但还是无法解决
   
-      > 其实还是没解决，放弃原来设想的重命名所有，改为手动一个一个重命名
+  > 其实还是没解决，放弃原来设想的重命名所有，改为手动一个一个重命名
 
 - [x] ReadPage的FlipView的数据源绑定到Entry，切换时加载图象。切换item时，偶尔会发生页面闪烁的情况，有空去stackoverflow问问。
   
@@ -26,22 +22,19 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
 
 - [x] ReaderVM的ShowAllEntry方法耗时很长，已知以下位置会触发bug，改为用Entry
   
-    - FindSameManga方法删除。在这个页面打开漫画后，删除很容易引发bug，文件越大越容易。未处理
+  - FindSameManga方法删除。在这个页面打开漫画后，删除很容易引发bug，文件越大越容易。未处理
   
-    - ReadPage的FilterThisImage，暂时隐藏
+  - ReadPage的FilterThisImage，暂时隐藏
   
-    - ReadPage的SaveImageAs方法，暂时隐藏
+  - ReadPage的SaveImageAs方法，暂时隐藏
 
 - [x] 添加文件夹，如果内容很多，页面卡
   
   > 源码的foreach使用List.ToArray()后就解决了这个问题
 
-- [ ] 用readpage打开会在第一面卡住
+- [ ] 用readpage打开压缩包会在第一面卡住
   
   > 懒得写这个了
-
-## Issues
-
 * [x] UWP中，efcore默认数据文件在数据LocaStata中，WinUI3 中，数据库文件在C:\Users\27431\AppData\Local\VirtualStore\Windows\SysWOW64\localdatabase.db这个文件夹里面
 - [x] 搜索Orange，会把一个包含在tag的本子搜出来
   
@@ -73,7 +66,7 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
 
 - [ ] 导出epub，有一个读取epub的库，没有导出的库
 
-- [ ] 查找相同本子页面，添加相似查找，及翻译查找，为MangaBook的相同BookName设计一个模糊匹配算法
+- [x] 查找相同本子页面，添加相似查找，及翻译查找，为MangaBook的相同BookName设计一个模糊匹配算法
 
 - [x] 移除重复Tag功能界面，添加自动化功能，不然一个一个手动弄搞到什么时候
 
@@ -103,11 +96,11 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
   
   > 设置界面已实现添加多个exe的功能，但是没弄在Bookcase页面切换的功能，暂时不需要
 
-## NeedOptimization
-
 - [ ] MnagsGroup的UpdateStates属性和IsInitialing属性看看存在功能重叠看看能不能消掉IsInitialing
 
-- [ ] 若一个文件夹加载时，取消此文件夹，后台任务不会取消
+- [x] 若一个文件夹加载时，取消此文件夹，后台任务不会取消
+  
+  > 改为状态了
 * [ ] 显示单个文件夹改为勾选哪些文件夹显示
 
 * [ ] 把所有异常解析的MangaName收集到一个文件
@@ -127,6 +120,14 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
 - [ ] 更新页面和软件说明页面的内容可以转为自动化生成，免得每次都手动更新xaml
 
 ## UpdateChanges
+
+## 2025.7.10
+
+* bookcas页面添加一个combobox可以切换书架
+
+## 2025.7.4
+
+* 现在可以读取文件夹
 
 ## 2025.3.3
 
@@ -329,11 +330,11 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
 
 - 添加漫画前，检查是否是漫画
   
-    1. 是否是zip文件
+  1. 是否是zip文件
   
-    2. 判断文件名是否含有标签
+  2. 判断文件名是否含有标签
   
-    3. 只获取jpg、png
+  3. 只获取jpg、png
 
 - 自定义Tag、数据库、读取自定义数据库、调整页
 
@@ -347,16 +348,16 @@ communitytoolkit的tokeningtextbox和settingcontrols包版本用的是8.1.240916
 
 - 图片过滤功能
   
-    - 过滤ReadPage显示图片
-    - 修改所有封面
+  - 过滤ReadPage显示图片
+  - 修改所有封面
 
 ## 结构调整
 
 - Reader页面翻页，一开始是设计的绑定到压缩文件的各个Entry，这样可以节省资源，只在发生切换页面的时候加载图像，但这样会发生两个问题：
   
-    1. 解码很慢
+  1. 解码很慢
   
-    2. 有一个bug，压缩文件的ZipArchive类（标准dotnet库或者别的库）不是线程安全，在翻页时候加载图像，就需要多线程解压缩图像，因此线程报错。
+  2. 有一个bug，压缩文件的ZipArchive类（标准dotnet库或者别的库）不是线程安全，在翻页时候加载图像，就需要多线程解压缩图像，因此线程报错。
 
              现在改成了提前解压文件获取图像，每个页面直接绑定到图像，不需要SelectionChange事件
 

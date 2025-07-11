@@ -51,7 +51,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             switch (e.Parameter)
             {
                 case MangasGroup mangasFolder:
-                    MangasGroup = mangasFolder;
+                    if (mangasFolder != MangasGroup)
+                        MangasGroup = mangasFolder;
                     break;
             }
         }
@@ -91,7 +92,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             var index = App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey;
             DataTemplateList.SelectedIndex = index;
             var key = "BookcaseTemplate" + index;
-            Bookcase_GridView.ItemTemplate = this.Resources[key] as DataTemplate;
+            Bookcase_GridView.ItemTemplate = Resources[key] as DataTemplate;
         }
 
         private void DataTemplateList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -100,10 +101,23 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             var index = listbox.SelectedIndex;
             var key = "BookcaseTemplate" + index;
 
-            Bookcase_GridView.ItemTemplate = this.Resources[key] as DataTemplate;
+            Bookcase_GridView.ItemTemplate = Resources[key] as DataTemplate;
 
             _ = new DataTemplate();
             App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey = index;
+        }
+
+        private void combochangefolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var a = App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder;
+            if (a is null)
+            {
+                //TODO 当默认文件夹被删除时，a为null
+                return;
+            }
+            MangasGroup = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(
+                x => x.FolderPath == a
+            );
         }
     }
 }
