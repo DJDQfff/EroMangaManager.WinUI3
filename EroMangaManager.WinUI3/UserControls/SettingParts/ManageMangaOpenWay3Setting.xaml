@@ -6,19 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:EroMangaManager.WinUI3.UserControls.SettingParts"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:setting="using:CommunityToolkit.WinUI.Controls"
     xmlns:s="communitytoolkit"
+    xmlns:setting="using:CommunityToolkit.WinUI.Controls"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     mc:Ignorable="d">
 
     <Grid>
-		
+
         <setting:SettingsExpander x:Name="MangaOpenWay" Header="{uid:Strings Uid=MangaOpenWay}">
             <setting:SettingsExpander.ItemsHeader>
                 <RadioButtons ItemsSource="{x:Bind SettingVM.ExePaths, Mode=OneWay}" SelectedIndex="{x:Bind SettingVM.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}">
                     <RadioButtons.ItemTemplate>
                         <DataTemplate x:DataType="x:String">
-							
+
                             <RadioButton Content="{x:Bind Converter={StaticResource uistringconverter}}">
                                 <RadioButton.ContextFlyout>
                                     <MenuFlyout>

@@ -15,8 +15,8 @@
         </Grid.ColumnDefinitions>
         <ListView
             x:Name="listview"
-            Grid.Column="0"            x:Load="False"
-
+            Grid.Column="0"
+            x:Load="False"
             ItemsSource="{x:Bind _list}"
             SelectionChanged="listview_SelectionChanged">
             <TextBlock Text="{x:Bind}" />

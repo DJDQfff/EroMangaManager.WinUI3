@@ -22,7 +22,7 @@
             Grid.Row="0"
             Grid.RowSpan="2"
             Grid.Column="0"
-            Source="{x:Bind MangaBook ,Mode=OneWay}" />
+            Source="{x:Bind MangaBook, Mode=OneWay}" />
         <TextBlock
             Grid.Row="0"
             Grid.Column="1"

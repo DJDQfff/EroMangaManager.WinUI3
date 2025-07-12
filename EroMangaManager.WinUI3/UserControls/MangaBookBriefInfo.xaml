@@ -22,7 +22,7 @@
             Height="192"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Source="{x:Bind MangaBook, Mode=OneWay}"/>
+            Source="{x:Bind MangaBook, Mode=OneWay}" />
         <TextBlock
             Grid.Row="1"
             Width="150"
@@ -33,7 +33,7 @@
             <Run
                 x:Name="runtext"
                 IsTextScaleFactorEnabled="True"
-                Text="{x:Bind MangaBook.MangaName ,Mode=OneWay}" />
+                Text="{x:Bind MangaBook.MangaName, Mode=OneWay}" />
         </TextBlock>
         <TextBlock
             Grid.Row="2"
