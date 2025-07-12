@@ -30,14 +30,14 @@ namespace EroMangaDatabase
                     "无码",
                     "無码"
                 },
-                new List<string> { PresetTagCategory.DL版.ToString(), "DL版" },
-                new List<string> { PresetTagCategory.刊登.ToString(), "COMIC" },
-                new List<string> { PresetTagCategory.CM展.ToString(), "C99" },
-                new List<string> { PresetTagCategory.中译.ToString(), "漢化", "中国語", "汉化", "中国翻訳" },
-                new List<string> { PresetTagCategory.英译.ToString(), "英訳" },
-                new List<string> { PresetTagCategory.作者.ToString(), "国崎蛍" },
-                new List<string> { PresetTagCategory.单行本.ToString(), "长篇", "单行本" },
-                new List<string> { PresetTagCategory.短篇.ToString(), "短篇" },
+                [PresetTagCategory.DL版.ToString(), "DL版"],
+                [PresetTagCategory.刊登.ToString(), "COMIC"],
+                [PresetTagCategory.CM展.ToString(), "C99"],
+                [PresetTagCategory.中译.ToString(), "漢化", "中国語", "汉化", "中国翻訳"],
+                [PresetTagCategory.英译.ToString(), "英訳"],
+                [PresetTagCategory.作者.ToString(), "国崎蛍"],
+                [PresetTagCategory.单行本.ToString(), "长篇", "单行本"],
+                [PresetTagCategory.短篇.ToString(), "短篇"],
             };
             foreach (var list in vs)
             {

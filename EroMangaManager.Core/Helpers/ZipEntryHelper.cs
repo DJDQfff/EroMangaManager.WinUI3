@@ -59,7 +59,7 @@ namespace EroMangaManager.Core.Helpers
             {
                 #region 第一个条件：比较数据库，解压后大小
 
-                if (filteredImages.Count(n => n.ZipEntryLength == entry.Size) == 0)
+                if (!filteredImages.Any(n => n.ZipEntryLength == entry.Size))
                     return true;
 
                 #endregion 第一个条件：比较数据库，解压后大小

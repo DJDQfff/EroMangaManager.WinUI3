@@ -71,7 +71,7 @@ public partial class App : Application
 
         #region 事件赋值
 
-        GlobalViewModel.ErrorZipEvent += (string str) =>
+        GlobalViewModel.ErrorZipEvent += str =>
         {
             var appNotification = new AppNotificationBuilder()
                 .AddText(

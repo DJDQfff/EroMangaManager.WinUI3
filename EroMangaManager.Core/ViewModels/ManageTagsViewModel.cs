@@ -54,7 +54,7 @@ public partial class ManageTagsViewModel : ObservableObject
     /// <summary>
     /// 未分类的tag
     /// </summary>
-    public ObservableCollection<string> UnCategoryTags { set; get; } = new();
+    public ObservableCollection<string> UnCategoryTags { set; get; } = [];
 
     /// <summary>
     ///

@@ -8,7 +8,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages;
 /// </summary>
 public sealed partial class RemoveRepeatTags2 : Page
 {
-    private ObservableCollection<MangaBook> RepaetBooks { get; } = new();
+    private ObservableCollection<MangaBook> RepaetBooks { get; } = [];
 
     public RemoveRepeatTags2()
     {

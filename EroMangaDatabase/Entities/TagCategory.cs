@@ -27,7 +27,7 @@ namespace EroMangaDatabase.Entities
             set
             {
                 name = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CategoryName"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CategoryName)));
             }
         }
 

@@ -5,7 +5,7 @@ internal class StorageOperation
     internal static async Task ExportAsPDFAsync (MangaBook mangaBook)
     {
         var fileSavePicker = new FileSavePicker();
-        fileSavePicker.FileTypeChoices.Add("PDF" , new List<string> { ".pdf" });
+        fileSavePicker.FileTypeChoices.Add("PDF" , [".pdf"]);
         fileSavePicker.SuggestedFileName = mangaBook.FileDisplayName;
 
         var handle = WindowNative.GetWindowHandle(App.Current.MainWindow);
