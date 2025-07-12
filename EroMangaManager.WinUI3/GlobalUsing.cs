@@ -12,7 +12,6 @@ global using CommonLibrary.StringParser;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.WinUI;
 global using CommunityToolkit.WinUI.Controls;
-global using CommunityToolkit.WinUI.Notifications;
 
 global using EroMangaDatabase.Entities;
 global using EroMangaDatabase.Tables;
@@ -43,6 +42,7 @@ global using Microsoft.UI.Xaml.Markup;
 global using Microsoft.UI.Xaml.Media;
 global using Microsoft.UI.Xaml.Media.Imaging;
 global using Microsoft.UI.Xaml.Navigation;
+global using Microsoft.Windows.AppNotifications;
 
 global using SharpCompress.Archives;
 

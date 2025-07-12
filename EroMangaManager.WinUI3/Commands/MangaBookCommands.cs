@@ -1,4 +1,7 @@
-﻿namespace EroMangaManager.WinUI3.Commands;
+﻿using Microsoft.Windows.AppNotifications;
+using Microsoft.Windows.AppNotifications.Builder;
+
+namespace EroMangaManager.WinUI3.Commands;
 
 internal class MangaBookCommands
 {
@@ -93,11 +96,12 @@ internal class MangaBookCommands
                 }
                 catch (Exception)
                 {
-                    new ToastContentBuilder()
+                    var appNotification = new AppNotificationBuilder()
                         .AddText(
                             $"{book.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}"
                         )
-                        .Show();
+                        .BuildNotification();
+                    AppNotificationManager.Default.Show(appNotification);
                 }
             }
         };

@@ -4,6 +4,8 @@
 using System.Threading;
 
 using Microsoft.Windows.ApplicationModel.WindowsAppRuntime;
+using Microsoft.Windows.AppNotifications;
+using Microsoft.Windows.AppNotifications.Builder;
 
 namespace EroMangaManager.WinUI3;
 
@@ -71,11 +73,12 @@ public partial class App : Application
 
         GlobalViewModel.ErrorZipEvent += (string str) =>
         {
-            new ToastContentBuilder()
+            var appNotification = new AppNotificationBuilder()
                 .AddText(
                     $"{str}\r{ResourceLoader.GetForViewIndependentUse().GetString("ErrorString1")}"
                 )
-                .Show();
+                .BuildNotification();
+            AppNotificationManager.Default.Show(appNotification);
         };
         GlobalViewModel.WorkDoneEvent += Toast;
         GlobalViewModel.WorkFailedEvent += Toast;
@@ -142,6 +145,7 @@ public partial class App : Application
 
     private void Toast(string message)
     {
-        new ToastContentBuilder().AddText(message).Show();
+        var appNotification = new AppNotificationBuilder().AddText(message).BuildNotification();
+        AppNotificationManager.Default.Show(appNotification);
     }
 }
