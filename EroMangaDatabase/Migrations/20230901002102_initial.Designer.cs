@@ -9,7 +9,9 @@ namespace EroMangaDatabase.Migrations
 {
     [DbContext(typeof(DataBase_Version3))]
     [Migration("20230901002102_initial")]
+#pragma warning disable CS8981 // 该类型名称仅包含小写 ascii 字符。此类名称可能会成为该语言的保留值。
     partial class initial
+#pragma warning restore CS8981 // 该类型名称仅包含小写 ascii 字符。此类名称可能会成为该语言的保留值。
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
