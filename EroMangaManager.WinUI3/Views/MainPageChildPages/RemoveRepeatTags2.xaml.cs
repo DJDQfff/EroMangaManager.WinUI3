@@ -10,9 +10,9 @@ public sealed partial class RemoveRepeatTags2 : Page
 {
     private ObservableCollection<MangaBook> RepaetBooks { get; } = [];
 
-    public RemoveRepeatTags2()
+    public RemoveRepeatTags2 ()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         foreach (var book in App.Current.GlobalViewModel.MangaList)
         {
             if (book.MangaTagsIncludedInFileName.ContainRepeat())
@@ -22,7 +22,7 @@ public sealed partial class RemoveRepeatTags2 : Page
         }
     }
 
-    void RemoveIfTagRepeat(MangaBook book)
+    void RemoveIfTagRepeat (MangaBook book)
     {
         if (!book.MangaTagsIncludedInFileName.ContainRepeat())
         {

@@ -494,6 +494,18 @@
           <source>移动到其他文件夹</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Move to a different folder</target>
         </trans-unit>
+        <trans-unit id="Method1" translate="yes" xml:space="preserve">
+          <source>方法一</source>
+          <target state="new">方法一</target>
+        </trans-unit>
+        <trans-unit id="Method2" translate="yes" xml:space="preserve">
+          <source>方法二</source>
+          <target state="new">方法二</target>
+        </trans-unit>
+        <trans-unit id="Start" translate="yes" xml:space="preserve">
+          <source>开始</source>
+          <target state="new">开始</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -300,6 +300,12 @@
   <data name="MangaTagsManage" xml:space="preserve">
     <value>标签管理</value>
   </data>
+  <data name="Method1" xml:space="preserve">
+    <value>方法一</value>
+  </data>
+  <data name="Method2" xml:space="preserve">
+    <value>方法二</value>
+  </data>
   <data name="MoveToOtherFolder" xml:space="preserve">
     <value>移动到其他文件夹</value>
   </data>
@@ -416,6 +422,9 @@
   </data>
   <data name="ShowFolderBookcase" xml:space="preserve">
     <value>显示书架</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>开始</value>
   </data>
   <data name="SwitchViewMode" xml:space="preserve">
     <value>切换视图</value>
