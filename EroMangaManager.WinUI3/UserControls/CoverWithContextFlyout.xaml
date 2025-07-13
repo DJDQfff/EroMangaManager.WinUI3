@@ -11,7 +11,7 @@
     DoubleTapped="UserControl_DoubleTapped"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <MenuFlyout x:Key="flyout">
+        <MenuFlyout x:Key="flyout" >
             <MenuFlyoutItem Command="{x:Bind commands:MangaBookCommands.Instance.OpenManga}" CommandParameter="{x:Bind Source, Mode=OneWay}" />
             <MenuFlyoutItem
                 Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
@@ -27,9 +27,14 @@
                 Text="{uid:Strings Uid=RenameFile}" />
             <MenuFlyoutSeparator />
             <MenuFlyoutItem
+                
                 Command="{x:Bind commands:MangaBookCommands.Instance.ExportPDF}"
                 CommandParameter="{x:Bind Source, Mode=OneWay}"
                 Text="{uid:Strings Uid=ExportToPDF}" />
+            <MenuFlyoutSubItem Text="{uid:Strings Uid=MoveToOtherFolder}"
+                              Loaded="moveto_Loaded"
+                               x:Name="moveto"
+                               Icon="MoveToFolder" />
             <!--</MenuFlyoutSubItem>-->
         </MenuFlyout>
     </UserControl.Resources>

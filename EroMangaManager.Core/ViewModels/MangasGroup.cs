@@ -106,8 +106,9 @@ public partial class MangasGroup : ObservableObject
     /// 移除一个本子
     /// </summary>
     /// <param name="mangaBook"></param>
-    public void RemoveManga (MangaBook mangaBook)
+    public bool RemoveManga (MangaBook mangaBook)
     {
-        MangaBooks.Remove(mangaBook);
+        return MangaBooks.Remove(mangaBook);
     }
+
 }

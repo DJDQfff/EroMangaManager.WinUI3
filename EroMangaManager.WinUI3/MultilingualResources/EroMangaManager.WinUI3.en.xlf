@@ -490,6 +490,10 @@
           <source>zip漫画包</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Zip comic pack</target>
         </trans-unit>
+        <trans-unit id="MoveToOtherFolder" translate="yes" xml:space="preserve">
+          <source>移动到其他文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Move to a different folder</target>
+        </trans-unit>
       </group>
     </body>
   </file>

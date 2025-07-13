@@ -1,6 +1,8 @@
 ﻿using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 
+using Org.BouncyCastle.Tls;
+
 namespace EroMangaManager.WinUI3.Commands;
 
 internal class MangaBookCommands
@@ -12,11 +14,11 @@ internal class MangaBookCommands
     public StandardUICommand StorageCommandRename = new();
     public static MangaBookCommands Instance { get; set; }
 
-    public static void Initial()
+    public static void Initial ()
     {
         Instance ??= new();
 
-        Instance.OpenFolderInOutside.ExecuteRequested += (sender, args) =>
+        Instance.OpenFolderInOutside.ExecuteRequested += (sender , args) =>
         {
             string folderpath = args.Parameter switch
             {
@@ -37,7 +39,7 @@ internal class MangaBookCommands
             //System.Diagnostics.Process.Start("explorer" , $"/select , {folderpath}");
         };
 
-        Instance.StorageCommandDelete.ExecuteRequested += async (sender, args) =>
+        Instance.StorageCommandDelete.ExecuteRequested += async (sender , args) =>
         {
             switch (args.Parameter)
             {
@@ -47,7 +49,7 @@ internal class MangaBookCommands
             }
         };
 
-        Instance.StorageCommandRename.ExecuteRequested += async (sender, args) =>
+        Instance.StorageCommandRename.ExecuteRequested += async (sender , args) =>
         {
             switch (args.Parameter)
             {
@@ -61,7 +63,7 @@ internal class MangaBookCommands
             Symbol = Symbol.Rename
         };
 
-        Instance.OpenManga.ExecuteRequested += (sender, args) =>
+        Instance.OpenManga.ExecuteRequested += (sender , args) =>
         {
             if (args.Parameter is MangaBook book)
             {
@@ -72,13 +74,13 @@ internal class MangaBookCommands
                     switch (wayindex)
                     {
                         case 0:
-                            RunDefault:
+                        RunDefault:
                             WindowHelper.ShowReadWindow(book);
                             break;
 
                         case 1:
 
-                            Process.Start("explorer", book.FilePath);
+                            Process.Start("explorer" , book.FilePath);
                             break;
 
                         case > 1:
@@ -89,7 +91,7 @@ internal class MangaBookCommands
                             }
                             else
                             {
-                                Process.Start(SelectedExePath, $"\"{book.FilePath}\"");
+                                Process.Start(SelectedExePath , $"\"{book.FilePath}\"");
                             }
                             break;
                     }
@@ -106,7 +108,7 @@ internal class MangaBookCommands
             }
         };
 
-        Instance.ExportPDF.ExecuteRequested += async (sender, args) =>
+        Instance.ExportPDF.ExecuteRequested += async (sender , args) =>
         {
             switch (args.Parameter)
             {
@@ -115,6 +117,6 @@ internal class MangaBookCommands
                     break;
             }
         };
-        Instance.ExportPDF.IconSource = new SymbolIconSource() { Symbol = Symbol.Save, };
+        Instance.ExportPDF.IconSource = new SymbolIconSource() { Symbol = Symbol.Save , };
     }
 }

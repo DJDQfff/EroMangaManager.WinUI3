@@ -375,4 +375,7 @@
   <data name="ZipComic" xml:space="preserve">
     <value>Zip comic pack</value>
   </data>
+  <data name="MoveToOtherFolder" xml:space="preserve">
+    <value>Move to a different folder</value>
+  </data>
 </root>

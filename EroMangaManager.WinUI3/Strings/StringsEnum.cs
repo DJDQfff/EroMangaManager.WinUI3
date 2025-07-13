@@ -3,6 +3,8 @@
     ///<summary> </summary>
     public enum StringsEnum
     {
+        MoveToOtherFolder,
+
         ///<summary></summary>
         Answer_SupportedType,
 

@@ -23,14 +23,14 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 Bookcase_GridView.ItemsSource = value.MangaBooks;
                 Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
 
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MangasGroup)));
+                PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangasGroup)));
             }
         }
 
         /// <summary>
         ///
         /// </summary>
-        public Bookcase()
+        public Bookcase ()
         {
             InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         /// 导航时，传入要绑定的数据
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -58,7 +58,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         }
 
         //TODO 本子名翻译功能。 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug
-        private async void TranslateEachMangaName(object sender, RoutedEventArgs e)
+        private async void TranslateEachMangaName (object sender , RoutedEventArgs e)
         {
             var button = sender as AppBarButton;
             button.IsEnabled = false;
@@ -82,12 +82,12 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             button.IsEnabled = true;
         }
 
-        private void Order(object sender, RoutedEventArgs e)
+        private void Order (object sender , RoutedEventArgs e)
         {
             MangasGroup?.SortMangaBooks(x => x.FileSize);
         }
 
-        private void Bookcase_GridView_Loaded(object sender, RoutedEventArgs e)
+        private void Bookcase_GridView_Loaded (object sender , RoutedEventArgs e)
         {
             var index = App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey;
             DataTemplateList.SelectedIndex = index;
@@ -95,7 +95,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             Bookcase_GridView.ItemTemplate = Resources[key] as DataTemplate;
         }
 
-        private void DataTemplateList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DataTemplateList_SelectionChanged (object sender , SelectionChangedEventArgs e)
         {
             var listbox = sender as ListBox;
             var index = listbox.SelectedIndex;
@@ -107,8 +107,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey = index;
         }
 
-        private void combochangefolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void combochangefolder_SelectionChanged (object sender , SelectionChangedEventArgs e)
+        { // TODO 这里应该加一个：切换时，folde加载队列也应该跟着切换
             var a = App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder;
             if (a is null)
             {

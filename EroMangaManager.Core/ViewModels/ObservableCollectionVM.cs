@@ -113,7 +113,7 @@ namespace EroMangaManager.Core.ViewModels
         {
             string folderpath = mangaBook.FolderPath;
             MangasGroup folder = MangaFolders.Single(x => x.FolderPath == folderpath);
-            folder.RemoveManga(mangaBook);
+            _ = folder.RemoveManga(mangaBook);
         }
 
         /// <summary>
@@ -156,6 +156,26 @@ namespace EroMangaManager.Core.ViewModels
                 await InitialGroup.Invoke(group);
 
                 await StartInitial();
+            }
+        }
+        /// <summary>
+        /// 把一个本子放到他应该在的集合里面，这个一般用在移动本子后
+        /// </summary>
+        /// <param name="book"></param>
+        public void PlaceInCorrectGroup (MangaBook book)
+        {
+            foreach (var group in MangaFolders)
+            {
+                if (group.RemoveManga(book))
+                {
+                    var g = MangaFolders.SingleOrDefault(x => x.FolderPath == book.FolderPath);
+                    if (g is not null)
+                    {
+                        if (!g.MangaBooks.Contains(book))
+                        { g.MangaBooks.Add(book); }
+                    }
+
+                }
             }
         }
     }

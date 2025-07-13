@@ -35,7 +35,7 @@ internal class StorageOperation
 
                     {
 #if WINDOWS
-                        var folder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(
+                        var folder = await StorageFolder.GetFolderFromPathAsync(
                             eroManga.FilePath
                         );
                         System.IO.Directory.Delete(eroManga.FilePath , true);
@@ -50,7 +50,7 @@ internal class StorageOperation
 
                     {
 #if WINDOWS
-                        var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(
+                        var file = await StorageFile.GetFileFromPathAsync(
                             eroManga.FilePath
                         );
                         await file.DeleteAsync(deletemode);
@@ -106,5 +106,50 @@ internal class StorageOperation
                     break;
             }
         }
+
+    }
+    /// <summary>
+    /// 移动本子，但是不改名
+    /// </summary>
+    /// <param name="book"></param>
+    /// <param name="text"></param>
+    public static void MoveManga (MangaBook book , string targetfolder)
+    {
+        if (Directory.Exists(targetfolder))
+        {
+            var fullname = book.FileFullName;
+            var newpath = Path.Combine(targetfolder , fullname);
+            try
+            {
+                // TODO 可能重名
+                switch (book.Type)
+                {
+
+                    case "":
+                        {
+                            Directory.Move(book.FilePath , newpath);
+                        }
+                        break;
+                    default:
+                        {
+                            File.Move(book.FilePath , newpath);
+                        }
+                        break;
+
+                }
+                book.FilePath = newpath;
+                App.Current.GlobalViewModel.PlaceInCorrectGroup(book);
+
+            }
+            catch
+            {
+
+            }
+        }
+        else
+        {
+            throw new ArgumentException("此Directory不存在");
+        }
+
     }
 }

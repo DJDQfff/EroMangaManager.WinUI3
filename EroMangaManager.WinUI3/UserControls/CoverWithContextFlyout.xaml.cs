@@ -30,4 +30,23 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
     {
         Commands.MangaBookCommands.Instance.OpenManga.Execute(Source);
     }
+
+    private void moveto_Loaded (object sender , RoutedEventArgs e)
+    {
+        moveto.Items.Clear();
+        var ways = App.Current.GlobalViewModel.MangaFolders
+            .SkipWhile(x => x.FolderPath == Source.FolderPath)
+            .ToList();
+
+        foreach (var way in ways)
+        {
+            var item = new MenuFlyoutItem();
+            item.Text = way.FolderPath;
+            item.Click += (sender , e) =>
+            {
+                StorageOperation.MoveManga(Source , way.FolderPath);
+            };
+            moveto.Items.Add(item);
+        }
+    }
 }
