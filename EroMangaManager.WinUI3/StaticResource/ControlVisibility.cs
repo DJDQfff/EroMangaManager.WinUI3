@@ -2,16 +2,16 @@
 
 internal class ControlVisibility : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, string language)
+    public object Convert (object value , Type targetType , object parameter , string language)
     {
         return value switch
         {
-            0 or null or true => Visibility.Visible,
-            _ => (object)Visibility.Collapsed,
+            0 or null or true or UpdateState.Ing => Visibility.Visible,
+            _ => (object) Visibility.Collapsed,
         };
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter, string language)
+    public object ConvertBack (object value , Type targetType , object parameter , string language)
     {
         throw new NotImplementedException();
     }

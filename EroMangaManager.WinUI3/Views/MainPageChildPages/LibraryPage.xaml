@@ -117,7 +117,7 @@
                             VerticalAlignment="Bottom"
                             Foreground="CornflowerBlue"
                             IsIndeterminate="True"
-                            Visibility="{x:Bind IsInitialing, Mode=OneWay, Converter={StaticResource controlvisibilityconverter}}" />
+                            Visibility="{x:Bind UpdateState , Mode=OneWay, Converter={StaticResource controlvisibilityconverter}}" />
                         <TextBlock
                             MinWidth="50"
                             VerticalAlignment="Center"

@@ -37,10 +37,11 @@
             Visibility="Visible" />
         <CommandBar
             x:Name="BookcaseCommandBar"
-            Grid.Row="0"
+            
+            Grid.Row="0" VerticalContentAlignment="Center"
             VerticalAlignment="Stretch">
-            <CommandBar.Content>
-                <ComboBox
+            <CommandBar.Content >
+                <ComboBox 
                     x:Name="combochangefolder"
                     DisplayMemberPath="FolderPath"
                     ItemsSource="{x:Bind app:App.Current.GlobalViewModel.MangaFolders, Mode=OneWay}"
@@ -53,8 +54,8 @@
                            Text="{x:Bind MangasGroup.ShowString, Mode=OneWay}"
                            TextAlignment="Center" />-->
             </CommandBar.Content>
-            <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
-                <usercontrols:MangaOpenButton />
+            <AppBarElementContainer  VerticalAlignment="Center" VerticalContentAlignment="Center">
+                <usercontrols:MangaOpenButton/>
             </AppBarElementContainer>
             <AppBarButton
                 AllowFocusOnInteraction="True"

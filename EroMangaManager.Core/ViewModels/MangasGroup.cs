@@ -36,11 +36,6 @@ public partial class MangasGroup : ObservableObject
     /// 更新状态，表示是否再后台更新
     /// </summary>
     public UpdateState UpdateState { set; get; } = UpdateState.Ready;
-    /// <summary>
-    /// 是否在更新数据
-    /// </summary>
-    [ObservableProperty]
-    private bool isInitialing = false;
 
     /// <summary>
     /// 对外展示的信息，考虑将这个属性改名为Description
