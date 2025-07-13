@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-using EroMangaManager.Core.Helpers;
+using EroMangaManager.Core.IOOperation;
 
 namespace EroMangaManager.Core.ViewModels
 {

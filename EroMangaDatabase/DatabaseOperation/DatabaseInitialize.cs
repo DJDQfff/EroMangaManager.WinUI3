@@ -17,11 +17,10 @@ namespace EroMangaDatabase
         public async Task InitializeDefaultData ()
         {
             // 初始化数据
-            List<string>[] vs = new List<string>[]
-            {
-                new List<string> { PresetTagCategory.全彩.ToString(), "全彩" },
-                new List<string>
-                {
+            List<string>[] vs =
+            [
+                [PresetTagCategory.全彩.ToString(), "全彩"],
+                [
                     PresetTagCategory.无修.ToString(),
                     "无修",
                     "无修正",
@@ -29,7 +28,7 @@ namespace EroMangaDatabase
                     "無修",
                     "无码",
                     "無码"
-                },
+                ],
                 [PresetTagCategory.DL版.ToString(), "DL版"],
                 [PresetTagCategory.刊登.ToString(), "COMIC"],
                 [PresetTagCategory.CM展.ToString(), "C99"],
@@ -38,7 +37,7 @@ namespace EroMangaDatabase
                 [PresetTagCategory.作者.ToString(), "国崎蛍"],
                 [PresetTagCategory.单行本.ToString(), "长篇", "单行本"],
                 [PresetTagCategory.短篇.ToString(), "短篇"],
-            };
+            ];
             foreach (var list in vs)
             {
                 try
@@ -62,7 +61,7 @@ namespace EroMangaDatabase
 
             var zip = assembly.GetManifestResourceStream($"EroMangaDatabase.{enbededResourceFileName}.7z");
             zip.Position = 0;
-            ReaderOptions readerOptions = new ReaderOptions()
+            ReaderOptions readerOptions = new()
             {
                 Password = "F9429775-6EAB-48FC-9F8A-4E079F90AF3F"
             };
@@ -75,7 +74,7 @@ namespace EroMangaDatabase
                 stream.Position = 0;
                 break;
             }
-            StreamReader sr = new StreamReader(stream);
+            StreamReader sr = new(stream);
             var a = sr.ReadToEnd();
             sr.Close();
             return a;

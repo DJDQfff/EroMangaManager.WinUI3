@@ -17,21 +17,21 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
         set
         {
             source = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Source)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Source)));
         }
     }
 
-    public CoverWithContextFlyout ()
+    public CoverWithContextFlyout()
     {
         this.InitializeComponent();
     }
 
-    private void UserControl_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)
+    private void UserControl_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
     {
         Commands.MangaBookCommands.Instance.OpenManga.Execute(Source);
     }
 
-    private void moveto_Loaded (object sender , RoutedEventArgs e)
+    private void moveto_Loaded(object sender, RoutedEventArgs e)
     {
         moveto.Items.Clear();
         var ways = App.Current.GlobalViewModel.MangaFolders
@@ -40,11 +40,15 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
 
         foreach (var way in ways)
         {
-            var item = new MenuFlyoutItem();
-            item.Text = way.FolderPath;
-            item.Click += (sender , e) =>
+            var item = new MenuFlyoutItem { Text = way.FolderPath };
+            item.Click += (sender, e) =>
             {
-                StorageOperation.MoveManga(Source , way.FolderPath);
+                EroMangaManager.Core.IOOperation.MangaBookFileOperation.MoveManga(
+                    Source,
+                    way.FolderPath,
+                    null
+                );
+                App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
             };
             moveto.Items.Add(item);
         }

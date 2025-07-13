@@ -10,8 +10,8 @@ namespace EroMangaManager.WinUI3.Models;
 internal static class MangaFactory
 {
     /// <summary>ViewModel初始化</summary>
-    public static void GetAllFolders (
-        this ObservableCollectionVM ViewModel ,
+    public static void GetAllFolders(
+        this ObservableCollectionVM ViewModel,
         IEnumerable<string> storageFolders
     )
     {
@@ -34,7 +34,7 @@ internal static class MangaFactory
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
     /// <returns></returns>
-    public static async Task Initial (this MangasGroup mangasFolder)
+    public static async Task Initial(this MangasGroup mangasFolder)
     {
         mangasFolder.IsInitialing = true;
         mangasFolder.UpdateState = UpdateState.Ing;
@@ -50,14 +50,12 @@ internal static class MangaFactory
             );
             foreach (var xfile in filteredfiles)
             {
-                var x = new MangaBook(xfile);
-
-                x.Type = Path.GetExtension(xfile).ToLower();
+                var x = new MangaBook(xfile) { Type = Path.GetExtension(xfile).ToLower() };
                 var fileinfo = new FileInfo(x.FilePath);
                 x.FileSize = fileinfo.Length;
                 fileinfo = null;
                 x.CoverPath =
-                    await CoverHelper.TryCreatCoverFileAsync(x.FilePath , null)
+                    await CoverHelper.TryCreatCoverFileAsync(x.FilePath, null)
                     ?? CoverHelper.DefaultCoverPath;
                 mangasFolder.MangaBooks.Add(x);
             }
@@ -84,12 +82,12 @@ internal static class MangaFactory
     }
 
     [Obsolete]
-    public static async void InitialEachFolders (this ObservableCollectionVM ViewModel)
+    public static async void InitialEachFolders(this ObservableCollectionVM ViewModel)
     {
         // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
         foreach (var folder in ViewModel.MangaFolders.ToArray())
         {
-            var token = new CancellationTokenSource();
+            //var token = new CancellationTokenSource();
             //App.Current.Tokens.TryAdd(folder , token);
 
             await folder.Initial();

@@ -14,7 +14,7 @@ public sealed partial class RenameMangaBookByDragTag : UserControl, INotifyPrope
         set
         {
             mangaBook = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangaBook)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MangaBook)));
             order.Sources = BracketBasedStringParser.SplitByBrackets_KeepBracket(
                 MangaBook.FileDisplayName
             ); //value.MangaTagsIncludedInFileName;
@@ -24,27 +24,27 @@ public sealed partial class RenameMangaBookByDragTag : UserControl, INotifyPrope
     public event Action<MangaBook> NameChanged;
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public RenameMangaBookByDragTag ()
+    public RenameMangaBookByDragTag()
     {
         this.InitializeComponent();
     }
 
-    private void SingleMangaBookRename_New (object sender , RoutedEventArgs e)
+    private void SingleMangaBookRename_New(object sender, RoutedEventArgs e)
     {
         var text = newnameBox.Text;
-        StorageOperation.RenameMange(MangaBook , text);
+        MangaBookFileOperation.MoveManga(MangaBook, null, text);
         NameChanged?.Invoke(MangaBook);
     }
 
-    private void newnameBox_TextChanged (object sender , TextChangedEventArgs e)
+    private void newnameBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         var text = newnameBox.Text;
-        StorageOperation.RenameMange(MangaBook , text);
+        MangaBookFileOperation.MoveManga(MangaBook, null, text);
         NameChanged?.Invoke(MangaBook);
     }
 
-    [Obsolete("注意这里出过bug，调用loaded函数的时候，Mangabook可能属性还没刷新" , true)]
-    private void UserControl_Loaded (object sender , RoutedEventArgs e)
+    [Obsolete("注意这里出过bug，调用loaded函数的时候，Mangabook可能属性还没刷新", true)]
+    private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
         // 注意这里出过bug，调用loaded函数的时候，mangabook可能属性还没刷新
         //var a = BracketBasedStringParser.SplitByBrackets_Reserve(MangaBook.FileDisplayName);

@@ -13,7 +13,7 @@ namespace EroMangaDatabase
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
-        public int ImageFilter_LengthConditionCount (long length)
+        public int ImageFilter_LengthConditionCount(long length)
         {
             var query = database.FilteredImages.Count(n => n.ZipEntryLength == length);
 
@@ -25,7 +25,7 @@ namespace EroMangaDatabase
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
-        public int ImageFilter_HashConditionCount (string hash)
+        public int ImageFilter_HashConditionCount(string hash)
         {
             var query = database.FilteredImages.Count(n => n.Hash == hash);
 
@@ -38,13 +38,9 @@ namespace EroMangaDatabase
         /// <param name="hash"></param>
         /// <param name="length"></param>
         /// <returns></returns>
-        public async Task ImageFilter_Add (string hash , long length)
+        public async Task ImageFilter_Add(string hash, long length)
         {
-            FilteredImage imageHash = new FilteredImage()
-            {
-                Hash = hash ,
-                ZipEntryLength = length
-            };
+            FilteredImage imageHash = new() { Hash = hash, ZipEntryLength = length };
             database.Add(imageHash);
             await database.SaveChangesAsync();
         }
@@ -54,7 +50,7 @@ namespace EroMangaDatabase
         /// </summary>
         /// <param name="hashes"></param>
         /// <returns></returns>
-        public async Task ImageFilter_Remove (string[] hashes)
+        public async Task ImageFilter_Remove(string[] hashes)
         {
             var h = database.FilteredImages.Where(n => hashes.Contains(n.Hash)).ToArray();
             database.RemoveRange(h);

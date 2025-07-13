@@ -1,6 +1,8 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 
+using Microsoft.EntityFrameworkCore.Query.Internal;
+
 namespace EroMangaManager.WinUI3.UserControls;
 
 public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPropertyChanged
@@ -13,7 +15,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
         {
             mangaBook = value;
             textbox.Text = value.FileDisplayName;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangaBook)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MangaBook)));
         }
     }
 
@@ -48,7 +50,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
     /// <summary>
     ///
     /// </summary>
-    public RenameMangaBookByEditString ()
+    public RenameMangaBookByEditString()
     {
         InitializeComponent();
     }
@@ -57,7 +59,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
     /// 不指定新名字，默认去除重复标签
     /// </summary>
     /// <param name="mangaBook"></param>
-    public RenameMangaBookByEditString (MangaBook mangaBook)
+    public RenameMangaBookByEditString(MangaBook mangaBook)
     {
         InitializeComponent();
         MangaBook = mangaBook;
@@ -70,7 +72,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
     /// </summary>
     /// <param name="mangaBook"></param>
     /// <param name="suggestedname"></param>
-    public RenameMangaBookByEditString (MangaBook mangaBook , string suggestedname)
+    public RenameMangaBookByEditString(MangaBook mangaBook, string suggestedname)
         : base()
     {
         if (suggestedname == null)
@@ -83,7 +85,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
         }
     }
 
-    private void TextBox_TextChanged (object sender , TextChangedEventArgs e)
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (string.IsNullOrWhiteSpace(NewDisplayName))
         {
@@ -117,8 +119,12 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
         }
     }
 
-    private void RenameButton_Click (object sender , RoutedEventArgs e)
+    private void RenameButton_Click(object sender, RoutedEventArgs e)
     {
-        StorageOperation.RenameMange(MangaBook , NewDisplayName);
+        EroMangaManager.Core.IOOperation.MangaBookFileOperation.MoveManga(
+            MangaBook,
+            null,
+            NewDisplayName
+        );
     }
 }

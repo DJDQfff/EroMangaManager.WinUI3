@@ -155,7 +155,7 @@ namespace EroMangaDatabase
         )
         {
             var all = DatabaseController.TagCategory_QueryAll();
-            Dictionary<string , string> keyValuePairs = new Dictionary<string , string>();
+            Dictionary<string , string> keyValuePairs = [];
             foreach (var k in keywords)
             {
                 string tagname = all.First(x => x.Value.Contains(k)).Key;

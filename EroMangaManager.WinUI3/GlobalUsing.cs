@@ -9,14 +9,12 @@ global using System.Threading.Tasks;
 global using CommonLibrary;
 global using CommonLibrary.StringParser;
 
-global using CommunityToolkit.Mvvm.ComponentModel;
-global using CommunityToolkit.WinUI;
 global using CommunityToolkit.WinUI.Controls;
 
 global using EroMangaDatabase.Entities;
 global using EroMangaDatabase.Tables;
 
-global using EroMangaManager.Core.Helpers;
+global using EroMangaManager.Core.IOOperation;
 global using EroMangaManager.Core.Models;
 global using EroMangaManager.Core.Setting;
 global using EroMangaManager.Core.ViewModels;

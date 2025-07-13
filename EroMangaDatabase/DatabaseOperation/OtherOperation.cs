@@ -15,7 +15,7 @@ namespace EroMangaDatabase
         {
             var dictionaries = DatabaseController.TagCategory_QueryAll();
 
-            Dictionary<string , string> keyValuePairs = new Dictionary<string , string>();
+            Dictionary<string , string> keyValuePairs = [];
 
             tags = tags.Distinct().ToArray();           // 去重
 
