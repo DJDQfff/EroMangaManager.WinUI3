@@ -13,7 +13,7 @@
             <Setter Property="HorizontalContentAlignment" Value="Center" />
         </Style>
         <DataTemplate x:Key="datatemplate" x:DataType="x:String">
-            <Border VerticalAlignment="Center" Background="{ThemeResource SystemAccentColorDark3}">
+            <Border VerticalAlignment="Center" >
                 <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal">
                     <Button x:Name="RemoveButton" Click="RemoveButton_Click">
                         <SymbolIcon Symbol="Remove" />

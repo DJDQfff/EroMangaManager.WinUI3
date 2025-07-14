@@ -33,11 +33,11 @@ public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
         set
         {
             newName = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(NewName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NewName)));
         }
     }
 
-    private void AddButton_Click (object sender , RoutedEventArgs e)
+    private void AddButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button)
         {
@@ -51,7 +51,7 @@ public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
         SetNewName();
     }
 
-    private void RemoveButton_Click (object sender , RoutedEventArgs e)
+    private void RemoveButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button)
         {
@@ -65,18 +65,18 @@ public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
         SetNewName();
     }
 
-    public void SetNewName ()
+    public void SetNewName()
     {
         var list = new List<string>();
         foreach (var tag in ListView1.Items)
         {
             list.Add(tag as string);
         }
-        NewName = string.Join(' ' , list);
+        NewName = string.Join(' ', list);
     }
 
-    public TagListOrder ()
+    public TagListOrder()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

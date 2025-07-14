@@ -41,7 +41,7 @@ internal static class MangaFactory
         if (Directory.Exists(mangasFolder.FolderPath))
         {
             //var a = DatabaseController.database.FilteredImages.ToArray();
-
+            List<Task> tasks = [];
             //所有子文件作为mangabook
             var files = Directory.GetFiles(mangasFolder.FolderPath);
             var filteredfiles = files.Where(
@@ -49,31 +49,46 @@ internal static class MangaFactory
             );
             foreach (var xfile in filteredfiles)
             {
-                var x = new MangaBook(xfile) { Type = Path.GetExtension(xfile).ToLower() };
+                var x = new MangaBook(xfile)
+                {
+                    Type = Path.GetExtension(xfile).ToLower()
+                };
+
+                await Task.Run(async () =>
+            {
                 var fileinfo = new FileInfo(x.FilePath);
                 x.FileSize = fileinfo.Length;
                 fileinfo = null;
                 x.CoverPath =
                     await CoverHelper.TryCreatCoverFileAsync(x.FilePath , null)
                     ?? CoverHelper.DefaultCoverPath;
+
+            });
                 mangasFolder.MangaBooks.Add(x);
+
             }
             //所有子文件夹作为mangabook
-            var folders = Directory
-                .GetDirectories(mangasFolder.FolderPath)
-                .Select(x => new MangaBook(x));
-            foreach (var manga in folders)
+            var folders = Directory.GetDirectories(mangasFolder.FolderPath);
+            foreach (var mangafo in folders)
             {
-                manga.Type = string.Empty;
-                manga.FileSize = Directory
-                    .GetFiles(manga.FilePath)
-                    .Sum(x => new FileInfo(x).Length);
+                var manga = new MangaBook(mangafo)
+                {
+                    Type = string.Empty
+                };
+                await Task.Run(() =>
+                {
+                    manga.FileSize = Directory
+                        .GetFiles(manga.FilePath)
+                        .Sum(x => new FileInfo(x).Length);
 
-                manga.CoverPath =
-                    CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)
-                    ?? CoverHelper.DefaultCoverPath;
+                    manga.CoverPath =
+                        CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)
+                        ?? CoverHelper.DefaultCoverPath;
+
+                });
 
                 mangasFolder.MangaBooks.Add(manga);
+
             }
         }
         mangasFolder.UpdateState = UpdateState.Over;

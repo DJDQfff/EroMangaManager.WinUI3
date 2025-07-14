@@ -26,7 +26,7 @@ public sealed partial class RenameMangaBookByDragTag : UserControl, INotifyPrope
 
     public RenameMangaBookByDragTag()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void SingleMangaBookRename_New(object sender, RoutedEventArgs e)
