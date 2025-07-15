@@ -35,6 +35,9 @@
                               Loaded="moveto_Loaded"
                                x:Name="moveto"
                                Icon="MoveToFolder" />
+            <MenuFlyoutItem 
+                Click="deleteManga" 
+                            Text="{uid:Strings Uid=DeleteFile}" />
             <!--</MenuFlyoutSubItem>-->
         </MenuFlyout>
     </UserControl.Resources>

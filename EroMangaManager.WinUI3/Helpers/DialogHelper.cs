@@ -10,7 +10,7 @@ internal class DialogHelper
     /// </summary>
     /// <param name="eroManga"></param>
     /// <returns></returns>
-    public static async Task RenameSourceFileInDialog (MangaBook eroManga)
+    public static async Task RenameSourceFileInDialog(MangaBook eroManga)
     {
         // TODO 暂时放弃，不会写页面UI，写出来也丑。等EditTag功能好了，在改回EditTag页面
         var renameDialog = new RenameDialog(eroManga)
@@ -19,16 +19,14 @@ internal class DialogHelper
         };
 
         _ = await renameDialog.ShowAsync();
-
     }
-
 
     /// <summary>
     /// 删除源文件时，会触发删除确认弹框，删除模式，这两个参数都是从程序设置中读取的，因此封装到助手类里面
     /// </summary>
     /// <param name="eroManga"></param>
     /// <returns></returns>
-    public static async Task<bool> ConfirmDeleteSourceFileDialog (MangaBook eroManga)
+    public static async Task<bool> ConfirmDeleteSourceFileDialog(MangaBook eroManga)
     {
         var temp1 = App.Current.AppConfig.AppConfig.General.WhetherShowDialogBeforeDelete;
 
@@ -39,16 +37,14 @@ internal class DialogHelper
         bool deleteResult = false;
         if (!temp1)
         {
-            ConfirmDeleteMangaFile confirm = new(eroManga)
-            {
-                XamlRoot = App.Current.MainWindow.Content.XamlRoot
-            };
+            ConfirmDeleteMangaFile confirm =
+                new(eroManga) { XamlRoot = App.Current.MainWindow.Content.XamlRoot };
             var result = await confirm.ShowAsync();
             switch (result)
             {
                 case ContentDialogResult.Primary:
-                    App.Current.GlobalViewModel.RemoveManga(eroManga);
-                    await StorageOperation.Delete(eroManga , deletemode);
+                    _ = App.Current.GlobalViewModel.RemoveManga(eroManga);
+                    await StorageOperation.Delete(eroManga, deletemode);
                     deleteResult = true;
                     break;
 
@@ -58,12 +54,11 @@ internal class DialogHelper
         }
         else
         {
-            await StorageOperation.Delete(eroManga , deletemode);
+            await StorageOperation.Delete(eroManga, deletemode);
 
             deleteResult = true;
         }
 
         return deleteResult;
     }
-
 }

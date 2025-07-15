@@ -2,6 +2,7 @@
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace EroMangaManager.WinUI3.UserControls;
 
@@ -51,6 +52,15 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
                 App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
             };
             moveto.Items.Add(item);
+        }
+    }
+
+    private async void deleteManga(object sender, RoutedEventArgs e)
+    {
+        var result = await DialogHelper.ConfirmDeleteSourceFileDialog(Source);
+        if (result == true)
+        {
+            App.Current.GlobalViewModel.RemoveManga(Source);
         }
     }
 }

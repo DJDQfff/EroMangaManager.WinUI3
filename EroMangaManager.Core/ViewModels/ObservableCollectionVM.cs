@@ -109,11 +109,11 @@ namespace EroMangaManager.Core.ViewModels
         /// 移除一个本子
         /// </summary>
         /// <param name="mangaBook"></param>
-        public void RemoveManga (MangaBook mangaBook)
+        public bool RemoveManga (MangaBook mangaBook)
         {
             string folderpath = mangaBook.FolderPath;
             MangasGroup folder = MangaFolders.Single(x => x.FolderPath == folderpath);
-            _ = folder.RemoveManga(mangaBook);
+            return folder.RemoveManga(mangaBook);
         }
 
         /// <summary>

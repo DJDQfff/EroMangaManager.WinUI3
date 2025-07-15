@@ -7,18 +7,17 @@ namespace EroMangaManager.WinUI3.Commands;
 
 internal class MangaBookCommands
 {
-    public StandardUICommand ExportPDF = new();
+    public StandardUICommand ExportPDF = new(StandardUICommandKind.Save);
     public StandardUICommand OpenFolderInOutside = new(StandardUICommandKind.Open);
     public StandardUICommand OpenManga = new(StandardUICommandKind.Open);
     public StandardUICommand StorageCommandDelete = new(StandardUICommandKind.Delete);
     public StandardUICommand StorageCommandRename = new();
     public static MangaBookCommands Instance { get; set; }
 
-    public static void Initial ()
+    public static void Initial()
     {
         Instance ??= new();
-
-        Instance.OpenFolderInOutside.ExecuteRequested += (sender , args) =>
+        Instance.OpenFolderInOutside.ExecuteRequested += (sender, args) =>
         {
             string folderpath = args.Parameter switch
             {
@@ -39,17 +38,18 @@ internal class MangaBookCommands
             //System.Diagnostics.Process.Start("explorer" , $"/select , {folderpath}");
         };
 
-        Instance.StorageCommandDelete.ExecuteRequested += async (sender , args) =>
+        Instance.StorageCommandDelete.ExecuteRequested += async (sender, args) =>
         {
             switch (args.Parameter)
             {
                 case MangaBook book:
-                    _ = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
+                    var deleteresult = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
+                    if (deleteresult) { }
                     break;
             }
         };
 
-        Instance.StorageCommandRename.ExecuteRequested += async (sender , args) =>
+        Instance.StorageCommandRename.ExecuteRequested += async (sender, args) =>
         {
             switch (args.Parameter)
             {
@@ -63,7 +63,7 @@ internal class MangaBookCommands
             Symbol = Symbol.Rename
         };
 
-        Instance.OpenManga.ExecuteRequested += (sender , args) =>
+        Instance.OpenManga.ExecuteRequested += (sender, args) =>
         {
             if (args.Parameter is MangaBook book)
             {
@@ -74,13 +74,13 @@ internal class MangaBookCommands
                     switch (wayindex)
                     {
                         case 0:
-                        RunDefault:
+                            RunDefault:
                             WindowHelper.ShowReadWindow(book);
                             break;
 
                         case 1:
 
-                            Process.Start("explorer" , book.FilePath);
+                            Process.Start("explorer", book.FilePath);
                             break;
 
                         case > 1:
@@ -91,7 +91,7 @@ internal class MangaBookCommands
                             }
                             else
                             {
-                                Process.Start(SelectedExePath , $"\"{book.FilePath}\"");
+                                Process.Start(SelectedExePath, $"\"{book.FilePath}\"");
                             }
                             break;
                     }
@@ -108,7 +108,7 @@ internal class MangaBookCommands
             }
         };
 
-        Instance.ExportPDF.ExecuteRequested += async (sender , args) =>
+        Instance.ExportPDF.ExecuteRequested += async (sender, args) =>
         {
             switch (args.Parameter)
             {
@@ -117,6 +117,6 @@ internal class MangaBookCommands
                     break;
             }
         };
-        Instance.ExportPDF.IconSource = new SymbolIconSource() { Symbol = Symbol.Save , };
+        Instance.ExportPDF.IconSource = new SymbolIconSource() { Symbol = Symbol.Save, };
     }
 }
