@@ -8,8 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="using:EroMangaManager.Core.Models"
     xmlns:usercontrol="using:EroMangaManager.WinUI3.UserControls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    mc:Ignorable="d">
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+      mc:Ignorable="d">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,10 +18,10 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Click="Button_Click" Content="开始" />
-            
-            <CheckBox x:Name="checkbox0" Content="不成对括号" IsChecked="True" />
-            <CheckBox x:Name="checkbox1" Content="无任何括号" IsChecked="True"/>
+            <Button Click="Button_Click" Content="{uid:Strings Uid=Start}" />
+            <CheckBox x:Name="checkbox0"
+                      Content="{uid:Strings Uid=NotCorrectBracketPairs}" IsChecked="True" />
+            <CheckBox x:Name="checkbox1" Content="{uid:Strings Uid=HaveNoneBrackets}" IsChecked="True"/>
 
         </StackPanel>
         <ListView Grid.Row="1" ItemsSource="{x:Bind books, Mode=OneWay}">

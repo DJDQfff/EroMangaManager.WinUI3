@@ -267,6 +267,9 @@
   <data name="GitHubFeedBack" xml:space="preserve">
     <value>Github反馈</value>
   </data>
+  <data name="HaveNoneBrackets" xml:space="preserve">
+    <value>无任何括号</value>
+  </data>
   <data name="Import" xml:space="preserve">
     <value>导入</value>
   </data>
@@ -323,6 +326,9 @@
   </data>
   <data name="NoSelectedFolder" xml:space="preserve">
     <value>未选择文件夹</value>
+  </data>
+  <data name="NotCorrectBracketPairs" xml:space="preserve">
+    <value>不成对括号</value>
   </data>
   <data name="NowInitializingMaybeError" xml:space="preserve">
     <value>正在初始化文件夹，现在使用工具功能可能出错</value>

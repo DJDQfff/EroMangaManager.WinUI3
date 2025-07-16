@@ -496,15 +496,23 @@
         </trans-unit>
         <trans-unit id="Method1" translate="yes" xml:space="preserve">
           <source>方法一</source>
-          <target state="new">方法一</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method 1</target>
         </trans-unit>
         <trans-unit id="Method2" translate="yes" xml:space="preserve">
           <source>方法二</source>
-          <target state="new">方法二</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method two</target>
         </trans-unit>
         <trans-unit id="Start" translate="yes" xml:space="preserve">
           <source>开始</source>
-          <target state="new">开始</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Begin</target>
+        </trans-unit>
+        <trans-unit id="HaveNoneBrackets" translate="yes" xml:space="preserve">
+          <source>无任何括号</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">There are no parentheses</target>
+        </trans-unit>
+        <trans-unit id="NotCorrectBracketPairs" translate="yes" xml:space="preserve">
+          <source>不成对括号</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Unpaired parentheses</target>
         </trans-unit>
       </group>
     </body>
