@@ -2,7 +2,6 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:djdqfff="using:DJDQfff"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:model="using:EroMangaManager.Core.Models"
       xmlns:uid="using:EroMangaManager.WinUI3.Strings"
@@ -51,7 +50,7 @@
                                        FontSize="16"
                                        Text="{x:Bind FileDisplayName, Mode=OneWay}"
                                        TextWrapping="Wrap" />
-                            <djdqfff:TagListOrder x:Name="order"
+                            <usercontrol:TagListOrder x:Name="order"
                                                   Grid.Row="1"
                                                   Grid.Column="1"
                                                   x:Load="False"

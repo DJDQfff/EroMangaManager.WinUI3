@@ -1,5 +1,7 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
+using EroMangaManager.WinUI3.UserControls;
+
 namespace EroMangaManager.WinUI3.Views.FunctionChildPages;
 
 /// <summary>
@@ -86,7 +88,7 @@ public sealed partial class RemoveRepeatTags : Page
 
     private void TagListOrder_Loaded (object sender , RoutedEventArgs e)
     {
-        var order = sender as DJDQfff.TagListOrder;
+        var order = sender as TagListOrder;
         var manga = order.DataContext as MangaBook;
         var items = BracketBasedStringParser.SplitByBrackets_KeepBracket(manga.FileDisplayName);
         order.Sources = items;

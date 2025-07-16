@@ -3,7 +3,7 @@
 
 using System.ComponentModel;
 
-namespace DJDQfff;
+namespace EroMangaManager.WinUI3.UserControls;
 
 public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
 {
@@ -25,19 +25,27 @@ public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
-    string newName;
 
     public string NewName
     {
-        get => newName;
-        set
+        get
         {
-            newName = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NewName)));
+            var list = new List<string>();
+            foreach (var tag in ListView1.Items)
+            {
+                list.Add(tag as string);
+            }
+            return string.Concat(list);
+
         }
     }
 
-    private void AddButton_Click(object sender, RoutedEventArgs e)
+    private void InvokeNewName ()
+    {
+        PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(NewName)));
+    }
+
+    private void AddButton_Click (object sender , RoutedEventArgs e)
     {
         if (sender is Button button)
         {
@@ -48,13 +56,16 @@ public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
             ListView2.Items.RemoveAt(index);
             ListView1.Items.Add(tag);
         }
-        SetNewName();
+        //SetNewName();
+        InvokeNewName();
+
     }
 
-    private void RemoveButton_Click(object sender, RoutedEventArgs e)
+    private void RemoveButton_Click (object sender , RoutedEventArgs e)
     {
         if (sender is Button button)
         {
+
             var tag = button.DataContext as string;
             var container = ListView1.ContainerFromItem(tag);
             var index = ListView1.IndexFromContainer(container);
@@ -62,20 +73,21 @@ public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
             ListView1.Items.RemoveAt(index);
             ListView2.Items.Add(tag);
         }
-        SetNewName();
+        //SetNewName();
+        InvokeNewName();
     }
 
-    public void SetNewName()
-    {
-        var list = new List<string>();
-        foreach (var tag in ListView1.Items)
-        {
-            list.Add(tag as string);
-        }
-        NewName = string.Join(' ', list);
-    }
+    //public void SetNewName()
+    //{
+    //    var list = new List<string>();
+    //    foreach (var tag in ListView1.Items)
+    //    {
+    //        list.Add(tag as string);
+    //    }
+    //    NewName = string.Concat( list);
+    //}
 
-    public TagListOrder()
+    public TagListOrder ()
     {
         InitializeComponent();
     }
