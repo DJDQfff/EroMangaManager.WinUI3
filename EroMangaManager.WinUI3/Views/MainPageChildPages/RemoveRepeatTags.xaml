@@ -7,6 +7,7 @@
       xmlns:model="using:EroMangaManager.Core.Models"
       xmlns:uid="using:EroMangaManager.WinUI3.Strings"
       xmlns:usercontrol="using:EroMangaManager.WinUI3.UserControls"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
     <Grid>

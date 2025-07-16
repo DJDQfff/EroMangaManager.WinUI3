@@ -5,8 +5,9 @@
     xmlns:commands="using:EroMangaManager.WinUI3.Commands"
     xmlns:coremodel="using:EroMangaManager.Core.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="using:EroMangaManager.WinUI3.Models"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      xmlns:model="using:EroMangaManager.WinUI3.Models"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
     mc:Ignorable="d">

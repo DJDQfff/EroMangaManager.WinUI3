@@ -8,8 +8,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:EroMangaManager.Core.Models"
-    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
-    xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
+      xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
     xmlns:viewmodels="using:EroMangaManager.Core.ViewModels"
     NavigationCacheMode="Required"
     mc:Ignorable="d">

@@ -11,18 +11,26 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         readonly ObservableCollection<MangaBook> books = [];
         public IrregularNameSearch ()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+
+        private void Button_Click (object sender , RoutedEventArgs e)
         {
-            base.OnNavigatedTo(e);
             foreach (var book in App.Current.GlobalViewModel.MangaList)
             {
-                if (BracketBasedStringParser.CorrectBracketPairConut(book.FileDisplayName) == -1)
+                if (checkbox0.IsChecked == true && BracketBasedStringParser.CorrectBracketPairConut(book.FileDisplayName) == -1)
                 {
                     books.Add(book);
                 }
+
+                if (checkbox1.IsChecked == true && !BracketBasedStringParser.ContainAnyBrackets(book.FileDisplayName)) //.MangaTagsIncludedInFileName.ContainRepeat())
+                {
+                    books.Add(book);
+                }
+
+
             }
+
         }
     }
 }

@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
-    Background="Transparent"
-    NavigationCacheMode="Required"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      NavigationCacheMode="Required"
     mc:Ignorable="d">
     <Grid>
         <NavigationView
@@ -72,21 +72,15 @@
                     Content="{uid:Strings Uid=SeriesMangas}"
                     Icon="List"
                     Visibility="Collapsed" />
-                <NavigationViewItem
-                    x:Name="MangasWithoutBrackets"
-                    Content="{uid:Strings Uid=NameWithoutBrackets}"
-                    Icon="List" />
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
             <NavigationView.Content>
                 <Frame
                     x:Name="MainFrame"
-                    Margin="36,0,0,0"
                     x:FieldModifier="public" />
             </NavigationView.Content>
             <NavigationView.PaneFooter>
                 <StackPanel
-                    Margin="0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Orientation="Vertical">

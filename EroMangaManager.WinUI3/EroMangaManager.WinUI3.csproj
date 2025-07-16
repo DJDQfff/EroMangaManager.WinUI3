@@ -76,7 +76,6 @@
     <None Remove="Views\MainPageChildPages\FunctionPageShower.xaml" />
     <None Remove="Views\MainPageChildPages\IrregularNameSearch.xaml" />
     <None Remove="Views\MainPageChildPages\LibraryPage.xaml" />
-    <None Remove="Views\MainPageChildPages\MangasWithoutBrackets.xaml" />
     <None Remove="Views\MainPageChildPages\MnagaFolderReOrganize.xaml" />
     <None Remove="Views\MainPageChildPages\RemoveRepeatTags.xaml" />
     <None Remove="Views\MainPageChildPages\RemoveRepeatTags2.xaml" />
@@ -254,11 +253,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\ContentDialogPages\RenameCategoryName.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Views\MainPageChildPages\MangasWithoutBrackets.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

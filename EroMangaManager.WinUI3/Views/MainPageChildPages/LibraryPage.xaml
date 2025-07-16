@@ -8,8 +8,9 @@
     xmlns:local="using:EroMangaManager.WinUI3.Views.MainPageChildPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
-    xmlns:vm="using:EroMangaManager.Core.ViewModels"
-    mc:Ignorable="d">
+      xmlns:vm="using:EroMangaManager.Core.ViewModels"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      mc:Ignorable="d">
     <Page.Resources>
         <StandardUICommand
             x:Name="AddFolderCommand"

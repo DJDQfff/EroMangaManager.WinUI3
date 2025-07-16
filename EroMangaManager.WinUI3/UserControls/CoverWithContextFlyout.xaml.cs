@@ -29,7 +29,7 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
 
     private void UserControl_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
     {
-        Commands.MangaBookCommands.Instance.OpenManga.Execute(Source);
+        MangaBookCommands.Instance.OpenManga.Execute(Source);
     }
 
     private void moveto_Loaded(object sender, RoutedEventArgs e)

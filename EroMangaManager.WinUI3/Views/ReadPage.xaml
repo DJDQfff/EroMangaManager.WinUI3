@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sharpcompress="using:SharpCompress.Archives"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
-    Background="Transparent"
-    mc:Ignorable="d">
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      mc:Ignorable="d">
     <Grid>
         <FlipView
             x:Name="FLIP"

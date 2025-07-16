@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:settingviews="using:EroMangaManager.WinUI3.Views.SettingPageChildPages"
       xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       mc:Ignorable="d">
     <Grid>
         <NavigationView IsBackButtonVisible="Collapsed"

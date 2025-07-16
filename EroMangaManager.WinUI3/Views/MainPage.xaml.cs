@@ -58,7 +58,6 @@ namespace EroMangaManager.WinUI3.Views
                 nameof(RemoveRepeatTags) => typeof(RemoveRepeatTags2),
                 nameof(IrregularFileNames) => typeof(IrregularNameSearch),
                 nameof(SeriesMangas) => typeof(SeriesMangas),
-                nameof(MangasWithoutBrackets) => typeof(MangasWithoutBrackets),
                 _ => typeof(SettingPage)
             };
 
