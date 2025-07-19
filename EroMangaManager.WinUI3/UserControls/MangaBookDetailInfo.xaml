@@ -19,7 +19,6 @@
                 FontSize="20"
                 Text="{x:Bind MangaBook.FolderPath, Mode=OneWay}"
                 TextWrapping="Wrap" />
-
             <TextBlock
                 FontSize="20"
                 Text="{x:Bind MangaBook.FileFullName, Mode=OneWay}"

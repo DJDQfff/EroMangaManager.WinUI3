@@ -22,7 +22,9 @@
             <CheckBox x:Name="checkbox0"
                       Content="{uid:Strings Uid=NotCorrectBracketPairs}" IsChecked="True" />
             <CheckBox x:Name="checkbox1" Content="{uid:Strings Uid=HaveNoneBrackets}" IsChecked="True"/>
-
+            <CheckBox x:Name="checkbox2"
+                      Content="so"
+                      IsChecked="True" />
         </StackPanel>
         <ListView Grid.Row="1" ItemsSource="{x:Bind books, Mode=OneWay}">
             <ListView.ItemTemplate>

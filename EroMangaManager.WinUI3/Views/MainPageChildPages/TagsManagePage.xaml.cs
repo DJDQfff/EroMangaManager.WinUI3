@@ -41,10 +41,10 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private void ImportAssemblyCategory (object sender , RoutedEventArgs e)
         {
             var item = sender as MenuFlyoutItem;
-            var text = item.Text as string;
+            var text = item.Tag as string;// 这里不能直接用text，因为下面的方法需要区分中英文
             var a = DatabaseController.LoadCategoryFromAssembly(text);
 
-            var b = viewmodel.AddCategory(text);
+            var b = viewmodel.AddCategory(item.Text);
             if (b is not null)
             {
                 b.Keywords = a;

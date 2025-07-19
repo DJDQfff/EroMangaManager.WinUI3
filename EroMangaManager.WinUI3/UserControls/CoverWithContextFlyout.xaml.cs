@@ -18,21 +18,21 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
         set
         {
             source = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Source)));
+            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Source)));
         }
     }
 
-    public CoverWithContextFlyout()
+    public CoverWithContextFlyout ()
     {
         this.InitializeComponent();
     }
 
-    private void UserControl_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+    private void UserControl_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)
     {
         MangaBookCommands.Instance.OpenManga.Execute(Source);
     }
 
-    private void moveto_Loaded(object sender, RoutedEventArgs e)
+    private void moveto_Loaded (object sender , RoutedEventArgs e)
     {
         moveto.Items.Clear();
         var ways = App.Current.GlobalViewModel.MangaFolders
@@ -42,11 +42,11 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
         foreach (var way in ways)
         {
             var item = new MenuFlyoutItem { Text = way.FolderPath };
-            item.Click += (sender, e) =>
+            item.Click += (sender , e) =>
             {
                 EroMangaManager.Core.IOOperation.MangaBookFileOperation.MoveManga(
-                    Source,
-                    way.FolderPath,
+                    Source ,
+                    way.FolderPath ,
                     null
                 );
                 App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
@@ -55,12 +55,12 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
         }
     }
 
-    private async void deleteManga(object sender, RoutedEventArgs e)
+    private async void deleteManga (object sender , RoutedEventArgs e)
     {
         var result = await DialogHelper.ConfirmDeleteSourceFileDialog(Source);
         if (result == true)
         {
-            App.Current.GlobalViewModel.RemoveManga(Source);
+            _ = App.Current.GlobalViewModel.RemoveManga(Source);
         }
     }
 }

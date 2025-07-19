@@ -58,9 +58,10 @@
                         Content="{uid:Strings Uid=Import}">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Click="ImportAssemblyCategory"
+                            <MenuFlyoutItem Click="ImportAssemblyCategory" Tag="作者"
                                             Text="{uid:Strings Uid=Author}" />
                             <MenuFlyoutItem Click="ImportAssemblyCategory"
+                                            Tag="汉化组"
                                             Text="{uid:Strings Uid=ChineseTranslateTeam}" />
                         </MenuFlyout>
                     </Button.Flyout>

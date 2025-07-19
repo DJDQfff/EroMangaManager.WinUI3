@@ -58,7 +58,7 @@ namespace EroMangaDatabase
         public string LoadCategoryFromAssembly (string enbededResourceFileName)
         {
             var assembly = typeof(BasicController).Assembly;
-
+            // 注意:这个文件名是中文，但传入的参数可能是中文或英文，存在隐患
             var zip = assembly.GetManifestResourceStream($"EroMangaDatabase.{enbededResourceFileName}.7z");
             zip.Position = 0;
             ReaderOptions readerOptions = new()

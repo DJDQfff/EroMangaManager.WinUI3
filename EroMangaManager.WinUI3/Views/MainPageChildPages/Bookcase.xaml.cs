@@ -13,7 +13,23 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private MangasGroup mangasGroup;
 
         public event PropertyChangedEventHandler PropertyChanged;
+        int index = -1;
+        public int GridViewItemTemplateIndex
+        {
+            get => index;
+            set
+            {
+                if (index != value)
+                {
+                    index = value;
+                    var key = "BookcaseTemplate" + index;
+                    Bookcase_GridView.ItemTemplate = Resources[key] as DataTemplate;
+                    //_ = new DataTemplate();//不知道这个干嘛的
+                    App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey = index;
 
+                }
+            }
+        }
         public MangasGroup MangasGroup
         {
             get => mangasGroup;
@@ -90,22 +106,10 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private void Bookcase_GridView_Loaded (object sender , RoutedEventArgs e)
         {
             var index = App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey;
-            DataTemplateList.SelectedIndex = index;
-            var key = "BookcaseTemplate" + index;
-            Bookcase_GridView.ItemTemplate = Resources[key] as DataTemplate;
+            GridViewItemTemplateIndex = index;
         }
 
-        private void DataTemplateList_SelectionChanged (object sender , SelectionChangedEventArgs e)
-        {
-            var listbox = sender as ListBox;
-            var index = listbox.SelectedIndex;
-            var key = "BookcaseTemplate" + index;
 
-            Bookcase_GridView.ItemTemplate = Resources[key] as DataTemplate;
-
-            _ = new DataTemplate();
-            App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey = index;
-        }
 
         private void combochangefolder_SelectionChanged (object sender , SelectionChangedEventArgs e)
         { // TODO 这里应该加一个：切换时，folde加载队列也应该跟着切换
@@ -118,6 +122,15 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             MangasGroup = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(
                 x => x.FolderPath == a
             );
+        }
+
+
+        private void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
+        {
+            var item = sender as MenuFlyoutItem;
+            var index = item.Tag as string;
+            GridViewItemTemplateIndex = int.Parse(index);
+
         }
     }
 }

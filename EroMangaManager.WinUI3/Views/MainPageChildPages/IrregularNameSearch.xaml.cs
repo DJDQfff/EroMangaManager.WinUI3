@@ -16,17 +16,26 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void Button_Click (object sender , RoutedEventArgs e)
         {
+            books.Clear();
             foreach (var book in App.Current.GlobalViewModel.MangaList)
             {
+                var result = false;
                 if (checkbox0.IsChecked == true && BracketBasedStringParser.CorrectBracketPairConut(book.FileDisplayName) == -1)
                 {
-                    books.Add(book);
+                    result = true;
                 }
 
                 if (checkbox1.IsChecked == true && !BracketBasedStringParser.ContainAnyBrackets(book.FileDisplayName)) //.MangaTagsIncludedInFileName.ContainRepeat())
                 {
-                    books.Add(book);
+                    result = true;
                 }
+                if (checkbox2.IsChecked == true && BracketBasedStringParser.Get_OutsideContent(book.FileDisplayName).Count == 0)
+                {
+                    result = true;
+                }
+                if (result == true)
+                { books.Add(book); }
+
 
 
             }
