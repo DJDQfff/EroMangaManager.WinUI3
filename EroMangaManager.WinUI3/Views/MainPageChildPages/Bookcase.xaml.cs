@@ -13,8 +13,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private MangasGroup mangasGroup;
 
         public event PropertyChangedEventHandler PropertyChanged;
-        int index = -1;
-        public int GridViewItemTemplateIndex
+        string index = null;
+        public string GridViewItemTemplateIndex
         {
             get => index;
             set
@@ -129,7 +129,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             var item = sender as MenuFlyoutItem;
             var index = item.Tag as string;
-            GridViewItemTemplateIndex = int.Parse(index);
+            GridViewItemTemplateIndex = index;
 
         }
     }
