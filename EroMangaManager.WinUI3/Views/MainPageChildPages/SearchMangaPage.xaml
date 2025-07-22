@@ -11,7 +11,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
-    <Grid Margin="36">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -34,18 +34,20 @@
                     VerticalContentAlignment="Stretch"
                     Header="{uid:Strings Uid=SearchByMangaName}"
                     QueryIcon="Find"
-                    TextChanged="MangaNameAugoSuggestBox_TextChanged" />
+                    TextChanged="NameBox_TextChanged" />
                 <toolkit:TokenizingTextBox
                     x:Name="MangaTagTokenizingTextBox"
                     Grid.Row="1"
                     HorizontalAlignment="Stretch"
+                    
                     VerticalAlignment="Stretch"
                     Header="{uid:Strings Uid=SearchByTag}"
-                    TextChanged="MangaTagTokenBox_TextChanged"
+                    SuggestedItemsSource="{x:Bind viewmodel.AlailableTags, Mode=OneWay}"
+                    TextChanged="TagTokenizingTextBox_TextChanged"
                     TokenDelimiter="+"
-                    TokenItemAdded="MangaTagTokenBox_TokenItemAdded"
-                    TokenItemAdding="MangaTagTokenBox_TokenItemAdding"
-                    TokenItemRemoved="MangaTagTokenBox_TokenItemRemoved">
+                    TokenItemAdded="TagTokenBox_TokenItemAdded"
+                    TokenItemAdding="TagTokenBox_TokenItemAdding"
+                    TokenItemRemoved="TagTokenBox_TokenItemRemoved">
                     <toolkit:TokenizingTextBox.QueryIcon>
                         <FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xE11A;" />
                     </toolkit:TokenizingTextBox.QueryIcon>
@@ -57,9 +59,9 @@
                 </toolkit:TokenizingTextBox>
             </Grid>
         </Grid>
-        <StackPanel
+        <!--<StackPanel Visibility="Collapsed"
             Grid.Row="1"
-            Margin="0,20,0,0"
+            Margin="0,12,0,0"
             Orientation="Horizontal">
             <Button
                 x:Name="SearchStartButton"
@@ -68,10 +70,12 @@
                 Content="{uid:Strings Uid=Search}" />
             <Button
                 x:Name="ShowInBookcaseButton"
+                x:Load="False"
                 Click="ShowInBookcaseButton_Click"
                 Content="{uid:Strings Uid=ShowFolderBookcase}" />
-        </StackPanel>
-        <GridView x:Name="ResultGridView" Grid.Row="2">
+        </StackPanel>-->
+        <GridView x:Name="ResultGridView" Grid.Row="2"
+                  ItemsSource="{x:Bind viewmodel.MangaList, Mode=OneWay}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="model:MangaBook">
                     <usercontrols:MangaBookBriefInfo MangaBook="{x:Bind}" />

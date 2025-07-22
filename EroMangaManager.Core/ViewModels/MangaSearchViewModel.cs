@@ -1,89 +1,75 @@
-﻿namespace EroMangaManager.Core.ViewModels
+﻿
+namespace EroMangaManager.Core.ViewModels;
+
+/// <summary>
+/// 本子标签管理VM
+/// </summary>
+/// <remarks>
+/// 搜索ViewModel
+/// </remarks>
+public partial class MangaSearchViewModel (ObservableCollectionVM vm)
 {
+
+
     /// <summary>
-    /// 本子标签管理VM
+    /// 选中项
     /// </summary>
-    /// <remarks>
-    /// 搜索ViewModel
-    /// </remarks>
-    public class MangaSearchViewModel
+    public List<string> RequiredTags = [];
+
+
+    /// <summary>
+    /// 对外公开的所有项
+    /// </summary>
+    public IEnumerable<string> AllTags => vm.AllTags;
+
+    /// <summary>
+    /// 可能需要的tag
+    /// </summary>
+    public ObservableCollection<string> AlailableTags { get; } = [];
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="query"></param>
+    /// <returns></returns>
+    public void FiltTags (string query)
     {
-        /// <summary>
-        /// 隐藏起来的项
-        /// </summary>
-        private readonly List<string> hidedTags = [];
+        AlailableTags.Clear();
 
-        /// <summary>
-        /// 数据源
-        /// </summary>
-        private readonly IEnumerable<string> originTags;
-
-        /// <summary>
-        /// 选中项
-        /// </summary>
-        public List<string> SelectedTags = [];
-
-        /// <summary>
-        /// 搜索ViewModel
-        /// </summary>
-        /// <param name="strings"></param>
-        public MangaSearchViewModel (IEnumerable<string> strings) => AllTags = new(strings);
-
-        /// <summary>
-        /// 对外公开的所有项
-        /// </summary>
-        public List<string> AllTags { set; get; } = [];
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="tag"></param>
-        public void CancelHideTag (string tag)
+        foreach (var x in AllTags.Except(RequiredTags))
         {
-            if (hidedTags.Remove(tag))
+            if (x.Contains(query))
             {
-                AllTags.Add(tag);
+                AlailableTags.Add(x);
             }
         }
+        ;
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="tag"></param>
-        public void HideTag (string tag)
-        {
-            if (AllTags.Remove(tag))
-            {
-                hidedTags.Add(tag);
-            }
-        }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public void Initial ()
-        {
-            AllTags.Clear();
-            AllTags.AddRange(originTags);
-        }
+    }
+    /// <summary>
+    /// 按搜索条件筛选出来的本子
+    /// </summary>
+    public ObservableCollection<MangaBook> MangaList { get; } = [];
+    /// <summary>
+    ///  开始搜索
+    /// </summary>
+    /// <param name="manganame"></param>
+    public void SearchResult (string manganame)
+    {
+        MangaList.Clear();
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
-        public List<string> Search (string query)
-        {
-            var temptags = new List<string>();
-            foreach (var x in AllTags)
-            {
-                if (x.Contains(query))
-                {
-                    temptags.Add(x);
-                }
-            };
+        var tags = new List<string>(RequiredTags) { manganame };
 
-            return temptags;
-        }
+        var requiredMatchCount = tags.Count;
+
+        var allmangas = vm.MangaList;
+
+        //TODO 这里有一个大问题，tag和本子名没有分开。
+        // 传入参数是本子名，同样可能本传入到tag里面
+        var a = vm.MangaList
+            .Where(x => tags.Any(y => x.FileDisplayName.Contains(y)));
+        foreach (var x in a)
+        { MangaList.Add(x); }
+
     }
 }

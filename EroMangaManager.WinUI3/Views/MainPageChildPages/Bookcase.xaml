@@ -86,7 +86,6 @@
             x:FieldModifier="public"
             IsItemClickEnabled="True"
             ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
-            Loaded="Bookcase_GridView_Loaded"
             SelectionMode="Single" />
     </Grid>
 </Page>

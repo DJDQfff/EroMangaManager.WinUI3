@@ -37,10 +37,6 @@ public partial class MangasGroup : ObservableObject
     /// </summary>
     public UpdateState UpdateState { set; get; } = UpdateState.Ready;
 
-    /// <summary>
-    /// 对外展示的信息，考虑将这个属性改名为Description
-    /// </summary>
-    public string ShowString { set; get; }
 
     /// <summary>
     /// 本子集合
@@ -76,7 +72,6 @@ public partial class MangasGroup : ObservableObject
     public MangasGroup (string storageFolderPath)
     {
         FolderPath = storageFolderPath;
-        ShowString = storageFolderPath;
     }
 
     /// <summary>

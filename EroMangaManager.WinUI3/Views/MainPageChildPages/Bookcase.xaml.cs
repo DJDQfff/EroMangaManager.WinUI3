@@ -10,7 +10,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// </summary>
     public sealed partial class Bookcase : Page, INotifyPropertyChanged
     {
-        private MangasGroup mangasGroup;
 
         public event PropertyChangedEventHandler PropertyChanged;
         string index = null;
@@ -19,7 +18,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             get => index;
             set
             {
-                if (index != value)
+                if (value != null)
                 {
                     index = value;
                     var key = "BookcaseTemplate" + index;
@@ -28,13 +27,17 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey = index;
 
                 }
+
             }
         }
+        private MangasGroup mangasGroup;
+
         public MangasGroup MangasGroup
         {
             get => mangasGroup;
             set
             {
+
                 mangasGroup = value;
                 Bookcase_GridView.ItemsSource = value.MangaBooks;
                 Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
@@ -49,6 +52,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         public Bookcase ()
         {
             InitializeComponent();
+            GridViewItemTemplateIndex = "0";
         }
 
         /// <summary>
@@ -101,12 +105,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         private void Order (object sender , RoutedEventArgs e)
         {
             MangasGroup?.SortMangaBooks(x => x.FileSize);
-        }
-
-        private void Bookcase_GridView_Loaded (object sender , RoutedEventArgs e)
-        {
-            var index = App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey;
-            GridViewItemTemplateIndex = index;
         }
 
 

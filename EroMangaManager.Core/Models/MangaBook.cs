@@ -26,7 +26,6 @@ public partial class MangaBook : ObservableObject
     /// <summary> 实例化EroManga </summary>
     public MangaBook (string filepath)
     {
-        //FileSize = (new FileInfo(filepath)).Length;
         FilePath = filepath;
     }
 

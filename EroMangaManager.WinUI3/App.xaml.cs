@@ -25,7 +25,7 @@ public partial class App : Application
     /// Initializes the singleton application object.  This is the first line of authored code
     /// executed, and as such is the logical equivalent of main() or WinMain().
     /// </summary>
-    public App()
+    public App ()
     {
         InitializeComponent();
 
@@ -36,7 +36,7 @@ public partial class App : Application
     /// Invoked when the application is launched.
     /// </summary>
     /// <param name="args">Details about the launch request and process.</param>
-    protected override async void OnLaunched(LaunchActivatedEventArgs args)
+    protected override async void OnLaunched (LaunchActivatedEventArgs args)
     {
         #region 快速执行
 
@@ -52,7 +52,7 @@ public partial class App : Application
         DatabaseConfig.ConnectingString = $"Data Source={LocalFolder}\\localdatabase.db";
         DatabaseController.Migrate();
 
-        AppConfigPath = Path.Combine(LocalFolder, "AppConfig.ini");
+        AppConfigPath = Path.Combine(LocalFolder , "AppConfig.ini");
         AppConfig = new SettingViewModel(AppConfigPath);
 
         var language = App.Current.AppConfig.AppConfig.General.LanguageIndex switch
@@ -61,13 +61,13 @@ public partial class App : Application
             _ => "zhCN"
         };
         Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue(
-            "Language",
+            "Language" ,
             language
         );
 
         CoverHelper.InitialDefaultCover();
 
-        EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
+        EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
 
         #region 事件赋值
 
@@ -90,8 +90,7 @@ public partial class App : Application
         DeploymentResult result = DeploymentManager.GetStatus();
         if (result.Status is not DeploymentStatus.Ok)
         {
-            var initializeTask = Task.Run(() => DeploymentManager.Initialize());
-            initializeTask.Wait();
+            await Task.Run(() => DeploymentManager.Initialize());
         }
 
         #endregion 快速执行
@@ -119,7 +118,7 @@ public partial class App : Application
         #region 需要后台执行
 
         await GlobalViewModel.StartInitial();
-        //GlobalViewModel.InitialEachFolders();
+        //GlobalViewModel.InitialEachFoldersInOrder();
 
         #endregion 需要后台执行
     }
@@ -127,7 +126,7 @@ public partial class App : Application
     /// <summary>
     /// 初始化文件夹目录
     /// </summary>
-    private void InitializeGlobalViewModel()
+    private void InitializeGlobalViewModel ()
     {
         var folders = DatabaseController.MangaFolder_GetAllPaths().ToList();
         var defaultpath = AppConfig.AppConfig.General.DefaultBookcaseFolder;
@@ -136,14 +135,14 @@ public partial class App : Application
         if (f != null)
         {
             folders.Remove(f);
-            folders.Insert(0, f);
+            folders.Insert(0 , f);
         }
 
         GlobalViewModel.GetAllFolders(folders);
         GlobalViewModel.InitialGroup += MangaFactory.Initial;
     }
 
-    private void Toast(string message)
+    private void Toast (string message)
     {
         var appNotification = new AppNotificationBuilder().AddText(message).BuildNotification();
         AppNotificationManager.Default.Show(appNotification);

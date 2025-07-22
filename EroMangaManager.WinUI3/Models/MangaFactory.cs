@@ -36,10 +36,11 @@ internal static class MangaFactory
     /// <returns></returns>
     public static async Task Initial (this MangasGroup mangasFolder)
     {
-        mangasFolder.UpdateState = UpdateState.Ing;
 
         if (Directory.Exists(mangasFolder.FolderPath))
         {
+            mangasFolder.UpdateState = UpdateState.Ing;
+
             //var a = DatabaseController.database.FilteredImages.ToArray();
             List<Task> tasks = [];
             //所有子文件作为mangabook
@@ -90,12 +91,13 @@ internal static class MangaFactory
                 mangasFolder.MangaBooks.Add(manga);
 
             }
+            mangasFolder.UpdateState = UpdateState.Over;
+
         }
-        mangasFolder.UpdateState = UpdateState.Over;
     }
 
     [Obsolete]
-    public static async void InitialEachFolders (this ObservableCollectionVM ViewModel)
+    public static async void InitialEachFoldersInOrder (this ObservableCollectionVM ViewModel)
     {
         // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
         foreach (var folder in ViewModel.MangaFolders.ToArray())
