@@ -110,7 +110,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
-                MangaBookCommands.Instance.OpenFolderInOutside.Execute(datacontext.FolderPath);
+                MangaCommands.Instance.OpenFolderInOutside.Execute(datacontext.FolderPath);
             }
         }
 

@@ -44,7 +44,7 @@ public partial class App : Application
         await Windows.System.Launcher.LaunchFolderPathAsync(LocalFolder);
 #endif
 
-        MangaBookCommands.Initial();
+        MangaCommands.Initial();
         UICommands.Initial();
 
         GlobalViewModel = new ObservableCollectionVM();

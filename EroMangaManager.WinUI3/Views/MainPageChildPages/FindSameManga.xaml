@@ -5,11 +5,10 @@
     xmlns:commands="using:EroMangaManager.WinUI3.Commands"
     xmlns:coremodel="using:EroMangaManager.Core.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-      xmlns:model="using:EroMangaManager.WinUI3.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -20,36 +19,37 @@
             <ComboBox
                 x:Name="combobox"
                 Width="100"
-                SelectedIndex="0">
+                SelectedIndex="2">
                 <TextBlock Text="{uid:Strings Uid=Method1}" />
                 <TextBlock Text="{uid:Strings Uid=Method2}" />
+                <TextBlock Text="{uid:Strings Uid=Method3}" />
             </ComboBox>
             <Button Click="Button_Click" Content="{uid:Strings Uid=Start}" />
         </StackPanel>
         <ListView
             x:Name="listView"
-            Grid.Row="1"
+            Grid.Row="1" ItemsSource="{x:Bind viewModel.mangaBookViewModel.RepeatPairs,Mode=OneWay}"
             SelectionMode="None">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:RepeatMangaBookGroup">
+                <DataTemplate x:DataType="coremodel:RepeatMangaGroup">
                     <StackPanel Orientation="Vertical">
                         <TextBlock
                             Margin="20"
                             FontSize="24"
                             Text="{x:Bind Key}" />
-                        <ListView ItemsSource="{x:Bind}" SelectionMode="None">
+                        <ListView ItemsSource="{x:Bind Mode=OneWay}" SelectionMode="None">
                             <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="coremodel:MangaBook">
+                                <DataTemplate x:DataType="coremodel:Manga">
                                     <Grid Margin="2">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <usercontrols:MangaBookDetailInfo MangaBook="{x:Bind}" />
+                                        <usercontrols:MangaDetailInfo Manga="{x:Bind}" />
                                         <StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Button
                                                 HorizontalAlignment="Stretch"
-                                                Command="{x:Bind commands:MangaBookCommands.Instance.OpenManga}"
+                                                Command="{x:Bind commands:MangaCommands.Instance.OpenManga}"
                                                 CommandParameter="{x:Bind}"
                                                 Content="{uid:Strings Uid=Open}" />
                                             <Button
@@ -58,11 +58,11 @@
                                                 Content="{uid:Strings Uid=DeleteIt}" />
                                             <Button
                                                 HorizontalAlignment="Stretch"
-                                                Command="{x:Bind commands:MangaBookCommands.Instance.OpenFolderInOutside}"
+                                                Command="{x:Bind commands:MangaCommands.Instance.OpenFolderInOutside}"
                                                 CommandParameter="{x:Bind}"
                                                 Content="{uid:Strings Uid=OpenFolder}" />
                                             <Button
-                                                Command="{x:Bind commands:MangaBookCommands.Instance.StorageCommandRename}"
+                                                Command="{x:Bind commands:MangaCommands.Instance.StorageCommandRename}"
                                                 CommandParameter="{x:Bind}"
                                                 Content="{uid:Strings Uid=RenameFile}" />
                                         </StackPanel>

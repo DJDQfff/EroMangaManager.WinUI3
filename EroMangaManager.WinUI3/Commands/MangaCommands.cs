@@ -5,14 +5,14 @@ using Org.BouncyCastle.Tls;
 
 namespace EroMangaManager.WinUI3.Commands;
 
-internal class MangaBookCommands
+internal class MangaCommands
 {
     public StandardUICommand ExportPDF = new(StandardUICommandKind.Save);
     public StandardUICommand OpenFolderInOutside = new(StandardUICommandKind.Open);
     public StandardUICommand OpenManga = new(StandardUICommandKind.Open);
     public StandardUICommand StorageCommandDelete = new(StandardUICommandKind.Delete);
     public StandardUICommand StorageCommandRename = new();
-    public static MangaBookCommands Instance { get; set; }
+    public static MangaCommands Instance { get; set; }
 
     public static void Initial()
     {
@@ -22,7 +22,7 @@ internal class MangaBookCommands
             string folderpath = args.Parameter switch
             {
                 MangasGroup folder => folder.FolderPath,
-                MangaBook book => book.FilePath,
+                Manga book => book.FilePath,
                 string str => str,
                 _ => null
             };
@@ -42,7 +42,7 @@ internal class MangaBookCommands
         {
             switch (args.Parameter)
             {
-                case MangaBook book:
+                case Manga book:
                     var deleteresult = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
                     if (deleteresult) { }
                     break;
@@ -53,7 +53,7 @@ internal class MangaBookCommands
         {
             switch (args.Parameter)
             {
-                case MangaBook book:
+                case Manga book:
                     await DialogHelper.RenameSourceFileInDialog(book);
                     break;
             }
@@ -65,7 +65,7 @@ internal class MangaBookCommands
 
         Instance.OpenManga.ExecuteRequested += (sender, args) =>
         {
-            if (args.Parameter is MangaBook book)
+            if (args.Parameter is Manga book)
             {
                 var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex;
 
@@ -112,7 +112,7 @@ internal class MangaBookCommands
         {
             switch (args.Parameter)
             {
-                case MangaBook book:
+                case Manga book:
                     await StorageOperation.ExportAsPDFAsync(book);
                     break;
             }

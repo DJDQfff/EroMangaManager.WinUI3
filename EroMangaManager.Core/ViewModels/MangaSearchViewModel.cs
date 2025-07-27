@@ -49,7 +49,7 @@ public partial class MangaSearchViewModel (ObservableCollectionVM vm)
     /// <summary>
     /// 按搜索条件筛选出来的本子
     /// </summary>
-    public ObservableCollection<MangaBook> MangaList { get; } = [];
+    public ObservableCollection<Manga> MangaList { get; } = [];
     /// <summary>
     ///  开始搜索
     /// </summary>

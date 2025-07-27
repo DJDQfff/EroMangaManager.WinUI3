@@ -15,8 +15,8 @@
     <Grid>
         <ListView ItemsSource="{x:Bind RepaetBooks}">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:MangaBook">
-                    <usercontrol:RenameMangaBookByDragTag MangaBook="{x:Bind}" NameChanged="RemoveIfTagRepeat"/>
+                <DataTemplate x:DataType="model:Manga">
+                    <usercontrol:RenameMangaByDragTag Manga="{x:Bind}" NameChanged="RemoveIfTagRepeat"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

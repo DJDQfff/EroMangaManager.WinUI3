@@ -8,11 +8,11 @@ namespace EroMangaManager.WinUI3.UserControls;
 
 public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropertyChanged
 {
-    MangaBook source;
+    Manga source;
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public MangaBook Source
+    public Manga Source
     {
         get => source;
         set
@@ -29,7 +29,7 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
 
     private void UserControl_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)
     {
-        MangaBookCommands.Instance.OpenManga.Execute(Source);
+        MangaCommands.Instance.OpenManga.Execute(Source);
     }
 
     private void moveto_Loaded (object sender , RoutedEventArgs e)
@@ -44,7 +44,7 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
             var item = new MenuFlyoutItem { Text = way.FolderPath };
             item.Click += (sender , e) =>
             {
-                EroMangaManager.Core.IOOperation.MangaBookFileOperation.MoveManga(
+                EroMangaManager.Core.IOOperation.MangaFileOperation.MoveManga(
                     Source ,
                     way.FolderPath ,
                     null

@@ -39,7 +39,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             {
 
                 mangasGroup = value;
-                Bookcase_GridView.ItemsSource = value.MangaBooks;
+                Bookcase_GridView.ItemsSource = value.Mangas;
                 Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
 
                 PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangasGroup)));
@@ -92,7 +92,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             var items = Bookcase_GridView.Items;
             foreach (var item in items)
             {
-                var manga = item as MangaBook;
+                var manga = item as Manga;
                 var grid = Bookcase_GridView.ContainerFromItem(item) as GridViewItem;
                 var root = grid.ContentTemplateRoot as Grid;
                 var run = root.FindName("runtext") as Microsoft.UI.Xaml.Documents.Run;
@@ -104,7 +104,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void Order (object sender , RoutedEventArgs e)
         {
-            MangasGroup?.SortMangaBooks(x => x.FileSize);
+            MangasGroup?.SortMangas(x => x.FileSize);
         }
 
 

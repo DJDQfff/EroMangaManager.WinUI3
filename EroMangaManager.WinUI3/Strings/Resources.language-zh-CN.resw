@@ -309,6 +309,9 @@
   <data name="Method2" xml:space="preserve">
     <value>方法二</value>
   </data>
+  <data name="Method3" xml:space="preserve">
+    <value>方法三</value>
+  </data>
   <data name="MoveToOtherFolder" xml:space="preserve">
     <value>移动到其他文件夹</value>
   </data>

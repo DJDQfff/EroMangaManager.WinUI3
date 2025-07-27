@@ -29,7 +29,7 @@ internal static class MangaFactory
     }
 
     /// <summary>
-    /// 添加MangaBook，并在后台初始化封面
+    /// 添加Manga，并在后台初始化封面
     /// </summary>
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
@@ -50,7 +50,7 @@ internal static class MangaFactory
             );
             foreach (var xfile in filteredfiles)
             {
-                var x = new MangaBook(xfile)
+                var x = new Manga(xfile)
                 {
                     Type = Path.GetExtension(xfile).ToLower()
                 };
@@ -65,14 +65,14 @@ internal static class MangaFactory
                     ?? CoverHelper.DefaultCoverPath;
 
             });
-                mangasFolder.MangaBooks.Add(x);
+                mangasFolder.Mangas.Add(x);
 
             }
             //所有子文件夹作为mangabook
             var folders = Directory.GetDirectories(mangasFolder.FolderPath);
             foreach (var mangafo in folders)
             {
-                var manga = new MangaBook(mangafo)
+                var manga = new Manga(mangafo)
                 {
                     Type = string.Empty
                 };
@@ -88,7 +88,7 @@ internal static class MangaFactory
 
                 });
 
-                mangasFolder.MangaBooks.Add(manga);
+                mangasFolder.Mangas.Add(manga);
 
             }
             mangasFolder.UpdateState = UpdateState.Over;

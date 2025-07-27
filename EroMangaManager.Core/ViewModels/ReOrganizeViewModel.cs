@@ -11,10 +11,10 @@ namespace EroMangaManager.Core.ViewModels;
 ///
 /// </remarks>
 /// <param name="mangas"></param>
-public class ReOrganizeViewModel (IEnumerable<MangaBook> mangas) : ObservableObject
+public class ReOrganizeViewModel (IEnumerable<Manga> mangas) : ObservableObject
 {
     /// <summary>
     ///
     /// </summary>
-    public ObservableCollection<Models.MangaBook> contentFolders = [];
+    public ObservableCollection<Models.Manga> contentFolders = [];
 }

@@ -56,12 +56,10 @@
     <None Remove="ResourceDictionarys\TitleContentPairTheme.xaml" />
     <None Remove="ResourceDictionarys\ValueConverters.xaml" />
     <None Remove="UserControls\CoverWithContextFlyout.xaml" />
-    <None Remove="UserControls\MangaBookBriefInfo.xaml" />
-    <None Remove="UserControls\MangaBookCoverTags.xaml" />
-    <None Remove="UserControls\MangaBookDetailInfo.xaml" />
+    <None Remove="UserControls\MangaCoverTags.xaml" />
+    <None Remove="UserControls\MangaDetailInfo.xaml" />
     <None Remove="UserControls\MangaOpenButton.xaml" />
     <None Remove="UserControls\QATextBlock.xaml" />
-    <None Remove="UserControls\RenameMangaBookByDragTag.xaml" />
     <None Remove="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml" />
     <None Remove="UserControls\TagInfo.xaml" />
     <None Remove="UserControls\TagListOrder.xaml" />
@@ -115,7 +113,6 @@
     <ProjectReference Include="..\..\MyLibrary\CommonLibrary\CommonLibrary.csproj" />
     <ProjectReference Include="..\EroMangaDatabase\EroMangaDatabase.csproj" />
     <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
-    <ProjectReference Include="..\..\RepeatItemChecker\GroupedItemsLibrary\GroupedItemsLibrary.csproj" />
     <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -203,10 +200,10 @@
     <Page Update="UserControls\QATextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="UserControls\MangaBookDetailInfo.xaml">
+    <Page Update="UserControls\MangaDetailInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="UserControls\MangaBookBriefInfo.xaml">
+    <Page Update="UserControls\MangaBriefInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -241,10 +238,10 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
-    <CustomAdditionalCompileInputs Remove="UserControls\RenameMangaBookByEditString.xaml" />
+    <CustomAdditionalCompileInputs Remove="UserControls\RenameMangaByEditString.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Remove="UserControls\RenameMangaBookByEditString.xaml" />
+    <Resource Remove="UserControls\RenameMangaByEditString.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
@@ -263,7 +260,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="UserControls\RenameMangaBookByDragTag.xaml">
+    <Page Update="UserControls\RenameMangaByDragTag.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -303,7 +300,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="UserControls\MangaBookCoverTags.xaml">
+    <Page Update="UserControls\MangaCoverTags.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

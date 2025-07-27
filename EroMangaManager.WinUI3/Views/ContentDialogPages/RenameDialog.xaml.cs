@@ -19,7 +19,7 @@ namespace EroMangaManager.WinUI3.Views.ContentDialogPages
         /// </summary>
         /// <param name="mangaBook"></param>
         /// <param name="suggestedname"></param>
-        public RenameDialog (MangaBook mangaBook , string suggestedname) : base()
+        public RenameDialog (Manga mangaBook , string suggestedname) : base()
         {
         }
 
@@ -27,10 +27,10 @@ namespace EroMangaManager.WinUI3.Views.ContentDialogPages
         ///
         /// </summary>
         /// <param name="mangaBook"></param>
-        public RenameDialog (MangaBook mangaBook)
+        public RenameDialog (Manga mangaBook)
         {
             this.InitializeComponent();
-            this.renamecontrol.MangaBook = mangaBook;
+            this.renamecontrol.Manga = mangaBook;
         }
     }
 }

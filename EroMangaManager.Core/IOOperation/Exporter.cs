@@ -21,7 +21,7 @@ public class Exporter
     /// </summary>
     /// <param name="mangaBook"></param>
     /// <param name="target"></param>
-    public static void ExportAsPDF(MangaBook mangaBook, string target)
+    public static void ExportAsPDF(Manga mangaBook, string target)
     {
         switch (mangaBook.Type)
         {
@@ -35,7 +35,7 @@ public class Exporter
         }
     }
 
-    private static void FolderToPDF(MangaBook mangaBook, string target)
+    private static void FolderToPDF(Manga mangaBook, string target)
     {
         var files = Directory.GetFiles(mangaBook.FilePath);
         var writestream = new FileStream(target, FileMode.Open, FileAccess.Write);
@@ -66,7 +66,7 @@ public class Exporter
         pdfDocument.Close();
     }
 
-    private static void CompressionFileToPDF(MangaBook mangaBook, string target)
+    private static void CompressionFileToPDF(Manga mangaBook, string target)
     {
         using var reader = new ReaderVM(mangaBook);
         reader.SelectEntries(null);

@@ -8,15 +8,15 @@ namespace EroMangaManager.WinUI3.Views.ContentDialogPages
     /// </summary>
     public sealed partial class OverviewInformation : ContentDialog
     {
-        private MangaBook MangaBook { get; }
+        private Manga Manga { get; }
 
         /// <summary>
         ///
         /// </summary>
-        public OverviewInformation (MangaBook manga)
+        public OverviewInformation (Manga manga)
         {
             InitializeComponent();
-            MangaBook = manga;
+            Manga = manga;
         }
 
     }

@@ -15,7 +15,7 @@ namespace EroMangaManager.Core.ViewModels
         private bool _IsClosing = false;
 
         /// <summary> </summary>
-        public MangaBook Manga { set; get; }
+        public Manga Manga { set; get; }
 
         /// <summary> 打开的文件流 </summary>
         private Stream Stream { set; get; }
@@ -48,7 +48,7 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
         /// <param entrykey="_manga"></param>
         /// <param entrykey="storageFile"></param>
-        public ReaderVM (MangaBook _manga)
+        public ReaderVM (Manga _manga)
         {
             Manga = _manga;
 

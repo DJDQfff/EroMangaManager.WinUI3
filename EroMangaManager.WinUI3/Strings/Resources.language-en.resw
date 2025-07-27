@@ -393,4 +393,7 @@
   <data name="NotCorrectBracketPairs" xml:space="preserve">
     <value>Unpaired parentheses</value>
   </data>
+  <data name="Method3" xml:space="preserve">
+    <value>Method 3</value>
+  </data>
 </root>

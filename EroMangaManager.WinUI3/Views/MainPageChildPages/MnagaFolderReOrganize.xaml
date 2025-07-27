@@ -12,7 +12,7 @@
     <Grid>
         <ListView x:Name="listview">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:MangaBook">
+                <DataTemplate x:DataType="model:Manga">
                     <TextBlock Text="{x:Bind MangaName}" />
                 </DataTemplate>
             </ListView.ItemTemplate>

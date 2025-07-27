@@ -3,6 +3,8 @@
 internal class Configurations
 {
     public static string Folder_ersheng = @"D:\本子\本子二审";
+    public static string Folder_3 = @"D:\本子\本子三审";
+
     public static string Folder_test = @"D:\test";
 
     public static string[] File_error = [

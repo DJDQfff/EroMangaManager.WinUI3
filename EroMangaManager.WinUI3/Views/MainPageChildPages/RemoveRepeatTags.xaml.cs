@@ -9,7 +9,7 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages;
 /// </summary>
 public sealed partial class RemoveRepeatTags : Page
 {
-    private ObservableCollection<MangaBook> RepaetBooks { get; } = [];
+    private ObservableCollection<Manga> RepaetBooks { get; } = [];
 
     /// <summary>
     ///
@@ -36,12 +36,12 @@ public sealed partial class RemoveRepeatTags : Page
         }
     }
 
-    private void SingleMangaBookRename_New (object sender , RoutedEventArgs e)
+    private void SingleMangaRename_New (object sender , RoutedEventArgs e)
     {
         var button = sender as Button;
         var stackpanel = button.Parent as StackPanel;
 
-        var book = button.DataContext as MangaBook;
+        var book = button.DataContext as Manga;
 
         var control = stackpanel.FindName("newnameBox") as TextBox;
         var text = control.Text;
@@ -49,7 +49,7 @@ public sealed partial class RemoveRepeatTags : Page
         RemoveIfTagRepeat(book);
     }
 
-    private void TrySetNewName (MangaBook book , string text)
+    private void TrySetNewName (Manga book , string text)
     {
         if (string.IsNullOrWhiteSpace(text))
         {
@@ -69,7 +69,7 @@ public sealed partial class RemoveRepeatTags : Page
         }
     }
 
-    void RemoveIfTagRepeat (MangaBook book)
+    void RemoveIfTagRepeat (Manga book)
     {
         if (!book.MangaTagsIncludedInFileName.ContainRepeat())
         {
@@ -81,7 +81,7 @@ public sealed partial class RemoveRepeatTags : Page
     {
         var button = sender as Button;
 
-        var book = button.DataContext as MangaBook;
+        var book = button.DataContext as Manga;
 
         RepaetBooks.Remove(book);
     }
@@ -89,7 +89,7 @@ public sealed partial class RemoveRepeatTags : Page
     private void TagListOrder_Loaded (object sender , RoutedEventArgs e)
     {
         var order = sender as TagListOrder;
-        var manga = order.DataContext as MangaBook;
+        var manga = order.DataContext as Manga;
         var items = BracketBasedStringParser.SplitByBrackets_KeepBracket(manga.FileDisplayName);
         order.Sources = items;
     }
@@ -97,7 +97,7 @@ public sealed partial class RemoveRepeatTags : Page
     private void newnameBox_TextChanged (object sender , TextChangedEventArgs e)
     {
         var textbox = sender as TextBox;
-        var book = textbox.DataContext as MangaBook;
+        var book = textbox.DataContext as Manga;
 
         var text = textbox.Text;
         //TODO 这有严重bug，每次文字切换，会直接改名

@@ -77,7 +77,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         //{
         //    var result = ResultGridView.ItemsSource;
 
-        //    var condition = result as IEnumerable<MangaBook>;
+        //    var condition = result as IEnumerable<Manga>;
 
         //    var mangasfolder = new MangasGroup()
         //    {
@@ -85,7 +85,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         //            MangaNameAugoSuggestBox.Text + "+" + MangaTagTokenizingTextBox.SelectedTokenText
         //        ).Trim('+') ,
         //    };
-        //    mangasfolder.MangaBooks.AddRange(condition);
+        //    mangasfolder.Mangas.AddRange(condition);
         //    MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , mangasfolder);
         //}
 

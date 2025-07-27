@@ -7,7 +7,6 @@ global using System.Linq;
 global using System.Threading.Tasks;
 
 global using CommonLibrary;
-global using CommonLibrary.StringParser;
 
 global using CommunityToolkit.WinUI.Controls;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <UserControl
-    x:Class="EroMangaManager.WinUI3.UserControls.MangaBookBriefInfo"
+    x:Class="EroMangaManager.WinUI3.UserControls.MangaBriefInfo"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -22,7 +22,7 @@
             Height="192"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Source="{x:Bind MangaBook, Mode=OneWay}" />
+            Source="{x:Bind Manga, Mode=OneWay}" />
         <TextBlock
             Grid.Row="1"
             Width="150"
@@ -33,11 +33,11 @@
             <Run
                 x:Name="runtext"
                 IsTextScaleFactorEnabled="True"
-                Text="{x:Bind MangaBook.MangaName, Mode=OneWay}" />
+                Text="{x:Bind Manga.MangaName, Mode=OneWay}" />
         </TextBlock>
         <TextBlock
             Grid.Row="2"
             Margin="2"
-            Text="{x:Bind MangaBook.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
+            Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
     </Grid>
 </UserControl>

@@ -28,11 +28,11 @@
         </StackPanel>
         <ListView Grid.Row="1" ItemsSource="{x:Bind books, Mode=OneWay}">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:MangaBook">
-                    <usercontrol:RenameMangaBookByEditString
+                <DataTemplate x:DataType="model:Manga">
+                    <usercontrol:RenameMangaByEditString
                         Margin="12"
                         HorizontalAlignment="Stretch"
-                        MangaBook="{x:Bind}" />
+                        Manga="{x:Bind}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

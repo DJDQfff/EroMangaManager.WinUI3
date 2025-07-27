@@ -6,23 +6,23 @@ using System.ComponentModel;
 
 namespace EroMangaManager.WinUI3.UserControls;
 
-public sealed partial class MangaBookCoverTags : UserControl, INotifyPropertyChanged
+public sealed partial class MangaCoverTags : UserControl, INotifyPropertyChanged
 {
-    private MangaBook mangaBook;
+    private Manga mangaBook;
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public MangaBook MangaBook
+    public Manga Manga
     {
         get => mangaBook;
         set
         {
             mangaBook = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangaBook)));
+            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Manga)));
         }
     }
 
-    public MangaBookCoverTags ()
+    public MangaCoverTags ()
     {
         this.InitializeComponent();
     }

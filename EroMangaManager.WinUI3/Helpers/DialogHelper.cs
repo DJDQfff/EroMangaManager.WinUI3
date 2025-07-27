@@ -10,7 +10,7 @@ internal class DialogHelper
     /// </summary>
     /// <param name="eroManga"></param>
     /// <returns></returns>
-    public static async Task RenameSourceFileInDialog(MangaBook eroManga)
+    public static async Task RenameSourceFileInDialog(Manga eroManga)
     {
         // TODO 暂时放弃，不会写页面UI，写出来也丑。等EditTag功能好了，在改回EditTag页面
         var renameDialog = new RenameDialog(eroManga)
@@ -26,7 +26,7 @@ internal class DialogHelper
     /// </summary>
     /// <param name="eroManga"></param>
     /// <returns></returns>
-    public static async Task<bool> ConfirmDeleteSourceFileDialog(MangaBook eroManga)
+    public static async Task<bool> ConfirmDeleteSourceFileDialog(Manga eroManga)
     {
         var temp1 = App.Current.AppConfig.AppConfig.General.WhetherShowDialogBeforeDelete;
 

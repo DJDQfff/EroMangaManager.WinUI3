@@ -5,17 +5,17 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace EroMangaManager.WinUI3.UserControls;
 
-public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPropertyChanged
+public sealed partial class RenameMangaByEditString : UserControl, INotifyPropertyChanged
 {
-    private MangaBook mangaBook;
-    public MangaBook MangaBook
+    private Manga mangaBook;
+    public Manga Manga
     {
         get => mangaBook;
         set
         {
             mangaBook = value;
             textbox.Text = value.FileDisplayName;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MangaBook)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
         }
     }
 
@@ -28,7 +28,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
     public bool IsNewnameOK
     {
         set { isnewnameok = value; }
-        get { return isnewnameok && (NewDisplayName != MangaBook.FileDisplayName); }
+        get { return isnewnameok && (NewDisplayName != Manga.FileDisplayName); }
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
     /// <summary>
     ///
     /// </summary>
-    public RenameMangaBookByEditString()
+    public RenameMangaByEditString()
     {
         InitializeComponent();
     }
@@ -59,10 +59,10 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
     /// 不指定新名字，默认去除重复标签
     /// </summary>
     /// <param name="mangaBook"></param>
-    public RenameMangaBookByEditString(MangaBook mangaBook)
+    public RenameMangaByEditString(Manga mangaBook)
     {
         InitializeComponent();
-        MangaBook = mangaBook;
+        Manga = mangaBook;
         //CorrectInput += () => RenameButton.IsEnabled = true;
         //WrongInput += () => RenameButton.IsEnabled = false;
     }
@@ -72,7 +72,7 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
     /// </summary>
     /// <param name="mangaBook"></param>
     /// <param name="suggestedname"></param>
-    public RenameMangaBookByEditString(MangaBook mangaBook, string suggestedname)
+    public RenameMangaByEditString(Manga mangaBook, string suggestedname)
         : base()
     {
         if (suggestedname == null)
@@ -121,8 +121,8 @@ public sealed partial class RenameMangaBookByEditString : UserControl, INotifyPr
 
     private void RenameButton_Click(object sender, RoutedEventArgs e)
     {
-        EroMangaManager.Core.IOOperation.MangaBookFileOperation.MoveManga(
-            MangaBook,
+        EroMangaManager.Core.IOOperation.MangaFileOperation.MoveManga(
+            Manga,
             null,
             NewDisplayName
         );

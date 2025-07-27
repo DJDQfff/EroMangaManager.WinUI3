@@ -514,6 +514,10 @@
           <source>不成对括号</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Unpaired parentheses</target>
         </trans-unit>
+        <trans-unit id="Method3" translate="yes" xml:space="preserve">
+          <source>方法三</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method 3</target>
+        </trans-unit>
       </group>
     </body>
   </file>

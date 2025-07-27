@@ -9,5 +9,5 @@
                CloseButtonText="关闭"
                Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                mc:Ignorable="d">
-    <usercontrol:RenameMangaBookByEditString x:Name="renamecontrol" />
+    <usercontrol:RenameMangaByEditString x:Name="renamecontrol" />
 </ContentDialog>

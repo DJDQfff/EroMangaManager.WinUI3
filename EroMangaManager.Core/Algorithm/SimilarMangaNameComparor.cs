@@ -7,11 +7,11 @@
     /// 传入要比较的本子
     /// </remarks>
     /// <param name="_books"></param>
-    public class SimilarMangaNameComparor (IEnumerable<MangaBook> _books)
+    public class SimilarMangaNameComparor (IEnumerable<Manga> _books)
     {
-        private readonly List<MangaBook> books = new(_books);
+        private readonly List<Manga> books = new(_books);
 
-        private readonly Dictionary<MangaBook , string> mangaBookDictionary = [];
+        private readonly Dictionary<Manga , string> mangaBookDictionary = [];
 
         /// <summary>
         /// 依据本子名进行比较，找出这个本子的名。
@@ -24,12 +24,12 @@
             // dic1里的每个本子，本子名唯一
             // dic2里的每个本子，本子名重合，但是本子不同部分没用括号分开，如：xx1，xx2
             // dic3里的每个本子，本子名重合，但是本子差别部分使用空格分开，如：yy 上，yy 下
-            var dic1 = new Dictionary<MangaBook , string>();
-            var dic2 = new Dictionary<MangaBook , string>();
-            var dic3 = new Dictionary<MangaBook , string[]>();
+            var dic1 = new Dictionary<Manga , string>();
+            var dic2 = new Dictionary<Manga , string>();
+            var dic3 = new Dictionary<Manga , string[]>();
 
-            var list1 = new List<MangaBook>();
-            var list2 = new List<MangaBook>();
+            var list1 = new List<Manga>();
+            var list2 = new List<Manga>();
             //简单分类
             foreach (var book in books)
             {
@@ -54,7 +54,7 @@
         /// </summary>
         ///
         /// <returns></returns>
-        public string FindUniqueName (MangaBook book)
+        public string FindUniqueName (Manga book)
         {
             // TODO 看看能不能用迭代器
             if (!books.Contains(book))

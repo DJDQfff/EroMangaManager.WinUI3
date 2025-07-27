@@ -41,7 +41,7 @@ public partial class MangasGroup : ObservableObject
     /// <summary>
     /// 本子集合
     /// </summary>
-    public ObservableCollection<MangaBook> MangaBooks { get; } = [];
+    public ObservableCollection<Manga> Mangas { get; } = [];
 
     /// <summary>
     /// 所有标签
@@ -51,7 +51,7 @@ public partial class MangasGroup : ObservableObject
         get
         {
             List<string> tags = [];
-            foreach (var x in MangaBooks)
+            foreach (var x in Mangas)
             {
                 tags.AddRange(x.MangaTagsIncludedInFileName);
             }
@@ -79,16 +79,16 @@ public partial class MangasGroup : ObservableObject
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <param name="func"></param>
-    public void SortMangaBooks<TKey> (Func<MangaBook , TKey> func)
+    public void SortMangas<TKey> (Func<Manga , TKey> func)
     {
-        var list = MangaBooks.OrderBy(func);        //OrderBy方法不会修改源数据，返回的值是与源挂钩的，源清零，返回值也清零
+        var list = Mangas.OrderBy(func);        //OrderBy方法不会修改源数据，返回的值是与源挂钩的，源清零，返回值也清零
 
-        var list2 = new List<MangaBook>(list);
-        MangaBooks.Clear();
+        var list2 = new List<Manga>(list);
+        Mangas.Clear();
 
         foreach (var book in list2)
         {
-            MangaBooks.Add(book);
+            Mangas.Add(book);
         }
     }
 
@@ -96,9 +96,9 @@ public partial class MangasGroup : ObservableObject
     /// 移除一个本子
     /// </summary>
     /// <param name="mangaBook"></param>
-    public bool RemoveManga (MangaBook mangaBook)
+    public bool RemoveManga (Manga mangaBook)
     {
-        return MangaBooks.Remove(mangaBook);
+        return Mangas.Remove(mangaBook);
     }
 
 }

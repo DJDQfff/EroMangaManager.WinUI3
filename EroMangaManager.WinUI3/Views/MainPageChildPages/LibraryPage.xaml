@@ -122,7 +122,7 @@
                         <TextBlock
                             MinWidth="50"
                             VerticalAlignment="Center"
-                            Text="{x:Bind MangaBooks.Count, Mode=OneWay}"
+                            Text="{x:Bind Mangas.Count, Mode=OneWay}"
                             TextAlignment="Left" />
                         <TextBlock
                             x:Name="folderTextBlock"

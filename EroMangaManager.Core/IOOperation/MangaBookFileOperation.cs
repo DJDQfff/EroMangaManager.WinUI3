@@ -9,10 +9,10 @@ namespace EroMangaManager.Core.IOOperation;
 /// <summary>
 /// manga的io操作
 /// </summary>
-public class MangaBookFileOperation
+public class MangaFileOperation
 {
     // 不需要单独写一个rename方法
-    //public static void RenameMange(MangaBook book, string text)
+    //public static void RenameMange(Manga book, string text)
     //{
     //    if (string.IsNullOrWhiteSpace(text))
     //    {
@@ -56,7 +56,7 @@ public class MangaBookFileOperation
     /// <param name="book"></param>
     /// <param name="targetfolder">目标文件夹</param>
     /// <param name="newname">新名字</param>
-    public static bool MoveManga(MangaBook book, string targetfolder, string newname)
+    public static bool MoveManga(Manga book, string targetfolder, string newname)
     {
         bool result = false;
         targetfolder = targetfolder ?? book.FolderPath; //这个路径并没有验证是否存在

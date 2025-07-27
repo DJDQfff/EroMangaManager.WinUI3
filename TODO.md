@@ -102,7 +102,7 @@
   
   > 设置界面已实现添加多个exe的功能，但是没弄在Bookcase页面切换的功能，暂时不需要
 
-- [ ] MnagsGroup的UpdateStates属性和IsInitialing属性看看存在功能重叠看看能不能消掉IsInitialing
+- [x] MnagsGroup的UpdateStates属性和IsInitialing属性看看存在功能重叠看看能不能消掉IsInitialing
 
 - [x] 若一个文件夹加载时，取消此文件夹，后台任务不会取消
   

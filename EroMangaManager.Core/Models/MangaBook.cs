@@ -1,9 +1,7 @@
-﻿using CommonLibrary.StringParser;
-
-namespace EroMangaManager.Core.Models;
+﻿namespace EroMangaManager.Core.Models;
 
 /// <summary> 本子 </summary>
-public partial class MangaBook : ObservableObject
+public partial class Manga : ObservableObject
 {
     /// <summary>
     /// 封面文件路径
@@ -24,7 +22,7 @@ public partial class MangaBook : ObservableObject
     private string translatedMangaName;
 
     /// <summary> 实例化EroManga </summary>
-    public MangaBook (string filepath)
+    public Manga (string filepath)
     {
         FilePath = filepath;
     }
@@ -63,7 +61,8 @@ public partial class MangaBook : ObservableObject
 
     /// <summary> 本子名字。第一个括号外的内容（括号外内容可能有多个） </summary>
     public string MangaName =>
-        BracketBasedStringParser.Get_OutsideContent_Recursion(FileDisplayName);
+      string.Join(' ' , BracketBasedStringParser.Get_OutsideContent(FileDisplayName));
+    //BracketBasedStringParser.Get_OutsideContent_Recursion(FileDisplayName);
 
     /// <summary> 文件名中包含在括号的本子Tag </summary>
     public string[] MangaTagsIncludedInFileName =>

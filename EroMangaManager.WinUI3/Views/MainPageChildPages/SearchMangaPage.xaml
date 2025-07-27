@@ -77,8 +77,8 @@
         <GridView x:Name="ResultGridView" Grid.Row="2"
                   ItemsSource="{x:Bind viewmodel.MangaList, Mode=OneWay}">
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="model:MangaBook">
-                    <usercontrols:MangaBookBriefInfo MangaBook="{x:Bind}" />
+                <DataTemplate x:DataType="model:Manga">
+                    <usercontrols:MangaBriefInfo Manga="{x:Bind}" />
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

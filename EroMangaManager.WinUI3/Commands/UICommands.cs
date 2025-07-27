@@ -12,7 +12,7 @@ internal class UICommands
         {
             switch (args.Parameter)
             {
-                case MangaBook manga:
+                case Manga manga:
                     var dialog = new OverviewInformation(manga)
                     {
                         XamlRoot = App.Current.MainWindow.Content.XamlRoot

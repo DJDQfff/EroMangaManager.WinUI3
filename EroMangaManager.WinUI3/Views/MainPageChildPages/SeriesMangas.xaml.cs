@@ -9,7 +9,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages;
 /// </summary>
 public sealed partial class SeriesMangas : Page
 {
-    readonly ObservableCollection<MangaBook> books = [];
+    readonly ObservableCollection<Manga> books = [];
 
     public SeriesMangas ()
     {

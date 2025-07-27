@@ -2,7 +2,7 @@
 
 internal class StorageOperation
 {
-    internal static async Task ExportAsPDFAsync (MangaBook mangaBook)
+    internal static async Task ExportAsPDFAsync (Manga mangaBook)
     {
         var fileSavePicker = new FileSavePicker();
         fileSavePicker.FileTypeChoices.Add("PDF" , [".pdf"]);
@@ -25,7 +25,7 @@ internal class StorageOperation
         }
     }
 
-    internal static async Task Delete (MangaBook eroManga , StorageDeleteOption deletemode)
+    internal static async Task Delete (Manga eroManga , StorageDeleteOption deletemode)
     {
         try
         {

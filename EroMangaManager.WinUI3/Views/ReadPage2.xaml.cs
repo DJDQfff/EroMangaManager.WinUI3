@@ -35,7 +35,7 @@ public sealed partial class ReadPage2 : Page
     protected override void OnNavigatedTo (NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
-        if (e.Parameter is MangaBook manga)
+        if (e.Parameter is Manga manga)
         {
             if (folder != manga.FilePath)
             {

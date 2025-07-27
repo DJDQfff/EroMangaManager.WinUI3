@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <UserControl
-    x:Class="EroMangaManager.WinUI3.UserControls.MangaBookDetailInfo"
+    x:Class="EroMangaManager.WinUI3.UserControls.MangaDetailInfo"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,17 +13,17 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Source="{x:Bind MangaBook.CoverPath, Mode=OneWay}" />
+        <Image Grid.Column="0" Source="{x:Bind Manga.CoverPath, Mode=OneWay}" />
         <StackPanel Grid.Column="1" Orientation="Vertical">
             <TextBlock
                 FontSize="20"
-                Text="{x:Bind MangaBook.FolderPath, Mode=OneWay}"
+                Text="{x:Bind Manga.FolderPath, Mode=OneWay}"
                 TextWrapping="Wrap" />
             <TextBlock
                 FontSize="20"
-                Text="{x:Bind MangaBook.FileFullName, Mode=OneWay}"
+                Text="{x:Bind Manga.FileFullName, Mode=OneWay}"
                 TextWrapping="Wrap" />
-            <TextBlock Text="{x:Bind MangaBook.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
+            <TextBlock Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
         </StackPanel>
     </Grid>
 </UserControl>

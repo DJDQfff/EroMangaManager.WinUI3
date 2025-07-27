@@ -4,7 +4,7 @@ namespace EroMangaManager.WinUI3.Helpers
 {
     internal static class WindowHelper
     {
-        internal static void ShowReadWindow (MangaBook mangaBook)
+        internal static void ShowReadWindow (Manga mangaBook)
         {
             var newWindow = new MainWindow();
             switch (mangaBook.Type)

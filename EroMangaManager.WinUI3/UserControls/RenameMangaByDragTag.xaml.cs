@@ -4,36 +4,36 @@ using System.ComponentModel;
 
 namespace EroMangaManager.WinUI3.UserControls;
 
-public sealed partial class RenameMangaBookByDragTag : UserControl, INotifyPropertyChanged
+public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyChanged
 {
-    private MangaBook mangaBook;
+    private Manga mangaBook;
 
-    public MangaBook MangaBook
+    public Manga Manga
     {
         get => mangaBook;
         set
         {
             mangaBook = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangaBook)));
+            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Manga)));
             order.Sources = BracketBasedStringParser.SplitByBrackets_KeepBracket(
-                MangaBook.FileDisplayName
+                Manga.FileDisplayName
             ); //value.MangaTagsIncludedInFileName;
         }
     }
 
-    public event Action<MangaBook> NameChanged;
+    public event Action<Manga> NameChanged;
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public RenameMangaBookByDragTag ()
+    public RenameMangaByDragTag ()
     {
         InitializeComponent();
     }
 
-    private void SingleMangaBookRename_New (object sender , RoutedEventArgs e)
+    private void SingleMangaRename_New (object sender , RoutedEventArgs e)
     {
         var text = newnameBox.Text;
-        MangaBookFileOperation.MoveManga(MangaBook , null , text);
-        NameChanged?.Invoke(MangaBook);
+        MangaFileOperation.MoveManga(Manga , null , text);
+        NameChanged?.Invoke(Manga);
     }
 
 
@@ -41,8 +41,8 @@ public sealed partial class RenameMangaBookByDragTag : UserControl, INotifyPrope
     private void UserControl_Loaded (object sender , RoutedEventArgs e)
     {
         // 注意这里出过bug，调用loaded函数的时候，mangabook可能属性还没刷新
-        //var a = BracketBasedStringParser.SplitByBrackets_Reserve(MangaBook.FileDisplayName);
-        //textblock.Text = MangaBook.FileDisplayName;
+        //var a = BracketBasedStringParser.SplitByBrackets_Reserve(Manga.FileDisplayName);
+        //textblock.Text = Manga.FileDisplayName;
         //order.Sources = a;
         //orde.ItemsSource = a;
     }

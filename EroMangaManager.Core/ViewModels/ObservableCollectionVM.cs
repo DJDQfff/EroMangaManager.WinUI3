@@ -37,14 +37,14 @@ namespace EroMangaManager.Core.ViewModels
 
         /// <summary>各漫画zip</summary>
         ///
-        public List<MangaBook> MangaList
+        public List<Manga> MangaList
         {
             get
             {
-                List<MangaBook> list = [];
+                List<Manga> list = [];
                 foreach (MangasGroup folder in MangaFolders)
                 {
-                    list.AddRange(folder.MangaBooks);
+                    list.AddRange(folder.Mangas);
                 }
                 return list;
             }
@@ -109,7 +109,7 @@ namespace EroMangaManager.Core.ViewModels
         /// 移除一个本子
         /// </summary>
         /// <param name="mangaBook"></param>
-        public bool RemoveManga (MangaBook mangaBook)
+        public bool RemoveManga (Manga mangaBook)
         {
             string folderpath = mangaBook.FolderPath;
             MangasGroup folder = MangaFolders.Single(x => x.FolderPath == folderpath);
@@ -162,7 +162,7 @@ namespace EroMangaManager.Core.ViewModels
         /// 把一个本子放到他应该在的集合里面，这个一般用在移动本子后
         /// </summary>
         /// <param name="book"></param>
-        public void PlaceInCorrectGroup (MangaBook book)
+        public void PlaceInCorrectGroup (Manga book)
         {
             foreach (var group in MangaFolders)
             {
@@ -171,8 +171,8 @@ namespace EroMangaManager.Core.ViewModels
                     var g = MangaFolders.SingleOrDefault(x => x.FolderPath == book.FolderPath);
                     if (g is not null)
                     {
-                        if (!g.MangaBooks.Contains(book))
-                        { g.MangaBooks.Add(book); }
+                        if (!g.Mangas.Contains(book))
+                        { g.Mangas.Add(book); }
                     }
 
                 }

@@ -1,85 +1,47 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
+using System;
+
 using CommonLibrary.CollectionFindRepeat;
 
-using GroupedItemsLibrary;
 
-using static CommonLibrary.StringParser.BracketBasedStringParser;
+using static CommonLibrary.BracketBasedStringParser;
 
-namespace EroMangaManager.WinUI3.Views.FunctionChildPages
+namespace EroMangaManager.WinUI3.Views.FunctionChildPages;
+
+/// <summary>
+/// 可用于自身或导航至 Frame 内部的空白页。
+/// </summary>
+public sealed partial class FindSameManga : Page
 {
+    SameMangaSearchViewModel viewModel = new();
     /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
+    ///
     /// </summary>
-    public sealed partial class FindSameManga : Page
+    public FindSameManga ()
     {
-        private ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup> mangaBookViewModel;
+        InitializeComponent();
+    }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public FindSameManga ()
+    private async void DeleteFileClick (object sender , RoutedEventArgs e)
+    {
+        var button = sender as Button;
+        var manga = button.DataContext as Manga;
+
+        if (await DialogHelper.ConfirmDeleteSourceFileDialog(manga))
         {
-            InitializeComponent();
+            viewModel.mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
+            App.Current.GlobalViewModel.RemoveManga(manga);
         }
+    }
 
-        private async void DeleteFileClick (object sender , RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            var manga = button.DataContext as MangaBook;
+    private void Button_Click (object sender , RoutedEventArgs e)
+    {
+        var mangaList = App.Current.GlobalViewModel.MangaList;
 
-            if (await DialogHelper.ConfirmDeleteSourceFileDialog(manga))
-            {
-                mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
-                App.Current.GlobalViewModel.RemoveManga(manga);
-            }
-        }
+        Func<Manga , string> func = null;
+        viewModel.StartSearch(mangaList , combobox.SelectedIndex);
 
-        private void Button_Click (object sender , RoutedEventArgs e)
-        {
-            var index = combobox.SelectedIndex;
-            var mangaList = App.Current.GlobalViewModel.MangaList;
-            switch (index)
-            {
-                case 0:
 
-                    {
-                        mangaBookViewModel = new ItemsGroupsViewModel<
-                            string ,
-                            MangaBook ,
-                            RepeatMangaBookGroup
-                        >(mangaList , n => n.MangaName , x => !string.IsNullOrWhiteSpace(x.Key));
-
-                        listView.ItemsSource = mangaBookViewModel.RepeatPairs;
-                    }
-                    ;
-                    break;
-                case 1:
-
-                    {
-                        var dic = StringArrayCollection.Run<MangaBook>(
-                            mangaList ,
-                            x =>
-                                Get_OutsideContent(x.FileDisplayName)
-                                    .SelectMany(x => x.Split(' ' , '-' , '+' , '~'))
-                        );
-                        Func<MangaBook , string> func = x =>
-                        {
-                            var piece = Get_OutsideContent(x.FileDisplayName)
-                                .FirstOrDefault(x => dic.ContainsKey(x));
-                            return piece;
-                        };
-
-                        mangaBookViewModel = new ItemsGroupsViewModel<
-                            string ,
-                            MangaBook ,
-                            RepeatMangaBookGroup
-                        >(mangaList , func , x => !string.IsNullOrWhiteSpace(x.Key));
-
-                        listView.ItemsSource = mangaBookViewModel.RepeatPairs;
-                    }
-                    break;
-            }
-        }
     }
 }

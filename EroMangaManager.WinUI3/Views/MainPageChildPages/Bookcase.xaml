@@ -15,11 +15,11 @@
     NavigationCacheMode="Required"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="BookcaseTemplate1" x:DataType="models:MangaBook">
-            <usercontrols:MangaBookCoverTags MangaBook="{x:Bind}" />
+        <DataTemplate x:Key="BookcaseTemplate1" x:DataType="models:Manga">
+            <usercontrols:MangaCoverTags Manga="{x:Bind}" />
         </DataTemplate>
-        <DataTemplate x:Key="BookcaseTemplate0" x:DataType="models:MangaBook">
-            <usercontrols:MangaBookBriefInfo MangaBook="{x:Bind}" />
+        <DataTemplate x:Key="BookcaseTemplate0" x:DataType="models:Manga">
+            <usercontrols:MangaBriefInfo Manga="{x:Bind}" />
         </DataTemplate>
     </Page.Resources>
     <Grid Background="Transparent">

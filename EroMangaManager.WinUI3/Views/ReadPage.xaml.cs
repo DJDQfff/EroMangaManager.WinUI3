@@ -8,7 +8,7 @@ namespace EroMangaManager.WinUI3.Views
     /// <summary> 用于查看zip，7z格式的本子 </summary>
     public sealed partial class ReadPage : Page
     {
-        private MangaBook currentManga = null;
+        private Manga currentManga = null;
 
         /// <summary>
         /// 当前ReaderViewModel
@@ -27,8 +27,8 @@ namespace EroMangaManager.WinUI3.Views
         {
             switch (source)
             {
-                // 当从LibraryFolders打开漫画时，传入MangaBook
-                case MangaBook manga:
+                // 当从LibraryFolders打开漫画时，传入Manga
+                case Manga manga:
                     if (manga != currentManga) // 传入新漫画，则设置新源
                     {
                         currentManga = manga;
