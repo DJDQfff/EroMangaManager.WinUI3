@@ -13,13 +13,14 @@ using static CommonLibrary.BracketBasedStringParser;
 namespace EroMangaManager.Core.ViewModels;
 public class SameMangaSearchViewModel
 {
-    public ItemsGroupsViewModel<string , Manga , RepeatMangaGroup> mangaBookViewModel { get; } = new();
+    public ItemsGroupsViewModel<string , Manga , RepeatMangasGroup> mangaBookViewModel { get; } = new();
 
-    public void StartSearch (IList<Manga> mangaList , int index , Func<RepeatMangaGroup , bool> FiltSomes = null)
+    public void StartSearch (IList<Manga> mangaList , int index , Func<RepeatMangasGroup , bool> FiltSomes = null)
     {
+
+        FiltSomes = FiltSomes ?? ((RepeatMangasGroup x) => !string.IsNullOrWhiteSpace(x.Key));
+
         Func<Manga , string> func = null;
-        Func<RepeatMangaGroup , bool> a = x => !string.IsNullOrWhiteSpace(x.Key);
-        FiltSomes = FiltSomes ?? a;
 
         switch (index)
         {

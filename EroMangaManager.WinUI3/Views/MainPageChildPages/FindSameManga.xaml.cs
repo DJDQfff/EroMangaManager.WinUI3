@@ -39,7 +39,6 @@ public sealed partial class FindSameManga : Page
     {
         var mangaList = App.Current.GlobalViewModel.MangaList;
 
-        Func<Manga , string> func = null;
         viewModel.StartSearch(mangaList , combobox.SelectedIndex);
 
 

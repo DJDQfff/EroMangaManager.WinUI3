@@ -2,4 +2,4 @@
 
 namespace EroMangaManager.Core.Models;
 
-public class RepeatMangaGroup : ItemsGroup<string , Manga> { }
+public class RepeatMangasGroup : ItemsGroup<string , Manga> { }
