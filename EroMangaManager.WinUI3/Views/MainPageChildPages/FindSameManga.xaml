@@ -19,7 +19,7 @@
             <ComboBox
                 x:Name="combobox"
                 Width="100"
-                SelectedIndex="2">
+                SelectedIndex="0">
                 <TextBlock Text="{uid:Strings Uid=Method1}" />
                 <TextBlock Text="{uid:Strings Uid=Method2}" />
                 <TextBlock Text="{uid:Strings Uid=Method3}" />

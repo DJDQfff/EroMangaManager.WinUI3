@@ -14,18 +14,17 @@ namespace EroMangaManager.Core.ViewModels;
 public class SameMangaSearchViewModel
 {
     public ItemsGroupsViewModel<string , Manga , RepeatMangasGroup> mangaBookViewModel { get; } = new();
-
     public void StartSearch (IList<Manga> mangaList , int index , Func<RepeatMangasGroup , bool> FiltSomes = null)
     {
 
-        FiltSomes = FiltSomes ?? ((RepeatMangasGroup x) => !string.IsNullOrWhiteSpace(x.Key));
+        FiltSomes = FiltSomes ?? (x => !string.IsNullOrWhiteSpace(x.Key));
 
         Func<Manga , string> func = null;
-
+        char[] chars = [' ' , '-' , '+' , '~'];
         switch (index)
         {
             case 0:
-                func = n => n.MangaName;
+                func = n => BracketBasedStringParser.Get_OutsideContent(n.FileDisplayName)[0].Split(chars)[0];
                 mangaBookViewModel.StartGroup(mangaList , func , FiltSomes);
 
                 break;// 直接比较本子名，适用于较短本子名及本子名（括号外的内容）没有分成及部分
@@ -44,7 +43,7 @@ public class SameMangaSearchViewModel
                     Func<Manga , Manga , string> func1 = (x , y) =>
                     {
                         var way = (Manga manga) =>
-                        manga.MangaName.Split(' ' /*, '-' , '+' , '~'*/);
+                        manga.MangaName.Split(chars);
                         var arrayx = way(x);
                         var arrayy = way(y);
 
@@ -62,7 +61,7 @@ public class SameMangaSearchViewModel
 
 
 
-                    mangaBookViewModel.StartCompareSequence(mangaList , func1);
+                    mangaBookViewModel.StartCompareSequence(mangaList , func1 , x => !string.IsNullOrWhiteSpace(x));
 
                 }
                 break;
