@@ -19,10 +19,11 @@
             <ComboBox
                 x:Name="combobox"
                 Width="100"
-                SelectedIndex="0">
+                SelectedIndex="1">
                 <TextBlock Text="{uid:Strings Uid=Method1}" />
                 <TextBlock Text="{uid:Strings Uid=Method2}" />
                 <TextBlock Text="{uid:Strings Uid=Method3}" />
+                <!--<TextBlock Text="{uid:Strings Uid=Method4}" />-->
             </ComboBox>
             <Button Click="Button_Click" Content="{uid:Strings Uid=Start}" />
         </StackPanel>

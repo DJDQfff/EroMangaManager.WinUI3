@@ -3,8 +3,9 @@
     ///<summary> </summary>
     public enum StringsEnum
     {
-        Method3,
+        Method3, Method4,
         HaveNoneBrackets,
+        AllInBrackets, WhereContains,
         NotCorrectBracketPairs,
         MoveToOtherFolder,
 

@@ -23,8 +23,13 @@
                       Content="{uid:Strings Uid=NotCorrectBracketPairs}" IsChecked="True" />
             <CheckBox x:Name="checkbox1" Content="{uid:Strings Uid=HaveNoneBrackets}" IsChecked="True"/>
             <CheckBox x:Name="checkbox2"
-                      Content="so"
+                      Content="{uid:Strings Uid=AllInBrackets}"
+                      IsChecked="True" /> 
+            <CheckBox x:Name="checkbox3"
+                      Content="{uid:Strings Uid=RemoveRepeatTags}"
                       IsChecked="True" />
+            <TextBox   x:Name="textbox"
+                       PlaceholderText="{uid:Strings Uid=WhereContains}" />
         </StackPanel>
         <ListView Grid.Row="1" ItemsSource="{x:Bind books, Mode=OneWay}">
             <ListView.ItemTemplate>

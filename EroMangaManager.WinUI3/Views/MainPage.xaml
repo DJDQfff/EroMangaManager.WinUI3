@@ -62,11 +62,11 @@
                     x:Name="FindSameMangaByName"
                     Content="{uid:Strings Uid=FindSameMangaByName}"
                     Icon="Copy" />
-                <NavigationViewItem
+                <!--<NavigationViewItem
                     x:Name="RemoveRepeatTags"
                     Content="{uid:Strings Uid=RemoveRepeatTags}"
                     Icon="Tag"
-                    Visibility="Visible" />
+                    Visibility="Visible" />-->
                 <NavigationViewItem
                     x:Name="SeriesMangas"
                     Content="{uid:Strings Uid=SeriesMangas}"

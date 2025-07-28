@@ -19,23 +19,14 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             books.Clear();
             foreach (var book in App.Current.GlobalViewModel.MangaList)
             {
-                var result = false;
-                if (checkbox0.IsChecked == true && BracketBasedStringParser.CorrectBracketPairConut(book.FileDisplayName) == -1)
-                {
-                    result = true;
-                }
-
-                if (checkbox1.IsChecked == true && !BracketBasedStringParser.ContainAnyBrackets(book.FileDisplayName)) //.MangaTagsIncludedInFileName.ContainRepeat())
-                {
-                    result = true;
-                }
-                if (checkbox2.IsChecked == true && BracketBasedStringParser.Get_OutsideContent(book.FileDisplayName).Count == 0)
-                {
-                    result = true;
-                }
-                if (result == true)
+                if (
+                       (checkbox0.IsChecked == true && BracketBasedStringParser.CorrectBracketPairConut(book.FileDisplayName) == -1)
+                    || (checkbox1.IsChecked == true && !BracketBasedStringParser.ContainAnyBrackets(book.FileDisplayName))
+                    || (checkbox2.IsChecked == true && BracketBasedStringParser.Get_OutsideContent(book.FileDisplayName).Count == 0)
+                    || (checkbox3.IsChecked == true && book.MangaTagsIncludedInFileName.ContainRepeat())
+                    || (!string.IsNullOrEmpty(textbox.Text) && book.MangaName.Contains(textbox.Text))
+                )
                 { books.Add(book); }
-
 
 
             }
