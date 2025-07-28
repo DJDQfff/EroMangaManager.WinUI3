@@ -79,6 +79,9 @@
                     x:Name="MainFrame"
                     x:FieldModifier="public" />
             </NavigationView.Content>
+            <!--<NavigationView.Header>
+                <ProgressBar  IsIndeterminate="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing,Mode=OneWay}" />
+            </NavigationView.Header>-->
             <NavigationView.PaneFooter>
                 <StackPanel
                     HorizontalAlignment="Stretch"

@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 
+using Microsoft.EntityFrameworkCore.Update.Internal;
+
 using SharpCompress;
 
 namespace EroMangaManager.Core.ViewModels;
@@ -32,10 +34,11 @@ public partial class MangasGroup : ObservableObject
     /// 文件夹路径，一开始是作为文件夹设计的，后来不作为文件夹，仅作为本子统一集合
     /// </summary>
     public string FolderPath { get; }
-    /// <summary>
-    /// 更新状态，表示是否再后台更新
-    /// </summary>
-    public UpdateState UpdateState { set; get; } = UpdateState.Ready;
+    ///// <summary>
+    ///// 更新状态，表示是否再后台更新
+    ///// </summary>
+    [ObservableProperty]
+    UpdateState updateState = UpdateState.Ready;
 
 
     /// <summary>
