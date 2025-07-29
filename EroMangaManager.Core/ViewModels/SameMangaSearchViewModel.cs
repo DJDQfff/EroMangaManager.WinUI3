@@ -22,17 +22,20 @@ public class SameMangaSearchViewModel
 
         Func<Manga , string> func = null;
         char[] chars = [' ' , '-' , '+' , '~'];
+
         switch (index)
         {
             case 0:
-                func = n => BracketBasedStringParser.Get_OutsideContent(n.FileDisplayName)[0].Split(chars)[0];
+                func = n => n.MangaName;
+
                 mangaBookViewModel.StartGroup(mangaList , func , FiltSomes);
 
                 break;// 直接比较本子名，适用于较短本子名及本子名（括号外的内容）没有分成及部分
             case 1:
                 {
-                    var dic = StringArrayCollection.Run(mangaList , x => Get_OutsideContent(x.FileDisplayName)
-                    .SelectMany(x => x.Split(chars)))
+                    var dic = StringArrayCollection
+                        .Run(mangaList , x => Get_OutsideContent(x.FileDisplayName)
+                        .SelectMany(x => x.Split(chars)))
                         .Where(x => x.Value > 1)
                         .Where(x => !int.TryParse(x.Key , out _))
                         .Where(x => !char.TryParse(x.Key , out _))

@@ -79,7 +79,7 @@ internal static class MangaFactory
                 await Task.Run(() =>
                 {
                     manga.FileSize = Directory
-                        .GetFiles(manga.FilePath)
+                        .GetFiles(manga.FilePath , "*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
                         .Sum(x => new FileInfo(x).Length);
 
                     manga.CoverPath =

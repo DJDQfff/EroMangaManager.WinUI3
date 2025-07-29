@@ -2,7 +2,7 @@
 
 internal class Class2
 {
-    public static void Run()
+    public static void Run ()
     {
         foreach (var file in File_ersheng)
         {
@@ -15,7 +15,7 @@ internal class Class2
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             var out1 = Get_OutsideContent(file);
-            out1.ForEach(x => Console.WriteLine(x));
+            out1.ForEach(Console.WriteLine);
             Console.WriteLine();
         }
     }

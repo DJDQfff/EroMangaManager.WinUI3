@@ -59,9 +59,19 @@ public partial class Manga : ObservableObject
     /// <summary> 漫画文件所在文件夹路径 </summary>
     public string FolderPath => Path.GetDirectoryName(FilePath);
 
-    /// <summary> 本子名字。第一个括号外的内容（括号外内容可能有多个） </summary>
-    public string MangaName =>
-      string.Join(' ' , BracketBasedStringParser.Get_OutsideContent(FileDisplayName));
+    /// <summary> 本子名字。第一个括号外的内容（括号外内容可能有多个,也可能所有内容都在括号内） </summary>
+    public string MangaName
+    {
+        get
+        {
+            var a = BracketBasedStringParser.Get_OutsideContent(FileDisplayName);
+            return a.Count switch
+            {
+                0 => FileDisplayName,
+                _ => string.Join(' ' , a)
+            };
+        }
+    }
     //BracketBasedStringParser.Get_OutsideContent_Recursion(FileDisplayName);
 
     /// <summary> 文件名中包含在括号的本子Tag </summary>
