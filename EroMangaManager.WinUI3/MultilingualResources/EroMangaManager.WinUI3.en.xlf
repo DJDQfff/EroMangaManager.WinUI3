@@ -520,15 +520,15 @@
         </trans-unit>
         <trans-unit id="Method4" translate="yes" xml:space="preserve">
           <source>方法4</source>
-          <target state="new">方法4</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method 4</target>
         </trans-unit>
         <trans-unit id="AllInBrackets" translate="yes" xml:space="preserve">
           <source>全部包含在括号内</source>
-          <target state="new">全部包含在括号内</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">All are included in parentheses</target>
         </trans-unit>
         <trans-unit id="WhereContains" translate="yes" xml:space="preserve">
           <source>含有此文本</source>
-          <target state="new">含有此文本</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">contains this text</target>
         </trans-unit>
       </group>
     </body>

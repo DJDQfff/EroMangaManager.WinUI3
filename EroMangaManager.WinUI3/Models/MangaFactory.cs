@@ -44,7 +44,7 @@ internal static class MangaFactory
             //var a = DatabaseController.database.FilteredImages.ToArray();
             List<Task> tasks = [];
             //所有子文件作为mangabook
-            var files = Directory.GetFiles(mangasFolder.FolderPath);
+            var files = Directory.EnumerateFiles(mangasFolder.FolderPath);
             var filteredfiles = files.Where(
                 x => SupportedType.MangaType.Contains(Path.GetExtension(x).ToLower())
             );
@@ -69,7 +69,7 @@ internal static class MangaFactory
 
             }
             //所有子文件夹作为mangabook
-            var folders = Directory.GetDirectories(mangasFolder.FolderPath);
+            var folders = Directory.EnumerateDirectories(mangasFolder.FolderPath);
             foreach (var mangafo in folders)
             {
                 var manga = new Manga(mangafo)

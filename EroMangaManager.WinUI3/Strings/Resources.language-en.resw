@@ -396,4 +396,13 @@
   <data name="Method3" xml:space="preserve">
     <value>Method 3</value>
   </data>
+  <data name="Method4" xml:space="preserve">
+    <value>Method 4</value>
+  </data>
+  <data name="AllInBrackets" xml:space="preserve">
+    <value>All are included in parentheses</value>
+  </data>
+  <data name="WhereContains" xml:space="preserve">
+    <value>contains this text</value>
+  </data>
 </root>

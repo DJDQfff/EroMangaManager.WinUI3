@@ -7,7 +7,9 @@ using GroupedItemsLibrary;
 
 Console.WriteLine();
 
-var mangas = Directory.GetFiles(Folder_3).Select(x => new Manga(x)).ToList();
+var mangas = Directory.GetFiles(Folder_3)
+    .Select(x => new Manga(x))
+    .ToList();
 
 var coolection = new StringCollection<Manga>();
 coolection.Action = x => x.MangaName;
