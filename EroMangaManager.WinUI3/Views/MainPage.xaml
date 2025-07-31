@@ -94,6 +94,7 @@
                         Tapped="UsageButton_Tapped" />
                     <NavigationViewItem
                         x:Name="UpdateRecordItem"
+                        x:Load="False"
                         Content="{uid:Strings Uid=UpdateRecords}"
                         Icon="ShowResults"
                         Tapped="UpdateRecordItem_Tapped" />

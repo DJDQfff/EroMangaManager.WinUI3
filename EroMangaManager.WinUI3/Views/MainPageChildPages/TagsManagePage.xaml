@@ -7,6 +7,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:uid="using:EroMangaManager.WinUI3.Strings"
       xmlns:x1="using:System"
+      NavigationCacheMode="Required"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       mc:Ignorable="d">
     <Page.Resources>

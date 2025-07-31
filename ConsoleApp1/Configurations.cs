@@ -2,8 +2,9 @@
 
 internal class Configurations
 {
-    public static string Folder_ersheng = @"D:\本子\本子二审";
+    public static string Folder_2 = @"D:\本子\本子二审";
     public static string Folder_3 = @"D:\本子\本子三审";
+    public static string Folder_collect = @"D:\本子\收藏";
 
     public static string Folder_test = @"D:\test";
 
@@ -18,7 +19,7 @@ internal class Configurations
 // 不良前面多了个括号，不对称
 ];
 
-    public static IEnumerable<string> File_ersheng = Directory.GetFiles(Folder_ersheng , "*.zip")
+    public static IEnumerable<string> File_ersheng = Directory.GetFiles(Folder_2 , "*.zip")
         .Select(x => Path.GetFileNameWithoutExtension(x));
 
 }

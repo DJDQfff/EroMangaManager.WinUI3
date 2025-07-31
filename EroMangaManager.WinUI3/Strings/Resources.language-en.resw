@@ -175,7 +175,7 @@
     <value>Whether or not an empty folder is displayed</value>
   </data>
   <data name="Library" xml:space="preserve">
-    <value>storehouse</value>
+    <value>Library</value>
   </data>
   <data name="LoadSubDirectory" xml:space="preserve">
     <value>Load the subfolder</value>
@@ -187,13 +187,13 @@
     <value>How the comic opens</value>
   </data>
   <data name="MangaTags" xml:space="preserve">
-    <value>This sub-tag</value>
+    <value>MangaTags</value>
   </data>
   <data name="MangaTagsCategorys" xml:space="preserve">
-    <value>Label classification</value>
+    <value>MangaTag Category</value>
   </data>
   <data name="MangaTagsManage" xml:space="preserve">
-    <value>Tag management</value>
+    <value>Tags Management</value>
   </data>
   <data name="NameWithoutBrackets" xml:space="preserve">
     <value>The file name is unparenthesed</value>
@@ -313,10 +313,10 @@
     <value>Toggle the view</value>
   </data>
   <data name="Tags" xml:space="preserve">
-    <value>label</value>
+    <value>Tags</value>
   </data>
   <data name="TagsViewMode" xml:space="preserve">
-    <value>Label view</value>
+    <value>View of Tags</value>
   </data>
   <data name="ThumanailViewMode" xml:space="preserve">
     <value>Thumbnail view</value>
@@ -337,7 +337,7 @@
     <value>Update history</value>
   </data>
   <data name="Usage" xml:space="preserve">
-    <value>Directions for use</value>
+    <value>Usage</value>
   </data>
   <data name="Version_20221219" xml:space="preserve">
     <value>2022.12.19</value>
@@ -382,7 +382,7 @@
     <value>Method 1</value>
   </data>
   <data name="Method2" xml:space="preserve">
-    <value>Method two</value>
+    <value>Method 2</value>
   </data>
   <data name="Start" xml:space="preserve">
     <value>Begin</value>
@@ -404,5 +404,31 @@
   </data>
   <data name="WhereContains" xml:space="preserve">
     <value>contains this text</value>
+  </data>
+  <data name="UsageLong" xml:space="preserve">
+    <value>
+Directions for use:
+This is a software for managing your local hard drive notebook.
+If you don't know what a notebook is, then you will most likely not use this software.
+		
+Classify and manage the books according to folders, and one folder is regarded as a classification.
+		
+Subformats: zip, 7z, and folder.
+The internal image format of this sub is limited to webp, jpg, png, and other formats are automatically ignored.
+The file format must be the same as the file suffix, and the software is not verified, and the user guarantees it.
+				
+Text in parentheses is considered a label, and content not included in parentheses will be recognized as the subname. This is not necessarily 100% correctly identified.
+Tags can be categorized and organized, providing built-in classification (not necessarily correct).
+For example: Document "[Tama Sugar] Kimi Color Protection Color (COMIC BAVEL June 2021 issue) [Innocent Sinicization Group] [Innocent Space Group] [MJK-22-Z2748] [Uncensored].zip"
+		
+Internal functions: book reading (basically useless, it is recommended to use external exes, see below), duplicate book search (not necessarily correctly recognized), tag management, file name management,
+		
+External function: Add the external exe path and call it to handle it externally. For external readers and external compressed file processors, NeeViewer is recommended.
+		
+The software functions are added and modified according to my own needs.
+		
+Self-use software, free sharing.
+If you have love, take it yourself, and if you don't like it, don't spray it.
+</value>
   </data>
 </root>

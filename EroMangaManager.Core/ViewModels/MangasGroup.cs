@@ -40,7 +40,6 @@ public partial class MangasGroup : ObservableObject
     [ObservableProperty]
     UpdateState updateState = UpdateState.Ready;
 
-
     /// <summary>
     /// 本子集合
     /// </summary>

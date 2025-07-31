@@ -1,22 +1,14 @@
 ﻿
-using CommonLibrary.CollectionFindRepeat;
+var mangas = Directory.EnumerateDirectories(Folder_2)
+    .Select(x => new Manga(x));
 
-using EroMangaManager.Core.ViewModels;
-
-using GroupedItemsLibrary;
-
-Console.WriteLine();
-
-var mangas = Directory.GetFiles(Folder_3)
-    .Select(x => new Manga(x))
-    .ToList();
-
-var coolection = new StringCollection<Manga>();
-coolection.Action = x => x.MangaName;
-coolection.MinItemLength = 2;
-coolection.MinOccurTimes = 2;
-coolection.StringsList.AddRange(mangas);
-coolection.Run2();
+var error = Directory.EnumerateDirectories(Folder_2)
+    .SelectMany(x => Get_OutsideContent(Path.GetFileName(x)))
+    .Where(x => BracketBasedStringParser.ContainAnyBrackets(x));
+foreach (var manga in error)
+{
+    Console.WriteLine(manga);
+}
 static void NewMethod (List<Manga> mangas)
 {
     SameMangaSearchViewModel viewmodel = new();
@@ -30,4 +22,14 @@ static void NewMethod (List<Manga> mangas)
         }
         Console.WriteLine();
     }
+}
+
+static void NewMethod1 (List<Manga> mangas)
+{
+    var coolection = new StringCollection<Manga>();
+    coolection.Action = x => x.MangaName;
+    coolection.MinItemLength = 2;
+    coolection.MinOccurTimes = 2;
+    coolection.StringsList.AddRange(mangas);
+    coolection.Run2();
 }

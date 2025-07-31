@@ -18,7 +18,6 @@
                 <RadioButtons ItemsSource="{x:Bind SettingVM.ExePaths, Mode=OneWay}" SelectedIndex="{x:Bind SettingVM.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}">
                     <RadioButtons.ItemTemplate>
                         <DataTemplate x:DataType="x:String">
-
                             <RadioButton Content="{x:Bind Converter={StaticResource uistringconverter}}">
                                 <RadioButton.ContextFlyout>
                                     <MenuFlyout>

@@ -224,7 +224,7 @@
         </trans-unit>
         <trans-unit id="Library" translate="yes" xml:space="preserve">
           <source>库</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">storehouse</target>
+          <target state="translated">Library</target>
         </trans-unit>
         <trans-unit id="LoadSubDirectory" translate="yes" xml:space="preserve">
           <source>加载子文件夹</source>
@@ -240,15 +240,15 @@
         </trans-unit>
         <trans-unit id="MangaTags" translate="yes" xml:space="preserve">
           <source>本子标签</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">This sub-tag</target>
+          <target state="translated">MangaTags</target>
         </trans-unit>
         <trans-unit id="MangaTagsCategorys" translate="yes" xml:space="preserve">
           <source>标签分类</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Label classification</target>
+          <target state="translated">MangaTag Category</target>
         </trans-unit>
         <trans-unit id="MangaTagsManage" translate="yes" xml:space="preserve">
           <source>标签管理</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Tag management</target>
+          <target state="translated">Tags Management</target>
         </trans-unit>
         <trans-unit id="NameWithoutBrackets" translate="yes" xml:space="preserve">
           <source>文件名无括号</source>
@@ -408,11 +408,11 @@
         </trans-unit>
         <trans-unit id="Tags" translate="yes" xml:space="preserve">
           <source>标签</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">label</target>
+          <target state="translated">Tags</target>
         </trans-unit>
         <trans-unit id="TagsViewMode" translate="yes" xml:space="preserve">
           <source>标签视图</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Label view</target>
+          <target state="translated">View of Tags</target>
         </trans-unit>
         <trans-unit id="ThumanailViewMode" translate="yes" xml:space="preserve">
           <source>缩略图视图</source>
@@ -440,7 +440,7 @@
         </trans-unit>
         <trans-unit id="Usage" translate="yes" xml:space="preserve">
           <source>使用说明</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Directions for use</target>
+          <target state="translated">Usage</target>
         </trans-unit>
         <trans-unit id="Version_20221219" translate="yes" xml:space="preserve">
           <source>2022.12.19</source>
@@ -500,7 +500,7 @@
         </trans-unit>
         <trans-unit id="Method2" translate="yes" xml:space="preserve">
           <source>方法二</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method two</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method 2</target>
         </trans-unit>
         <trans-unit id="Start" translate="yes" xml:space="preserve">
           <source>开始</source>
@@ -529,6 +529,56 @@
         <trans-unit id="WhereContains" translate="yes" xml:space="preserve">
           <source>含有此文本</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">contains this text</target>
+        </trans-unit>
+        <trans-unit id="UsageLong" translate="yes" xml:space="preserve">
+          <source>
+使用说明：
+这是一个用于管理本地硬盘本子的软件。
+如果你不知道什么是本子，那么你大概率用不上本软件。
+		
+按文件夹对本子进行分类管理，一个文件夹视为一个分类。
+		
+本子格式：zip、7z和文件夹。
+本子内部图片格式仅限webp,jpg,png，其他格式自动忽略。
+文件格式需和文件后缀相同，软件不做验证，由用户自行保证。
+				
+括号内文本视为标签，未包含在括号中的内容将被识别为本子名。这不一定100%正确识别。
+标签可分类整理，提供内置分类（不一定正确）。
+如：文件"[玉砂糖] キミ色保護色 (COMIC BAVEL 2021年6月号) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip"
+		
+内部功能：本子阅读（基本没用，建议使用外部exe，见下文）、重复本子查找（不一定正确识别）、标签管理、本子文件名管理、
+		
+外部功能：自行添加外部exe路径，调用以外部处理。如外部阅读器，外部压缩文件处理器，推荐NeeViewer。
+		
+软件功能按我自己需求增改。
+		
+自用软件，无偿分享。
+有爱自取，不喜勿喷。
+</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">
+Directions for use:
+This is a software for managing your local hard drive notebook.
+If you don't know what a notebook is, then you will most likely not use this software.
+		
+Classify and manage the books according to folders, and one folder is regarded as a classification.
+		
+Subformats: zip, 7z, and folder.
+The internal image format of this sub is limited to webp, jpg, png, and other formats are automatically ignored.
+The file format must be the same as the file suffix, and the software is not verified, and the user guarantees it.
+				
+Text in parentheses is considered a label, and content not included in parentheses will be recognized as the subname. This is not necessarily 100% correctly identified.
+Tags can be categorized and organized, providing built-in classification (not necessarily correct).
+For example: Document "[Tama Sugar] Kimi Color Protection Color (COMIC BAVEL June 2021 issue) [Innocent Sinicization Group] [Innocent Space Group] [MJK-22-Z2748] [Uncensored].zip"
+		
+Internal functions: book reading (basically useless, it is recommended to use external exes, see below), duplicate book search (not necessarily correctly recognized), tag management, file name management,
+		
+External function: Add the external exe path and call it to handle it externally. For external readers and external compressed file processors, NeeViewer is recommended.
+		
+The software functions are added and modified according to my own needs.
+		
+Self-use software, free sharing.
+If you have love, take it yourself, and if you don't like it, don't spray it.
+</target>
         </trans-unit>
       </group>
     </body>

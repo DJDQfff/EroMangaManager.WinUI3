@@ -9,13 +9,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <Grid>
-        <ScrollViewer>
-            <StackPanel Orientation="Vertical">
+
+        <ScrollViewer>        
+            <TextBlock  IsTextSelectionEnabled="False" Text="{uid:Strings Uid=UsageLong}" TextWrapping="Wrap" />
+
+            <!--<StackPanel Orientation="Vertical">
                 <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_WhatISTheApp}" Question="{uid:Strings Uid=Question_WhatISTheApp}" />
                 <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_SupportedType}" Question="{uid:Strings Uid=Question_SupportedType}" />
                 <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_MangaLibrary}" Question="{uid:Strings Uid=Question_MangaLibrary}" />
                 <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_Tag}" Question="{uid:Strings Uid=Question_Tag}" />
-            </StackPanel>
+            </StackPanel>-->
         </ScrollViewer>
     </Grid>
 </Page>
