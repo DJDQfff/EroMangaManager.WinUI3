@@ -14,15 +14,12 @@
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0" Source="{x:Bind Manga.CoverPath, Mode=OneWay}" />
-        <StackPanel Grid.Column="1" Orientation="Vertical">
-            <TextBlock
-                FontSize="20"
-                Text="{x:Bind Manga.FolderPath, Mode=OneWay}"
-                TextWrapping="Wrap" />
-            <TextBlock
-                FontSize="20"
-                Text="{x:Bind Manga.FileFullName, Mode=OneWay}"
-                TextWrapping="Wrap" />
+        <StackPanel Grid.Column="1" Orientation="Vertical" >
+            <TextBlock  
+                FontSize="20" 
+                Text="{x:Bind Manga.MangaName, Mode=OneWay}"/>     
+            <local:TagItemsRepeater Manga="{x:Bind Manga,Mode=OneWay}" />
+
             <TextBlock Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
         </StackPanel>
     </Grid>

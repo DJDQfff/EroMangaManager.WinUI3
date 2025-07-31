@@ -441,6 +441,9 @@
   <data name="Start" xml:space="preserve">
     <value>开始</value>
   </data>
+  <data name="StorageOperation" xml:space="preserve">
+    <value>存储操作</value>
+  </data>
   <data name="SwitchViewMode" xml:space="preserve">
     <value>切换视图</value>
   </data>

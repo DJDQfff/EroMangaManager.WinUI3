@@ -12,6 +12,10 @@ internal class StorageOperation
         InitializeWithWindow.Initialize(fileSavePicker , handle);
 
         var storageFile = await fileSavePicker.PickSaveFileAsync();
+        if (storageFile is null)
+        {
+            return;
+        }
         try
         {
             await Task.Run(() => Exporter.ExportAsPDF(mangaBook , storageFile.Path));

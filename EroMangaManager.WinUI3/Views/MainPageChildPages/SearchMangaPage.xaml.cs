@@ -1,4 +1,6 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+using static iText.Svg.SvgConstants;
+
 namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 {
     /// <summary>
@@ -21,16 +23,32 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             base.OnNavigatedTo(e);
 
             // 如果从mainpage导航过来的话，这里会是本子集合，不知道为什么
-            if (e.Parameter is SearchParameter searchParameter)
+
+            switch (e.Parameter)
             {
-                var tags = searchParameter.Tags;
+                case SearchParameter searchParameter:
+                    {
+                        var tags = searchParameter.Tags;
 
-                foreach (var tag in tags)
-                {
-                    MangaTagTokenizingTextBox.AddTokenItem(tag);
-                }
-                //SearchStartButton_Click(SearchStartButton , new RoutedEventArgs());
+                        foreach (var tag in tags)
+                        {
+                            MangaTagTokenizingTextBox.AddTokenItem(tag);
+                        }
+                        //SearchStartButton_Click(SearchStartButton , new RoutedEventArgs());
 
+                    }
+                    break;
+                //直接把manga传进来，参数自己修改
+                case Manga manga:
+                    {
+                        MangaNameAugoSuggestBox.Text = manga.MangaName;
+                        foreach (var tag in manga.MangaTagsIncludedInFileName)
+                        {
+                            MangaTagTokenizingTextBox.AddTokenItem(tag);
+                        }
+
+                    }
+                    break;
             }
 
         }

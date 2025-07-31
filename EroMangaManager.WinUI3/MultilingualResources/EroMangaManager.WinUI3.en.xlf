@@ -580,6 +580,10 @@ Self-use software, free sharing.
 If you have love, take it yourself, and if you don't like it, don't spray it.
 </target>
         </trans-unit>
+        <trans-unit id="StorageOperation" translate="yes" xml:space="preserve">
+          <source>存储操作</source>
+          <target state="new">存储操作</target>
+        </trans-unit>
       </group>
     </body>
   </file>

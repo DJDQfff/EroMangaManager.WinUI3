@@ -62,8 +62,10 @@
     <None Remove="UserControls\QATextBlock.xaml" />
     <None Remove="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml" />
     <None Remove="UserControls\TagInfo.xaml" />
+    <None Remove="UserControls\TagItemsRepeater.xaml" />
     <None Remove="UserControls\TagListOrder.xaml" />
     <None Remove="UserControls\TagListOrder2.xaml" />
+    <None Remove="UserControls\TagTextBlock.xaml" />
     <None Remove="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml" />
     <None Remove="Views\ContentDialogPages\OverviewInformation.xaml" />
     <None Remove="Views\ContentDialogPages\RenameCategoryName.xaml" />
@@ -248,6 +250,16 @@
   </ItemGroup>
   <ItemGroup>
     <XliffResource Include="MultilingualResources\EroMangaManager.WinUI3.en.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\TagTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\TagItemsRepeater.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\ContentDialogPages\RenameCategoryName.xaml">

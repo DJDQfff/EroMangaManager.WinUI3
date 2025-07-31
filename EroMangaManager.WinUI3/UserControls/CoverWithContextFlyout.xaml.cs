@@ -35,23 +35,26 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
     private void moveto_Loaded (object sender , RoutedEventArgs e)
     {
         moveto.Items.Clear();
-        var ways = App.Current.GlobalViewModel.MangaFolders
-            .SkipWhile(x => x.FolderPath == Source.FolderPath)
-            .ToList();
-
+        var ways = App.Current.GlobalViewModel.MangaFolders;
         foreach (var way in ways)
         {
             var item = new MenuFlyoutItem { Text = way.FolderPath };
-            item.Click += (sender , e) =>
+            moveto.Items.Add(item);
+
+            if (way.FolderPath == Source.FolderPath)
             {
-                EroMangaManager.Core.IOOperation.MangaFileOperation.MoveManga(
-                    Source ,
-                    way.FolderPath ,
-                    null
-                );
+                item.IsEnabled = false;
+                continue;
+            }
+            item.Click += (object sender , RoutedEventArgs e) =>
+            {
+                _ = MangaFileOperation.MoveManga(
+                     Source ,
+                     way.FolderPath ,
+                     null
+                 );
                 App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
             };
-            moveto.Items.Add(item);
         }
     }
 
@@ -62,5 +65,13 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
         {
             _ = App.Current.GlobalViewModel.RemoveManga(Source);
         }
+    }
+
+
+
+    private void searchsimilar_Click (object sender , RoutedEventArgs e)
+    {
+        MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage) , source);
+
     }
 }

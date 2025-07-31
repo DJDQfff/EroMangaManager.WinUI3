@@ -28,27 +28,6 @@
             Grid.Column="1"
             FontSize="22"
             Text="{x:Bind Manga.MangaName, Mode=OneWay}" />
-        <ItemsRepeater
-            x:Name="WrapRepeater"
-            Grid.Row="1"
-            Grid.Column="1"
-            ItemsSource="{x:Bind Manga.MangaTagsIncludedInFileName, Mode=OneWay}">
-            <ItemsRepeater.Layout>
-                <controls:WrapLayout
-                    x:Name="Wrap"
-                    HorizontalSpacing="6"
-                    VerticalSpacing="6" />
-            </ItemsRepeater.Layout>
-            <ItemsRepeater.ItemTemplate>
-                <DataTemplate x:DataType="x:String">
-                    <Border Background="{x:Bind Converter={StaticResource randomcolor}}">
-                        <TextBlock
-                            Margin="6,4,4,4"
-                            FontSize="16"
-                            Text="{x:Bind}" />
-                    </Border>
-                </DataTemplate>
-            </ItemsRepeater.ItemTemplate>
-        </ItemsRepeater>
+        <local:TagItemsRepeater Manga="{x:Bind Manga,Mode=OneWay}" />
     </Grid>
 </UserControl>

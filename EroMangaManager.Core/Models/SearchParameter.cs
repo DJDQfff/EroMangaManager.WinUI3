@@ -3,7 +3,7 @@
 /// <summary>
 /// 用于导航到搜索页面的数据包
 /// </summary>
-public class SearchParameter
+public struct SearchParameter
 {
     /// <summary>
     /// 本子名
