@@ -8,7 +8,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// </summary>
     public sealed partial class SearchMangaPage : Page
     {
-        private readonly MangaSearchViewModel viewmodel = new(App.Current.GlobalViewModel);
+        private readonly MangaSearchViewModel viewmodel = new();
 
         /// <summary>
         ///
@@ -21,7 +21,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
+            viewmodel.Sources = App.Current.GlobalViewModel.MangaList;
             // 如果从mainpage导航过来的话，这里会是本子集合，不知道为什么
 
             switch (e.Parameter)
@@ -29,7 +29,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 case SearchParameter searchParameter:
                     {
                         var tags = searchParameter.Tags;
-
                         foreach (var tag in tags)
                         {
                             MangaTagTokenizingTextBox.AddTokenItem(tag);
@@ -41,9 +40,12 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 //直接把manga传进来，参数自己修改
                 case Manga manga:
                     {
-                        MangaNameAugoSuggestBox.Text = manga.MangaName;
+                        viewmodel.RequiredText = manga.MangaName;
+
+                        viewmodel.RequiredTags.Clear();
                         foreach (var tag in manga.MangaTagsIncludedInFileName)
                         {
+
                             MangaTagTokenizingTextBox.AddTokenItem(tag);
                         }
 
@@ -70,16 +72,16 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             var token = args as string;
             viewmodel.RequiredTags.Add(token);
-            viewmodel.SearchResult(MangaNameAugoSuggestBox.Text);
-
+            //viewmodel.SearchResult(MangaNameAugoSuggestBox.Text);
+            viewmodel.Search();
         }
 
         private void TagTokenBox_TokenItemRemoved (TokenizingTextBox sender , object args)
         {
             var token = args as string;
             _ = viewmodel.RequiredTags.Remove(token);
-            viewmodel.SearchResult(MangaNameAugoSuggestBox.Text);
-
+            //viewmodel.SearchResult(MangaNameAugoSuggestBox.Text);
+            viewmodel.Search();
         }
 
         private void NameBox_TextChanged (
@@ -87,7 +89,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             AutoSuggestBoxTextChangedEventArgs args
         )
         {
-            viewmodel.SearchResult(MangaNameAugoSuggestBox.Text);
+            viewmodel.Search();
+            //viewmodel.SearchResult(MangaNameAugoSuggestBox.Text);
         }
 
 
@@ -109,7 +112,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private void TagTokenizingTextBox_TextChanged (AutoSuggestBox sender , AutoSuggestBoxTextChangedEventArgs args)
         {
-            viewmodel.FiltTags(MangaNameAugoSuggestBox.Text);
+            viewmodel.FiltTags(MangaTagTokenizingTextBox.Text);
 
         }
     }

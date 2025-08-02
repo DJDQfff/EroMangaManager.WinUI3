@@ -1,14 +1,12 @@
 ﻿
-var mangas = Directory.EnumerateDirectories(Folder_2)
+var mangas = Directory.EnumerateDirectories(Folder_test)
     .Select(x => new Manga(x));
+var search = new MangaSearchViewModel();
 
-var error = Directory.EnumerateDirectories(Folder_2)
-    .SelectMany(x => Get_OutsideContent(Path.GetFileName(x)))
-    .Where(x => BracketBasedStringParser.ContainAnyBrackets(x));
-foreach (var manga in error)
-{
-    Console.WriteLine(manga);
-}
+search.RequiredText = "宫子";
+
+Console.WriteLine(search.ResultMangas.Count);
+
 static void NewMethod (List<Manga> mangas)
 {
     SameMangaSearchViewModel viewmodel = new();

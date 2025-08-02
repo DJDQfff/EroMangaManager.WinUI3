@@ -34,6 +34,7 @@
                     VerticalContentAlignment="Stretch"
                     Header="{uid:Strings Uid=SearchByMangaName}"
                     QueryIcon="Find"
+                    Text="{x:Bind viewmodel.RequiredText ,Mode=TwoWay}"
                     TextChanged="NameBox_TextChanged" />
                 <toolkit:TokenizingTextBox
                     x:Name="MangaTagTokenizingTextBox"
@@ -75,7 +76,7 @@
                 Content="{uid:Strings Uid=ShowFolderBookcase}" />
         </StackPanel>-->
         <GridView x:Name="ResultGridView" Grid.Row="2"
-                  ItemsSource="{x:Bind viewmodel.MangaList, Mode=OneWay}">
+                  ItemsSource="{x:Bind viewmodel.ResultMangas, Mode=OneWay}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="model:Manga">
                     <usercontrols:MangaBriefInfo Manga="{x:Bind}" />

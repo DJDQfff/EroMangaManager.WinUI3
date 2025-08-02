@@ -34,7 +34,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     break;
             }
 
-            //MainPage.Current.MainFrame.Navigate(type, App.Current.GlobalViewModel.MangaList);
+            //MainPage.Current.MainFrame.Navigate(type, App.Current.GlobalViewModel.ResultMangas);
             FunctionFrame.Navigate(type , App.Current.GlobalViewModel.MangaList);
             return;
 

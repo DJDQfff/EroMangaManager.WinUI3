@@ -431,4 +431,10 @@ Self-use software, free sharing.
 If you have love, take it yourself, and if you don't like it, don't spray it.
 </value>
   </data>
+  <data name="StorageOperation" xml:space="preserve">
+    <value>Storage operations</value>
+  </data>
+  <data name="SearchSimialr" xml:space="preserve">
+    <value>Find Similarities</value>
+  </data>
 </root>

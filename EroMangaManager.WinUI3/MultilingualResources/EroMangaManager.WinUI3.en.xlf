@@ -582,7 +582,11 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
         </trans-unit>
         <trans-unit id="StorageOperation" translate="yes" xml:space="preserve">
           <source>存储操作</source>
-          <target state="new">存储操作</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Storage operations</target>
+        </trans-unit>
+        <trans-unit id="SearchSimialr" translate="yes" xml:space="preserve">
+          <source>查找相似</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Find Similarities</target>
         </trans-unit>
       </group>
     </body>

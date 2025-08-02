@@ -36,7 +36,7 @@
                 Command="{x:Bind commands:MangaCommands.Instance.StorageCommandRename}"
                 CommandParameter="{x:Bind Source, Mode=OneWay}"
                 Text="{uid:Strings Uid=RenameFile}" />
-            <MenuFlyoutItem Text="{uid:Strings Uid=Search}" x:Name="searchsimilar"
+            <MenuFlyoutItem Text="{uid:Strings Uid=SearchSimialr}" x:Name="searchsimilar"
                                Icon="Find" Click="searchsimilar_Click"/>
             <MenuFlyoutSeparator />
             <MenuFlyoutSubItem

@@ -19,7 +19,7 @@ public sealed partial class SeriesMangas : Page
     protected override void OnNavigatedTo (NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
-        //foreach (var book in App.Current.GlobalViewModel.MangaList)
+        //foreach (var book in App.Current.GlobalViewModel.ResultMangas)
         //{
         //    //if(book.FileDisplayName.any
         //}
