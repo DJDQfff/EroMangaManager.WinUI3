@@ -22,7 +22,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             base.OnNavigatedTo(e);
             viewmodel.Sources = App.Current.GlobalViewModel.MangaList;
-            // 如果从mainpage导航过来的话，这里会是本子集合，不知道为什么
 
             switch (e.Parameter)
             {
@@ -49,6 +48,13 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                             MangaTagTokenizingTextBox.AddTokenItem(tag);
                         }
 
+                    }
+                    break;
+
+                case string manganame:
+                    {
+                        viewmodel.RequiredText = manganame;
+                        viewmodel.RequiredTags.Clear();
                     }
                     break;
             }
