@@ -18,11 +18,12 @@
         <StackPanel Orientation="Horizontal">
             <ComboBox
                 x:Name="combobox"
-                Width="100"
+                Width="100" 
                 SelectedIndex="1">
+                
                 <TextBlock Text="{uid:Strings Uid=Method1}" />
                 <TextBlock Text="{uid:Strings Uid=Method2}" />
-                <TextBlock Text="{uid:Strings Uid=Method3}" />
+                <TextBlock x:Name="bad" x:Load="False"  Text="{uid:Strings Uid=Method3}" />
                 <!--<TextBlock Text="{uid:Strings Uid=Method4}" />-->
             </ComboBox>
             <Button Click="Button_Click" Content="{uid:Strings Uid=Start}" />
@@ -46,7 +47,7 @@
                                             <ColumnDefinition />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <usercontrols:MangaTagsView Manga="{x:Bind }" />
+                                        <usercontrols:MangaDisplayNameView Manga="{x:Bind }" />
                                         <StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Button
                                                 HorizontalAlignment="Stretch"

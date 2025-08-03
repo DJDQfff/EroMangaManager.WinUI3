@@ -66,16 +66,17 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                         foreach (var tag in tags)
                         {
 
-                            MangaTagTokenizingTextBox.AddTokenItem(tag);
+                            viewmodel.RequiredTags.Add(tag);
                         }
 
                     }
                     break;
             }
+            viewmodel.Search();
 
         }
 
-
+        // TODO 搞不清这个干嘛的
         private void TagTokenBox_TokenItemAdding (
             TokenizingTextBox sender ,
             TokenItemAddingEventArgs args
@@ -88,29 +89,18 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-        private void TagTokenBox_TokenItemAdded (TokenizingTextBox sender , object args)
-        {
-            var token = args as string;
-            viewmodel.RequiredTags.Add(token);
-            //viewmodel.SearchResult(MangaNameAugoSuggestBox.Text);
-            viewmodel.Search();
-        }
 
-        private void TagTokenBox_TokenItemRemoved (TokenizingTextBox sender , object args)
+        void TagTokenBox_TokenItemChanged (TokenizingTextBox sender , object args)
         {
-            var token = args as string;
-            _ = viewmodel.RequiredTags.Remove(token);
-            //viewmodel.SearchResult(MangaNameAugoSuggestBox.Text);
             viewmodel.Search();
-        }
 
+        }
         private void NameBox_TextChanged (
             AutoSuggestBox sender ,
             AutoSuggestBoxTextChangedEventArgs args
         )
         {
             viewmodel.Search();
-            //viewmodel.SearchResult(MangaNameAugoSuggestBox.Text);
         }
 
 

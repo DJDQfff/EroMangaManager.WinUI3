@@ -9,8 +9,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
              xmlns:controls="using:CommunityToolkit.WinUI.Controls"
-             DoubleTapped="UserControl_DoubleTapped"
-    mc:Ignorable="d">
+             DoubleTapped="UserControl_DoubleTapped" MaxHeight="800"
+             mc:Ignorable="d">
     <UserControl.Resources>
         <MenuFlyout x:Key="flyout" >
             <MenuFlyoutItem Command="{x:Bind commands:MangaCommands.Instance.OpenManga}" CommandParameter="{x:Bind Source, Mode=OneWay}" />

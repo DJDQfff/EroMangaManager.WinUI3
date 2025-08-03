@@ -40,15 +40,15 @@
                     x:Name="MangaTagTokenizingTextBox"
                     Grid.Row="1"
                     HorizontalAlignment="Stretch"
-                    
+                    ItemsSource="{x:Bind viewmodel.RequiredTags,Mode=TwoWay}"
                     VerticalAlignment="Stretch"
                     Header="{uid:Strings Uid=SearchByTag}"
                     SuggestedItemsSource="{x:Bind viewmodel.AlailableTags, Mode=OneWay}"
                     TextChanged="TagTokenizingTextBox_TextChanged"
                     TokenDelimiter="+"
-                    TokenItemAdded="TagTokenBox_TokenItemAdded"
+                                           TokenItemAdded="TagTokenBox_TokenItemChanged"
                     TokenItemAdding="TagTokenBox_TokenItemAdding"
-                    TokenItemRemoved="TagTokenBox_TokenItemRemoved">
+                                           TokenItemRemoved="TagTokenBox_TokenItemChanged">
                     <toolkit:TokenizingTextBox.QueryIcon>
                         <FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xE11A;" />
                     </toolkit:TokenizingTextBox.QueryIcon>

@@ -7,6 +7,7 @@
     xmlns:local="using:EroMangaManager.WinUI3.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DataContext="{x:Bind Manga}"
+             
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>

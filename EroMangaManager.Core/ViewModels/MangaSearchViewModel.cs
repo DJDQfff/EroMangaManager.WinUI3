@@ -25,7 +25,7 @@ public partial class MangaSearchViewModel : ObservableObject
     /// <summary>
     /// 选中项
     /// </summary>
-    public ObservableCollection<string> RequiredTags { get; } = [];
+    public ObservableCollection<string> RequiredTags { get; set; } = [];
 
     [ObservableProperty]
     string requiredText = "";
