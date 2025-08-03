@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -19,16 +20,18 @@ using Windows.Foundation.Collections;
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace EroMangaManager.WinUI3.UserControls;
-public sealed partial class TagItemsRepeater : UserControl
+public sealed partial class TagItemsRepeater : UserControl, INotifyPropertyChanged
 {
     Manga _manga;
+
+    public event PropertyChangedEventHandler PropertyChanged;
     public Manga Manga
     {
         get => _manga;
         set
         {
             _manga = value;
-            WrapRepeater.ItemsSource = _manga.MangaTagsIncludedInFileName;
+            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Manga)));
         }
     }
     public TagItemsRepeater ()

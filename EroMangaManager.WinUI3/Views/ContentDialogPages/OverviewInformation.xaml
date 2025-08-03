@@ -10,5 +10,5 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     CloseButtonText="{uid:Strings Uid=Close}"
     mc:Ignorable="d">
-    <usercontrols:MangaDetailInfo Manga="{x:Bind Manga}" />
+    <usercontrols:MangaDisplayNameView Manga="{x:Bind Manga}" />
 </ContentDialog>

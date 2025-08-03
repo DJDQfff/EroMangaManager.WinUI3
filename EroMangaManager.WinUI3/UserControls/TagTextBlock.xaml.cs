@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -31,5 +32,20 @@ public sealed partial class TagTextBlock : UserControl
     public TagTextBlock ()
     {
         InitializeComponent();
+    }
+
+    private void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
+    {
+        DataPackage dataPackage = new();
+        dataPackage.SetText(textblock.Text);
+        dataPackage.RequestedOperation = DataPackageOperation.Copy;
+
+        Clipboard.SetContent(dataPackage);
+    }
+
+    private void MenuFlyoutItem_Click_1 (object sender , RoutedEventArgs e)
+    {
+        MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage) , new string[] { textblock.Text });
+
     }
 }

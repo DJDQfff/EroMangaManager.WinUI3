@@ -24,55 +24,61 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <local:CoverWithContextFlyout x:Name="coverimage" Source="{x:Bind Manga, Mode=OneWay}" />
         <Grid Grid.Column="1" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
+            <StackPanel>
+                            <TextBlock Text="{x:Bind Manga.FolderPath, Mode=OneWay}" />
             <TextBlock
                 x:Name="oldname"
+                
                 VerticalAlignment="Center"
                 Text="{x:Bind Manga.FileDisplayName, Mode=OneWay}"
                 TextWrapping="Wrap" />
-            <Grid
-                Grid.Row="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-                <TextBox
-                    x:Name="textbox"
-                    IsSpellCheckEnabled="False"
-                    TextChanged="TextBox_TextChanged"
-                    TextWrapping="Wrap" />
+
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Vertical">
                 <TextBlock
-                    x:Name="aaa"
-                    Grid.Column="1"
+                    x:Name="hinttextblock"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    x:Load="False"
-                    Text="{x:Bind Manga.Type, Mode=OneTime}"
-                    TextWrapping="Wrap" />
-            </Grid>
-            <TextBlock
-                x:Name="hinttextblock"
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Foreground="Red"
-                HorizontalTextAlignment="Center" />
-            <Button
-                x:Name="RenameButton"
-                Grid.Row="3"
-                Click="RenameButton_Click"
-                Content="{uid:Strings Uid=RenameFile}" />
+                    Foreground="Red"
+                    HorizontalTextAlignment="Center" />            
+                <Grid
+                    
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox
+                        x:Name="textbox"
+                        IsSpellCheckEnabled="False"
+                        TextChanged="TextBox_TextChanged"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="aaa"
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        x:Load="False"
+                        Text="{x:Bind Manga.Type, Mode=OneTime}"
+                        TextWrapping="Wrap" />
+                </Grid>
+
+                <Button
+                    x:Name="RenameButton"
+                    Grid.Row="4"
+                    Click="RenameButton_Click"
+                    Content="{uid:Strings Uid=RenameFile}" />
+
+            </StackPanel>
 
 
         </Grid>

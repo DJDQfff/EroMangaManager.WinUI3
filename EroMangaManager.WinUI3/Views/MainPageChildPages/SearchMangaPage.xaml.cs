@@ -1,4 +1,6 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+using EroMangaManager.Core.Models;
+
 using static iText.Svg.SvgConstants;
 
 namespace EroMangaManager.WinUI3.Views.MainPageChildPages
@@ -55,6 +57,18 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     {
                         viewmodel.RequiredText = manganame;
                         viewmodel.RequiredTags.Clear();
+                    }
+                    break;
+                case IEnumerable<string> tags:
+                    {
+                        viewmodel.RequiredText = string.Empty;
+                        viewmodel.RequiredTags.Clear();
+                        foreach (var tag in tags)
+                        {
+
+                            MangaTagTokenizingTextBox.AddTokenItem(tag);
+                        }
+
                     }
                     break;
             }

@@ -52,7 +52,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         public Bookcase ()
         {
             InitializeComponent();
-            GridViewItemTemplateIndex = "0";
+            GridViewItemTemplateIndex = "1";
         }
 
         /// <summary>

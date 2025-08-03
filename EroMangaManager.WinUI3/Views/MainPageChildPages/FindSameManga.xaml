@@ -46,7 +46,7 @@
                                             <ColumnDefinition />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <usercontrols:MangaDetailInfo Manga="{x:Bind}" />
+                                        <usercontrols:MangaTagsView Manga="{x:Bind }" />
                                         <StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Button
                                                 HorizontalAlignment="Stretch"

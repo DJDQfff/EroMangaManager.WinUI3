@@ -15,6 +15,8 @@ public partial class Manga : ObservableObject
     [NotifyPropertyChangedFor(nameof(MangaName))]
     [NotifyPropertyChangedFor(nameof(MangaTagsIncludedInFileName))]
     [NotifyPropertyChangedFor(nameof(FileDisplayName))]
+    [NotifyPropertyChangedFor(nameof(FolderPath))]
+
     private string filePath;
 
     /// <summary> 漫画翻译后的名称 </summary>
@@ -62,15 +64,15 @@ public partial class Manga : ObservableObject
     /// <summary> 本子名字。第一个括号外的内容（括号外内容可能有多个,也可能所有内容都在括号内） </summary>
     public string MangaName
     {
-        get
-        {
-            var a = BracketBasedStringParser.Get_OutsideContent(FileDisplayName);
-            return a.Count switch
-            {
-                0 => FileDisplayName,
-                _ => string.Join(' ' , a)
-            };
-        }
+        get => string.Join(' ' , BracketBasedStringParser.Get_OutsideContent(FileDisplayName));
+        //{
+        //    var a = BracketBasedStringParser.Get_OutsideContent(FileDisplayName);
+        //    return a.Count switch
+        //    {
+        //        0 => FileDisplayName,
+        //        _ => 
+        //    };
+        //}
     }
     //BracketBasedStringParser.Get_OutsideContent_Recursion(FileDisplayName);
 

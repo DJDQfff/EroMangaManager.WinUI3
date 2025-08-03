@@ -177,6 +177,9 @@
   <data name="ContainInvalaidChar" xml:space="preserve">
     <value>包含非法字符</value>
   </data>
+  <data name="Copy" xml:space="preserve">
+    <value>复制</value>
+  </data>
   <data name="CustomExe" xml:space="preserve">
     <value>自定义exe</value>
   </data>

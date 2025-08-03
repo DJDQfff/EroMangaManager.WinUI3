@@ -12,7 +12,8 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ItemsRepeater x:Name="WrapRepeater">
+        <ItemsRepeater x:Name="WrapRepeater"
+                       ItemsSource="{x:Bind Manga.MangaTagsIncludedInFileName,Mode=OneWay}">
             <ItemsRepeater.Layout>
                 <controls:WrapLayout
                     x:Name="Wrap"

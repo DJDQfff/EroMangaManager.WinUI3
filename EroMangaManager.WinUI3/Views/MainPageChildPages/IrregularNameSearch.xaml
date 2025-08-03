@@ -34,8 +34,8 @@
         <ListView Grid.Row="1" ItemsSource="{x:Bind books, Mode=OneWay}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Manga">
-                    <usercontrol:RenameMangaByEditString
-                        Margin="12"
+                    <usercontrol:RenameMangaByEditString Height="320"
+                        Margin="4"
                         HorizontalAlignment="Stretch"
                         Manga="{x:Bind}" />
                 </DataTemplate>

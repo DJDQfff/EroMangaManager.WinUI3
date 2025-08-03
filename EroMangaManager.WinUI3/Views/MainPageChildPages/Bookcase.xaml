@@ -16,7 +16,7 @@
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="BookcaseTemplate1" x:DataType="models:Manga">
-            <usercontrols:MangaCoverTags Manga="{x:Bind}" />
+            <usercontrols:MangaTagsView Manga="{x:Bind}" />
         </DataTemplate>
         <DataTemplate x:Key="BookcaseTemplate0" x:DataType="models:Manga">
             <usercontrols:MangaBriefInfo Manga="{x:Bind}" />
@@ -58,7 +58,7 @@
             <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
                 <usercontrols:MangaOpenButton />
             </AppBarElementContainer>
-            <AppBarButton AllowFocusOnInteraction="True"
+            <AppBarButton Visibility="Collapsed" AllowFocusOnInteraction="True"
                           Icon="Switch"
                           Label="{uid:Strings Uid=SwitchViewMode}">
                 <AppBarButton.Flyout>
