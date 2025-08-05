@@ -31,7 +31,6 @@ public sealed partial class FindSameManga : Page
         if (await DialogHelper.ConfirmDeleteSourceFileDialog(manga))
         {
             viewModel.mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
-            _ = App.Current.GlobalViewModel.TryRemoveManga(manga);
         }
     }
 
