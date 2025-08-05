@@ -24,7 +24,7 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
 
     public CoverWithContextFlyout ()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void UserControl_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)
@@ -55,15 +55,6 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
                  );
                 App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
             };
-        }
-    }
-
-    private async void deleteManga (object sender , RoutedEventArgs e)
-    {
-        var result = await DialogHelper.ConfirmDeleteSourceFileDialog(Source);
-        if (result == true)
-        {
-            _ = App.Current.GlobalViewModel.RemoveManga(Source);
         }
     }
 

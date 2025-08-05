@@ -48,9 +48,11 @@
                 Loaded="moveto_Loaded"
                 Text="{uid:Strings Uid=MoveToOtherFolder}" />
             <MenuFlyoutSeparator />
-            <MenuFlyoutItem Click="deleteManga" Foreground="Red"
-                            Icon="Delete"
-                            Text="{uid:Strings Uid=DeleteIt}" />
+            <MenuFlyoutItem
+                Command="{x:Bind commands:MangaCommands.Instance.StorageCommandDelete}"
+                CommandParameter="{x:Bind Source, Mode=OneWay}"
+                Foreground="Red"
+                Text="{uid:Strings Uid=DeleteIt}" />
             <!--</MenuFlyoutSubItem>-->
         </MenuFlyout>
     </UserControl.Resources>

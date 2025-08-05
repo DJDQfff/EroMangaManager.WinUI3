@@ -14,6 +14,10 @@ namespace EroMangaManager.Core.ViewModels
         public event Action<string> ErrorZipEvent;
 
         /// <summary>
+        /// 从计算机中删除manga源文件事件。返回删除结果，tryremovemanga将根据此事件结果决定是否移除数据
+        /// </summary>
+        public event Func<Manga , Task<bool>> EventDeleteSourceManga;
+        /// <summary>
         /// 完成某项任务时引发
         /// </summary>
         public event Action<string> WorkDoneEvent;
@@ -106,14 +110,23 @@ namespace EroMangaManager.Core.ViewModels
         }
 
         /// <summary>
-        /// 移除一个本子
+        /// 尝试移除一个本子文件，成功返回true，失败或未删除返回false
         /// </summary>
         /// <param name="mangaBook"></param>
-        public bool RemoveManga (Manga mangaBook)
+        public async Task<bool> TryRemoveManga (Manga mangaBook)
         {
-            string folderpath = mangaBook.FolderPath;
-            MangasGroup folder = MangaFolders.Single(x => x.FolderPath == folderpath);
-            return folder.RemoveManga(mangaBook);
+            var result = await EventDeleteSourceManga?.Invoke(mangaBook);
+            if (result)
+            {
+                string folderpath = mangaBook.FolderPath;
+                MangasGroup folder = MangaFolders.Single(x => x.FolderPath == folderpath);
+
+                return folder.RemoveManga(mangaBook);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>

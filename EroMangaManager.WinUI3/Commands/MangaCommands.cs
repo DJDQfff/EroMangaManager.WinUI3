@@ -14,10 +14,10 @@ internal class MangaCommands
     public StandardUICommand StorageCommandRename = new();
     public static MangaCommands Instance { get; set; }
 
-    public static void Initial()
+    public static void Initial ()
     {
         Instance ??= new();
-        Instance.OpenFolderInOutside.ExecuteRequested += (sender, args) =>
+        Instance.OpenFolderInOutside.ExecuteRequested += (sender , args) =>
         {
             string folderpath = args.Parameter switch
             {
@@ -37,19 +37,26 @@ internal class MangaCommands
             }
             //System.Diagnostics.Process.Start("explorer" , $"/select , {folderpath}");
         };
-
-        Instance.StorageCommandDelete.ExecuteRequested += async (sender, args) =>
+        Instance.StorageCommandDelete.IconSource = new SymbolIconSource()
+        {
+            Symbol = Symbol.Delete
+        };
+        Instance.StorageCommandDelete.ExecuteRequested += async (sender , args) =>
         {
             switch (args.Parameter)
             {
                 case Manga book:
-                    var deleteresult = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
-                    if (deleteresult) { }
+                    {
+                        _ = await App.Current.GlobalViewModel.TryRemoveManga(book);
+
+                    }
                     break;
+
+
             }
         };
 
-        Instance.StorageCommandRename.ExecuteRequested += async (sender, args) =>
+        Instance.StorageCommandRename.ExecuteRequested += async (sender , args) =>
         {
             switch (args.Parameter)
             {
@@ -63,7 +70,7 @@ internal class MangaCommands
             Symbol = Symbol.Rename
         };
 
-        Instance.OpenManga.ExecuteRequested += (sender, args) =>
+        Instance.OpenManga.ExecuteRequested += (sender , args) =>
         {
             if (args.Parameter is Manga book)
             {
@@ -74,13 +81,13 @@ internal class MangaCommands
                     switch (wayindex)
                     {
                         case 0:
-                            RunDefault:
+                        RunDefault:
                             WindowHelper.ShowReadWindow(book);
                             break;
 
                         case 1:
 
-                            Process.Start("explorer", book.FilePath);
+                            Process.Start("explorer" , book.FilePath);
                             break;
 
                         case > 1:
@@ -91,7 +98,7 @@ internal class MangaCommands
                             }
                             else
                             {
-                                Process.Start(SelectedExePath, $"\"{book.FilePath}\"");
+                                Process.Start(SelectedExePath , $"\"{book.FilePath}\"");
                             }
                             break;
                     }
@@ -108,7 +115,7 @@ internal class MangaCommands
             }
         };
 
-        Instance.ExportPDF.ExecuteRequested += async (sender, args) =>
+        Instance.ExportPDF.ExecuteRequested += async (sender , args) =>
         {
             switch (args.Parameter)
             {
@@ -117,6 +124,6 @@ internal class MangaCommands
                     break;
             }
         };
-        Instance.ExportPDF.IconSource = new SymbolIconSource() { Symbol = Symbol.Save, };
+        Instance.ExportPDF.IconSource = new SymbolIconSource() { Symbol = Symbol.Save , };
     }
 }

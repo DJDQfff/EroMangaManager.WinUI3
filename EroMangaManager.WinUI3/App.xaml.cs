@@ -82,6 +82,7 @@ public partial class App : Application
         };
         GlobalViewModel.WorkDoneEvent += Toast;
         GlobalViewModel.WorkFailedEvent += Toast;
+        GlobalViewModel.EventDeleteSourceManga += DialogHelper.ConfirmDeleteSourceFileDialog;
 
         #endregion 事件赋值
 
