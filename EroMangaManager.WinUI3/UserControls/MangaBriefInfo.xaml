@@ -24,16 +24,14 @@
             VerticalAlignment="Center"
             Source="{x:Bind Manga, Mode=OneWay}" />
         <TextBlock
+             
             Grid.Row="1"
             Width="150"
             Margin="1"
-            Padding="2"
+            Padding="2" 
             HorizontalTextAlignment="Center"
+            Text="{x:Bind Manga.MangaName, Mode=OneWay}" 
             MaxLines="1">
-            <Run
-                x:Name="runtext"
-                IsTextScaleFactorEnabled="True"
-                Text="{x:Bind Manga.MangaName, Mode=OneWay}" />
         </TextBlock>
         <TextBlock
             Grid.Row="2"

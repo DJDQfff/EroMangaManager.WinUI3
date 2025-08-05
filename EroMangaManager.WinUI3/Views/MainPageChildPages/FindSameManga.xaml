@@ -39,16 +39,16 @@
                             Margin="20"
                             FontSize="24"
                             Text="{x:Bind Key}" />
-                        <ListView ItemsSource="{x:Bind Collections, Mode=OneWay}" SelectionMode="None">
-                            <ListView.ItemTemplate>
+                        <GridView  ItemsSource="{x:Bind Collections, Mode=OneWay}" SelectionMode="None">
+                            <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="coremodel:Manga">
                                     <Grid Margin="2">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <usercontrols:MangaDisplayNameView Manga="{x:Bind }" />
-                                        <StackPanel Grid.Column="1" Orientation="Vertical">
+                                        <usercontrols:MangaDisplayNameView Manga="{x:Bind }" MaxWidth="600" />
+                                        <!--<StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Button
                                                 HorizontalAlignment="Stretch"
                                                 Command="{x:Bind commands:MangaCommands.Instance.OpenManga}"
@@ -67,11 +67,11 @@
                                                 Command="{x:Bind commands:MangaCommands.Instance.StorageCommandRename}"
                                                 CommandParameter="{x:Bind}"
                                                 Content="{uid:Strings Uid=RenameFile}" />
-                                        </StackPanel>
+                                        </StackPanel>-->
                                     </Grid>
                                 </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                            </GridView.ItemTemplate>
+                        </GridView>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

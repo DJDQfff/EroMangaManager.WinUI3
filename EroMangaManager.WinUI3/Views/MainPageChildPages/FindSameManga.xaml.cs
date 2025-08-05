@@ -4,6 +4,7 @@ using System;
 
 using CommonLibrary.CollectionFindRepeat;
 
+using EroMangaManager.Core.Models;
 
 using static CommonLibrary.BracketBasedStringParser;
 
@@ -21,18 +22,20 @@ public sealed partial class FindSameManga : Page
     public FindSameManga ()
     {
         InitializeComponent();
+        App.Current.GlobalViewModel.EventAfterDeleteMangaSource += x => viewModel.mangaBookViewModel.DeleteStorageFileInRootObservable(x);
+
     }
 
-    private async void DeleteFileClick (object sender , RoutedEventArgs e)
-    {
-        var button = sender as Button;
-        var manga = button.DataContext as Manga;
+    //private async void DeleteFileClick (object sender , RoutedEventArgs e)
+    //{
+    //    var button = sender as Button;
+    //    var manga = button.DataContext as Manga;
 
-        if (await DialogHelper.ConfirmDeleteSourceFileDialog(manga))
-        {
-            viewModel.mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
-        }
-    }
+    //    if (await DialogHelper.ConfirmDeleteSourceFileDialog(manga))
+    //    {
+    //        viewModel.mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
+    //    }
+    //}
 
     private void Button_Click (object sender , RoutedEventArgs e)
     {
