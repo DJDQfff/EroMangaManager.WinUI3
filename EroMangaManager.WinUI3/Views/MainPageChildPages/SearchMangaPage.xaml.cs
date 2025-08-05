@@ -18,6 +18,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         public SearchMangaPage ()
         {
             InitializeComponent();
+            App.Current.GlobalViewModel.EventAfterDeleteMangaSource += x => { viewmodel.Sources.Remove(x); viewmodel.ResultMangas.Remove(x); };
         }
 
         protected override void OnNavigatedTo (NavigationEventArgs e)

@@ -22,12 +22,14 @@
     <AppxBundlePlatforms>x86|x64|arm64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <Configurations>Debug;Release;Debug_TestFolder</Configurations>
   </PropertyGroup>
   <PropertyGroup Label="MultilingualAppToolkit">
     <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
     <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
     <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
     <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+    <SuppressPseudoWarning Condition="'$(Configuration)'=='Debug_TestFolder'">true</SuppressPseudoWarning>
     <DefaultLanguage>zh-CN</DefaultLanguage>
   </PropertyGroup>
   <ItemGroup>
@@ -220,10 +222,19 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <NoWarn />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TestFolder|x86'">
+    <NoWarn />
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <NoWarn />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TestFolder|x64'">
+    <NoWarn />
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TestFolder|ARM64'">
     <NoWarn />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">

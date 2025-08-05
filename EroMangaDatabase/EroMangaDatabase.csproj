@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<GenerateDocumentationFile>False</GenerateDocumentationFile>
+		<Configurations>Debug;Release;Debug_TestFolder</Configurations>
 	</PropertyGroup>
 
 	<ItemGroup>

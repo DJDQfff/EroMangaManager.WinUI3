@@ -4,6 +4,7 @@
 	  <LangVersion>preview</LangVersion>
     <TargetFramework>net8.0</TargetFramework>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Configurations>Debug;Release;Debug_TestFolder</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

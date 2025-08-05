@@ -154,6 +154,13 @@ namespace EroMangaManager.Core.ViewModels
         /// <returns></returns>
         public async Task StartInitial ()
         {
+#if DEBUG_TESTFOLDER
+            var testgroup = MangaFolders.FirstOrDefault(x => x.FolderPath == @"D:\test");
+            await InitialGroup.Invoke(testgroup);
+            return;
+
+#endif
+
             if (MangaFolders.Any(x => x.UpdateState == UpdateState.Ing))
             {
                 return;
