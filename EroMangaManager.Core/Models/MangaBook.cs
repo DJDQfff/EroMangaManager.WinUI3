@@ -16,6 +16,7 @@ public partial class Manga : ObservableObject
     [NotifyPropertyChangedFor(nameof(MangaTagsIncludedInFileName))]
     [NotifyPropertyChangedFor(nameof(FileDisplayName))]
     [NotifyPropertyChangedFor(nameof(FolderPath))]
+    [NotifyPropertyChangedFor(nameof(FileFullName))]
 
     private string filePath;
 

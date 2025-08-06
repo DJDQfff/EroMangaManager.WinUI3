@@ -42,12 +42,12 @@
                         <GridView  ItemsSource="{x:Bind Collections, Mode=OneWay}" SelectionMode="None">
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="coremodel:Manga">
-                                    <Grid Margin="2">
+                                    <Grid Margin="4">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <usercontrols:MangaDisplayNameView Manga="{x:Bind }" MaxWidth="600" />
+                                        <usercontrols:MangaDisplayNameView Manga="{x:Bind }" Height="200" Width="400" />
                                         <!--<StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Button
                                                 HorizontalAlignment="Stretch"

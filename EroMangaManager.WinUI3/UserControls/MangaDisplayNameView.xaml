@@ -11,23 +11,23 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
         <local:CoverWithContextFlyout Grid.Column="0" Source="{x:Bind Manga ,Mode=OneWay}" />
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <TextBlock
-                FontSize="20"
+                TextAlignment="Justify"
                 Text="{x:Bind Manga.FolderPath, Mode=OneWay}"
                 TextWrapping="Wrap" />
             <TextBlock
                 Grid.Row="1"
-                FontSize="20"
+                
                 Text="{x:Bind Manga.FileFullName, Mode=OneWay}"
                 TextWrapping="Wrap" />
             <TextBlock Grid.Row="2" Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />

@@ -47,7 +47,7 @@
                 Icon="MoveToFolder"
                 Loaded="moveto_Loaded"
                 Text="{uid:Strings Uid=MoveToOtherFolder}" />
-            <MenuFlyoutSeparator />
+            <MenuFlyoutSeparator  />
             <MenuFlyoutItem
                 Command="{x:Bind commands:MangaCommands.Instance.StorageCommandDelete}"
                 CommandParameter="{x:Bind Source, Mode=OneWay}"

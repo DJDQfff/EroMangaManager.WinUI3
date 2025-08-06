@@ -137,7 +137,9 @@ public partial class App : Application
             folders.Remove(f);
             folders.Insert(0 , f);
         }
-
+#if DEBUG_TESTFOLDER
+        folders = new() { @"D:\test" };
+#endif
         GlobalViewModel.GetAllFolders(folders);
         GlobalViewModel.InitialGroup += MangaFactory.Initial;
     }
