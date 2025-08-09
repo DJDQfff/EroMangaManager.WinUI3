@@ -173,7 +173,7 @@ namespace EroMangaManager.WinUI3.Views
                         break;
 
                     case null:
-                        image.Source = new SvgImageSource(new Uri(CoverHelper.ErrorSVGPath));
+                        image.Source = new SvgImageSource(new Uri(CoverHelper.ErrorCoverPath));
                         break;
                 }
             }

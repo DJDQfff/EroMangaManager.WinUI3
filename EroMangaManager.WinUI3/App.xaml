@@ -6,6 +6,7 @@
     xmlns:local="using:EroMangaManager.WinUI3">
     <Application.Resources>
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!--  Other merged dictionaries here  -->

@@ -58,5 +58,6 @@
     <Image
         x:Name="image"
         ContextFlyout="{StaticResource flyout}"
+        ImageFailed="image_ImageFailed"
         Source="{x:Bind Source.CoverPath, Mode=OneWay}" />
 </UserControl>

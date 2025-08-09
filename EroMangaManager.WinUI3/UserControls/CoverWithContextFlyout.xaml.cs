@@ -58,6 +58,8 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
         }
     }
 
-
-
+    private void image_ImageFailed (object sender , ExceptionRoutedEventArgs e)
+    {
+        image.Source = CoverHelper.ErrorCoverImage;
+    }
 }

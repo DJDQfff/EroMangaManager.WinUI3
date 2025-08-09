@@ -6,13 +6,14 @@
 public static class CoverHelper
 {
     private static SvgImageSource _imageSource;
-
+    private static SvgImageSource _errorimageSource;
     /// <summary>
     /// 初始化默认漫画封面
     /// </summary>
     public static void InitialDefaultCover ()
     {
         _imageSource = new SvgImageSource(new Uri(DefaultCoverPath));
+        _errorimageSource = new SvgImageSource(new Uri(ErrorCoverPath));
     }
 
     /// <summary>
@@ -20,13 +21,13 @@ public static class CoverHelper
     /// </summary>
     public static string DefaultCoverPath => "ms-appx:///Assets/SVGs/book.svg";
 
-    public static string ErrorSVGPath => "ms-appx:///Assets/SVGs/error.svg";
+    public static string ErrorCoverPath => "ms-appx:///Assets/SVGs/book-wrong-fill.svg";
 
     /// <summary>
     /// 获取默认封面
     /// </summary>
-    public static SvgImageSource DefaultCover => _imageSource;
-
+    public static SvgImageSource DefaultCoverImage => _imageSource;
+    public static SvgImageSource ErrorCoverImage => _errorimageSource;
     /// <summary> 调用系统API，返回缩率图 </summary>
     /// <param name="cover"> </param>
     /// <returns> </returns>
