@@ -76,7 +76,7 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// MangasFolder是否正在更新，有任意一个是则返回true
         /// </summary>
-        public bool IsContentInitializing => MangaFolders.Any((x) => x.UpdateState == UpdateState.Ing);
+        public bool IsContentInitializing => MangaFolders.Any((x) => x.UpdateState == UpdateState.Busy);
 
         /// <summary>
         /// 确保已添加文件夹，并添加到集合。如果已存在这个folder，则返回true;否则返回false并创建新的
@@ -155,7 +155,7 @@ namespace EroMangaManager.Core.ViewModels
         public async Task StartInitial ()
         {
 
-            if (MangaFolders.Any(x => x.UpdateState == UpdateState.Ing))
+            if (MangaFolders.Any(x => x.UpdateState == UpdateState.Busy))
             {
                 return;
             }

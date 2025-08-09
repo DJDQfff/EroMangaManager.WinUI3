@@ -46,7 +46,7 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
                 item.IsEnabled = false;
                 continue;
             }
-            item.Click += (object sender , RoutedEventArgs e) =>
+            item.Click += (sender , e) =>
             {
                 _ = MangaFileOperation.MoveManga(
                      Source ,

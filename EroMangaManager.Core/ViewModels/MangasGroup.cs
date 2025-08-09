@@ -18,7 +18,7 @@ public enum UpdateState
     /// <summary>
     /// 更新中
     /// </summary>
-    Ing,
+    Busy,
     /// <summary>
     /// 结束
     /// </summary>

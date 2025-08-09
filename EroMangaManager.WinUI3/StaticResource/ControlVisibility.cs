@@ -6,7 +6,7 @@ internal class ControlVisibility : IValueConverter
     {
         return value switch
         {
-            0 or null or true or UpdateState.Ing => Visibility.Visible,
+            0 or null or true or UpdateState.Busy => Visibility.Visible,
             _ => (object) Visibility.Collapsed,
         };
     }

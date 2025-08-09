@@ -39,7 +39,7 @@ internal static class MangaFactory
 
         if (Directory.Exists(mangasFolder.FolderPath))
         {
-            mangasFolder.UpdateState = UpdateState.Ing;
+            mangasFolder.UpdateState = UpdateState.Busy;
 
             //var a = DatabaseController.database.FilteredImages.ToArray();
             List<Task> tasks = [];
