@@ -496,11 +496,11 @@
         </trans-unit>
         <trans-unit id="Method1" translate="yes" xml:space="preserve">
           <source>方法一</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method 1</target>
+          <target state="translated">Method 1. Quick, accurate, small range</target>
         </trans-unit>
         <trans-unit id="Method2" translate="yes" xml:space="preserve">
           <source>方法二</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method 2</target>
+          <target state="translated">Method 2.Quick, inaccurate</target>
         </trans-unit>
         <trans-unit id="Start" translate="yes" xml:space="preserve">
           <source>开始</source>
@@ -516,11 +516,11 @@
         </trans-unit>
         <trans-unit id="Method3" translate="yes" xml:space="preserve">
           <source>方法三</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method 3</target>
+          <target state="translated">Method 3. Slow</target>
         </trans-unit>
         <trans-unit id="Method4" translate="yes" xml:space="preserve">
           <source>方法4</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Method 4</target>
+          <target state="translated">Method 4. very slow , but accurate</target>
         </trans-unit>
         <trans-unit id="AllInBrackets" translate="yes" xml:space="preserve">
           <source>全部包含在括号内</source>

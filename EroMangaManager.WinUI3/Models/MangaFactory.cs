@@ -60,6 +60,7 @@ internal static class MangaFactory
                 var fileinfo = new FileInfo(x.FilePath);
                 x.FileSize = fileinfo.Length;
                 fileinfo = null;
+                //x.CoverPath = CoverHelper.DefaultCoverPath;
                 x.CoverPath =
                     await CoverHelper.TryCreatCoverFileAsync(x.FilePath , null)
                     ?? CoverHelper.DefaultCoverPath;
@@ -81,6 +82,7 @@ internal static class MangaFactory
                     manga.FileSize = Directory
                         .GetFiles(manga.FilePath , "*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
                         .Sum(x => new FileInfo(x).Length);
+                    //manga.CoverPath = CoverHelper.DefaultCoverPath;
 
                     manga.CoverPath =
                         CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)

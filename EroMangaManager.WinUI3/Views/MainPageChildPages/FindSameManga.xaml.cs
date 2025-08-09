@@ -43,6 +43,6 @@ public sealed partial class FindSameManga : Page
 
         viewModel.StartSearch(mangaList , combobox.SelectedIndex);
 
-
+        var all = viewModel.mangaBookViewModel.AllElements;
     }
 }

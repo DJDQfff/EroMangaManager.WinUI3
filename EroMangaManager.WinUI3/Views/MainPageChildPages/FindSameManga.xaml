@@ -9,6 +9,7 @@
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -16,21 +17,18 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <ComboBox
-                x:Name="combobox"
-                Width="100" 
-                SelectedIndex="1">
-                
-                <TextBlock Text="{uid:Strings Uid=Method1}" />
-                <TextBlock Text="{uid:Strings Uid=Method2}" />
-                <TextBlock x:Name="bad" x:Load="False"  Text="{uid:Strings Uid=Method3}" />
-                <!--<TextBlock Text="{uid:Strings Uid=Method4}" />-->
+            <ComboBox x:Name="combobox" SelectedIndex="0">
+                <ComboBoxItem Content="{uid:Strings Uid=Method1}" />
+                <ComboBoxItem Content="{uid:Strings Uid=Method2}" />
+                <ComboBoxItem Content="{uid:Strings Uid=Method3}" IsEnabled="False" />
+                <ComboBoxItem Content="{uid:Strings Uid=Method4}" />
             </ComboBox>
             <Button Click="Button_Click" Content="{uid:Strings Uid=Start}" />
         </StackPanel>
         <ListView
             x:Name="listView"
-            Grid.Row="1" ItemsSource="{x:Bind viewModel.mangaBookViewModel.RepeatPairs,Mode=OneWay}"
+            Grid.Row="1"
+            ItemsSource="{x:Bind viewModel.mangaBookViewModel.RepeatPairs, Mode=OneWay}"
             SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="coremodel:RepeatMangasGroup">
@@ -39,7 +37,7 @@
                             Margin="20"
                             FontSize="24"
                             Text="{x:Bind Key}" />
-                        <GridView  ItemsSource="{x:Bind Collections, Mode=OneWay}" SelectionMode="None">
+                        <GridView ItemsSource="{x:Bind Collections, Mode=OneWay}" SelectionMode="None">
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="coremodel:Manga">
                                     <Grid Margin="4">
@@ -47,7 +45,10 @@
                                             <ColumnDefinition />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <usercontrols:MangaDisplayNameView Manga="{x:Bind }" Height="200" Width="400" />
+                                        <usercontrols:MangaDisplayNameView
+                                            Width="400"
+                                            Height="200"
+                                            Manga="{x:Bind}" />
                                         <!--<StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Button
                                                 HorizontalAlignment="Stretch"

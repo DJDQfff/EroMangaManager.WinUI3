@@ -17,6 +17,8 @@ public partial class App : Application
     public Window MainWindow;
     internal static new App Current;
     internal ObservableCollectionVM GlobalViewModel { get; private set; }
+
+    internal BackgroundCoverSetter BackgroundCoverSetter { get; private set; }
     internal SettingViewModel AppConfig { get; private set; }
     internal string AppConfigPath { get; private set; }
     internal string LocalFolder = ApplicationData.Current.LocalFolder.Path;
