@@ -3,7 +3,7 @@ internal class UICommands
 {
     public static UICommands Instance { get; set; }
     public StandardUICommand OverviewInformation = new();
-
+    public StandardUICommand SearchSimilar = new();
     public static void Initial ()
     {
         Instance ??= new();
@@ -26,6 +26,13 @@ internal class UICommands
         {
             Symbol = Symbol.View
         };
+
+        Instance.SearchSimilar.ExecuteRequested += (sender , args) =>
+        {
+            MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage) , args.Parameter);
+
+        };
+        Instance.SearchSimilar.IconSource = new SymbolIconSource() { Symbol = Symbol.Find };
 
     }
 

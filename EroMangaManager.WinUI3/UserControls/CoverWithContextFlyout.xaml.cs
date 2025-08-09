@@ -60,9 +60,4 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
 
 
 
-    private void searchsimilar_Click (object sender , RoutedEventArgs e)
-    {
-        MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage) , source.MangaName);
-
-    }
 }

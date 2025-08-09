@@ -37,9 +37,8 @@
                 CommandParameter="{x:Bind Source, Mode=OneWay}"
                 Text="{uid:Strings Uid=RenameFile}" />
             <MenuFlyoutItem
-                x:Name="searchsimilar"
-                Click="searchsimilar_Click"
-                Icon="Find"
+                Command="{x:Bind commands:UICommands.Instance.SearchSimilar}"
+                CommandParameter="{x:Bind Source.MangaName, Mode=OneWay}"
                 Text="{uid:Strings Uid=SearchSimialr}" />
             <MenuFlyoutSeparator />
             <MenuFlyoutSubItem
@@ -47,7 +46,7 @@
                 Icon="MoveToFolder"
                 Loaded="moveto_Loaded"
                 Text="{uid:Strings Uid=MoveToOtherFolder}" />
-            <MenuFlyoutSeparator  />
+            <MenuFlyoutSeparator />
             <MenuFlyoutItem
                 Command="{x:Bind commands:MangaCommands.Instance.StorageCommandDelete}"
                 CommandParameter="{x:Bind Source, Mode=OneWay}"

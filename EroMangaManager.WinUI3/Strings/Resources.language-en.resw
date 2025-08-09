@@ -379,10 +379,10 @@
     <value>Move to a different folder</value>
   </data>
   <data name="Method1" xml:space="preserve">
-    <value>Method 1</value>
+    <value>Method 1. Quick, accurate, small range</value>
   </data>
   <data name="Method2" xml:space="preserve">
-    <value>Method 2</value>
+    <value>Method 2.Quick, inaccurate</value>
   </data>
   <data name="Start" xml:space="preserve">
     <value>Begin</value>
@@ -394,10 +394,10 @@
     <value>Unpaired parentheses</value>
   </data>
   <data name="Method3" xml:space="preserve">
-    <value>Method 3</value>
+    <value>Method 3. Slow</value>
   </data>
   <data name="Method4" xml:space="preserve">
-    <value>Method 4</value>
+    <value>Method 4. very slow , but accurate</value>
   </data>
   <data name="AllInBrackets" xml:space="preserve">
     <value>All are included in parentheses</value>
