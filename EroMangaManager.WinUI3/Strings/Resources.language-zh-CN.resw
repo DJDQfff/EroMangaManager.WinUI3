@@ -294,6 +294,9 @@
   <data name="LoadSubDirectory" xml:space="preserve">
     <value>加载子文件夹</value>
   </data>
+  <data name="LocateInExplorer" xml:space="preserve">
+    <value>在资源浏览器中打开</value>
+  </data>
   <data name="MailFeedbackToDeveloper" xml:space="preserve">
     <value>邮件反馈djdqfff@qq.com</value>
   </data>

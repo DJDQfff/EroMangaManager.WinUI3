@@ -251,7 +251,7 @@
         OpenItsPlacedFolder,
 
         ///<summary></summary>
-        OverviewInformation, SearchSimialr, Copy,
+        OverviewInformation, SearchSimialr, Copy, LocateInExplorer,
 
         ///<summary></summary>
         PinnedFolders,

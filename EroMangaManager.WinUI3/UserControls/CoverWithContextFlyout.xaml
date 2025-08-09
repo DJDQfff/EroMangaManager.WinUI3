@@ -18,9 +18,9 @@
             <MenuFlyoutItem Command="{x:Bind commands:MangaCommands.Instance.OpenManga}" CommandParameter="{x:Bind Source, Mode=OneWay}" />
             <MenuFlyoutSubItem Icon="Document" Text="{uid:Strings Uid=StorageOperation}">
                 <MenuFlyoutItem
-                    Command="{x:Bind commands:MangaCommands.Instance.OpenFolderInOutside}"
+                    Command="{x:Bind commands:MangaCommands.Instance.LocateInExplorer}"
                     CommandParameter="{x:Bind Source, Mode=OneWay}"
-                    Text="{uid:Strings Uid=OpenFolder}" />
+                                Text="{uid:Strings Uid=LocateInExplorer}" />
                 <MenuFlyoutItem
                     Command="{x:Bind commands:MangaCommands.Instance.ExportPDF}"
                     CommandParameter="{x:Bind Source, Mode=OneWay}"

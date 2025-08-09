@@ -8,7 +8,7 @@ namespace EroMangaManager.WinUI3.Commands;
 internal class MangaCommands
 {
     public StandardUICommand ExportPDF = new(StandardUICommandKind.Save);
-    public StandardUICommand OpenFolderInOutside = new(StandardUICommandKind.Open);
+    public StandardUICommand LocateInExplorer = new(StandardUICommandKind.Open);
     public StandardUICommand OpenManga = new(StandardUICommandKind.Open);
     public StandardUICommand StorageCommandDelete = new(StandardUICommandKind.Delete);
     public StandardUICommand StorageCommandRename = new();
@@ -17,7 +17,7 @@ internal class MangaCommands
     public static void Initial ()
     {
         Instance ??= new();
-        Instance.OpenFolderInOutside.ExecuteRequested += (sender , args) =>
+        Instance.LocateInExplorer.ExecuteRequested += (sender , args) =>
         {
             string folderpath = args.Parameter switch
             {

@@ -437,4 +437,10 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
   <data name="SearchSimialr" xml:space="preserve">
     <value>Find Similarities</value>
   </data>
+  <data name="Copy" xml:space="preserve">
+    <value>copy</value>
+  </data>
+  <data name="LocateInExplorer" xml:space="preserve">
+    <value>Open in the Resource Browser</value>
+  </data>
 </root>

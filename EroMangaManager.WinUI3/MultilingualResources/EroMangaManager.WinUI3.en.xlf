@@ -590,7 +590,11 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
         </trans-unit>
         <trans-unit id="Copy" translate="yes" xml:space="preserve">
           <source>复制</source>
-          <target state="new">复制</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">copy</target>
+        </trans-unit>
+        <trans-unit id="LocateInExplorer" translate="yes" xml:space="preserve">
+          <source>在资源浏览器中打开</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open in the Resource Browser</target>
         </trans-unit>
       </group>
     </body>
