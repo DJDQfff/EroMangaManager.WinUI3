@@ -7,6 +7,7 @@ global using System.Linq;
 global using System.Threading.Tasks;
 
 global using CommonLibrary;
+global using CommonLibrary.GroupdItemsLibrary;
 
 global using CommunityToolkit.WinUI.Controls;
 
@@ -26,8 +27,6 @@ global using EroMangaManager.WinUI3.Views.ContentDialogPages;
 global using EroMangaManager.WinUI3.Views.FunctionChildPages;
 global using EroMangaManager.WinUI3.Views.MainPageChildPages;
 global using EroMangaManager.WinUI3.Views.SettingPageChildPages;
-
-global using GroupedItemsLibrary;
 
 global using Microsoft.UI.Windowing;
 global using Microsoft.UI.Xaml;

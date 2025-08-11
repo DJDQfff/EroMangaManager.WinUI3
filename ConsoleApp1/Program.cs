@@ -10,8 +10,9 @@ Console.WriteLine(search.ResultMangas.Count);
 static void NewMethod (List<Manga> mangas)
 {
     SameMangaSearchViewModel viewmodel = new();
-    viewmodel.StartSearch(mangas , 2);
-    foreach (var group in viewmodel.mangaBookViewModel.RepeatPairs)
+    viewmodel.Source = mangas;
+    viewmodel.StartSearch(2);
+    foreach (var group in viewmodel.RepeatPairs)
     {
         Console.WriteLine(group.Key);
         foreach (var manga in group.Collections)

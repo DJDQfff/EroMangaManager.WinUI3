@@ -22,7 +22,7 @@ public sealed partial class FindSameManga : Page
     public FindSameManga ()
     {
         InitializeComponent();
-        App.Current.GlobalViewModel.EventAfterDeleteMangaSource += x => viewModel.mangaBookViewModel.DeleteStorageFileInRootObservable(x);
+        App.Current.GlobalViewModel.EventAfterDeleteMangaSource += x => viewModel.DeleteStorageFileInRootObservable(x);
 
     }
 
@@ -39,10 +39,10 @@ public sealed partial class FindSameManga : Page
 
     private void Button_Click (object sender , RoutedEventArgs e)
     {
-        var mangaList = App.Current.GlobalViewModel.MangaList;
 
-        viewModel.StartSearch(mangaList , combobox.SelectedIndex);
+        viewModel.Source = App.Current.GlobalViewModel.MangaList.SkipWhile(x => string.IsNullOrWhiteSpace(x.MangaName)).ToList();
 
-        var all = viewModel.mangaBookViewModel.AllElements;
+        viewModel.StartSearch(combobox.SelectedIndex);
+
     }
 }
