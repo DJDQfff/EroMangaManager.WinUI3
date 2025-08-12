@@ -118,7 +118,7 @@ internal static class MangaFactory
                     Type = Path.GetExtension(xfile).ToLower()
                 };
 
-                await Task.Run(async () =>
+                await Task.Run(() =>
             {
                 var fileinfo = new FileInfo(manga.FilePath);
                 manga.FileSize = fileinfo.Length;
@@ -171,9 +171,8 @@ internal static class MangaFactory
             case "":
                 {
                     manga.FileSize = Directory
-    .GetFiles(manga.FilePath , "*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
+    .EnumerateFiles(manga.FilePath , "*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
     .Sum(x => new FileInfo(x).Length);
-
                 }
                 break;
             default:

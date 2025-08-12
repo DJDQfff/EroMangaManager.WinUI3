@@ -28,7 +28,9 @@ internal class BackgroundCoverSetter
             if (manga != null /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
             {
                 await MangaFactory.InitialCover(manga);
+
                 MangaFactory.InitialFileSize(manga);
+
             }
             mangas.Remove(manga);//改回list了，又需要了 .不需要执行，stack的pop方法已经取出最上面的了
 

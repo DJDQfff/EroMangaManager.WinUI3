@@ -24,6 +24,7 @@
                 <ComboBoxItem Content="{uid:Strings Uid=Method4}" />
             </ComboBox>
             <Button Click="Button_Click" Content="{uid:Strings Uid=Start}" />
+            <ProgressRing IsActive="{x:Bind viewModel.isWorking, Mode=OneWay}" />
         </StackPanel>
         <ListView
             x:Name="listView"
@@ -41,34 +42,10 @@
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="coremodel:Manga">
                                     <Grid Margin="4">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition Width="auto" />
-                                        </Grid.ColumnDefinitions>
                                         <usercontrols:MangaDisplayNameView
                                             Width="400"
                                             Height="200"
                                             Manga="{x:Bind}" />
-                                        <!--<StackPanel Grid.Column="1" Orientation="Vertical">
-                                            <Button
-                                                HorizontalAlignment="Stretch"
-                                                Command="{x:Bind commands:MangaCommands.Instance.OpenManga}"
-                                                CommandParameter="{x:Bind}"
-                                                Content="{uid:Strings Uid=Open}" />
-                                            <Button
-                                                HorizontalAlignment="Stretch"
-                                                Click="DeleteFileClick"
-                                                Content="{uid:Strings Uid=DeleteIt}" />
-                                            <Button
-                                                HorizontalAlignment="Stretch"
-                                                Command="{x:Bind commands:MangaCommands.Instance.OpenFolderInOutside}"
-                                                CommandParameter="{x:Bind}"
-                                                Content="{uid:Strings Uid=OpenFolder}" />
-                                            <Button
-                                                Command="{x:Bind commands:MangaCommands.Instance.StorageCommandRename}"
-                                                CommandParameter="{x:Bind}"
-                                                Content="{uid:Strings Uid=RenameFile}" />
-                                        </StackPanel>-->
                                     </Grid>
                                 </DataTemplate>
                             </GridView.ItemTemplate>

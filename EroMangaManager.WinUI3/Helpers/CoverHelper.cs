@@ -65,18 +65,13 @@ public static class CoverHelper
 
     public static string LoadCoverFromInternalFolder (string folderPath)
     {
-        var directoryinfo = new DirectoryInfo(folderPath);
-        if (!directoryinfo.Exists)
+        if (!Directory.Exists(folderPath))
             throw new ArgumentException("此文件夹不存在");
-
-
-
-        var file = directoryinfo
+        var directoryinfo = new DirectoryInfo(folderPath)
             .EnumerateFiles("*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
             .FirstOrDefault(x => SupportedType.ImageType.Contains(x.Extension));
 
-
-        return file?.FullName;
+        return directoryinfo?.FullName;
     }
 
     /// <summary> 尝试创建封面文件。 </summary>

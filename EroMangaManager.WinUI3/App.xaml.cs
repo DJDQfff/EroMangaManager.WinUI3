@@ -120,7 +120,7 @@ public partial class App : Application
         #region 需要后台执行
 
         await GlobalViewModel.StartInitial();
-        await Task.Run(async () => await App.Current.BackgroundCoverSetter.LoopWork2());
+        await Current.BackgroundCoverSetter.LoopWork2();
         //GlobalViewModel.InitialEachFoldersInOrder();
 
         #endregion 需要后台执行

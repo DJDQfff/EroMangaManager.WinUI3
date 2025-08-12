@@ -1,4 +1,6 @@
-﻿using CommonLibrary.CollectionFindRepeat;
+﻿using System.Threading.Tasks;
+
+using CommonLibrary.CollectionFindRepeat;
 
 using CommonLibrary.GroupdItemsLibrary;
 
@@ -8,8 +10,8 @@ using static CommonLibrary.BracketBasedStringParser;
 namespace EroMangaManager.Core.ViewModels;
 public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Manga , RepeatMangasGroup>
 {
-
-    public void StartSearch (int index , Func<RepeatMangasGroup , bool> FiltSomes = null)
+    public bool isWorking = false;
+    public async Task StartSearch (int index , Func<RepeatMangasGroup , bool> FiltSomes = null)
     {
 
         FiltSomes = FiltSomes ?? (x => !string.IsNullOrWhiteSpace(x.Key));
@@ -17,9 +19,10 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
         Func<Manga , string> func = null;
         Func<Manga , Manga , string> func1 = null;
         char[] chars = [' ' , '-' , '+' , '~' , '#'];
-
+        isWorking = true;
         switch (index)
         {
+
             case 3:
                 {
                     func1 = (manga1 , manga2) =>
@@ -36,7 +39,7 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
                         }
                         return null;
                     };
-                    StartCompareSequence(Source , func1 , x => !string.IsNullOrWhiteSpace(x));
+                    await StartCompareSequence(Source , func1 , x => !string.IsNullOrWhiteSpace(x));
                 }
                 break;
             case 2:
@@ -57,8 +60,7 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
                    };
 
 
-
-                    StartCompareSequence(Source , func1 , x => !string.IsNullOrWhiteSpace(x));
+                    await StartCompareSequence(Source , func1 , x => !string.IsNullOrWhiteSpace(x));
 
                 }
                 break;
@@ -76,17 +78,18 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
                      Get_OutsideContent(x.FileDisplayName)
                      .SelectMany(x => x.Split(chars))
                         .FirstOrDefault(y => dic.ContainsKey(y));
-                    ByEachKey(Source , func , FiltSomes);
+                    await ByEachKey(Source , func , FiltSomes);
 
                 }
                 break;
 
             case 0:
                 func = n => n.MangaName;
-
-                ByEachKey(Source , func , FiltSomes);
+                await ByEachKey(Source , func , FiltSomes);
+                //await Task.Run(() => ByEachKey(Source , func , FiltSomes));
 
                 break;// 直接比较本子名，适用于较短本子名及本子名（括号外的内容）没有分成及部分
         }
+        isWorking = false;
     }
 }

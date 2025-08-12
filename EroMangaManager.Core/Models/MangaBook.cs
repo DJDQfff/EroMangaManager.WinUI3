@@ -17,7 +17,6 @@ public partial class Manga : ObservableObject
     [NotifyPropertyChangedFor(nameof(FileDisplayName))]
     [NotifyPropertyChangedFor(nameof(FolderPath))]
     [NotifyPropertyChangedFor(nameof(FileFullName))]
-
     private string filePath;
 
     /// <summary> 漫画翻译后的名称 </summary>
@@ -57,7 +56,8 @@ public partial class Manga : ObservableObject
     /// <summary>
     /// 获取漫画文件大小。单位：字节
     /// </summary>
-    public long FileSize { get; set; }
+    [ObservableProperty]
+    long fileSize;
 
     /// <summary> 漫画文件所在文件夹路径 </summary>
     public string FolderPath => Path.GetDirectoryName(FilePath);

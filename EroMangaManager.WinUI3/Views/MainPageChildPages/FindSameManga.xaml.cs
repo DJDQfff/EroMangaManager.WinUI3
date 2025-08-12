@@ -1,6 +1,7 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 using System;
+using System.Threading.Tasks;
 
 using CommonLibrary.CollectionFindRepeat;
 
@@ -22,27 +23,17 @@ public sealed partial class FindSameManga : Page
     public FindSameManga ()
     {
         InitializeComponent();
-        App.Current.GlobalViewModel.EventAfterDeleteMangaSource += x => viewModel.DeleteStorageFileInRootObservable(x);
-        viewModel.AddToResult += x => App.Current.BackgroundCoverSetter.mangas.Add(x);
+        App.Current.GlobalViewModel.EventAfterDeleteMangaSource += viewModel.DeleteStorageFileInRootObservable;
+        //viewModel.AddToResult += x => App.Current.BackgroundCoverSetter.mangas.Insert(0 , x);
     }
 
-    //private async void DeleteFileClick (object sender , RoutedEventArgs e)
-    //{
-    //    var button = sender as Button;
-    //    var manga = button.DataContext as Manga;
 
-    //    if (await DialogHelper.ConfirmDeleteSourceFileDialog(manga))
-    //    {
-    //        viewModel.mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
-    //    }
-    //}
-
-    private void Button_Click (object sender , RoutedEventArgs e)
+    private async void Button_Click (object sender , RoutedEventArgs e)
     {
 
         viewModel.Source = App.Current.GlobalViewModel.MangaList.SkipWhile(x => string.IsNullOrWhiteSpace(x.MangaName)).ToList();
 
-        viewModel.StartSearch(combobox.SelectedIndex);
+        await viewModel.StartSearch(combobox.SelectedIndex);
 
     }
 }
