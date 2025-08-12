@@ -115,8 +115,8 @@ public static class CoverHelper
     )
     {
         string path = null;
-        StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
-        Stream stream = new FileStream(storageFile , FileMode.Open);
+        var coverfolder = await GetChildTemporaryFolder(nameof(Covers));
+        var stream = new FileStream(storageFile , FileMode.Open);
         try
         {
             using (var zipArchive = ArchiveFactory.Open(stream))

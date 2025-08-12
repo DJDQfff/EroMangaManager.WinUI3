@@ -11,12 +11,12 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         /// <summary>
         /// 构造函数
         /// </summary>
-        public LibraryPage()
+        public LibraryPage ()
         {
             InitializeComponent();
         }
 
-        private void RemoveFolderButton_Click(object sender, RoutedEventArgs e)
+        private void RemoveFolderButton_Click (object sender , RoutedEventArgs e)
         {
             if ((sender as MenuFlyoutItem).DataContext is MangasGroup storageFolder)
             {
@@ -26,15 +26,15 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-        private void JumpToBookcaseButton_Click(object sender, RoutedEventArgs e)
+        private void JumpToBookcaseButton_Click (object sender , RoutedEventArgs e)
         {
             if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
-                MainPage.Current.MainFrame.Navigate(typeof(Bookcase), datacontext);
+                MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , datacontext);
             }
         }
 
-        private void SetAsDefaultBookcaseFolder_Click(object sender, RoutedEventArgs e)
+        private void SetAsDefaultBookcaseFolder_Click (object sender , RoutedEventArgs e)
         {
             if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
@@ -43,26 +43,26 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        private void ToggleSwitch_Toggled (object sender , RoutedEventArgs e)
         {
             var toggleSwitch = sender as ToggleSwitch;
 
             App.Current.AppConfig.AppConfig.General.IsEmptyFolderShow = toggleSwitch.IsOn;
         }
 
-        private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
+        private void ToggleSwitch_Loaded (object sender , RoutedEventArgs e)
         {
             var toggleSwitch = sender as ToggleSwitch;
 
             toggleSwitch.IsOn = App.Current.AppConfig.AppConfig.General.IsEmptyFolderShow;
         }
 
-        private async void AddFolder(XamlUICommand sender, ExecuteRequestedEventArgs args)
+        private async void AddFolder (XamlUICommand sender , ExecuteRequestedEventArgs args)
         {
             var folderPicker = new FolderPicker();
 
             var handle = WindowNative.GetWindowHandle(App.Current.MainWindow);
-            InitializeWithWindow.Initialize(folderPicker, handle);
+            InitializeWithWindow.Initialize(folderPicker , handle);
 
             folderPicker.FileTypeFilter.Add(".");
             folderPicker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
@@ -75,8 +75,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 if (App.Current.AppConfig.AppConfig.General.WhetherPickSubFolder)
                 {
                     var fs = Directory.GetDirectories(
-                        selectedfolderpath,
-                        "*",
+                        selectedfolderpath ,
+                        "*" ,
                         SearchOption.AllDirectories
                     );
                     folderws.AddRange(fs);
@@ -94,19 +94,20 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 {
                     if (
                         !App.Current.GlobalViewModel.EnsureAddFolder(
-                            folder,
+                            folder ,
                             out MangasGroup mangasFolder
                         )
                     )
                     {
                         await App.Current.GlobalViewModel.StartInitial();
+                        await App.Current.BackgroundCoverSetter.LoopWork2();
                     }
                     ;
                 }
             }
         }
 
-        private void OpenFolderItem_Click(object sender, RoutedEventArgs e)
+        private void OpenFolderItem_Click (object sender , RoutedEventArgs e)
         {
             if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
@@ -114,15 +115,15 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-        private void Grid_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        private void Grid_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)
         {
             if ((sender as Grid).DataContext is MangasGroup datacontext)
             {
-                MainPage.Current.MainFrame.Navigate(typeof(Bookcase), datacontext);
+                MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , datacontext);
             }
         }
 
-        private async void LoadSubDIrectory(object sender, RoutedEventArgs e)
+        private async void LoadSubDIrectory (object sender , RoutedEventArgs e)
         {
             if ((sender as MenuFlyoutItem).DataContext is MangasGroup datacontext)
             {
@@ -139,7 +140,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     }
                     if (
                         !App.Current.GlobalViewModel.EnsureAddFolder(
-                            chidlfolder,
+                            chidlfolder ,
                             out MangasGroup mangaFolder
                         )
                     )

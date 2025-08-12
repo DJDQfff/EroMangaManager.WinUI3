@@ -4,33 +4,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using EroMangaManager.Core.Models;
+
 namespace EroMangaManager.WinUI3.Models;
 internal class BackgroundCoverSetter
 {
-    public Stack<Manga> mangas = [];
-    public bool IsWorking = false;
-    public async Task Update (IEnumerable<Manga> _mangas)
+    public readonly List<Manga> mangas = [];
+    bool IsWorking = false;
+    int workcount = 0;
+    public async Task LoopWork2 ()
     {
-        foreach(var  manga in _mangas) {mangas.Push(manga); }
-        IsWorking = true;
-    }
 
-    async Task SequenceWork ()
-    {
-        if (!IsWorking)
+        if (workcount < 1)
         {
-            var a = mangas.FirstOrDefault(x => x.CoverPath == CoverHelper.DefaultCoverPath);
-            if (a != null)
+            if (mangas.Count == 0)
             {
-                a.CoverPath =
-        await CoverHelper.TryCreatCoverFileAsync(a.FilePath , null)
-        ?? CoverHelper.DefaultCoverPath;
-                //mangas.Remove(a);
-
-                await SequenceWork();
-
+                return;
             }
+            workcount++;
+
+            var manga = mangas.FirstOrDefault(x => x.FileSize == 0);
+            // 理论上这个manga不可能是null
+            if (manga != null /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
+            {
+                await MangaFactory.InitialCover(manga);
+                MangaFactory.InitialFileSize(manga);
+            }
+            mangas.Remove(manga);//改回list了，又需要了 .不需要执行，stack的pop方法已经取出最上面的了
+
+            workcount--;
+            await LoopWork2();
 
         }
+
     }
+    //async Task LoopWork ()
+    //{
+    //    if (!IsWorking)
+    //    {
+    //        IsWorking = true;
+    //        var manga = mangas.Pop();
+    //        if (manga != null && manga.CoverPath == CoverHelper.DefaultCoverPath)
+    //        {
+    //            await MangaFactory.InitialCover(manga);
+    //            MangaFactory.InitialFileSize(manga);
+    //            //mangas.Remove(manga);// 不需要执行，stack的pop方法已经取出最上面的了
+
+    //            await LoopWork();
+
+    //        }
+    //        IsWorking = false;
+    //    }
+    //}
 }

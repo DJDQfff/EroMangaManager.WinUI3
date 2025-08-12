@@ -18,7 +18,7 @@ public partial class App : Application
     internal static new App Current;
     internal ObservableCollectionVM GlobalViewModel { get; private set; }
 
-    internal BackgroundCoverSetter BackgroundCoverSetter { get; private set; }
+    internal BackgroundCoverSetter BackgroundCoverSetter { get; private set; } = new();
     internal SettingViewModel AppConfig { get; private set; }
     internal string AppConfigPath { get; private set; }
     internal string LocalFolder = ApplicationData.Current.LocalFolder.Path;
@@ -120,6 +120,7 @@ public partial class App : Application
         #region 需要后台执行
 
         await GlobalViewModel.StartInitial();
+        await Task.Run(async () => await App.Current.BackgroundCoverSetter.LoopWork2());
         //GlobalViewModel.InitialEachFoldersInOrder();
 
         #endregion 需要后台执行
@@ -143,7 +144,7 @@ public partial class App : Application
         folders = new() { @"D:\test" };
 #endif
         GlobalViewModel.GetAllFolders(folders);
-        GlobalViewModel.InitialGroup += MangaFactory.Initial;
+        GlobalViewModel.InitialGroup += MangaFactory.InitialGroup2;
     }
 
     private void Toast (string message)

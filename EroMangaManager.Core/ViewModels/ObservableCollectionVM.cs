@@ -147,7 +147,7 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 后台更新MangasGroup的Func
         /// </summary>
-        public Func<MangasGroup , Task> InitialGroup;
+        public Action<MangasGroup> InitialGroup;
         /// <summary>
         /// 开始初始化所有MangasGroup，会以自我递归的方式，初始化所有groups
         /// </summary>
@@ -164,7 +164,7 @@ namespace EroMangaManager.Core.ViewModels
             if (group is not null)
             {
 
-                await InitialGroup.Invoke(group);
+                InitialGroup.Invoke(group);
 
                 await StartInitial();
             }

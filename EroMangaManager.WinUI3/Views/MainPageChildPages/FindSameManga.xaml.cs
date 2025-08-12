@@ -23,7 +23,7 @@ public sealed partial class FindSameManga : Page
     {
         InitializeComponent();
         App.Current.GlobalViewModel.EventAfterDeleteMangaSource += x => viewModel.DeleteStorageFileInRootObservable(x);
-
+        viewModel.AddToResult += x => App.Current.BackgroundCoverSetter.mangas.Add(x);
     }
 
     //private async void DeleteFileClick (object sender , RoutedEventArgs e)
