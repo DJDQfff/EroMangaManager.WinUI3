@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
 
@@ -163,16 +164,19 @@ internal static class MangaFactory
 
         }
     }
-    public static void InitialFileSize (Manga manga)
+    public static async Task InitialFileSize (Manga manga)
     {
 
         switch (manga.Type)
         {
             case "":
                 {
-                    manga.FileSize = Directory
-    .EnumerateFiles(manga.FilePath , "*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
-    .Sum(x => new FileInfo(x).Length);
+                    manga.FileSize = await Task.Run(() =>
+                    {
+                        return Directory
+      .EnumerateFiles(manga.FilePath , "*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
+      .Sum(x => new FileInfo(x).Length);
+                    });
                 }
                 break;
             default:
@@ -211,7 +215,7 @@ internal static class MangaFactory
             case "":
                 {
                     manga.CoverPath =
-                        CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)
+                       CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)
                         ?? CoverHelper.DefaultCoverPath;
 
                 }

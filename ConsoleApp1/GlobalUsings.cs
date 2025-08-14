@@ -1,6 +1,6 @@
 ﻿global using CommonLibrary;
 global using CommonLibrary.CollectionFindRepeat;
-global using CommonLibrary.GroupdItemsLibrary;
+global using CommonLibrary.RepetitiveGroup;
 
 global using EroMangaManager.Core.Models;
 global using EroMangaManager.Core.ViewModels;

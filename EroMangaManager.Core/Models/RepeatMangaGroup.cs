@@ -1,5 +1,5 @@
-﻿using CommonLibrary.GroupdItemsLibrary;
+﻿using CommonLibrary.RepetitiveGroup;
 
 namespace EroMangaManager.Core.Models;
 
-public class RepeatMangasGroup : RepeatItems<string , Manga> { }
+public class RepeatMangasGroup : Group<string , Manga> { }

@@ -1,9 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 using CommonLibrary.CollectionFindRepeat;
-
-using CommonLibrary.GroupdItemsLibrary;
-
+using CommonLibrary.RepetitiveGroup;
 
 using static CommonLibrary.BracketBasedStringParser;
 

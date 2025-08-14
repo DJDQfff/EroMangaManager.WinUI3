@@ -1,78 +1,89 @@
 ﻿
+using System.Threading.Tasks;
+
 using CommonLibrary.CollectionFindRepeat;
-using CommonLibrary.GroupdItemsLibrary;
+using CommonLibrary.RepetitiveGroup;
 
-
+using iText.Commons.Bouncycastle.Asn1.X509;
 
 using static CommonLibrary.BracketBasedStringParser;
 
 namespace EroMangaManager.Core.ViewModels;
-public class SameMangaSearchViewModel2 : RepeatItemsGroup<string , Manga , RepeatItems<string , Manga>>
+public class SameMangaSearchViewModel2 : GroupsViewModel<string , Manga , RepeatMangasGroup>
 {
     public List<Manga> Source { set; get; }
+    public bool isWorking = false;
 
-    public void Method1 ()
+    public async Task Method1 ()
     {
-        Func<Manga , string> func = null;
-        char[] chars = [' ' , '-' , '+' , '~' , '#'];
-
-        var dic = StringArrayCollection
-    .Run(Source , x => Get_OutsideContent(x.FileDisplayName)
-    .SelectMany(x => x.Split(chars)))
-
-    .Where(x => x.Value > 1)
-    .Where(x => !int.TryParse(x.Key , out _))
-    .Where(x => !char.TryParse(x.Key , out _))
-    .ToDictionary();
-        func = x =>
-         Get_OutsideContent(x.FileDisplayName)
-         .SelectMany(x => x.Split(chars))
-            .FirstOrDefault(y => dic.ContainsKey(y));
-
+        isWorking = true;
         RepeatPairs.Clear();
-
-        var array = Source.Select(x => x.MangaName);
-
-        var a = Source
-            .GroupBy(x => x.MangaName)
-            .SkipWhile(x => x.Key is null);
-        foreach (var cc in a)
+        while (true)
         {
-
-            if (cc.Count() > 1)
+            var group = new RepeatMangasGroup()
             {
-                var items = new RepeatItems<string , Manga>();
-                items.Initial(cc);
-                if (!string.IsNullOrWhiteSpace(items.Key))
+                Key = Source[^1].MangaName
+            };
+            await Task.Run(() =>
+            {
+                for (int index = Source.Count - 1 ; index >= 0 ; index--)
                 {
-                    RepeatPairs.Add(items);
+                    if (Source[index].MangaName == group.Key)
+                    {
+                        group.AddElement(Source[index]);
+                        Source.RemoveAt(index);
+                    }
                 }
+
+            });
+            if (group.Collections.Count > 1)
+            {
+                RepeatPairs.Add(group);
             }
         }
+        isWorking = false;
+
 
     }
-    public void Method0 ()
+
+    /// <summary>
+    /// 异步比较manganame，但是一次只比较一个，非常慢
+    /// </summary>
+    /// <returns></returns>
+    public async Task Method0 ()
     {
+        isWorking = true;
         RepeatPairs.Clear();
-
-        var array = Source.Select(x => x.MangaName);
-
-        var a = Source
-            .GroupBy(x => x.MangaName)
-            .SkipWhile(x => x.Key is null);
-        foreach (var cc in a)
+        while (true)
         {
-
-            if (cc.Count() > 1)
+            var group = new RepeatMangasGroup()
             {
-                var items = new RepeatItems<string , Manga>();
-                items.Initial(cc);
-                if (!string.IsNullOrWhiteSpace(items.Key))
-                {
-                    RepeatPairs.Add(items);
-                }
+                Key = Source[^1].MangaName
+            };
+            Source.RemoveAt(Source.Count - 1);
+            await Task.Run(() =>
+             {
+                 for (int index = Source.Count - 1 ; index >= 0 ; index--)
+                 {
+                     if (Source[index].MangaName == group.Key)
+                     {
+                         group.AddElement(Source[index]);
+                         Source.RemoveAt(index);
+                     }
+                 }
+
+             });
+            if (group.Collections.Count > 1)
+            {
+                RepeatPairs.Add(group);
+            }
+            else
+            {
+                group.Dispose();
             }
         }
+        isWorking = false;
+
 
     }
 

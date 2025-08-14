@@ -11,35 +11,69 @@ internal class BackgroundCoverSetter
 {
     public readonly List<Manga> mangas = [];
     bool IsWorking = false;
-    int workcount = 0;
-    public async Task LoopWork2 ()
+    //int workcount = 0;
+    public async Task LoopWork3 ()
     {
-
-        if (workcount < 1)
+        if (IsWorking)
         {
-            if (mangas.Count == 0)
+            return;
+        }
+        else
+        {
+            IsWorking = true;
+            while (IsWorking)
             {
-                return;
+                if (mangas.Count == 0)
+                {
+                    return;
+                }
+                var manga = mangas.FirstOrDefault(x => x.FileSize == 0);
+                // 理论上这个manga不可能是null
+                if (manga != null /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
+                {
+                    await MangaFactory.InitialCover(manga);
+
+                    await MangaFactory.InitialFileSize(manga);
+
+                }
+                _ = mangas.Remove(manga);//改回list了，又需要了 .不需要执行，stack的pop方法已经取出最上面的了
+
+
             }
-            workcount++;
+            IsWorking = false;
 
-            var manga = mangas.FirstOrDefault(x => x.FileSize == 0);
-            // 理论上这个manga不可能是null
-            if (manga != null /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
-            {
-                await MangaFactory.InitialCover(manga);
-
-                MangaFactory.InitialFileSize(manga);
-
-            }
-            mangas.Remove(manga);//改回list了，又需要了 .不需要执行，stack的pop方法已经取出最上面的了
-
-            workcount--;
-            await LoopWork2();
 
         }
-
     }
+    //public async Task LoopWork2 ()
+    //{
+
+
+    //    if (workcount < 1)
+    //    {
+    //        if (mangas.Count == 0)
+    //        {
+    //            return;
+    //        }
+    //        workcount++;
+
+    //        var manga = mangas.FirstOrDefault(x => x.FileSize == 0);
+    //        // 理论上这个manga不可能是null
+    //        if (manga != null /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
+    //        {
+    //            await MangaFactory.InitialCover(manga);
+
+    //            MangaFactory.InitialFileSize(manga);
+
+    //        }
+    //        await Task.Run(() => _ = mangas.Remove(manga));//改回list了，又需要了 .不需要执行，stack的pop方法已经取出最上面的了
+
+    //        workcount--;
+    //        await LoopWork2();
+
+    //    }
+
+    //}
     //async Task LoopWork ()
     //{
     //    if (!IsWorking)
@@ -58,4 +92,5 @@ internal class BackgroundCoverSetter
     //        IsWorking = false;
     //    }
     //}
+
 }

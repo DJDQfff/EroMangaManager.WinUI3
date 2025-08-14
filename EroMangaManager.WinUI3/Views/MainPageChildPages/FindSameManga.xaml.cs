@@ -16,7 +16,7 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages;
 /// </summary>
 public sealed partial class FindSameManga : Page
 {
-    SameMangaSearchViewModel viewModel = new();
+    readonly SameMangaSearchViewModel2 viewModel = new();
     /// <summary>
     ///
     /// </summary>
@@ -32,8 +32,13 @@ public sealed partial class FindSameManga : Page
     {
 
         viewModel.Source = App.Current.GlobalViewModel.MangaList.SkipWhile(x => string.IsNullOrWhiteSpace(x.MangaName)).ToList();
-
-        await viewModel.StartSearch(combobox.SelectedIndex);
+        //viewModel.StartSearch(combobox.SelectedIndex);// 无法异步，放弃
+        switch (combobox.SelectedIndex)
+        {
+            case 0:
+                await viewModel.Method0();
+                break;
+        }
 
     }
 }

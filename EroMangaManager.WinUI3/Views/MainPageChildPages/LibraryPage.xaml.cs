@@ -100,7 +100,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     )
                     {
                         await App.Current.GlobalViewModel.StartInitial();
-                        await App.Current.BackgroundCoverSetter.LoopWork2();
+                        await App.Current.BackgroundCoverSetter.LoopWork3();
                     }
                     ;
                 }

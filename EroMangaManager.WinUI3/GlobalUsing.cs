@@ -7,7 +7,7 @@ global using System.Linq;
 global using System.Threading.Tasks;
 
 global using CommonLibrary;
-global using CommonLibrary.GroupdItemsLibrary;
+global using CommonLibrary.RepetitiveGroup;
 
 global using CommunityToolkit.WinUI.Controls;
 

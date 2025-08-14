@@ -38,18 +38,41 @@
                             Margin="20"
                             FontSize="24"
                             Text="{x:Bind Key}" />
-                        <GridView ItemsSource="{x:Bind Collections, Mode=OneWay}" SelectionMode="None">
-                            <GridView.ItemTemplate>
+                        <ListView ItemsSource="{x:Bind Collections, Mode=OneWay}" SelectionMode="None">
+                            <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="coremodel:Manga">
                                     <Grid Margin="4">
-                                        <usercontrols:MangaDisplayNameView
-                                            Width="400"
-                                            Height="200"
-                                            Manga="{x:Bind}" />
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition  Width="*"/>
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <usercontrols:MangaDisplayNameView Manga="{x:Bind }"
+                                                                           Height="200"/>
+                                        <StackPanel Grid.Column="1" Orientation="Vertical">
+                                            <Button
+                                                HorizontalAlignment="Stretch"
+                                                Command="{x:Bind commands:MangaCommands.Instance.OpenManga}"
+                                                CommandParameter="{x:Bind}"
+                                                Content="{uid:Strings Uid=Open}" />
+                                            <Button
+                                                HorizontalAlignment="Stretch"
+                                                Command="{x:Bind commands:MangaCommands.Instance.LocateInExplorer}"
+                                                CommandParameter="{x:Bind}"
+                                                Content="{uid:Strings Uid=OpenFolder}" />
+                                            <Button
+                                                Command="{x:Bind commands:MangaCommands.Instance.StorageCommandRename}"
+                                                CommandParameter="{x:Bind}"
+                                                Content="{uid:Strings Uid=RenameFile}" />
+                                            <Button HorizontalAlignment="Stretch"
+                                                    Foreground="Red"
+                                                    Command="{x:Bind commands:MangaCommands.Instance.StorageCommandDelete}"
+                                                    CommandParameter="{x:Bind}"
+                                                    Content="{uid:Strings Uid=DeleteIt}" />
+                                        </StackPanel>
                                     </Grid>
                                 </DataTemplate>
-                            </GridView.ItemTemplate>
-                        </GridView>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
