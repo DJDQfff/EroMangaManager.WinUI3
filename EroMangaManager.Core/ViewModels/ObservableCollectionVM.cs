@@ -64,7 +64,7 @@ namespace EroMangaManager.Core.ViewModels
                 List<string> alltags = [];
                 foreach (var manga in MangaList)
                 {
-                    var tags = manga.MangaTagsIncludedInFileName;
+                    var tags = manga.Tags;
                     alltags.AddRange(tags);
                 }
                 return alltags.Distinct();

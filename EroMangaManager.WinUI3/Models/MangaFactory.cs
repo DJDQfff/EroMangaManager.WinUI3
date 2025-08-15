@@ -53,7 +53,6 @@ internal static class MangaFactory
             {
                 return new Manga(xfile)
                 {
-                    Type = Path.GetExtension(xfile).ToLower() ,
                     CoverPath = CoverHelper.DefaultCoverPath ,
 
                 };
@@ -73,7 +72,6 @@ internal static class MangaFactory
                 {
                     return new Manga(x)
                     {
-                        Type = string.Empty ,
                         CoverPath = CoverHelper.DefaultCoverPath
 
                     };

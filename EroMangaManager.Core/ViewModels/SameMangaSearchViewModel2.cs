@@ -56,11 +56,16 @@ public class SameMangaSearchViewModel2 : GroupsViewModel<string , Manga , Repeat
         RepeatPairs.Clear();
         while (true)
         {
+            var manga = Source.LastOrDefault();
+            if (manga is null)
+            {
+                return;
+            }
             var group = new RepeatMangasGroup()
             {
-                Key = Source[^1].MangaName
+                Key = manga.MangaName
             };
-            Source.RemoveAt(Source.Count - 1);
+            Source.Remove(manga);
             await Task.Run(() =>
              {
                  for (int index = Source.Count - 1 ; index >= 0 ; index--)

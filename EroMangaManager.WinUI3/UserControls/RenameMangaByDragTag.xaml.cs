@@ -17,7 +17,7 @@ public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyC
             PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Manga)));
             order.Sources = BracketBasedStringParser.SplitByBrackets_KeepBracket(
                 Manga.FileDisplayName
-            ); //value.MangaTagsIncludedInFileName;
+            ); //value.Tags;
         }
     }
 

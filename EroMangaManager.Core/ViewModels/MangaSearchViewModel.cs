@@ -15,7 +15,7 @@ public partial class MangaSearchViewModel : ObservableObject
         set
         {
             field = value;
-            AllTags = value.SelectMany(x => x.MangaTagsIncludedInFileName)
+            AllTags = value.SelectMany(x => x.Tags)
                             .Distinct()
                             .ToList();
         }
@@ -71,7 +71,7 @@ public partial class MangaSearchViewModel : ObservableObject
 
         var a = Sources
              .Where(x => x.MangaName.Contains(RequiredText.Trim()))
-        .Where(x => RequiredTags.All(y => x.MangaTagsIncludedInFileName.Contains(y)));
+        .Where(x => RequiredTags.All(y => x.Tags.Contains(y)));
 
         foreach (var x in a)
         {

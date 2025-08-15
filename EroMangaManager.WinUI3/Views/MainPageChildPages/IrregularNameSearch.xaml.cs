@@ -23,7 +23,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                        (checkbox0.IsChecked == true && BracketBasedStringParser.CorrectBracketPairConut(book.FileDisplayName) == -1)
                     || (checkbox1.IsChecked == true && !BracketBasedStringParser.ContainAnyBrackets(book.FileDisplayName))
                     || (checkbox2.IsChecked == true && BracketBasedStringParser.Get_OutsideContent(book.FileDisplayName).Count == 0)
-                    || (checkbox3.IsChecked == true && book.MangaTagsIncludedInFileName.ContainRepeat())
+                    || (checkbox3.IsChecked == true && book.Tags.ContainRepeat())
                     || (!string.IsNullOrEmpty(textbox.Text) && book.MangaName.Contains(textbox.Text))
                 )
                 { books.Add(book); }

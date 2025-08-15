@@ -15,7 +15,7 @@ public sealed partial class RemoveRepeatTags2 : Page
         InitializeComponent();
         foreach (var book in App.Current.GlobalViewModel.MangaList)
         {
-            if (book.MangaTagsIncludedInFileName.ContainRepeat())
+            if (book.Tags.ContainRepeat())
             {
                 RepaetBooks.Add(book);
             }
@@ -24,7 +24,7 @@ public sealed partial class RemoveRepeatTags2 : Page
 
     void RemoveIfTagRepeat (Manga book)
     {
-        if (!book.MangaTagsIncludedInFileName.ContainRepeat())
+        if (!book.Tags.ContainRepeat())
         {
             _ = RepaetBooks.Remove(book);
         }

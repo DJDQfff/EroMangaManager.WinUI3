@@ -45,7 +45,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                         viewmodel.RequiredText = manga.MangaName;
 
                         viewmodel.RequiredTags.Clear();
-                        foreach (var tag in manga.MangaTagsIncludedInFileName)
+                        foreach (var tag in manga.Tags)
                         {
 
                             MangaTagTokenizingTextBox.AddTokenItem(tag);

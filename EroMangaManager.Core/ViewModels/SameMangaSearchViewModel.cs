@@ -25,8 +25,8 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
                 {
                     func1 = (manga1 , manga2) =>
                     {
-                        var tags1 = manga1.MangaTagsIncludedInFileName;
-                        var tags2 = manga2.MangaTagsIncludedInFileName;
+                        var tags1 = manga1.Tags;
+                        var tags2 = manga2.Tags;
 
                         var namepieces1 = Get_OutsideContent(manga1.FileDisplayName);
                         var namepieces2 = Get_OutsideContent(manga2.FileDisplayName);
