@@ -1,5 +1,9 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+using System.Threading.Tasks;
+
 using EroMangaManager.Core.Models;
+
+using SharpCompress.Common;
 
 using static iText.Svg.SvgConstants;
 
@@ -21,10 +25,13 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             App.Current.GlobalViewModel.EventAfterDeleteMangaSource += x => { viewmodel.Sources.Remove(x); viewmodel.ResultMangas.Remove(x); };
         }
 
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override async void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             viewmodel.Sources = App.Current.GlobalViewModel.MangaList;
+            viewmodel.AllTags = await Task.Run(() => viewmodel.Sources.SelectMany(x => x.Tags)
+                .Distinct()
+                .ToList());
 
             switch (e.Parameter)
             {

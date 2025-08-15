@@ -46,13 +46,17 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
                 item.IsEnabled = false;
                 continue;
             }
-            item.Click += (sender , e) =>
+            item.Click += async (sender , e) =>
             {
-                _ = MangaFileOperation.MoveManga(
-                     Source ,
-                     way.FolderPath ,
-                     null
-                 );
+                await Task.Run(() =>
+                {
+                    _ = MangaFileOperation.MoveManga(
+
+                        Source ,
+                        way.FolderPath ,
+                        null
+                    );
+                });
                 App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
             };
         }

@@ -1,4 +1,6 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace EroMangaManager.Core.ViewModels;
 
 /// <summary>
@@ -10,18 +12,7 @@ namespace EroMangaManager.Core.ViewModels;
 public partial class MangaSearchViewModel : ObservableObject
 {
 
-    public List<Manga> Sources
-    {
-        set
-        {
-            field = value;
-            AllTags = value.SelectMany(x => x.Tags)
-                            .Distinct()
-                            .ToList();
-        }
-
-        get;
-    }
+    public List<Manga> Sources { set; get; } = [];
     /// <summary>
     /// 选中项
     /// </summary>
@@ -33,7 +24,7 @@ public partial class MangaSearchViewModel : ObservableObject
     /// <summary>
     /// 对外公开的所有项
     /// </summary>
-    public List<string> AllTags { private set; get; }
+    public List<string> AllTags { set; get; }
 
     /// <summary>
     /// 可能需要的tag
@@ -70,8 +61,14 @@ public partial class MangaSearchViewModel : ObservableObject
 
 
         var a = Sources
-             .Where(x => x.MangaName.Contains(RequiredText.Trim()))
-        .Where(x => RequiredTags.All(y => x.Tags.Contains(y)));
+        //.Where(x => x.MangaName.Contains(RequiredText.Trim())) // 
+        //.Where(x => RequiredTags.All(y => x.Tags.Contains(y))) // 
+        .Where(x => RequiredText.Split(' ').Any(y => x.MangaName.Contains(y)));
+        if (RequiredTags.Count != 0)
+        {
+            a = a.Where(x => RequiredTags.Any(y => x.Tags.Contains(y)));
+
+        }
 
         foreach (var x in a)
         {
