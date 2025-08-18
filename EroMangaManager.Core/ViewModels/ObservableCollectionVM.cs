@@ -152,7 +152,7 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 后台更新MangasGroup的Func
         /// </summary>
-        public Action<MangasGroup> InitialGroup;
+        public Func<MangasGroup , Task> InitialGroup;
         /// <summary>
         /// 开始初始化所有MangasGroup，会以自我递归的方式，初始化所有groups
         /// </summary>
@@ -169,11 +169,13 @@ namespace EroMangaManager.Core.ViewModels
             if (group is not null)
             {
 
-                InitialGroup.Invoke(group);
+                await InitialGroup.Invoke(group);
 
                 await StartInitial();
             }
+
         }
+
         /// <summary>
         /// 把一个本子放到他应该在的集合里面，这个一般用在移动本子后
         /// </summary>

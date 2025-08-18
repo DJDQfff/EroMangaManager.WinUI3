@@ -38,7 +38,7 @@ internal static class MangaFactory
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
     /// <returns></returns>
-    public static void InitialGroup2 (this MangasGroup mangasFolder)
+    public static async Task InitialGroup2 (this MangasGroup mangasFolder)
     {
 
         if (Directory.Exists(mangasFolder.FolderPath))
@@ -47,17 +47,17 @@ internal static class MangaFactory
 
             //var a = DatabaseController.database.FilteredImages.ToArray();
             //所有子文件作为mangabook
-            var filteredfiles = Directory.EnumerateFiles(mangasFolder.FolderPath)
-                .Where(x => SupportedType.MangaType.Contains(Path.GetExtension(x).ToLower()))
-                .Select(xfile =>
-            {
-                return new Manga(xfile)
-                {
-                    CoverPath = CoverHelper.DefaultCoverPath ,
-
-                };
-            }
+            var filteredfiles = await Task.Run(() =>
+                 Directory.EnumerateFiles(mangasFolder.FolderPath)
+                  .Where(x => SupportedType.MangaType.Contains(Path.GetExtension(x).ToLower()))
+                  .Select(xfile =>
+                       new Manga(xfile)
+                       {
+                           CoverPath = CoverHelper.DefaultCoverPath ,
+                       }
+                  )
             );
+
 
             foreach (var manga in filteredfiles)
             {
