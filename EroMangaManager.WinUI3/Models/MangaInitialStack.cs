@@ -2,50 +2,60 @@
 
 
 namespace EroMangaManager.WinUI3.Models;
+
 internal class MangaInitialStack
 {
     public bool IsWorking;
 
-    Stack<Queue<Manga>> stacks;
+    Stack<Queue<Manga>> stacks = new();
 
+    int a { set; get; }
     public void Add (IEnumerable<Manga> mangas)
     {
+        if (!mangas.Any())
+            return;
+
         var queue = new Queue<Manga>(mangas);
         stacks.Push(queue);
     }
     public async Task StartAsync ()
     {
+
         if (IsWorking)
         {
             return;
         }
         else
         {
+
             IsWorking = true;
             while (IsWorking)
             {
-                if (stacks.Count == 0)
+                if (stacks.Count != 0)
                 {
-                    break;
-                }
-
-                var queue = stacks.Pop();
-                while (queue.Count != 0)
-                {
-                    var manga = queue.Dequeue();
-                    if (manga != null && manga.FileSize == 0 && MangaFactory.Exists(manga))
+                    var queue = stacks.Peek();
+                    if (queue.Count != 0)
                     {
-                        await MangaFactory.InitialCover(manga);
+                        var manga = queue.Dequeue();
+                        // TODO 不知道为什么，不能获取到源manga，获得的好像是个副本
+                        if (manga != null && manga.FileSize == 0 && MangaFactory.Exists(manga))
+                        {
+                            await MangaFactory.InitialCover(manga);
 
-                        await MangaFactory.InitialFileSize(manga);
+                            await MangaFactory.InitialFileSize(manga);
 
+                        }
                     }
-
-
+                    else
+                    {
+                        _ = stacks.Pop();
+                    }
                 }
-                IsWorking = false;
 
-
+                else
+                {
+                    IsWorking = false;
+                }
             }
 
         }

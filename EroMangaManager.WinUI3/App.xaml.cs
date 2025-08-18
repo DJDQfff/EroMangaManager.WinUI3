@@ -19,6 +19,7 @@ public partial class App : Application
     internal ObservableCollectionVM GlobalViewModel { get; private set; }
 
     internal BackgroundCoverSetter BackgroundCoverSetter { get; private set; } = new();
+    internal MangaInitialStack initialStack { get; private set; } = new();
     internal SettingViewModel AppConfig { get; private set; }
     internal string AppConfigPath { get; private set; }
     internal string LocalFolder = ApplicationData.Current.LocalFolder.Path;
@@ -120,7 +121,9 @@ public partial class App : Application
         #region 需要后台执行
 
         await GlobalViewModel.StartInitial();
+        //await Current.initialStack.StartAsync();
         await Current.BackgroundCoverSetter.LoopWork3();
+
         //GlobalViewModel.InitialEachFoldersInOrder();
 
         #endregion 需要后台执行

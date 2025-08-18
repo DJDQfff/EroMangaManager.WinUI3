@@ -58,6 +58,7 @@ internal static class MangaFactory
                   )
             );
 
+            App.Current.initialStack.Add(filteredfiles);
 
             foreach (var manga in filteredfiles)
             {
@@ -67,15 +68,16 @@ internal static class MangaFactory
 
             }
             //所有子文件夹作为mangabook
-            var folders = Directory.EnumerateDirectories(mangasFolder.FolderPath)
+            var folders = await Task.Run(() => Directory.EnumerateDirectories(mangasFolder.FolderPath)
                 .Select(x =>
-                {
-                    return new Manga(x)
-                    {
-                        CoverPath = CoverHelper.DefaultCoverPath
+                     new Manga(x)
+                     {
+                         CoverPath = CoverHelper.DefaultCoverPath
 
-                    };
-                });
+                     }
+                ));
+
+            App.Current.initialStack.Add(folders);
 
             foreach (var manga in folders)
             {
@@ -96,72 +98,72 @@ internal static class MangaFactory
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
     /// <returns></returns>
-    public static async Task InitialGroup (this MangasGroup mangasFolder)
-    {
+    //public static async Task InitialGroup (this MangasGroup mangasFolder)
+    //{
 
-        if (Directory.Exists(mangasFolder.FolderPath))
-        {
-            mangasFolder.UpdateState = UpdateState.Busy;
+    //    if (Directory.Exists(mangasFolder.FolderPath))
+    //    {
+    //        mangasFolder.UpdateState = UpdateState.Busy;
 
-            //var a = DatabaseController.database.FilteredImages.ToArray();
-            List<Task> tasks = [];
-            //所有子文件作为mangabook
-            var files = Directory.EnumerateFiles(mangasFolder.FolderPath);
-            var filteredfiles = files.Where(
-                x => SupportedType.MangaType.Contains(Path.GetExtension(x).ToLower())
-            );
-            foreach (var xfile in filteredfiles)
-            {
-                var manga = new Manga(xfile)
-                {
-                    Type = Path.GetExtension(xfile).ToLower()
-                };
+    //        //var a = DatabaseController.database.FilteredImages.ToArray();
+    //        List<Task> tasks = [];
+    //        //所有子文件作为mangabook
+    //        var files = Directory.EnumerateFiles(mangasFolder.FolderPath);
+    //        var filteredfiles = files.Where(
+    //            x => SupportedType.MangaType.Contains(Path.GetExtension(x).ToLower())
+    //        );
+    //        foreach (var xfile in filteredfiles)
+    //        {
+    //            var manga = new Manga(xfile)
+    //            {
+    //                Type = Path.GetExtension(xfile).ToLower()
+    //            };
 
-                await Task.Run(() =>
-            {
-                var fileinfo = new FileInfo(manga.FilePath);
-                manga.FileSize = fileinfo.Length;
-                fileinfo = null;
-                manga.CoverPath = CoverHelper.DefaultCoverPath;
-                //manga.CoverPath =
-                //    await CoverHelper.TryCreatCoverFileAsync(manga.FilePath , null)
-                //    ?? CoverHelper.DefaultCoverPath;
+    //            await Task.Run(() =>
+    //        {
+    //            var fileinfo = new FileInfo(manga.FilePath);
+    //            manga.FileSize = fileinfo.Length;
+    //            fileinfo = null;
+    //            manga.CoverPath = CoverHelper.DefaultCoverPath;
+    //            //manga.CoverPath =
+    //            //    await CoverHelper.TryCreatCoverFileAsync(manga.FilePath , null)
+    //            //    ?? CoverHelper.DefaultCoverPath;
 
-            });
-                mangasFolder.Mangas.Add(manga);
-                App.Current.BackgroundCoverSetter.mangas.Add(manga);
+    //        });
+    //            mangasFolder.Mangas.Add(manga);
+    //            App.Current.BackgroundCoverSetter.mangas.Add(manga);
 
-            }
-            //所有子文件夹作为mangabook
-            var folders = Directory.EnumerateDirectories(mangasFolder.FolderPath);
-            foreach (var mangafo in folders)
-            {
-                var manga = new Manga(mangafo)
-                {
-                    Type = string.Empty
-                };
-                await Task.Run(() =>
-                {
-                    manga.FileSize = Directory
-                        .GetFiles(manga.FilePath , "*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
-                        .Sum(x => new FileInfo(x).Length);
-                    manga.CoverPath = CoverHelper.DefaultCoverPath;
+    //        }
+    //        //所有子文件夹作为mangabook
+    //        var folders = Directory.EnumerateDirectories(mangasFolder.FolderPath);
+    //        foreach (var mangafo in folders)
+    //        {
+    //            var manga = new Manga(mangafo)
+    //            {
+    //                Type = string.Empty
+    //            };
+    //            await Task.Run(() =>
+    //            {
+    //                manga.FileSize = Directory
+    //                    .GetFiles(manga.FilePath , "*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
+    //                    .Sum(x => new FileInfo(x).Length);
+    //                manga.CoverPath = CoverHelper.DefaultCoverPath;
 
-                    //manga.CoverPath =
-                    //    CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)
-                    //    ?? CoverHelper.DefaultCoverPath;
+    //                //manga.CoverPath =
+    //                //    CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)
+    //                //    ?? CoverHelper.DefaultCoverPath;
 
-                });
+    //            });
 
-                mangasFolder.Mangas.Add(manga);
-                App.Current.BackgroundCoverSetter.mangas.Add(manga);
+    //            mangasFolder.Mangas.Add(manga);
+    //            App.Current.BackgroundCoverSetter.mangas.Add(manga);
 
 
-            }
-            mangasFolder.UpdateState = UpdateState.Over;
+    //        }
+    //        mangasFolder.UpdateState = UpdateState.Over;
 
-        }
-    }
+    //    }
+    //}
     public static async Task InitialFileSize (Manga manga)
     {
 
@@ -234,7 +236,7 @@ internal static class MangaFactory
 
     }
     [Obsolete]
-    public static async void InitialEachFoldersInOrder (this ObservableCollectionVM ViewModel)
+    public static void InitialEachFoldersInOrder (this ObservableCollectionVM ViewModel)
     {
         // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
         foreach (var folder in ViewModel.MangaFolders.ToArray())
@@ -242,7 +244,7 @@ internal static class MangaFactory
             //var token = new CancellationTokenSource();
             //App.Current.Tokens.TryAdd(folder , token);
 
-            await folder.InitialGroup();
+            //await folder.InitialGroup();
         }
     }
 }
