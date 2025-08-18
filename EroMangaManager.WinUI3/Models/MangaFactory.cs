@@ -33,7 +33,7 @@ internal static class MangaFactory
         }
     }
     /// <summary>
-    /// 添加Manga，并在后台初始化封面
+    /// 创建所有manga实例，但是不设置cover，filesize属性（丢到backgroundcoversetter里面后台执行）
     /// </summary>
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
@@ -91,7 +91,7 @@ internal static class MangaFactory
     }
 
     /// <summary>
-    /// 添加Manga，并在后台初始化封面
+    /// 依次创建manga实例、设置封面、filesize，
     /// </summary>
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
@@ -227,6 +227,11 @@ internal static class MangaFactory
                 }
                 break;
         }
+    }
+    public static bool Exists (Manga manga)
+    {
+        return Directory.Exists(manga.FilePath) || File.Exists(manga.FilePath);
+
     }
     [Obsolete]
     public static async void InitialEachFoldersInOrder (this ObservableCollectionVM ViewModel)

@@ -11,7 +11,9 @@ namespace EroMangaManager.Core.ViewModels;
 /// </remarks>
 public partial class MangaSearchViewModel : ObservableObject
 {
-
+    /// <summary>
+    /// 所有要查重的manga集合
+    /// </summary>
     public List<Manga> Sources { set; get; } = [];
     /// <summary>
     /// 选中项
@@ -55,11 +57,15 @@ public partial class MangaSearchViewModel : ObservableObject
     /// 按搜索条件筛选出来的本子
     /// </summary>
     public ObservableCollection<Manga> ResultMangas { get; } = [];
+
+    /// <summary>
+    /// 按条件查找manga
+    /// </summary>
     public void Search ()
     {
         ResultMangas.Clear();
 
-
+        // TODO 这里用了好几个LINQ，如果量比较大，会影响性能
         var a = Sources
         //.Where(x => x.MangaName.Contains(RequiredText.Trim())) // 
         //.Where(x => RequiredTags.All(y => x.Tags.Contains(y))) // 
@@ -69,6 +75,7 @@ public partial class MangaSearchViewModel : ObservableObject
             a = a.Where(x => RequiredTags.Any(y => x.Tags.Contains(y)));
 
         }
+        a = a.OrderBy(x => x.MangaName);
 
         foreach (var x in a)
         {
@@ -81,27 +88,6 @@ public partial class MangaSearchViewModel : ObservableObject
 
 
 
-
-    }
-    /// <summary>
-    ///  开始搜索
-    /// </summary>
-    /// <param name="manganame"></param>
-    public void SearchResult (string manganame)
-    {
-        ResultMangas.Clear();
-
-        var tags = new List<string>(RequiredTags) { manganame };
-
-        var requiredMatchCount = tags.Count;
-
-
-        //TODO 这里有一个大问题，tag和本子名没有分开。
-        // 传入参数是本子名，同样可能本传入到tag里面
-        var a = Sources
-            .Where(x => tags.Any(y => x.FileDisplayName.Contains(y)));
-        foreach (var x in a)
-        { ResultMangas.Add(x); }
 
     }
 }

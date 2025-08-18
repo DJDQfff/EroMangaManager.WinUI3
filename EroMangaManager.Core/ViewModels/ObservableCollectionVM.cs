@@ -109,6 +109,11 @@ namespace EroMangaManager.Core.ViewModels
 
             MangaFolders.Remove(group);
         }
+
+        /// <summary>
+        /// 删除manga后执行此事件
+        /// </summary>
+        /// <param name="manga"></param>
         public void InvokeEvent_AfterDeleteMnagaSource (Manga manga)
         {
             EventAfterDeleteMangaSource?.Invoke(manga);

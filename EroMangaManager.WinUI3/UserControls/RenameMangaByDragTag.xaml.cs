@@ -32,7 +32,13 @@ public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyC
     private void SingleMangaRename_New (object sender , RoutedEventArgs e)
     {
         var text = newnameBox.Text;
-        MangaFileOperation.MoveManga(Manga , null , text);
+        var result = MangaFileOperation.MoveManga(Manga , null , text);
+        if (result is not null)
+        {
+            Manga.FilePath = result;
+
+        }
+
         NameChanged?.Invoke(Manga);
     }
 

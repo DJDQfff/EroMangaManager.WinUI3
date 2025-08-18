@@ -56,13 +56,14 @@ public class MangaFileOperation
     /// <param name="book"></param>
     /// <param name="targetfolder">目标文件夹</param>
     /// <param name="newname">新名字</param>
-    public static bool MoveManga(Manga book, string targetfolder, string newname)
+    public static string MoveManga (Manga book , string targetfolder , string newname)
     {
         bool result = false;
         targetfolder = targetfolder ?? book.FolderPath; //这个路径并没有验证是否存在
 
         newname = newname ?? book.FileDisplayName;
-        var newpath = Path.Combine(targetfolder, newname + book.Type);
+        var newpath = Path.Combine(targetfolder , newname + book.Type);
+
         // TODO 可能重名
         switch (book.Type)
         {
@@ -71,9 +72,11 @@ public class MangaFileOperation
                 {
                     if (!Directory.Exists(newpath))
                     {
-                        Directory.Move(book.FilePath, newpath);
+                        Directory.Move(book.FilePath , newpath);
                         result = true;
-                        book.FilePath = newpath;
+                        //book.FilePath = newpath;
+                        // 由于manganame使用MVVM绑定到了UI，所以跨线程，不能直接操作
+
                     }
                 }
                 break;
@@ -82,13 +85,14 @@ public class MangaFileOperation
                 {
                     if (!File.Exists(newpath))
                     {
-                        File.Move(book.FilePath, newpath);
+                        File.Move(book.FilePath , newpath);
                         result = true;
-                        book.FilePath = newpath;
+                        //book.FilePath = newpath;
                     }
                 }
                 break;
         }
-        return result;
+
+        return result ? newpath : null;
     }
 }

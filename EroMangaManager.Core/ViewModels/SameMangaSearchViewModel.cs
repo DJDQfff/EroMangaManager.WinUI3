@@ -6,9 +6,22 @@ using CommonLibrary.RepetitiveGroup;
 using static CommonLibrary.BracketBasedStringParser;
 
 namespace EroMangaManager.Core.ViewModels;
+/// <summary>
+/// 查找重复manga的viewmodel
+/// </summary>
 public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Manga , RepeatMangasGroup>
 {
+    /// <summary>
+    /// 表示查重方法执行中
+    /// </summary>
+
     public bool isWorking = false;
+    /// <summary>
+    /// 包含几种不同思路查重
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="FiltSomes"></param>
+    /// <returns></returns>
     public async Task StartSearch (int index , Func<RepeatMangasGroup , bool> FiltSomes = null)
     {
 
@@ -83,7 +96,9 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
 
             case 0:
                 func = n => n.MangaName;
-                await ByEachKey(Source , func , FiltSomes);
+                func1 = (x , y) => x.MangaName == y.MangaName ? x.MangaName : null;
+                await StartCompareSequence(Source , func1 , x => !string.IsNullOrWhiteSpace(x));
+                //await ByEachKey(Source , func , FiltSomes);
                 //await Task.Run(() => ByEachKey(Source , func , FiltSomes));
 
                 break;// 直接比较本子名，适用于较短本子名及本子名（括号外的内容）没有分成及部分

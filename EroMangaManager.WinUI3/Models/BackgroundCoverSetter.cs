@@ -28,9 +28,10 @@ internal class BackgroundCoverSetter
                     return;
                 }
                 var manga = mangas.FirstOrDefault(x => x.FileSize == 0);
-                // 理论上这个manga不可能是null
-                if (manga != null /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
+                // 文件可能被删除
+                if (manga != null && MangaFactory.Exists(manga) /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
                 {
+
                     await MangaFactory.InitialCover(manga);
 
                     await MangaFactory.InitialFileSize(manga);

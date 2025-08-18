@@ -29,20 +29,20 @@ internal class StorageOperation
         }
     }
 
-    internal static async Task Delete (Manga eroManga , StorageDeleteOption deletemode)
+    internal static async Task Delete (Manga manga , StorageDeleteOption deletemode)
     {
         try
         {
-            switch (eroManga.Type)
+            switch (manga.Type)
             {
                 case "":
 
                     {
 #if WINDOWS
                         var folder = await StorageFolder.GetFolderFromPathAsync(
-                            eroManga.FilePath
+                            manga.FilePath
                         );
-                        System.IO.Directory.Delete(eroManga.FilePath , true);
+                        System.IO.Directory.Delete(manga.FilePath , true);
 
                         await folder.DeleteAsync(deletemode);
 #else
@@ -55,7 +55,7 @@ internal class StorageOperation
                     {
 #if WINDOWS
                         var file = await StorageFile.GetFileFromPathAsync(
-                            eroManga.FilePath
+                            manga.FilePath
                         );
                         await file.DeleteAsync(deletemode);
 #else

@@ -15,7 +15,7 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
         {
             mangaBook = value;
             textbox.Text = value.FileDisplayName;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
+            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Manga)));
         }
     }
 
@@ -50,7 +50,7 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
     /// <summary>
     ///
     /// </summary>
-    public RenameMangaByEditString()
+    public RenameMangaByEditString ()
     {
         InitializeComponent();
     }
@@ -59,7 +59,7 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
     /// 不指定新名字，默认去除重复标签
     /// </summary>
     /// <param name="mangaBook"></param>
-    public RenameMangaByEditString(Manga mangaBook)
+    public RenameMangaByEditString (Manga mangaBook)
     {
         InitializeComponent();
         Manga = mangaBook;
@@ -72,7 +72,7 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
     /// </summary>
     /// <param name="mangaBook"></param>
     /// <param name="suggestedname"></param>
-    public RenameMangaByEditString(Manga mangaBook, string suggestedname)
+    public RenameMangaByEditString (Manga mangaBook , string suggestedname)
         : base()
     {
         if (suggestedname == null)
@@ -85,7 +85,7 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
         }
     }
 
-    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+    private void TextBox_TextChanged (object sender , TextChangedEventArgs e)
     {
         if (string.IsNullOrWhiteSpace(NewDisplayName))
         {
@@ -119,12 +119,17 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
         }
     }
 
-    private void RenameButton_Click(object sender, RoutedEventArgs e)
+    private void RenameButton_Click (object sender , RoutedEventArgs e)
     {
-        EroMangaManager.Core.IOOperation.MangaFileOperation.MoveManga(
-            Manga,
-            null,
-            NewDisplayName
-        );
+        var result = EroMangaManager.Core.IOOperation.MangaFileOperation.MoveManga(
+               Manga ,
+               null ,
+               NewDisplayName
+           );
+        if (result is not null)
+        {
+            Manga.FilePath = result;
+
+        }
     }
 }

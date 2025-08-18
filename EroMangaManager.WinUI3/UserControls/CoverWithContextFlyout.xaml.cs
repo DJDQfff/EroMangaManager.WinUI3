@@ -48,16 +48,22 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
             }
             item.Click += async (sender , e) =>
             {
-                await Task.Run(() =>
-                {
-                    _ = MangaFileOperation.MoveManga(
+                var result = await Task.Run(() =>
+                  {
+                      return MangaFileOperation.MoveManga(
 
-                        Source ,
-                        way.FolderPath ,
-                        null
-                    );
-                });
-                App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
+                          Source ,
+                          way.FolderPath ,
+                          null
+                      );
+                  });
+                if (result is not null)
+                {
+                    Source.FilePath = result;
+
+                    App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
+
+                }
             };
         }
     }

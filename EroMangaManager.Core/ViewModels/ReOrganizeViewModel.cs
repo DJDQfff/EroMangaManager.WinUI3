@@ -10,8 +10,7 @@ namespace EroMangaManager.Core.ViewModels;
 /// <remarks>
 ///
 /// </remarks>
-/// <param name="mangas"></param>
-public class ReOrganizeViewModel (IEnumerable<Manga> mangas) : ObservableObject
+public class ReOrganizeViewModel () : ObservableObject
 {
     /// <summary>
     ///

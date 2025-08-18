@@ -66,7 +66,7 @@ public static class CoverHelper
     public static string LoadCoverFromInternalFolder (string folderPath)
     {
         if (!Directory.Exists(folderPath))
-            throw new ArgumentException("此文件夹不存在");
+            return null;
         var directoryinfo = new DirectoryInfo(folderPath)
             .EnumerateFiles("*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
             .FirstOrDefault(x => SupportedType.ImageType.Contains(x.Extension));

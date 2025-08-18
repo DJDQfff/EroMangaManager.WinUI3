@@ -47,13 +47,19 @@ internal class MangaCommands
             {
                 case Manga book:
                     {
-                        var result = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
-                        if (result)
+                        App.Current.GlobalViewModel.RemoveManga(book);
+                        App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(book);
+                        bool result = false;
+                        try
                         {
-                            App.Current.GlobalViewModel.RemoveManga(book);
-                            App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(book);
+                            result = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
 
                         }
+                        catch
+                        {
+                            Debug.Assert(result);
+                        }
+
 
                         //_ = await App.Current.GlobalViewModel.TryRemoveManga(book);
 
