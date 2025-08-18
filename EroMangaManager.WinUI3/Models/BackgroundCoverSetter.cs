@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-using EroMangaManager.Core.Models;
 
 namespace EroMangaManager.WinUI3.Models;
 internal class BackgroundCoverSetter
@@ -25,7 +20,8 @@ internal class BackgroundCoverSetter
             {
                 if (mangas.Count == 0)
                 {
-                    return;
+                    break;
+
                 }
                 var manga = mangas.FirstOrDefault(x => x.FileSize == 0);
                 // 文件可能被删除
