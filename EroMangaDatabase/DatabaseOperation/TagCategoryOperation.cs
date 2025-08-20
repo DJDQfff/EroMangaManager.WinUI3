@@ -50,7 +50,7 @@ namespace EroMangaDatabase
                 .Where(n => n.CategoryName == tagname)
                 .Select(n => n.Keywords)
                 .Single();
-            string[] keywordarray = keywords.Split('\r');
+            string[] keywordarray = keywords.Split(['\r' , '\n']);
 
             return keywordarray;
         }

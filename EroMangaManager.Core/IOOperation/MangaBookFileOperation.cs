@@ -72,8 +72,16 @@ public class MangaFileOperation
                 {
                     if (!Directory.Exists(newpath))
                     {
-                        Directory.Move(book.FilePath , newpath);
-                        result = true;
+                        try
+                        {
+                            Directory.Move(book.FilePath , newpath);
+                            result = true;
+
+                        }
+                        catch
+                        {
+                            result = false;
+                        }
                         //book.FilePath = newpath;
                         // 由于manganame使用MVVM绑定到了UI，所以跨线程，不能直接操作
 
@@ -85,8 +93,16 @@ public class MangaFileOperation
                 {
                     if (!File.Exists(newpath))
                     {
-                        File.Move(book.FilePath , newpath);
-                        result = true;
+                        try
+                        {
+                            File.Move(book.FilePath , newpath);
+                            result = true;
+
+                        }
+                        catch
+                        {
+                            result = false;
+                        }
                         //book.FilePath = newpath;
                     }
                 }

@@ -20,7 +20,7 @@
             <ComboBox x:Name="combobox" SelectedIndex="0">
                 <ComboBoxItem Content="{uid:Strings Uid=Method1}" />
                 <ComboBoxItem Content="{uid:Strings Uid=Method2}" />
-                <ComboBoxItem Content="{uid:Strings Uid=Method3}" IsEnabled="False" />
+                <ComboBoxItem Content="{uid:Strings Uid=Method3}" />
                 <ComboBoxItem Content="{uid:Strings Uid=Method4}" />
             </ComboBox>
             <Button Click="Button_Click" Content="{uid:Strings Uid=Start}" />
