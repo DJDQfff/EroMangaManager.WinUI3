@@ -69,10 +69,10 @@ public partial class MangaSearchViewModel : ObservableObject
         var a = Sources
         //.Where(x => x.MangaName.Contains(RequiredText.Trim())) // 
         //.Where(x => RequiredTags.All(y => x.Tags.Contains(y))) // 
-        .Where(x => RequiredText.Split(' ').Any(y => x.MangaName.Contains(y)));
+        .Where(x => RequiredText.Split(' ').Any(y => x.FileDisplayName.Contains(y)));
         if (RequiredTags.Count != 0)
         {
-            a = a.Where(x => RequiredTags.Any(y => x.Tags.Contains(y)));
+            a = a.Where(x => RequiredTags.Any(y => x.FileDisplayName.Contains(y)));
 
         }
         a = a.OrderBy(x => x.MangaName);

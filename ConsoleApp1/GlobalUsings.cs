@@ -6,4 +6,3 @@ global using EroMangaManager.Core.Models;
 global using EroMangaManager.Core.ViewModels;
 
 global using static CommonLibrary.BracketBasedStringParser;
-global using static ConsoleApp1.Configurations;

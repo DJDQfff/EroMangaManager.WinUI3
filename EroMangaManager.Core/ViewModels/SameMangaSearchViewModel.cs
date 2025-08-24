@@ -18,6 +18,26 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
     char[] chars = [' ' , '-' , '+' , '~' , '#'];
 
     public bool isWorking = false;
+    static bool filtKeystring (string str) => !string.IsNullOrWhiteSpace(str);
+    public async Task Method4 (IEnumerable<string> tags)
+    {
+        foreach (var tag in tags)
+        {
+            var mangas = Source.Where(x => x.Tags.Contains(tag)).ToList();
+            Source = Source.Except(mangas).ToList();
+            IEnumerable<string> func (IEnumerable<Manga> _mangas)
+            {
+                StringCollection<Manga> stringCollection = new();
+                stringCollection.Action = x => x.MangaName;
+                stringCollection.Sources = mangas;
+                stringCollection.Run2();
+                var keys = stringCollection.RepeatList.Select(x => x.Content);
+                return keys;
+            }
+            await ParseAll_FindOut(mangas , func , (x , key) => x.MangaName.Contains(key) , filtKeystring);
+
+        }
+    }
     // TODO 需要优化
     public async Task Method3 (IEnumerable<string> tags)
     {
@@ -39,14 +59,14 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
                 return null;
             }
             var _viewmodel = new SameMangaSearchViewModel();
-            await _viewmodel.StartCompareSequence(mangas , func , x => !string.IsNullOrWhiteSpace(x));
+            await _viewmodel.StartCompareSequence(mangas , func , filtKeystring);
 
             foreach (var pair in _viewmodel.RepeatPairs)
             {
                 RepeatPairs.Add(pair);
             }
 
-            //await StartCompareSequence(mangas , func , x => !string.IsNullOrWhiteSpace(x));
+            //await StartCompareSequence(mangas , func ,filtKeystring);
 
 
         }
@@ -69,7 +89,12 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
             return null;
         }
 
-        await StartCompareSequence(Source , func1 , x => !string.IsNullOrWhiteSpace(x));
+        string func2 (Manga x , Manga y)
+        {
+            return null;
+        }
+
+        await StartCompareSequence(Source , func1 , filtKeystring);
 
     }
     public async Task Method1 ()
@@ -95,7 +120,7 @@ public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string , Mang
     public async Task Method0 ()
     {
         static string func1 (Manga x , Manga y) => x.MangaName == y.MangaName ? x.MangaName : null;
-        await StartCompareSequence(Source , func1 , x => !string.IsNullOrWhiteSpace(x));
+        await StartCompareSequence(Source , func1 , filtKeystring);
 
     }
 
