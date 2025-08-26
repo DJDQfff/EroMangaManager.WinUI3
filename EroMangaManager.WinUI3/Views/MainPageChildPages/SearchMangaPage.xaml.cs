@@ -1,12 +1,4 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-using System.Threading.Tasks;
-
-using EroMangaManager.Core.Models;
-
-using SharpCompress.Common;
-
-using static iText.Svg.SvgConstants;
-
 namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 {
     /// <summary>
@@ -19,13 +11,13 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         /// <summary>
         ///
         /// </summary>
-        public SearchMangaPage ()
+        public SearchMangaPage()
         {
             InitializeComponent();
             App.Current.GlobalViewModel.EventAfterDeleteMangaSource += x => { viewmodel.Sources.Remove(x); viewmodel.ResultMangas.Remove(x); };
         }
 
-        protected override async void OnNavigatedTo (NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             viewmodel.Sources = App.Current.GlobalViewModel.MangaList;
@@ -43,7 +35,6 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                             MangaTagTokenizingTextBox.AddTokenItem(tag);
                         }
                         //SearchStartButton_Click(SearchStartButton , new RoutedEventArgs());
-
                     }
                     break;
                 //直接把manga传进来，参数自己修改
@@ -54,10 +45,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                         viewmodel.RequiredTags.Clear();
                         foreach (var tag in manga.Tags)
                         {
-
                             MangaTagTokenizingTextBox.AddTokenItem(tag);
                         }
-
                     }
                     break;
 
@@ -67,26 +56,24 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                         viewmodel.RequiredTags.Clear();
                     }
                     break;
+
                 case IEnumerable<string> tags:
                     {
                         viewmodel.RequiredText = string.Empty;
                         viewmodel.RequiredTags.Clear();
                         foreach (var tag in tags)
                         {
-
                             viewmodel.RequiredTags.Add(tag);
                         }
-
                     }
                     break;
             }
             viewmodel.Search();
-
         }
 
         // TODO 搞不清这个干嘛的
-        private void TagTokenBox_TokenItemAdding (
-            TokenizingTextBox sender ,
+        private void TagTokenBox_TokenItemAdding(
+            TokenizingTextBox sender,
             TokenItemAddingEventArgs args
         )
         {
@@ -97,20 +84,18 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
         }
 
-
-        void TagTokenBox_TokenItemChanged (TokenizingTextBox sender , object args)
+        private void TagTokenBox_TokenItemChanged(TokenizingTextBox sender, object args)
         {
             viewmodel.Search();
-
         }
-        private void NameBox_TextChanged (
-            AutoSuggestBox sender ,
+
+        private void NameBox_TextChanged(
+            AutoSuggestBox sender,
             AutoSuggestBoxTextChangedEventArgs args
         )
         {
             viewmodel.Search();
         }
-
 
         //private void ShowInBookcaseButton_Click (object sender , RoutedEventArgs e)
         //{
@@ -128,10 +113,9 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         //    MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , mangasfolder);
         //}
 
-        private void TagTokenizingTextBox_TextChanged (AutoSuggestBox sender , AutoSuggestBoxTextChangedEventArgs args)
+        private void TagTokenizingTextBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             viewmodel.FiltTags(MangaTagTokenizingTextBox.Text);
-
         }
     }
 }

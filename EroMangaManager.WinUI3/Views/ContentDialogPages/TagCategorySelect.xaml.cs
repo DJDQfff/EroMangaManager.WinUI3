@@ -19,14 +19,17 @@ using Windows.Foundation.Collections;
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace EroMangaManager.WinUI3.Views.ContentDialogPages;
+
 public sealed partial class TagCategorySelect : ContentDialog
 {
-    public TagCategorySelect ()
+    public TagCategorySelect()
     {
         InitializeComponent();
     }
+
     public string CategoryName => combobox.SelectedItem as string;
-    private void combobox_Loaded (object sender , RoutedEventArgs e)
+
+    private void combobox_Loaded(object sender, RoutedEventArgs e)
     {
         var category = DatabaseController.TagCategory_Query();
         if (category != null)

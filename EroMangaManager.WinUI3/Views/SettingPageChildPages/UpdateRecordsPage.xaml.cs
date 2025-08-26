@@ -1,5 +1,4 @@
-﻿
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 namespace EroMangaManager.WinUI3.Views.SettingPageChildPages
 {
@@ -11,15 +10,14 @@ namespace EroMangaManager.WinUI3.Views.SettingPageChildPages
         /// <summary>
         /// 更新日志展示界面
         /// </summary>
-        public UpdateRecordsPage ()
+        public UpdateRecordsPage()
         {
             InitializeComponent();
         }
 
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
         }
     }
 }

@@ -7,10 +7,10 @@
     xmlns:local="using:EroMangaManager.WinUI3.Views.MainPageChildPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="using:EroMangaManager.Core.Models"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     xmlns:usercontrol="using:EroMangaManager.WinUI3.UserControls"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-      xmlns:uid="using:EroMangaManager.WinUI3.Strings"
-      mc:Ignorable="d">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -19,22 +19,29 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <Button Click="Button_Click" Content="{uid:Strings Uid=Start}" />
-            <CheckBox x:Name="checkbox0"
-                      Content="{uid:Strings Uid=NotCorrectBracketPairs}" IsChecked="True" />
-            <CheckBox x:Name="checkbox1" Content="{uid:Strings Uid=HaveNoneBrackets}" IsChecked="True"/>
-            <CheckBox x:Name="checkbox2"
-                      Content="{uid:Strings Uid=AllInBrackets}"
-                      IsChecked="True" /> 
-            <CheckBox x:Name="checkbox3"
-                      Content="{uid:Strings Uid=RemoveRepeatTags}"
-                      IsChecked="True" />
-            <TextBox   x:Name="textbox"
-                       PlaceholderText="{uid:Strings Uid=WhereContains}" />
+            <CheckBox
+                x:Name="checkbox0"
+                Content="{uid:Strings Uid=NotCorrectBracketPairs}"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="checkbox1"
+                Content="{uid:Strings Uid=HaveNoneBrackets}"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="checkbox2"
+                Content="{uid:Strings Uid=AllInBrackets}"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="checkbox3"
+                Content="{uid:Strings Uid=RemoveRepeatTags}"
+                IsChecked="True" />
+            <TextBox x:Name="textbox" PlaceholderText="{uid:Strings Uid=WhereContains}" />
         </StackPanel>
         <ListView Grid.Row="1" ItemsSource="{x:Bind books, Mode=OneWay}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Manga">
-                    <usercontrol:RenameMangaByEditString Height="320"
+                    <usercontrol:RenameMangaByEditString
+                        Height="320"
                         Margin="4"
                         HorizontalAlignment="Stretch"
                         Manga="{x:Bind}" />

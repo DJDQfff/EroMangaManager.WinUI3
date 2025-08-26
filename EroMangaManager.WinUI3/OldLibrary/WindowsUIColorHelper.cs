@@ -9,7 +9,7 @@ public class WindowsUIColorHelper
     /// 获取随机颜色SolidColorBrush
     /// </summary>
     /// <returns></returns>
-    public static SolidColorBrush GetRandomSolidColorBrush ()
+    public static SolidColorBrush GetRandomSolidColorBrush()
     {
         //Type type = typeof(Windows.UI.Colors);
         //var a = type.GetProperties();
@@ -25,7 +25,7 @@ public class WindowsUIColorHelper
         random2.NextBytes(ragb);
 
         //TODO 看看uno是怎么改的
-        var color = Windows.UI.Color.FromArgb(ragb[0] , ragb[1] , ragb[2] , ragb[3]);
+        var color = Windows.UI.Color.FromArgb(ragb[0], ragb[1], ragb[2], ragb[3]);
         var solidColorBrush = new SolidColorBrush(color);
 
         return solidColorBrush;

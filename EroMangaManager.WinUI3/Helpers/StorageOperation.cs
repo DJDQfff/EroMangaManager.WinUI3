@@ -2,14 +2,14 @@
 
 internal class StorageOperation
 {
-    internal static async Task ExportAsPDFAsync (Manga mangaBook)
+    internal static async Task ExportAsPDFAsync(Manga mangaBook)
     {
         var fileSavePicker = new FileSavePicker();
-        fileSavePicker.FileTypeChoices.Add("PDF" , [".pdf"]);
+        fileSavePicker.FileTypeChoices.Add("PDF", [".pdf"]);
         fileSavePicker.SuggestedFileName = mangaBook.FileDisplayName;
 
         var handle = WindowNative.GetWindowHandle(App.Current.MainWindow);
-        InitializeWithWindow.Initialize(fileSavePicker , handle);
+        InitializeWithWindow.Initialize(fileSavePicker, handle);
 
         var storageFile = await fileSavePicker.PickSaveFileAsync();
         if (storageFile is null)
@@ -18,7 +18,7 @@ internal class StorageOperation
         }
         try
         {
-            await Task.Run(() => Exporter.ExportAsPDF(mangaBook , storageFile.Path));
+            await Task.Run(() => Exporter.ExportAsPDF(mangaBook, storageFile.Path));
             string done = ResourceLoader.GetForViewIndependentUse().GetString("ExportDone");
             App.Current.GlobalViewModel.WorkDone(done);
         }
@@ -29,7 +29,7 @@ internal class StorageOperation
         }
     }
 
-    internal static async Task Delete (Manga manga , StorageDeleteOption deletemode)
+    internal static async Task Delete(Manga manga, StorageDeleteOption deletemode)
     {
         try
         {
@@ -42,14 +42,14 @@ internal class StorageOperation
                         var folder = await StorageFolder.GetFolderFromPathAsync(
                             manga.FilePath
                         );
-                        System.IO.Directory.Delete(manga.FilePath , true);
 
                         await folder.DeleteAsync(deletemode);
 #else
-                        System.IO.Directory.Delete(eroManga.FilePath, true);
+                        System.IO.Directory.Delete(manga.FilePath, true);
 #endif
                     }
                     break;
+
                 default:
 
                     {
@@ -57,9 +57,10 @@ internal class StorageOperation
                         var file = await StorageFile.GetFileFromPathAsync(
                             manga.FilePath
                         );
+
                         await file.DeleteAsync(deletemode);
 #else
-                        System.IO.File.Delete(eroManga.FilePath);
+                        System.IO.File.Delete(manga.FilePath);
 #endif
                     }
                     break;
@@ -67,5 +68,4 @@ internal class StorageOperation
         }
         catch { }
     }
-
 }

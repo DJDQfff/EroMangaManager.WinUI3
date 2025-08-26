@@ -596,6 +596,10 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
           <source>在资源浏览器中打开</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Open in the Resource Browser</target>
         </trans-unit>
+        <trans-unit id="AccessDenied" translate="yes" xml:space="preserve">
+          <source>访问被拒绝</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Access denied</target>
+        </trans-unit>
       </group>
     </body>
   </file>

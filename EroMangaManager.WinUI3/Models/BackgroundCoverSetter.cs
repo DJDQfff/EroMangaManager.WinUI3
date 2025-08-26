@@ -1,13 +1,12 @@
-﻿
+﻿namespace EroMangaManager.WinUI3.Models;
 
-
-namespace EroMangaManager.WinUI3.Models;
 internal class BackgroundCoverSetter
 {
     public readonly List<Manga> mangas = [];
-    bool IsWorking = false;
+    private bool IsWorking = false;
+
     //int workcount = 0;
-    public async Task LoopWork3 ()
+    public async Task LoopWork3()
     {
         if (IsWorking)
         {
@@ -21,31 +20,23 @@ internal class BackgroundCoverSetter
                 if (mangas.Count == 0)
                 {
                     break;
-
                 }
                 var manga = mangas.FirstOrDefault(x => x.FileSize == 0);
                 // 文件可能被删除
                 if (manga != null && MangaFactory.Exists(manga) /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
                 {
-
                     await MangaFactory.InitialCover(manga);
 
                     await MangaFactory.InitialFileSize(manga);
-
                 }
                 _ = mangas.Remove(manga);//改回list了，又需要了 .不需要执行，stack的pop方法已经取出最上面的了
-
-
             }
             IsWorking = false;
-
-
         }
     }
+
     //public async Task LoopWork2 ()
     //{
-
-
     //    if (workcount < 1)
     //    {
     //        if (mangas.Count == 0)
@@ -89,5 +80,4 @@ internal class BackgroundCoverSetter
     //        IsWorking = false;
     //    }
     //}
-
 }

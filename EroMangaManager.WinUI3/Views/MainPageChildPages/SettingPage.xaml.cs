@@ -9,12 +9,12 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         /// <summary>
         /// 构造函数
         /// </summary>
-        public SettingPage ()
+        public SettingPage()
         {
             InitializeComponent();
         }
 
-        private void NavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
+        private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             Type type = args.InvokedItemContainer.Name switch
             {

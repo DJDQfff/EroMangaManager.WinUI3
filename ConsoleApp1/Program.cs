@@ -1,5 +1,4 @@
-﻿
-var folderbika = @"D:\Downloads\bika_downloads\commies";
+﻿var folderbika = @"D:\Downloads\bika_downloads\commies";
 var foldercheck = "d:/本子/检查";
 var mangas = Directory.EnumerateDirectories(foldercheck)
     .Select(x => new Manga(x));

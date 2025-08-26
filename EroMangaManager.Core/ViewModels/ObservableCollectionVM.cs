@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace EroMangaManager.Core.ViewModels
 {
@@ -22,11 +21,17 @@ namespace EroMangaManager.Core.ViewModels
         /// 完成某项任务时引发
         /// </summary>
         public event Action<string> WorkDoneEvent;
+
         /// <summary>
         /// 任务失败事件
         /// </summary>
-
         public event Action<string> WorkFailedEvent;
+
+        /// <summary>
+        /// 访问被拒绝，通常因文件权限不足引发
+        /// </summary>
+        public event Action AccessDeniedEvent; // TODO 没有验证这个事件及相关的try-catch能否正常工作
+
         /// <summary>
         /// 本子文件夹集合
         /// </summary>
@@ -54,6 +59,7 @@ namespace EroMangaManager.Core.ViewModels
                 return list;
             }
         }
+
         /// <summary>
         /// 所有标签
         /// </summary>
@@ -82,7 +88,7 @@ namespace EroMangaManager.Core.ViewModels
         /// 确保已添加文件夹，并添加到集合。如果已存在这个folder，则返回true;否则返回false并创建新的
         /// </summary>
         /// <returns></returns>
-        public bool EnsureAddFolder (string path , out MangasGroup mangasFolder)
+        public bool EnsureAddFolder(string path, out MangasGroup mangasFolder)
         {
             if (StorageFolders.Contains(path))
             {
@@ -104,9 +110,8 @@ namespace EroMangaManager.Core.ViewModels
         /// 2.从FolderList里移除
         /// 3.从MangaList里移除文件夹下属漫画
         /// </summary>
-        public void RemoveFolder (MangasGroup group)
+        public void RemoveFolder(MangasGroup group)
         {
-
             MangaFolders.Remove(group);
         }
 
@@ -114,15 +119,16 @@ namespace EroMangaManager.Core.ViewModels
         /// 删除manga后执行此事件
         /// </summary>
         /// <param name="manga"></param>
-        public void InvokeEvent_AfterDeleteMnagaSource (Manga manga)
+        public void InvokeEvent_AfterDeleteMnagaSource(Manga manga)
         {
             EventAfterDeleteMangaSource?.Invoke(manga);
         }
+
         /// <summary>
         /// 尝试移除一个本子文件，成功返回true，失败或未删除返回false
         /// </summary>
         /// <param name="mangaBook"></param>
-        public bool RemoveManga (Manga mangaBook)
+        public bool RemoveManga(Manga mangaBook)
         {
             string folderpath = mangaBook.FolderPath;
             MangasGroup folder = MangaFolders.Single(x => x.FolderPath == folderpath);
@@ -134,32 +140,38 @@ namespace EroMangaManager.Core.ViewModels
         /// 事情完成时发生
         /// </summary>
         /// <param name="message"></param>
-        public void WorkDone (string message) => WorkDoneEvent?.Invoke(message);
+        public void WorkDone(string message) => WorkDoneEvent?.Invoke(message);
+
         /// <summary>
         /// 任务失败
         /// </summary>
         /// <param name="message"></param>
-        public void WorkFailed (string message) => WorkFailedEvent?.Invoke(message);
+        public void WorkFailed(string message) => WorkFailedEvent?.Invoke(message);
 
+        /// <summary>
+        /// 触发访问被拒绝异常
+        /// </summary>
+        public void AccessDenied()=>AccessDeniedEvent?.Invoke();
         /// <summary>
         /// 发现错误漫画时引发
         /// </summary>
         /// <param name="manganame"></param>
-        public void ErrorMangaEvent (string manganame)
+        public void ErrorMangaEvent(string manganame)
         {
             ErrorZipEvent?.Invoke(manganame);
         }
+
         /// <summary>
         /// 后台更新MangasGroup的Func
         /// </summary>
-        public Func<MangasGroup , Task> InitialGroup;
+        public Func<MangasGroup, Task> InitialGroup;
+
         /// <summary>
         /// 开始初始化所有MangasGroup，会以自我递归的方式，初始化所有groups
         /// </summary>
         /// <returns></returns>
-        public async Task StartInitial ()
+        public async Task StartInitial()
         {
-
             if (MangaFolders.Any(x => x.UpdateState == UpdateState.Busy))
             {
                 return;
@@ -168,19 +180,17 @@ namespace EroMangaManager.Core.ViewModels
 
             if (group is not null)
             {
-
                 await InitialGroup.Invoke(group);
 
                 await StartInitial();
             }
-
         }
 
         /// <summary>
         /// 把一个本子放到他应该在的集合里面，这个一般用在移动本子后
         /// </summary>
         /// <param name="book"></param>
-        public void PlaceInCorrectGroup (Manga book)
+        public void PlaceInCorrectGroup(Manga book)
         {
             foreach (var group in MangaFolders)
             {
@@ -192,7 +202,6 @@ namespace EroMangaManager.Core.ViewModels
                         if (!g.Mangas.Contains(book))
                         { g.Mangas.Add(book); }
                     }
-
                 }
             }
         }

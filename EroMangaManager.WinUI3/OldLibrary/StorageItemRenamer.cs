@@ -12,9 +12,9 @@ public static class StorageItemRenamer
     /// </param>
     /// <param name="collisiontag"> 若重名，则此补后缀 </param>
     /// <returns> </returns>
-    public static async Task ReSetDisplayName_perhaps_UniqueName (
-        this StorageFile storageFile ,
-        string newdisplayname ,
+    public static async Task ReSetDisplayName_perhaps_UniqueName(
+        this StorageFile storageFile,
+        string newdisplayname,
         string collisiontag = "_副本"
     )
     {
@@ -22,7 +22,7 @@ public static class StorageItemRenamer
         try
         {
             await storageFile.RenameAsync(
-                newdisplayname + extensionname ,
+                newdisplayname + extensionname,
                 NameCollisionOption.FailIfExists
             );
         }

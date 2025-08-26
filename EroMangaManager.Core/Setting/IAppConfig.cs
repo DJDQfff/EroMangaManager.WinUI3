@@ -20,6 +20,7 @@ public interface IAppConfig
 /// 一般设置项
 /// </summary>
 #pragma warning disable IDE1006 // 命名样式
+
 public interface General
 #pragma warning restore IDE1006 // 命名样式
 {
@@ -61,7 +62,7 @@ public interface General
     /// <summary>
     /// app默认UI语言
     /// </summary>
-    [Obsolete("使用LanguageIndex" , true)]
+    [Obsolete("使用LanguageIndex", true)]
     [DefaultValue(DefaultAppUILanguageStrings.zhCN)]
     string DefaultAppUILanguage { set; get; }
 
@@ -110,6 +111,7 @@ public class DefaultAppUILanguageStrings
 /// 新的漫画打开方式设置，旧的不再使用
 /// </summary>
 #pragma warning disable IDE1006 // 命名样式
+
 public interface MangaOpenWay3
 #pragma warning restore IDE1006 // 命名样式
 {
@@ -131,6 +133,7 @@ public interface MangaOpenWay3
 /// 漫画打开方式相关设置
 /// </summary>
 #pragma warning disable IDE1006 // 命名样式
+
 public interface MangaOpenWaySetting
 #pragma warning restore IDE1006 // 命名样式
 {

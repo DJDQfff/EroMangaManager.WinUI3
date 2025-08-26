@@ -443,4 +443,7 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
   <data name="LocateInExplorer" xml:space="preserve">
     <value>Open in the Resource Browser</value>
   </data>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
 </root>

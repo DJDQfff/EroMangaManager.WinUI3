@@ -9,7 +9,7 @@ public partial class ManageTagsViewModel2
     /// <summary>
     /// 从数据库读取category以初始化
     /// </summary>
-    public ManageTagsViewModel2 ()
+    public ManageTagsViewModel2()
     {
         var a = DatabaseController.database.TagCategorys.ToArray();
         CategoryTags = new(a);
@@ -62,7 +62,7 @@ public partial class ManageTagsViewModel2
     /// </summary>
     /// <param name="category"></param>
     /// <returns></returns>
-    public TagCategory AddCategory (string category)
+    public TagCategory AddCategory(string category)
     {
         if (string.IsNullOrWhiteSpace(category))
             return null;
@@ -86,7 +86,7 @@ public partial class ManageTagsViewModel2
     /// 传入tags，先过滤已分类的tag，剩下的全部挪到未分类里面
     /// </summary>
     /// <param name="tags"></param>
-    public void AddUnCategoryTags (IEnumerable<string> tags)
+    public void AddUnCategoryTags(IEnumerable<string> tags)
     {
         var a = tags.Except(Tags).Distinct();
 
@@ -98,7 +98,7 @@ public partial class ManageTagsViewModel2
     /// </summary>
     /// <param name="category"></param>
     [RelayCommand]
-    public void DeleteCategory (string category)
+    public void DeleteCategory(string category)
     {
         TagCategory tagCategory = CategoryTags.FirstOrDefault(x => x.CategoryName == category);
         if (tagCategory != null)
@@ -115,11 +115,11 @@ public partial class ManageTagsViewModel2
     /// 保存修改结果
     /// </summary>
     [RelayCommand]
-    public async Task SaveToDatabase ()
+    public async Task SaveToDatabase()
     {
         foreach (var tagcategory in CategoryTags)
         {
-            tagcategory.Keywords = string.Join("\r" , tagcategory.Tags);
+            tagcategory.Keywords = string.Join("\r", tagcategory.Tags);
         }
         await DatabaseController.database.SaveChangesAsync();
     }
@@ -130,7 +130,7 @@ public partial class ManageTagsViewModel2
     /// <param name="oldcategory"></param>
     /// <param name="newcategory"></param>
     /// <param name="tags"></param>
-    public void TagChangeCategory (TagCategory oldcategory , TagCategory newcategory , IList<string> tags)
+    public void TagChangeCategory(TagCategory oldcategory, TagCategory newcategory, IList<string> tags)
     {
         if (oldcategory is null)
         {

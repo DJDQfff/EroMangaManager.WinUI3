@@ -1,5 +1,4 @@
-﻿
-// https://go.microsoft.com/fwlink/?LinkId=234238
+﻿// https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“内容对话框”项模板
 
 namespace EroMangaManager.WinUI3.Views.ContentDialogPages
@@ -15,7 +14,7 @@ namespace EroMangaManager.WinUI3.Views.ContentDialogPages
         /// 确认删除对话框
         /// </summary>
         /// <param name="_mangaBook"></param>
-        public ConfirmDeleteMangaFile (Manga _mangaBook)
+        public ConfirmDeleteMangaFile(Manga _mangaBook)
         {
             this.InitializeComponent();
             manga = _mangaBook;

@@ -8,13 +8,14 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// </summary>
     public sealed partial class IrregularNameSearch : Page
     {
-        readonly ObservableCollection<Manga> books = [];
-        public IrregularNameSearch ()
+        private readonly ObservableCollection<Manga> books = [];
+
+        public IrregularNameSearch()
         {
             InitializeComponent();
         }
 
-        private void Button_Click (object sender , RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             books.Clear();
             foreach (var book in App.Current.GlobalViewModel.MangaList)
@@ -27,10 +28,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     || (!string.IsNullOrEmpty(textbox.Text) && book.MangaName.Contains(textbox.Text))
                 )
                 { books.Add(book); }
-
-
             }
-
         }
     }
 }

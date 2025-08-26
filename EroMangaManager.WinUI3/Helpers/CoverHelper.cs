@@ -7,10 +7,11 @@ public static class CoverHelper
 {
     private static SvgImageSource _imageSource;
     private static SvgImageSource _errorimageSource;
+
     /// <summary>
     /// 初始化默认漫画封面
     /// </summary>
-    public static void InitialDefaultCover ()
+    public static void InitialDefaultCover()
     {
         _imageSource = new SvgImageSource(new Uri(DefaultCoverPath));
         _errorimageSource = new SvgImageSource(new Uri(ErrorCoverPath));
@@ -27,11 +28,13 @@ public static class CoverHelper
     /// 获取默认封面
     /// </summary>
     public static SvgImageSource DefaultCoverImage => _imageSource;
+
     public static SvgImageSource ErrorCoverImage => _errorimageSource;
+
     /// <summary> 调用系统API，返回缩率图 </summary>
     /// <param name="cover"> </param>
     /// <returns> </returns>
-    public static async Task<BitmapImage> GetCoverThumbnail_SystemAsync (this StorageFile cover)
+    public static async Task<BitmapImage> GetCoverThumbnail_SystemAsync(this StorageFile cover)
     {
         BitmapImage bitmapImage = new();
         //thumbnailMode.picturemode有坑,缩略图不完整
@@ -39,7 +42,7 @@ public static class CoverHelper
 
         using (
             StorageItemThumbnail thumbnail = await cover.GetThumbnailAsync(
-                ThumbnailMode.SingleItem ,
+                ThumbnailMode.SingleItem,
                 80
             )
         )
@@ -55,20 +58,20 @@ public static class CoverHelper
     /// 清除所有封面文件
     /// </summary>
     /// <returns></returns>
-    public static async Task ClearCovers ()
+    public static async Task ClearCovers()
     {
         StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Covers));
         var coverfolder = storageFolder.Path;
-        Directory.Delete(coverfolder , true);
+        Directory.Delete(coverfolder, true);
         EnsureChildTemporaryFolders(Covers.ToString());
     }
 
-    public static string LoadCoverFromInternalFolder (string folderPath)
+    public static string LoadCoverFromInternalFolder(string folderPath)
     {
         if (!Directory.Exists(folderPath))
             return null;
         var directoryinfo = new DirectoryInfo(folderPath)
-            .EnumerateFiles("*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
+            .EnumerateFiles("*.*", new EnumerationOptions() { RecurseSubdirectories = true })
             .FirstOrDefault(x => SupportedType.ImageType.Contains(x.Extension));
 
         return directoryinfo?.FullName;
@@ -76,19 +79,19 @@ public static class CoverHelper
 
     /// <summary> 尝试创建封面文件。 </summary>
     /// <returns> </returns>
-    public static async Task<string> TryCreatCoverFileAsync (
-        string storageFile ,
+    public static async Task<string> TryCreatCoverFileAsync(
+        string storageFile,
         FilteredImage[] filteredImages
     )
     {
         string path;
         StorageFolder folder = await GetChildTemporaryFolder(nameof(Covers));
-        var coverfile = Path.Combine(Path.GetFileNameWithoutExtension(storageFile) , ".jpg");
+        var coverfile = Path.Combine(Path.GetFileNameWithoutExtension(storageFile), ".jpg");
 
         IStorageItem storageItem = await folder.TryGetItemAsync(coverfile);
         if (storageItem is null)
         {
-            path = await CreatCoverFile_Origin_SharpCompress(storageFile , filteredImages);
+            path = await CreatCoverFile_Origin_SharpCompress(storageFile, filteredImages);
         }
         else
         {
@@ -104,14 +107,14 @@ public static class CoverHelper
     /// <param name="storageFile"></param>
     /// <param name="filteredImages">要比较的数据</param>
     /// <returns></returns>
-    public static async Task<string> CreatCoverFile_Origin_SharpCompress (
-        this string storageFile ,
+    public static async Task<string> CreatCoverFile_Origin_SharpCompress(
+        this string storageFile,
         FilteredImage[] filteredImages
     )
     {
         string path = null;
         var coverfolder = await GetChildTemporaryFolder(nameof(Covers));
-        var stream = new FileStream(storageFile , FileMode.Open,FileAccess.Read);
+        var stream = new FileStream(storageFile, FileMode.Open, FileAccess.Read);
         try
         {
             using (var zipArchive = ArchiveFactory.Open(stream))
@@ -122,7 +125,7 @@ public static class CoverHelper
                     if (canuse)
                     {
                         path = Path.Combine(
-                            coverfolder.Path ,
+                            coverfolder.Path,
                             Path.GetFileNameWithoutExtension(storageFile) + ".jpg"
                         );
                         entry.WriteToFile(path);

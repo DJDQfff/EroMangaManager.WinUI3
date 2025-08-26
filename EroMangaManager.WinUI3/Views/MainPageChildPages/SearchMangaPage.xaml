@@ -34,21 +34,21 @@
                     VerticalContentAlignment="Stretch"
                     Header="{uid:Strings Uid=SearchByMangaName}"
                     QueryIcon="Find"
-                    Text="{x:Bind viewmodel.RequiredText ,Mode=TwoWay}"
+                    Text="{x:Bind viewmodel.RequiredText, Mode=TwoWay}"
                     TextChanged="NameBox_TextChanged" />
                 <toolkit:TokenizingTextBox
                     x:Name="MangaTagTokenizingTextBox"
                     Grid.Row="1"
                     HorizontalAlignment="Stretch"
-                    ItemsSource="{x:Bind viewmodel.RequiredTags,Mode=TwoWay}"
                     VerticalAlignment="Stretch"
                     Header="{uid:Strings Uid=SearchByTag}"
+                    ItemsSource="{x:Bind viewmodel.RequiredTags, Mode=TwoWay}"
                     SuggestedItemsSource="{x:Bind viewmodel.AlailableTags, Mode=OneWay}"
                     TextChanged="TagTokenizingTextBox_TextChanged"
                     TokenDelimiter="+"
-                                           TokenItemAdded="TagTokenBox_TokenItemChanged"
+                    TokenItemAdded="TagTokenBox_TokenItemChanged"
                     TokenItemAdding="TagTokenBox_TokenItemAdding"
-                                           TokenItemRemoved="TagTokenBox_TokenItemChanged">
+                    TokenItemRemoved="TagTokenBox_TokenItemChanged">
                     <toolkit:TokenizingTextBox.QueryIcon>
                         <FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xE11A;" />
                     </toolkit:TokenizingTextBox.QueryIcon>
@@ -75,8 +75,10 @@
                 Click="ShowInBookcaseButton_Click"
                 Content="{uid:Strings Uid=ShowFolderBookcase}" />
         </StackPanel>-->
-        <GridView x:Name="ResultGridView" Grid.Row="2"
-                  ItemsSource="{x:Bind viewmodel.ResultMangas, Mode=OneWay}">
+        <GridView
+            x:Name="ResultGridView"
+            Grid.Row="2"
+            ItemsSource="{x:Bind viewmodel.ResultMangas, Mode=OneWay}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="model:Manga">
                     <usercontrols:MangaBriefInfo Manga="{x:Bind}" />

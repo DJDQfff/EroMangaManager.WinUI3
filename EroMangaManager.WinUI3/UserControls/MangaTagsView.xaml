@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<UserControl x:Class="EroMangaManager.WinUI3.UserControls.MangaTagsView"
+<UserControl
+    x:Class="EroMangaManager.WinUI3.UserControls.MangaTagsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,45 +10,37 @@
     <!--  这个控件是专门用来给overviewinformation调用的，所以不能用coverwithcontextflyout控件  -->
     <Grid Width="300">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-                    <TextBlock  
-                FontSize="20" 
-                Text="{x:Bind Manga.MangaName, Mode=OneWay}"/>
+        <TextBlock FontSize="20" Text="{x:Bind Manga.MangaName, Mode=OneWay}" />
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <local:CoverWithContextFlyout Grid.Column="0"
-                                          Source="{x:Bind Manga, Mode=OneWay}" />
+            <local:CoverWithContextFlyout Grid.Column="0" Source="{x:Bind Manga, Mode=OneWay}" />
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <ListView Grid.Row="0"
-                          ItemsSource="{x:Bind Manga.Tags,Mode=OneWay}">
+                <ListView Grid.Row="0" ItemsSource="{x:Bind Manga.Tags, Mode=OneWay}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment"
-                                    Value="Center" />
-                            <Setter Property="VerticalContentAlignment"
-                                    Value="Center" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="x:String">
-                            <local:TagTextBlock Text="{x:Bind }" />
+                            <local:TagTextBlock Text="{x:Bind}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
                 <!--<local:TagItemsRepeater Manga="{x:Bind Manga,Mode=OneWay}" />-->
-                <TextBlock Grid.Row="1"
-                           Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
+                <TextBlock Grid.Row="1" Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
             </Grid>
         </Grid>
     </Grid>
-    
 </UserControl>

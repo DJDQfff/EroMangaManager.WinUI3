@@ -5,4 +5,4 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Style" , "IDE1006:命名样式" , Justification = "<挂起>" , Scope = "type" , Target = "~T:EroMangaDatabase.Migrations.initial")]
+[assembly: SuppressMessage("Style", "IDE1006:命名样式", Justification = "<挂起>", Scope = "type", Target = "~T:EroMangaDatabase.Migrations.initial")]

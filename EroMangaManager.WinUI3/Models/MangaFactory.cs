@@ -15,8 +15,8 @@ namespace EroMangaManager.WinUI3.Models;
 internal static class MangaFactory
 {
     /// <summary>ViewModel初始化</summary>
-    public static void GetAllFolders (
-        this ObservableCollectionVM ViewModel ,
+    public static void GetAllFolders(
+        this ObservableCollectionVM ViewModel,
         IEnumerable<string> storageFolders
     )
     {
@@ -32,15 +32,15 @@ internal static class MangaFactory
             }
         }
     }
+
     /// <summary>
     /// 创建所有manga实例，但是不设置cover，filesize属性（丢到backgroundcoversetter里面后台执行）
     /// </summary>
     /// <param name="mangasFolder"></param>
     /// <param name="StorageFolder"></param>
     /// <returns></returns>
-    public static async Task InitialGroup2 (this MangasGroup mangasFolder)
+    public static async Task InitialGroup2(this MangasGroup mangasFolder)
     {
-
         if (Directory.Exists(mangasFolder.FolderPath))
         {
             mangasFolder.UpdateState = UpdateState.Busy;
@@ -53,7 +53,7 @@ internal static class MangaFactory
                   .Select(xfile =>
                        new Manga(xfile)
                        {
-                           CoverPath = CoverHelper.DefaultCoverPath ,
+                           CoverPath = CoverHelper.DefaultCoverPath,
                        }
                   )
             );
@@ -62,10 +62,8 @@ internal static class MangaFactory
 
             foreach (var manga in filteredfiles)
             {
-
                 mangasFolder.Mangas.Add(manga);
                 App.Current.BackgroundCoverSetter.mangas.Add(manga);
-
             }
             //所有子文件夹作为mangabook
             var folders = await Task.Run(() => Directory.EnumerateDirectories(mangasFolder.FolderPath)
@@ -73,7 +71,6 @@ internal static class MangaFactory
                      new Manga(x)
                      {
                          CoverPath = CoverHelper.DefaultCoverPath
-
                      }
                 ));
 
@@ -81,14 +78,11 @@ internal static class MangaFactory
 
             foreach (var manga in folders)
             {
-
                 mangasFolder.Mangas.Add(manga);
                 App.Current.BackgroundCoverSetter.mangas.Add(manga);
-
             }
 
             mangasFolder.UpdateState = UpdateState.Over;
-
         }
     }
 
@@ -100,7 +94,6 @@ internal static class MangaFactory
     /// <returns></returns>
     //public static async Task InitialGroup (this MangasGroup mangasFolder)
     //{
-
     //    if (Directory.Exists(mangasFolder.FolderPath))
     //    {
     //        mangasFolder.UpdateState = UpdateState.Busy;
@@ -158,15 +151,13 @@ internal static class MangaFactory
     //            mangasFolder.Mangas.Add(manga);
     //            App.Current.BackgroundCoverSetter.mangas.Add(manga);
 
-
     //        }
     //        mangasFolder.UpdateState = UpdateState.Over;
 
     //    }
     //}
-    public static async Task InitialFileSize (Manga manga)
+    public static async Task InitialFileSize(Manga manga)
     {
-
         switch (manga.Type)
         {
             case "":
@@ -174,11 +165,12 @@ internal static class MangaFactory
                     manga.FileSize = await Task.Run(() =>
                     {
                         return Directory
-      .EnumerateFiles(manga.FilePath , "*.*" , new EnumerationOptions() { RecurseSubdirectories = true })
+      .EnumerateFiles(manga.FilePath, "*.*", new EnumerationOptions() { RecurseSubdirectories = true })
       .Sum(x => new FileInfo(x).Length);
                     });
                 }
                 break;
+
             default:
                 {
                     var fileinfo = new FileInfo(manga.FilePath);
@@ -186,29 +178,28 @@ internal static class MangaFactory
 
                     // filestream 也可以获取length;
                     //var rstr = new FileStream(manga.FilePath , FileMode.Open);
-
                 }
                 break;
         }
-
-
     }
-    public static void InitialBasicInfo (Manga manga)
+
+    public static void InitialBasicInfo(Manga manga)
     {
         switch (manga.Type)
         {
             case "":
                 {
-
                 }
                 break;
+
             default:
                 { }
                 break;
         }
         ;
     }
-    public static async Task InitialCover (Manga manga)
+
+    public static async Task InitialCover(Manga manga)
     {
         switch (manga.Type)
         {
@@ -217,26 +208,26 @@ internal static class MangaFactory
                     manga.CoverPath =
                        CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)
                         ?? CoverHelper.DefaultCoverPath;
-
                 }
                 break;
+
             default:
                 {
                     manga.CoverPath =
-                        await CoverHelper.TryCreatCoverFileAsync(manga.FilePath , null)
+                        await CoverHelper.TryCreatCoverFileAsync(manga.FilePath, null)
                         ?? CoverHelper.DefaultCoverPath;
-
                 }
                 break;
         }
     }
-    public static bool Exists (Manga manga)
+
+    public static bool Exists(Manga manga)
     {
         return Directory.Exists(manga.FilePath) || File.Exists(manga.FilePath);
-
     }
+
     [Obsolete]
-    public static void InitialEachFoldersInOrder (this ObservableCollectionVM ViewModel)
+    public static void InitialEachFoldersInOrder(this ObservableCollectionVM ViewModel)
     {
         // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
         foreach (var folder in ViewModel.MangaFolders.ToArray())

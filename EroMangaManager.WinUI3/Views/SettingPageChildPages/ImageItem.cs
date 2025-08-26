@@ -15,14 +15,14 @@
         /// </summary>
         public BitmapImage BitmapImage { set; get; } = new BitmapImage();
 
-        private ImageItem (StorageFile storage)
+        private ImageItem(StorageFile storage)
         {
             StorageFile = storage;
         }
 
-        private async Task InitializeImage ()
+        private async Task InitializeImage()
         {
-            var thumbnail = await StorageFile.GetThumbnailAsync(ThumbnailMode.SingleItem , 80);
+            var thumbnail = await StorageFile.GetThumbnailAsync(ThumbnailMode.SingleItem, 80);
             await BitmapImage.SetSourceAsync(thumbnail);
         }
 
@@ -31,7 +31,7 @@
         /// </summary>
         /// <param name="items"></param>
         /// <returns></returns>
-        public static async Task GetsAsync (ObservableCollection<ImageItem> items)
+        public static async Task GetsAsync(ObservableCollection<ImageItem> items)
         {
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
             var files = await storageFolder.GetFilesAsync();

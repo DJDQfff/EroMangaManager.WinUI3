@@ -14,7 +14,7 @@ public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyC
         set
         {
             mangaBook = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Manga)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
             order.Sources = BracketBasedStringParser.SplitByBrackets_KeepBracket(
                 Manga.FileDisplayName
             ); //value.Tags;
@@ -22,29 +22,28 @@ public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyC
     }
 
     public event Action<Manga> NameChanged;
+
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public RenameMangaByDragTag ()
+    public RenameMangaByDragTag()
     {
         InitializeComponent();
     }
 
-    private void SingleMangaRename_New (object sender , RoutedEventArgs e)
+    private void SingleMangaRename_New(object sender, RoutedEventArgs e)
     {
         var text = newnameBox.Text;
-        var result = MangaFileOperation.MoveManga(Manga , null , text);
+        var result = MangaFileOperation.MoveManga(Manga, null, text);
         if (result is not null)
         {
             Manga.FilePath = result;
-
         }
 
         NameChanged?.Invoke(Manga);
     }
 
-
-    [Obsolete("注意这里出过bug，调用loaded函数的时候，Mangabook可能属性还没刷新" , true)]
-    private void UserControl_Loaded (object sender , RoutedEventArgs e)
+    [Obsolete("注意这里出过bug，调用loaded函数的时候，Mangabook可能属性还没刷新", true)]
+    private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
         // 注意这里出过bug，调用loaded函数的时候，mangabook可能属性还没刷新
         //var a = BracketBasedStringParser.SplitByBrackets_Reserve(Manga.FileDisplayName);

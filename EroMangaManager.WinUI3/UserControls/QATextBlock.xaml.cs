@@ -4,12 +4,12 @@ namespace EroMangaManager.WinUI3.UserControls
 {
     public sealed partial class QATextBlock : UserControl
     {
-        public QATextBlock ()
+        public QATextBlock()
         {
             InitializeComponent();
         }
 
-        public QATextBlock (string question , string answer)
+        public QATextBlock(string question, string answer)
         {
             QuestionTextBlock.Text = question;
             AnswerTextBlock.Text = answer;

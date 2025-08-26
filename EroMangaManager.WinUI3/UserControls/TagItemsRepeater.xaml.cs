@@ -1,40 +1,27 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace EroMangaManager.WinUI3.UserControls;
+
 public sealed partial class TagItemsRepeater : UserControl, INotifyPropertyChanged
 {
-    Manga _manga;
+    private Manga _manga;
 
     public event PropertyChangedEventHandler PropertyChanged;
+
     public Manga Manga
     {
         get => _manga;
         set
         {
             _manga = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Manga)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
         }
     }
-    public TagItemsRepeater ()
+
+    public TagItemsRepeater()
     {
         InitializeComponent();
     }

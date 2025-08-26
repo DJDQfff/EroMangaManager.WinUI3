@@ -20,6 +20,7 @@ using Windows.Foundation.Collections;
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace EroMangaManager.WinUI3.UserControls;
+
 public sealed partial class TagTextBlock : UserControl
 {
     public string Text
@@ -29,12 +30,13 @@ public sealed partial class TagTextBlock : UserControl
             textblock.Text = value;
         }
     }
-    public TagTextBlock ()
+
+    public TagTextBlock()
     {
         InitializeComponent();
     }
 
-    private void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
+    private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         DataPackage dataPackage = new();
         dataPackage.SetText(textblock.Text);
@@ -43,9 +45,8 @@ public sealed partial class TagTextBlock : UserControl
         Clipboard.SetContent(dataPackage);
     }
 
-    private void MenuFlyoutItem_Click_1 (object sender , RoutedEventArgs e)
+    private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
     {
-        MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage) , new string[] { textblock.Text });
-
+        MainPage.Current.MainFrame.Navigate(typeof(SearchMangaPage), new string[] { textblock.Text });
     }
 }

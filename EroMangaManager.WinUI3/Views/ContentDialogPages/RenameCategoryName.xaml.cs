@@ -8,19 +8,19 @@ namespace EroMangaManager.WinUI3.Views.ContentDialogPages;
 /// </summary>
 public sealed partial class RenameCategoryName : ContentDialog
 {
-    public RenameCategoryName ()
+    public RenameCategoryName()
     {
         this.InitializeComponent();
     }
 
     public string Newname => RenameBox.Text;
 
-    private bool CheckNameValid (string name)
+    private bool CheckNameValid(string name)
     {
         return !string.IsNullOrWhiteSpace(RenameBox.Text);
     }
 
-    private void RenameBox_TextChanged (object sender , TextChangedEventArgs e)
+    private void RenameBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         IsPrimaryButtonEnabled = !string.IsNullOrWhiteSpace(RenameBox.Text);
     }

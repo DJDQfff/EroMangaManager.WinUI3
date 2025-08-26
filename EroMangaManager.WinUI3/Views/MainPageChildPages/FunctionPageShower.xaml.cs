@@ -1,5 +1,4 @@
-﻿
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 {
@@ -11,12 +10,12 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         /// <summary>
         /// 所有工具也的集中展示页面
         /// </summary>
-        public FunctionPageShower ()
+        public FunctionPageShower()
         {
             InitializeComponent();
         }
 
-        private void Button_Click (object sender , RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var name = button.Name;
@@ -35,12 +34,11 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             }
 
             //MainPage.Current.MainFrame.Navigate(type, App.Current.GlobalViewModel.ResultMangas);
-            FunctionFrame.Navigate(type , App.Current.GlobalViewModel.MangaList);
+            FunctionFrame.Navigate(type, App.Current.GlobalViewModel.MangaList);
             return;
-
         }
 
-        private void BackButton_Click (object sender , RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             FunctionFrame.GoBack();
         }

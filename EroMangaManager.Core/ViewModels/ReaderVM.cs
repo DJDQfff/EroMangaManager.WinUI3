@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-using EroMangaManager.Core.IOOperation;
+﻿using EroMangaManager.Core.IOOperation;
 
 namespace EroMangaManager.Core.ViewModels
 {
@@ -32,7 +30,7 @@ namespace EroMangaManager.Core.ViewModels
 
         private bool isworking;
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality" , "IDE0052:删除未读的私有成员" , Justification = "<挂起>")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0052:删除未读的私有成员", Justification = "<挂起>")]
         private readonly Queue<IArchiveEntry> entries = new();
 
         /// <summary>筛选过后的图片内容入口 </summary>
@@ -41,26 +39,27 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 对应词典
         /// </summary>
-        public Dictionary<IArchiveEntry , Stream> BitmapImagesDic { set; get; } = [];
+        public Dictionary<IArchiveEntry, Stream> BitmapImagesDic { set; get; } = [];
 
         /// <summary>
         ///
         /// </summary>
         /// <param entrykey="_manga"></param>
         /// <param entrykey="storageFile"></param>
-        public ReaderVM (Manga _manga)
+        public ReaderVM(Manga _manga)
         {
             Manga = _manga;
 
-            Stream = new FileStream(Manga.FilePath , FileMode.Open , FileAccess.Read);
+            Stream = new FileStream(Manga.FilePath, FileMode.Open, FileAccess.Read);
             ZipArchive = ArchiveFactory.Open(Stream);
             AllEntries = ZipArchive.Entries.ToList();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stream"></param>
-        public ReaderVM (Stream stream)
+        public ReaderVM(Stream stream)
         {
             Stream = stream;
             ZipArchive = ArchiveFactory.Open(Stream);
@@ -72,7 +71,7 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
-        public Stream GetOrAddShowedEntry (IArchiveEntry entry)
+        public Stream GetOrAddShowedEntry(IArchiveEntry entry)
         {
             if (isworking)
             {
@@ -107,7 +106,7 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
         /// <returns></returns>
         [Obsolete("一次加载所有图片，非常消耗性能，而且在加载完成前对集合进行操作容易出bug")]
-        public void ShowFilteredBitmapImages ()
+        public void ShowFilteredBitmapImages()
         {
             foreach (IArchiveEntry entry in FilteredArchiveImageEntries)
             {
@@ -121,7 +120,7 @@ namespace EroMangaManager.Core.ViewModels
         }
 
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的，传入null则为不进行筛选 </summary>
-        public void SelectEntries (FilteredImage[] filteredImages)
+        public void SelectEntries(FilteredImage[] filteredImages)
         {
             List<string> entrykeys = ZipArchive.SortEntriesByName();
 
@@ -139,7 +138,7 @@ namespace EroMangaManager.Core.ViewModels
         }
 
         /// <summary> </summary>
-        public void Dispose ()
+        public void Dispose()
         {
             _IsClosing = true;
 

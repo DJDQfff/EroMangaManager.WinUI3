@@ -10,7 +10,7 @@ public class StringsExtension : MarkupExtension
     //public UpperMode CharcaterMode { set; get; }
 
     ///<summary> </summary>
-    protected override object ProvideValue ()
+    protected override object ProvideValue()
     {
         return ResourceLoader.GetForViewIndependentUse().GetString(Uid.ToString());
     }

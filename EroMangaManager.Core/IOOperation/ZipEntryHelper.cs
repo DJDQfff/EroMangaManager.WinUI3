@@ -13,7 +13,7 @@ public static class ZipEntryHelper
     /// <param name="zipArchive"></param>
     /// <param name="sortFunc"></param>
     /// <returns></returns>
-    public static List<string> SortEntriesByName (this IArchive zipArchive , Action<IEnumerable<string>> sortFunc = null)
+    public static List<string> SortEntriesByName(this IArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
     {
         List<string> vs = [];
         foreach (var zipEntry in zipArchive.Entries)
@@ -40,9 +40,8 @@ public static class ZipEntryHelper
     /// <param name="entry"></param>
     /// <param name="filteredImages">要进行比较的数据，如果为null，则不进行数据比较</param>
     /// <returns></returns>
-    public static bool EntryFilter (this IArchiveEntry entry , FilteredImage[] filteredImages)
+    public static bool EntryFilter(this IArchiveEntry entry, FilteredImage[] filteredImages)
     {
-
         bool canuse = true;
 
         if (entry.IsDirectory)                      // 排除文件夹entry

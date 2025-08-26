@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<UserControl 
+<UserControl
     x:Class="EroMangaManager.WinUI3.UserControls.TagListOrder"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -12,8 +12,7 @@
             <Setter Property="HorizontalContentAlignment" Value="Center" />
         </Style>
         <DataTemplate x:Key="datatemplate" x:DataType="x:String">
-            <Border VerticalAlignment="Center"
-                    Background="{ThemeResource SystemAccentColorLight1}">
+            <Border VerticalAlignment="Center" Background="{ThemeResource SystemAccentColorLight1}">
                 <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal">
                     <Button x:Name="RemoveButton" Click="RemoveButton_Click">
                         <SymbolIcon Symbol="Remove" />
@@ -24,11 +23,8 @@
                         VerticalAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Text="{x:Bind}" />
-
                 </StackPanel>
-
             </Border>
-
         </DataTemplate>
         <DataTemplate x:Key="datatemplate2" x:DataType="x:String">
             <Border VerticalAlignment="Center" Background="{ThemeResource SystemAccentColorDark1}">
@@ -43,29 +39,25 @@
                         VerticalAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Text="{x:Bind}" />
-
                 </StackPanel>
-
             </Border>
-
         </DataTemplate>
-
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-            
-<!--DragItemsCompleted="{x:Bind SetNewName}"-->
+
+        <!--  DragItemsCompleted="{x:Bind SetNewName}"  -->
         <ListView
             x:Name="ListView1"
             Grid.Row="0"
             VerticalAlignment="Center"
             AllowDrop="True"
-                  CanDragItems="True"
-                  DragItemsCompleted="{x:Bind InvokeNewName}"
-                  CanReorderItems="True"
+            CanDragItems="True"
+            CanReorderItems="True"
+            DragItemsCompleted="{x:Bind InvokeNewName}"
             ItemTemplate="{StaticResource datatemplate}"
             ScrollViewer.HorizontalScrollBarVisibility="Auto"
             ScrollViewer.HorizontalScrollMode="Enabled"
@@ -76,7 +68,6 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
         </ListView>
-
 
         <ListView
             x:Name="ListView2"
@@ -92,7 +83,6 @@
                     <ItemsStackPanel Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
-
         </ListView>
     </Grid>
 </UserControl>

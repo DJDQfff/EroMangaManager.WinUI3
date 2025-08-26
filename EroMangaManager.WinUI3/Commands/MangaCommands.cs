@@ -1,7 +1,4 @@
-﻿using Microsoft.Windows.AppNotifications;
-using Microsoft.Windows.AppNotifications.Builder;
-
-using Org.BouncyCastle.Tls;
+﻿using Microsoft.Windows.AppNotifications.Builder;
 
 namespace EroMangaManager.WinUI3.Commands;
 
@@ -14,10 +11,10 @@ internal class MangaCommands
     public StandardUICommand StorageCommandRename = new();
     public static MangaCommands Instance { get; set; }
 
-    public static void Initial ()
+    public static void Initial()
     {
         Instance ??= new();
-        Instance.LocateInExplorer.ExecuteRequested += (sender , args) =>
+        Instance.LocateInExplorer.ExecuteRequested += (sender, args) =>
         {
             string folderpath = args.Parameter switch
             {
@@ -41,36 +38,33 @@ internal class MangaCommands
         {
             Symbol = Symbol.Delete
         };
-        Instance.StorageCommandDelete.ExecuteRequested += async (sender , args) =>
+        Instance.StorageCommandDelete.ExecuteRequested += async (sender, args) =>
         {
+            bool result = false;
+
             switch (args.Parameter)
             {
                 case Manga book:
                     {
-                        App.Current.GlobalViewModel.RemoveManga(book);
-                        App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(book);
-                        bool result = false;
                         try
                         {
                             result = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
 
+                            App.Current.GlobalViewModel.RemoveManga(book);
+                            App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(book);
                         }
-                        catch
+                        catch (UnauthorizedAccessException)
                         {
-                            Debug.Assert(result);
+                            App.Current.GlobalViewModel.AccessDenied();
                         }
-
 
                         //_ = await App.Current.GlobalViewModel.TryRemoveManga(book);
-
                     }
                     break;
-
-
             }
         };
 
-        Instance.StorageCommandRename.ExecuteRequested += async (sender , args) =>
+        Instance.StorageCommandRename.ExecuteRequested += async (sender, args) =>
         {
             switch (args.Parameter)
             {
@@ -84,7 +78,7 @@ internal class MangaCommands
             Symbol = Symbol.Rename
         };
 
-        Instance.OpenManga.ExecuteRequested += (sender , args) =>
+        Instance.OpenManga.ExecuteRequested += (sender, args) =>
         {
             if (args.Parameter is Manga book)
             {
@@ -101,7 +95,7 @@ internal class MangaCommands
 
                         case 1:
 
-                            Process.Start("explorer" , book.FilePath);
+                            Process.Start("explorer", book.FilePath);
                             break;
 
                         case > 1:
@@ -112,7 +106,7 @@ internal class MangaCommands
                             }
                             else
                             {
-                                Process.Start(SelectedExePath , $"\"{book.FilePath}\"");
+                                Process.Start(SelectedExePath, $"\"{book.FilePath}\"");
                             }
                             break;
                     }
@@ -129,7 +123,7 @@ internal class MangaCommands
             }
         };
 
-        Instance.ExportPDF.ExecuteRequested += async (sender , args) =>
+        Instance.ExportPDF.ExecuteRequested += async (sender, args) =>
         {
             switch (args.Parameter)
             {
@@ -138,6 +132,6 @@ internal class MangaCommands
                     break;
             }
         };
-        Instance.ExportPDF.IconSource = new SymbolIconSource() { Symbol = Symbol.Save , };
+        Instance.ExportPDF.IconSource = new SymbolIconSource() { Symbol = Symbol.Save, };
     }
 }

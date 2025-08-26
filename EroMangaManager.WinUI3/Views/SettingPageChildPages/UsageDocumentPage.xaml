@@ -5,13 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
-    xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <Grid>
 
-        <ScrollViewer>        
-            <TextBlock  IsTextSelectionEnabled="False" Text="{uid:Strings Uid=UsageLong}" TextWrapping="Wrap" />
+        <ScrollViewer>
+            <TextBlock
+                IsTextSelectionEnabled="False"
+                Text="{uid:Strings Uid=UsageLong}"
+                TextWrapping="Wrap" />
 
             <!--<StackPanel Orientation="Vertical">
                 <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_WhatISTheApp}" Question="{uid:Strings Uid=Question_WhatISTheApp}" />

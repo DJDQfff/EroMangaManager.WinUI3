@@ -14,7 +14,7 @@ public sealed partial class RemoveRepeatTags : Page
     /// <summary>
     ///
     /// </summary>
-    public RemoveRepeatTags ()
+    public RemoveRepeatTags()
     {
         InitializeComponent();
     }
@@ -23,7 +23,7 @@ public sealed partial class RemoveRepeatTags : Page
     ///
     /// </summary>
     /// <param name="e"></param>
-    protected override void OnNavigatedTo (NavigationEventArgs e)
+    protected override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
 
@@ -36,7 +36,7 @@ public sealed partial class RemoveRepeatTags : Page
         }
     }
 
-    private void SingleMangaRename_New (object sender , RoutedEventArgs e)
+    private void SingleMangaRename_New(object sender, RoutedEventArgs e)
     {
         var button = sender as Button;
         var stackpanel = button.Parent as StackPanel;
@@ -45,11 +45,11 @@ public sealed partial class RemoveRepeatTags : Page
 
         var control = stackpanel.FindName("newnameBox") as TextBox;
         var text = control.Text;
-        TrySetNewName(book , text);
+        TrySetNewName(book, text);
         RemoveIfTagRepeat(book);
     }
 
-    private void TrySetNewName (Manga book , string text)
+    private void TrySetNewName(Manga book, string text)
     {
         if (string.IsNullOrWhiteSpace(text))
         {
@@ -61,15 +61,15 @@ public sealed partial class RemoveRepeatTags : Page
             {
                 // TODO 重命名可能存在bug，如重复名称
                 string oldname = book.FilePath;
-                string newname = Path.Combine(Path.GetDirectoryName(oldname) , text + ".zip");
-                System.IO.File.Move(oldname , newname);
-                book.FilePath = Path.Combine(book.FolderPath , text + ".zip");
+                string newname = Path.Combine(Path.GetDirectoryName(oldname), text + ".zip");
+                System.IO.File.Move(oldname, newname);
+                book.FilePath = Path.Combine(book.FolderPath, text + ".zip");
             }
             catch { }
         }
     }
 
-    void RemoveIfTagRepeat (Manga book)
+    private void RemoveIfTagRepeat(Manga book)
     {
         if (!book.Tags.ContainRepeat())
         {
@@ -77,7 +77,7 @@ public sealed partial class RemoveRepeatTags : Page
         }
     }
 
-    private void Button_Click (object sender , RoutedEventArgs e)
+    private void Button_Click(object sender, RoutedEventArgs e)
     {
         var button = sender as Button;
 
@@ -86,7 +86,7 @@ public sealed partial class RemoveRepeatTags : Page
         RepaetBooks.Remove(book);
     }
 
-    private void TagListOrder_Loaded (object sender , RoutedEventArgs e)
+    private void TagListOrder_Loaded(object sender, RoutedEventArgs e)
     {
         var order = sender as TagListOrder;
         var manga = order.DataContext as Manga;
@@ -94,18 +94,18 @@ public sealed partial class RemoveRepeatTags : Page
         order.Sources = items;
     }
 
-    private void newnameBox_TextChanged (object sender , TextChangedEventArgs e)
+    private void newnameBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         var textbox = sender as TextBox;
         var book = textbox.DataContext as Manga;
 
         var text = textbox.Text;
         //TODO 这有严重bug，每次文字切换，会直接改名
-        TrySetNewName(book , text);
+        TrySetNewName(book, text);
         RemoveIfTagRepeat(book);
     }
 
-    private void UserControl_Loaded (object sender , RoutedEventArgs e)
+    private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
         //var control = sender as UserControl;
         //var newnamebox = control.FindName("newnamebox");

@@ -7,7 +7,7 @@ namespace EroMangaManager.WinUI3.UserControls;
 
 public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
 {
-    IEnumerable<string> sources;
+    private IEnumerable<string> sources;
 
     public IEnumerable<string> Sources
     {
@@ -36,16 +36,15 @@ public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
                 list.Add(tag as string);
             }
             return string.Concat(list);
-
         }
     }
 
-    private void InvokeNewName ()
+    private void InvokeNewName()
     {
-        PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(NewName)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NewName)));
     }
 
-    private void AddButton_Click (object sender , RoutedEventArgs e)
+    private void AddButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button)
         {
@@ -58,14 +57,12 @@ public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
         }
         //SetNewName();
         InvokeNewName();
-
     }
 
-    private void RemoveButton_Click (object sender , RoutedEventArgs e)
+    private void RemoveButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button button)
         {
-
             var tag = button.DataContext as string;
             var container = ListView1.ContainerFromItem(tag);
             var index = ListView1.IndexFromContainer(container);
@@ -87,7 +84,7 @@ public sealed partial class TagListOrder : UserControl, INotifyPropertyChanged
     //    NewName = string.Concat( list);
     //}
 
-    public TagListOrder ()
+    public TagListOrder()
     {
         InitializeComponent();
     }

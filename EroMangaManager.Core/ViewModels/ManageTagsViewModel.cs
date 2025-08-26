@@ -11,16 +11,16 @@ public partial class ManageTagsViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<string> displayedTags;
 
-    private Dictionary<string , ObservableCollection<string>> keyValuePairs;
+    private Dictionary<string, ObservableCollection<string>> keyValuePairs;
 
     /// <summary>
     ///
     /// </summary>
-    public ManageTagsViewModel ()
+    public ManageTagsViewModel()
     {
         var a = DatabaseController.TagCategory_QueryAll();
 
-        keyValuePairs = a.ToDictionary(x => x.Key , y => new ObservableCollection<string>(y.Value));
+        keyValuePairs = a.ToDictionary(x => x.Key, y => new ObservableCollection<string>(y.Value));
         Categorys = new(a.Keys);
     }
 
@@ -63,7 +63,7 @@ public partial class ManageTagsViewModel : ObservableObject
     /// <returns></returns>
     public ObservableCollection<string> this[string category] => keyValuePairs[category];
 
-    partial void OnDisplayedCategoryChanged (string value)
+     partial void OnDisplayedCategoryChanged(string value)
     {
         if (value is not null)
         {
@@ -77,11 +77,11 @@ public partial class ManageTagsViewModel : ObservableObject
     /// <param name="category"></param>
     /// <returns></returns>
     [RelayCommand]
-    public void AddCategory (string category)
+    public void AddCategory(string category)
     {
         if (!string.IsNullOrWhiteSpace(category))
         {
-            keyValuePairs.Add(category , new ObservableCollection<string>());
+            keyValuePairs.Add(category, new ObservableCollection<string>());
             Categorys.Add(category);
             OnPropertyChanged(nameof(Categorys));
             CategorysChanged?.Invoke();
@@ -92,7 +92,7 @@ public partial class ManageTagsViewModel : ObservableObject
     /// 传入tags，先过滤已分类的tag，剩下的全部挪到未分类里面
     /// </summary>
     /// <param name="tags"></param>
-    public void AddUnCategoryTags (IEnumerable<string> tags)
+    public void AddUnCategoryTags(IEnumerable<string> tags)
     {
         var a = tags.Except(Tags).Distinct();
 
@@ -104,7 +104,7 @@ public partial class ManageTagsViewModel : ObservableObject
     /// </summary>
     /// <param name="category"></param>
     [RelayCommand]
-    public void DeleteCategory (string category)
+    public void DeleteCategory(string category)
     {
         UnCategoryTags.AddRange(keyValuePairs[category]);
         Categorys.Remove(category);
@@ -119,7 +119,7 @@ public partial class ManageTagsViewModel : ObservableObject
     /// <param name="oldcategory"></param>
     /// <param name="newcategory"></param>
     /// <param name="tags"></param>
-    public void TagChangeCategory (string oldcategory , string newcategory , IList<string> tags)
+    public void TagChangeCategory(string oldcategory, string newcategory, IList<string> tags)
     {
         foreach (var tag in tags)
         {

@@ -8,7 +8,7 @@ namespace EroMangaManager.WinUI3;
 /// </summary>
 public sealed partial class MainWindow : Window
 {
-    public MainWindow ()
+    public MainWindow()
     {
         InitializeComponent();
         ExtendsContentIntoTitleBar = true;

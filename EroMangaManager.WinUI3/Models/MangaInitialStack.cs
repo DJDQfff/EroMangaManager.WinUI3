@@ -1,16 +1,14 @@
-﻿
-
-
-namespace EroMangaManager.WinUI3.Models;
+﻿namespace EroMangaManager.WinUI3.Models;
 
 internal class MangaInitialStack
 {
     public bool IsWorking;
 
-    Stack<Queue<Manga>> stacks = new();
+    private Stack<Queue<Manga>> stacks = new();
 
-    int a { set; get; }
-    public void Add (IEnumerable<Manga> mangas)
+    private int a { set; get; }
+
+    public void Add(IEnumerable<Manga> mangas)
     {
         if (!mangas.Any())
             return;
@@ -18,16 +16,15 @@ internal class MangaInitialStack
         var queue = new Queue<Manga>(mangas);
         stacks.Push(queue);
     }
-    public async Task StartAsync ()
-    {
 
+    public async Task StartAsync()
+    {
         if (IsWorking)
         {
             return;
         }
         else
         {
-
             IsWorking = true;
             while (IsWorking)
             {
@@ -43,7 +40,6 @@ internal class MangaInitialStack
                             await MangaFactory.InitialCover(manga);
 
                             await MangaFactory.InitialFileSize(manga);
-
                         }
                     }
                     else
@@ -51,13 +47,11 @@ internal class MangaInitialStack
                         _ = stacks.Pop();
                     }
                 }
-
                 else
                 {
                     IsWorking = false;
                 }
             }
-
         }
     }
 }

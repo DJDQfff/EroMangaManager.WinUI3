@@ -10,7 +10,7 @@ namespace EroMangaDatabase
         /// 移除单个UWPToken
         /// </summary>
         /// <param name="path"></param>
-        public void UWPStorageToken_RemoveSingle (string path)
+        public void UWPStorageToken_RemoveSingle(string path)
         {
             var a = database.UWPAccessIStorages.Single(x => x.Path == path);
             database.Remove(a);
@@ -23,12 +23,12 @@ namespace EroMangaDatabase
         /// <param name="path"></param>
         /// <param name="token"></param>
         /// <param name="fileoffolder"></param>
-        public void UWPStorageToken_AddSingle (string path , string token , bool fileoffolder)
+        public void UWPStorageToken_AddSingle(string path, string token, bool fileoffolder)
         {
             var access = new UWPAccessIStorage()
             {
-                AccessToken = token ,
-                Path = path ,
+                AccessToken = token,
+                Path = path,
                 IsFileOrFolder = fileoffolder
             };
 
@@ -40,7 +40,7 @@ namespace EroMangaDatabase
         /// 获取所有UWPToken
         /// </summary>
         /// <returns></returns>
-        public UWPAccessIStorage[] UWPStorageToken_QueryAll ()
+        public UWPAccessIStorage[] UWPStorageToken_QueryAll()
         {
             var a = database.UWPAccessIStorages.ToArray();
             return a;

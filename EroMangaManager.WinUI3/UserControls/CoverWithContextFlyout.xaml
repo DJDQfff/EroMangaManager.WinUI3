@@ -4,9 +4,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:commands="using:EroMangaManager.WinUI3.Commands"
-    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:EroMangaManager.WinUI3.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     MaxWidth="400"
@@ -20,12 +18,11 @@
                 <MenuFlyoutItem
                     Command="{x:Bind commands:MangaCommands.Instance.LocateInExplorer}"
                     CommandParameter="{x:Bind Source, Mode=OneWay}"
-                                Text="{uid:Strings Uid=LocateInExplorer}" />
+                    Text="{uid:Strings Uid=LocateInExplorer}" />
                 <MenuFlyoutItem
                     Command="{x:Bind commands:MangaCommands.Instance.ExportPDF}"
                     CommandParameter="{x:Bind Source, Mode=OneWay}"
                     Text="{uid:Strings Uid=ExportToPDF}" />
-
             </MenuFlyoutSubItem>
 
             <MenuFlyoutItem
@@ -44,7 +41,7 @@
             <MenuFlyoutSubItem
                 x:Name="moveto"
                 Icon="MoveToFolder"
-                Loaded="moveto_Loaded"
+                Loaded="Moveto_Loaded"
                 Text="{uid:Strings Uid=MoveToOtherFolder}" />
             <MenuFlyoutSeparator />
             <MenuFlyoutItem
@@ -58,6 +55,6 @@
     <Image
         x:Name="image"
         ContextFlyout="{StaticResource flyout}"
-        ImageFailed="image_ImageFailed"
+        ImageFailed="Image_ImageFailed"
         Source="{x:Bind Source.CoverPath, Mode=OneWay}" />
 </UserControl>

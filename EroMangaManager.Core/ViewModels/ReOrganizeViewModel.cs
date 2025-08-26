@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EroMangaManager.Core.ViewModels;
+﻿namespace EroMangaManager.Core.ViewModels;
 
 /// <summary>
 /// 重新管理页面
@@ -10,7 +6,7 @@ namespace EroMangaManager.Core.ViewModels;
 /// <remarks>
 ///
 /// </remarks>
-public class ReOrganizeViewModel () : ObservableObject
+public class ReOrganizeViewModel() : ObservableObject
 {
     /// <summary>
     ///

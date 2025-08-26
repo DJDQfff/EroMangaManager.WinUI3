@@ -5,7 +5,7 @@ namespace EroMangaManager.WinUI3.Views.ContentDialogPages
 {
     public sealed partial class SettingDialog : ContentDialog
     {
-        public SettingDialog ()
+        public SettingDialog()
         {
             this.InitializeComponent();
         }

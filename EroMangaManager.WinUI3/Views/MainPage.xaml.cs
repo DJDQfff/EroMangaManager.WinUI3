@@ -1,8 +1,6 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
 // 上介绍了“空白页”项模板
 
-using System.Runtime.CompilerServices;
-
 namespace EroMangaManager.WinUI3.Views
 {
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
@@ -16,7 +14,7 @@ namespace EroMangaManager.WinUI3.Views
         /// <summary>
         ///
         /// </summary>
-        public MainPage ()
+        public MainPage()
         {
             InitializeComponent();
 
@@ -27,17 +25,17 @@ namespace EroMangaManager.WinUI3.Views
         ///
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
             var defaultfolder = App.Current.GlobalViewModel.MangaFolders.FirstOrDefault();
 
-            MainFrame.Navigate(typeof(Bookcase) , defaultfolder);
+            MainFrame.Navigate(typeof(Bookcase), defaultfolder);
         }
 
-        public void MainNavigationView_ItemInvoked (
-            NavigationView sender ,
+        public void MainNavigationView_ItemInvoked(
+            NavigationView sender,
             NavigationViewItemInvokedEventArgs args
         )
         {
@@ -69,12 +67,12 @@ namespace EroMangaManager.WinUI3.Views
             }
         }
 
-        private void UpdateRecordItem_Tapped (object sender , TappedRoutedEventArgs e)
+        private void UpdateRecordItem_Tapped(object sender, TappedRoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(UpdateRecordsPage));
         }
 
-        private void UsageButton_Tapped (object sender , TappedRoutedEventArgs e)
+        private void UsageButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(UsageDocumentPage));
         }

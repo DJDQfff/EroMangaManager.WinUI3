@@ -10,7 +10,7 @@ namespace EroMangaManager.WinUI3.Views.SettingPageChildPages
         /// <summary>
         ///
         /// </summary>
-        public UsageDocumentPage ()
+        public UsageDocumentPage()
         {
             InitializeComponent();
         }

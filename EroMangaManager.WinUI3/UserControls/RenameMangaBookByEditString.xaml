@@ -7,8 +7,8 @@
     xmlns:local="using:EroMangaManager.WinUI3.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
-             MaxHeight="400"
-             mc:Ignorable="d">
+    MaxHeight="400"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
         <Style TargetType="TextBlock">
@@ -35,14 +35,12 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackPanel>
-                            <TextBlock Text="{x:Bind Manga.FolderPath, Mode=OneWay}" />
-            <TextBlock
-                x:Name="oldname"
-                
-                VerticalAlignment="Center"
-                Text="{x:Bind Manga.FileDisplayName, Mode=OneWay}"
-                TextWrapping="Wrap" />
-
+                <TextBlock Text="{x:Bind Manga.FolderPath, Mode=OneWay}" />
+                <TextBlock
+                    x:Name="oldname"
+                    VerticalAlignment="Center"
+                    Text="{x:Bind Manga.FileDisplayName, Mode=OneWay}"
+                    TextWrapping="Wrap" />
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Vertical">
                 <TextBlock
@@ -50,11 +48,8 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Foreground="Red"
-                    HorizontalTextAlignment="Center" />            
-                <Grid
-                    
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center">
+                    HorizontalTextAlignment="Center" />
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="auto" />
@@ -78,10 +73,7 @@
                     Grid.Row="4"
                     Click="RenameButton_Click"
                     Content="{uid:Strings Uid=RenameFile}" />
-
             </StackPanel>
-
-
         </Grid>
     </Grid>
 </UserControl>

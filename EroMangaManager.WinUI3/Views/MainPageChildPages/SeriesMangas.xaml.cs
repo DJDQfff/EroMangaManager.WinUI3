@@ -1,7 +1,6 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-
 namespace EroMangaManager.WinUI3.Views.MainPageChildPages;
 
 /// <summary>
@@ -9,14 +8,14 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages;
 /// </summary>
 public sealed partial class SeriesMangas : Page
 {
-    readonly ObservableCollection<Manga> books = [];
+    private readonly ObservableCollection<Manga> books = [];
 
-    public SeriesMangas ()
+    public SeriesMangas()
     {
         this.InitializeComponent();
     }
 
-    protected override void OnNavigatedTo (NavigationEventArgs e)
+    protected override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
         //foreach (var book in App.Current.GlobalViewModel.ResultMangas)

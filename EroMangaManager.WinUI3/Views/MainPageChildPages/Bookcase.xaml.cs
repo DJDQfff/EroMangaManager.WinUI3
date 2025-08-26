@@ -1,7 +1,6 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 using System.ComponentModel;
-using System.Reflection;
 
 namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 {
@@ -10,9 +9,10 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
     /// </summary>
     public sealed partial class Bookcase : Page, INotifyPropertyChanged
     {
-
         public event PropertyChangedEventHandler PropertyChanged;
-        string index = null;
+
+        private string index = null;
+
         public string GridViewItemTemplateIndex
         {
             get => index;
@@ -25,11 +25,10 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     Bookcase_GridView.ItemTemplate = Resources[key] as DataTemplate;
                     //_ = new DataTemplate();//不知道这个干嘛的
                     App.Current.AppConfig.AppConfig.General.BookcaseTemplateKey = index;
-
                 }
-
             }
         }
+
         private MangasGroup mangasGroup;
 
         public MangasGroup MangasGroup
@@ -37,19 +36,18 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             get => mangasGroup;
             set
             {
-
                 mangasGroup = value;
                 Bookcase_GridView.ItemsSource = value.Mangas;
                 Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
 
-                PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(MangasGroup)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MangasGroup)));
             }
         }
 
         /// <summary>
         ///
         /// </summary>
-        public Bookcase ()
+        public Bookcase()
         {
             InitializeComponent();
             GridViewItemTemplateIndex = "1";
@@ -59,7 +57,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         /// 导航时，传入要绑定的数据
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -78,7 +76,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         }
 
         //TODO 本子名翻译功能。 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug
-        private async void TranslateEachMangaName (object sender , RoutedEventArgs e)
+        private async void TranslateEachMangaName(object sender, RoutedEventArgs e)
         {
             var button = sender as AppBarButton;
             button.IsEnabled = false;
@@ -102,14 +100,12 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             button.IsEnabled = true;
         }
 
-        private void Order (object sender , RoutedEventArgs e)
+        private void Order(object sender, RoutedEventArgs e)
         {
             MangasGroup?.SortMangas(x => x.FileSize);
         }
 
-
-
-        private void combochangefolder_SelectionChanged (object sender , SelectionChangedEventArgs e)
+        private void combochangefolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         { // TODO 这里应该加一个：切换时，folde加载队列也应该跟着切换
             var a = App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder;
             if (a is null)
@@ -122,13 +118,11 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             );
         }
 
-
-        private void MenuFlyoutItem_Click (object sender , RoutedEventArgs e)
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
             var item = sender as MenuFlyoutItem;
             var index = item.Tag as string;
             GridViewItemTemplateIndex = index;
-
         }
     }
 }

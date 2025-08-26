@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        protected override DataTemplate SelectTemplateCore (object item)
+        protected override DataTemplate SelectTemplateCore(object item)
         {
             return item switch
             {

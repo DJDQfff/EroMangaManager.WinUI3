@@ -17,11 +17,11 @@ public sealed partial class MangaTagsView : UserControl, INotifyPropertyChanged
         set
         {
             mangaBook = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Manga)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
         }
     }
 
-    public MangaTagsView ()
+    public MangaTagsView()
     {
         InitializeComponent();
     }

@@ -45,7 +45,7 @@ namespace EroMangaDatabase.Tables
         ///
         /// </summary>
         /// <param name="connectionString"></param>
-        public DataBase_Version3 (string connectionString)
+        public DataBase_Version3(string connectionString)
         {
             ConnectionString = connectionString;
         }
@@ -54,7 +54,7 @@ namespace EroMangaDatabase.Tables
         /// 配置数据库
         /// </summary>
         /// <param name="optionsBuilder"></param>
-        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
             Debug.WriteLine(ConnectionString);

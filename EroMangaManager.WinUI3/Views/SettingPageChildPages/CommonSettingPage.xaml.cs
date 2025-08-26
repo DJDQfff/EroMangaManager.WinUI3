@@ -10,7 +10,7 @@ namespace EroMangaManager.WinUI3.Views.SettingPageChildPages
         /// <summary>
         /// 一般设置页面
         /// </summary>
-        public CommonSettingPage ()
+        public CommonSettingPage()
         {
             InitializeComponent();
         }

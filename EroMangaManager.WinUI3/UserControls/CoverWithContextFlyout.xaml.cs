@@ -2,13 +2,12 @@
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 using System.ComponentModel;
-using System.Threading.Tasks;
 
 namespace EroMangaManager.WinUI3.UserControls;
 
 public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropertyChanged
 {
-    Manga source;
+    private Manga source;
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,21 +17,21 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
         set
         {
             source = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Source)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Source)));
         }
     }
 
-    public CoverWithContextFlyout ()
+    public CoverWithContextFlyout()
     {
         InitializeComponent();
     }
 
-    private void UserControl_DoubleTapped (object sender , DoubleTappedRoutedEventArgs e)
+    private void UserControl_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
     {
         MangaCommands.Instance.OpenManga.Execute(Source);
     }
 
-    private void moveto_Loaded (object sender , RoutedEventArgs e)
+    private void Moveto_Loaded(object sender, RoutedEventArgs e)
     {
         moveto.Items.Clear();
         var ways = App.Current.GlobalViewModel.MangaFolders;
@@ -46,29 +45,34 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
                 item.IsEnabled = false;
                 continue;
             }
-            item.Click += async (sender , e) =>
+            item.Click += async (sender, e) =>
             {
-                var result = await Task.Run(() =>
-                  {
-                      return MangaFileOperation.MoveManga(
+                string result = null;
+                try
+                {
+                    result = await Task.Run(() =>
+                       {
+                           return MangaFileOperation.MoveManga(
 
-                          Source ,
-                          way.FolderPath ,
-                          null
-                      );
-                  });
+                               Source,
+                               way.FolderPath,
+                               null
+                           );
+                       });
+
+                }
+                catch (UnauthorizedAccessException ) { App.Current.GlobalViewModel.AccessDenied(); }
                 if (result is not null)
                 {
                     Source.FilePath = result;
 
                     App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
-
                 }
             };
         }
     }
 
-    private void image_ImageFailed (object sender , ExceptionRoutedEventArgs e)
+    private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
     {
         image.Source = CoverHelper.ErrorCoverImage;
     }

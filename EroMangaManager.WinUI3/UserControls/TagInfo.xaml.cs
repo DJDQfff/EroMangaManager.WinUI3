@@ -1,5 +1,4 @@
-﻿
-//https://go.microsoft.com/fwlink/?LinkId=234236 上介绍了“用户控件”项模板
+﻿//https://go.microsoft.com/fwlink/?LinkId=234236 上介绍了“用户控件”项模板
 
 namespace EroMangaManager.WinUI3.UserControls
 {
@@ -21,7 +20,7 @@ namespace EroMangaManager.WinUI3.UserControls
         /// <summary>
         /// 构造
         /// </summary>
-        public TagInfo ()
+        public TagInfo()
         {
             this.InitializeComponent();
         }

@@ -8,8 +8,8 @@
     xmlns:setting="using:CommunityToolkit.WinUI.Controls"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     xmlns:usercontrol="using:EroMangaManager.WinUI3.UserControls.SettingParts"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-      mc:Ignorable="d">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
     <Page.Resources>
         <Style TargetType="ComboBox">
             <Setter Property="HorizontalAlignment" Value="Stretch" />

@@ -1,7 +1,4 @@
-﻿
-using System.Threading.Tasks;
-
-namespace EroMangaManager.Core.ViewModels;
+﻿namespace EroMangaManager.Core.ViewModels;
 
 /// <summary>
 /// 本子标签管理VM
@@ -15,13 +12,14 @@ public partial class MangaSearchViewModel : ObservableObject
     /// 所有要查重的manga集合
     /// </summary>
     public List<Manga> Sources { set; get; } = [];
+
     /// <summary>
     /// 选中项
     /// </summary>
     public ObservableCollection<string> RequiredTags { get; set; } = [];
 
     [ObservableProperty]
-    string requiredText = "";
+    private string requiredText = "";
 
     /// <summary>
     /// 对外公开的所有项
@@ -32,27 +30,26 @@ public partial class MangaSearchViewModel : ObservableObject
     /// 可能需要的tag
     /// </summary>
     public ObservableCollection<string> AlailableTags { get; } = [];
+
     /// <summary>
     ///
     /// </summary>
     /// <param name="query"></param>
     /// <returns></returns>
-    public void FiltTags (string query)
+    public void FiltTags(string query)
     {
         AlailableTags.Clear();
 
         foreach (var x in AllTags.Except(RequiredTags))
         {
-
             if (x.Contains(query))
             {
                 AlailableTags.Add(x);
             }
         }
         ;
-
-
     }
+
     /// <summary>
     /// 按搜索条件筛选出来的本子
     /// </summary>
@@ -61,33 +58,26 @@ public partial class MangaSearchViewModel : ObservableObject
     /// <summary>
     /// 按条件查找manga
     /// </summary>
-    public void Search ()
+    public void Search()
     {
         ResultMangas.Clear();
 
         // TODO 这里用了好几个LINQ，如果量比较大，会影响性能
         var a = Sources
-        //.Where(x => x.MangaName.Contains(RequiredText.Trim())) // 
-        //.Where(x => RequiredTags.All(y => x.Tags.Contains(y))) // 
+        //.Where(x => x.MangaName.Contains(RequiredText.Trim())) //
+        //.Where(x => RequiredTags.All(y => x.Tags.Contains(y))) //
         .Where(x => RequiredText.Split(' ').Any(y => x.FileDisplayName.Contains(y)));
         if (RequiredTags.Count != 0)
         {
             a = a.Where(x => RequiredTags.Any(y => x.FileDisplayName.Contains(y)));
-
         }
         a = a.OrderBy(x => x.MangaName);
 
         foreach (var x in a)
         {
-
             ResultMangas.Add(x);
-
         }
 
         //}
-
-
-
-
     }
 }

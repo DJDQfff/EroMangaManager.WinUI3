@@ -6,8 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     xmlns:usercontrol="using:EroMangaManager.WinUI3.UserControls"
-               CloseButtonText="关闭"
-               Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-               mc:Ignorable="d">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    CloseButtonText="关闭"
+    mc:Ignorable="d">
     <usercontrol:RenameMangaByEditString x:Name="renamecontrol" />
 </ContentDialog>
