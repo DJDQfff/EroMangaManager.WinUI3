@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -158,15 +159,44 @@ internal static class MangaFactory
 
     //    }
     //}
-    public static async Task InitialChapter(Manga manga)
+    public static  int InitialChapter(Manga manga)
     {
         switch (manga.Type)
         {
             case "":
                 {
-
+                    var directories = Directory.EnumerateDirectories(manga.FilePath, "*", new EnumerationOptions() { RecurseSubdirectories = true })
+                        .Count(folder => SupportedType.ImageType.Any(imagetype => Directory.EnumerateFiles(folder).Any(file => Path.GetExtension(file).ToLower() == imagetype )));
+                    return directories;
                 }break;
-            default: { }break;
+            default: {
+                     var archive = ArchiveFactory.Open(manga.FilePath);
+                    var folders = archive.Entries.Where(x => x.IsDirectory).ToList();
+                    for (var index = folders.Count-1; index >= 0; index--)
+                    {
+                        for(int index2 = index - 1; index2 >= 0; index2--)
+                        {
+                            var key1=folders[index].Key;
+                            var key2= folders[index2].Key;
+                            if (key1.Contains(key2) )
+                            {
+                            folders.RemoveAt(index2);
+                                break;
+                            }
+                            if (key2.Contains(key1))
+                            {
+                                folders.RemoveAt(index);
+                                break;
+                            }
+                        }
+                    } 
+                    var files=archive.Entries.Where(x =>! x.IsDirectory);
+
+
+                    var group=folders.Count(folder=>files.Any(file=>file.Key.Contains(folder.Key)));
+                    var group2 = files.Count(file => folders.Any(folder => file.Key.Contains(folder.Key)));
+                    return group;
+                }   break; 
         }
     }
     public static async Task InitialImageAmount(Manga manga)

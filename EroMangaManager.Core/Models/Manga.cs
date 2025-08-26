@@ -23,7 +23,7 @@ public partial class Manga : ObservableObject
     /// 章节。每个含有图片的文件夹视为一个chapter
     /// </summary>
     [ObservableProperty]
-    int chapter;
+    int chapterAmount;
     partial void OnFilePathChanged(string value)
     {
         if (Directory.Exists(FilePath))
