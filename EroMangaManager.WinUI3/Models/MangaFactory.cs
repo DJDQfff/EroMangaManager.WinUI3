@@ -7,6 +7,8 @@ using EroMangaManager.Core.Models;
 
 using SharpCompress.Common;
 
+using Windows.Web.Syndication;
+
 namespace EroMangaManager.WinUI3.Models;
 
 /// <summary>
@@ -156,7 +158,38 @@ internal static class MangaFactory
 
     //    }
     //}
-    public static async Task InitialFileSize(Manga manga)
+    public static async Task InitialChapter(Manga manga)
+    {
+        switch (manga.Type)
+        {
+            case "":
+                {
+
+                }break;
+            default: { }break;
+        }
+    }
+    public static async Task InitialImageAmount(Manga manga)
+    {
+        switch (manga.Type) {
+
+            case "":
+                {
+                    manga.ImageAmount = await Task.Run(() => Directory
+      .EnumerateFiles(manga.FilePath, "*.*", new EnumerationOptions() { RecurseSubdirectories = true })
+      .Count(x => SupportedType.ImageType.Contains(Path.GetExtension(x).ToLower())));
+                }break;
+            default:
+                {
+                    manga.ImageAmount = await Task.Run(() => 
+                       ArchiveFactory.Open(manga.FilePath).Entries
+                         .Count(x => SupportedType.ImageType.Contains( Path.GetExtension(x.Key).ToLower()))
+                    );
+
+                }
+                break;
+        }
+    }    public static async Task InitialFileSize(Manga manga)
     {
         switch (manga.Type)
         {

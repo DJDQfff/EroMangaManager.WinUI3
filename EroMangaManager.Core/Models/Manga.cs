@@ -10,10 +10,20 @@ public partial class Manga : ObservableObject
     [ObservableProperty]
     private string coverPath;
 
+    /// <summary>
+    /// 内里多少图像文件
+    /// </summary>
+    [ObservableProperty]
+    int imageAmount;
     /// <summary> 漫画文件路径 </summary>
     [ObservableProperty]
     private string filePath;
 
+    /// <summary>
+    /// 章节。每个含有图片的文件夹视为一个chapter
+    /// </summary>
+    [ObservableProperty]
+    int chapter;
     partial void OnFilePathChanged(string value)
     {
         if (Directory.Exists(FilePath))

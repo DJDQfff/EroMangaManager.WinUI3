@@ -10,14 +10,17 @@ namespace EroMangaManager.Core.ViewModels;
 /// <summary>
 /// 查找重复manga的viewmodel
 /// </summary>
-public class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string, Manga, RepeatMangasGroup>
+[ObservableObject]
+public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<string, Manga, RepeatMangasGroup>
 {
     /// <summary>
     /// 表示查重方法执行中
     /// </summary>
     private char[] chars = [' ', '-', '+', '~', '#'];
 
-    public bool isWorking = false;
+    [ObservableProperty]
+     bool isWorking = false;
+
 
     private static bool filtKeystring(string str) => !string.IsNullOrWhiteSpace(str);
 
