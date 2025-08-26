@@ -7,13 +7,13 @@ internal class FileSizeConverter : IValueConverter
         //版权声明：本文为博主原创文章，遵循 CC 4.0 BY - SA 版权协议，转载请附上原文出处链接和本声明。
         //原文链接：https://blog.csdn.net/qq395537505/article/details/51025812
 
-        var size = (long)value;
+        var size = System.Convert.ToDouble(value); //((double)value);
         string[] units = ["B", "KB", "MB", "GB", "TB", "PB"];
-        var mod = 1024;
+        double mod = 1024;
         int i = 0;
         while (size >= mod)
         {
-            size /= mod;
+            size /= (long)mod;
             i++;
         }
         return Math.Round((double)size) + units[i];
