@@ -5,6 +5,8 @@
     <converter:ControlVisibility x:Key="controlvisibilityconverter" />
     <converter:GetRandomSolidColorBrush x:Key="randomcolor" />
     <converter:FileSizeConverter x:Key="filesizeConverter" />
+    <converter:DisplayUnits x:Key="displayUnits" />
+
     <converter:ItemsConverter x:Key="itemsconverter" />
     <converter:LocalizationWordsConverter x:Key="uistringconverter" />
     <converter:OpenwayConverter2 x:Key="shortopenway" />

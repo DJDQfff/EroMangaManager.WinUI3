@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <TextBlock FontSize="20" Text="{x:Bind Manga.MangaName, Mode=OneWay}" />
         <Grid Grid.Row="1">
@@ -20,27 +21,25 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <local:CoverWithContextFlyout Grid.Column="0" Source="{x:Bind Manga, Mode=OneWay}" />
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <ListView Grid.Row="0" ItemsSource="{x:Bind Manga.Tags, Mode=OneWay}">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                            <Setter Property="VerticalContentAlignment" Value="Center" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="x:String">
-                            <local:TagTextBlock Text="{x:Bind}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <!--<local:TagItemsRepeater Manga="{x:Bind Manga,Mode=OneWay}" />-->
-                <TextBlock Grid.Row="1" Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
-            </Grid>
+            <ListView Grid.Column="1" ItemsSource="{x:Bind Manga.Tags, Mode=OneWay}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <local:TagTextBlock Text="{x:Bind}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<local:TagItemsRepeater Manga="{x:Bind Manga,Mode=OneWay}" />-->
         </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Margin="4" Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource filesizeConverter}}" />
+            <TextBlock Margin="4" Text="{x:Bind Manga.ChapterAmount, Mode=OneWay, Converter={StaticResource displayUnits}, ConverterParameter=0}" />
+            <TextBlock Margin="4" Text="{x:Bind Manga.ImageAmount, Mode=OneWay, Converter={StaticResource displayUnits}, ConverterParameter=1}" />
+        </StackPanel>
     </Grid>
 </UserControl>

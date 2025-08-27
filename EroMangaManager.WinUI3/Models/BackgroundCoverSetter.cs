@@ -25,7 +25,8 @@ internal class BackgroundCoverSetter
                 // 文件可能被删除
                 if (manga != null && MangaFactory.Exists(manga) /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
                 {
-                    manga.CoverPath = await MangaFactory.GetCoverFile(manga);
+                    manga.CoverPath = await Task.Run(() => MangaFactory.GetCoverFile(manga));
+
 
                     manga.FileSize = await Task.Run(() => MangaFactory.GetFileSize(manga));
                     manga.ImageAmount = await Task.Run(() => MangaFactory.CountImageAmount(manga));
