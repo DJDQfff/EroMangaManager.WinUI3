@@ -609,6 +609,10 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
           <source>图</source>
           <target state="new">图</target>
         </trans-unit>
+        <trans-unit id="SearchThisTag" translate="yes" xml:space="preserve">
+          <source>查找此Tag</source>
+          <target state="new">查找此Tag</target>
+        </trans-unit>
       </group>
     </body>
   </file>

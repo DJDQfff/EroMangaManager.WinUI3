@@ -11,7 +11,7 @@
     <UserControl.ContextFlyout>
         <MenuFlyout>
             <MenuFlyoutItem Click="MenuFlyoutItem_Click" Text="{strings:Strings Uid=Copy}" />
-            <MenuFlyoutItem Click="MenuFlyoutItem_Click_1" Text="{strings:Strings Uid=SearchByTag}" />
+            <MenuFlyoutItem Click="MenuFlyoutItem_Click_1" Text="{strings:Strings Uid=SearchThisTag}" />
         </MenuFlyout>
     </UserControl.ContextFlyout>
     <Border Background="{x:Bind Converter={StaticResource randomcolor}}">

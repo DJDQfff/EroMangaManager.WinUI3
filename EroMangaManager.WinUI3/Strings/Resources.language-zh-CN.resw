@@ -441,6 +441,9 @@
   <data name="SearchSimialr" xml:space="preserve">
     <value>查找相似</value>
   </data>
+  <data name="SearchThisTag" xml:space="preserve">
+    <value>查找此Tag</value>
+  </data>
   <data name="SelectExe" xml:space="preserve">
     <value>选择exe程序</value>
   </data>

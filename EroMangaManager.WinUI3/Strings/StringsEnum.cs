@@ -7,7 +7,7 @@
         HaveNoneBrackets,
         AllInBrackets, WhereContains,
         NotCorrectBracketPairs,
-        MoveToOtherFolder,
+        MoveToOtherFolder, SearchThisTag,
 
         ///<summary></summary>
         Answer_SupportedType,
