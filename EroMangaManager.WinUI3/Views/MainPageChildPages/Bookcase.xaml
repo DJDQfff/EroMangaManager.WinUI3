@@ -44,7 +44,7 @@
                     DisplayMemberPath="FolderPath"
                     ItemsSource="{x:Bind app:App.Current.GlobalViewModel.MangaFolders, Mode=OneWay}"
                     SelectedItem="{x:Bind app:App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder, Mode=TwoWay, Converter={StaticResource displayfolder}}"
-                    SelectionChanged="combochangefolder_SelectionChanged" />
+                    SelectionChanged="Combochangefolder_SelectionChanged" />
                 <!--<TextBlock x:Name="CommandText"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"

@@ -137,6 +137,7 @@ public static class CoverHelper
         }
         catch (Exception)
         {
+            // TODO 这里有一个预留的try-catch
             throw;
         }
     }

@@ -19,7 +19,6 @@ public partial class App : Application
     internal ObservableCollectionVM GlobalViewModel { get; private set; }
 
     internal BackgroundCoverSetter BackgroundCoverSetter { get; private set; } = new();
-    internal MangaInitialStack initialStack { get; private set; } = new();
     internal SettingViewModel AppConfig { get; private set; }
     internal string AppConfigPath { get; private set; }
     internal string LocalFolder = ApplicationData.Current.LocalFolder.Path;
@@ -162,6 +161,5 @@ public partial class App : Application
         var denied = ResourceLoader.GetForViewIndependentUse().GetString("AccessDenied");
         var appNotification = new AppNotificationBuilder().AddText(denied).BuildNotification();
         AppNotificationManager.Default.Show(appNotification);
-
     }
 }

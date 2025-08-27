@@ -105,7 +105,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             MangasGroup?.SortMangas(x => x.FileSize);
         }
 
-        private void combochangefolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Combochangefolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         { // TODO 这里应该加一个：切换时，folde加载队列也应该跟着切换
             var a = App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder;
             if (a is null)

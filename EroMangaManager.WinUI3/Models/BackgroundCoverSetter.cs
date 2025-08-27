@@ -25,11 +25,11 @@ internal class BackgroundCoverSetter
                 // 文件可能被删除
                 if (manga != null && MangaFactory.Exists(manga) /*&& manga.FileSize == 0*/ /*manga.CoverPath == CoverHelper.DefaultCoverPath*/)
                 {
-                    await MangaFactory.InitialCover(manga);
+                    manga.CoverPath = await MangaFactory.GetCoverFile(manga);
 
-                    await MangaFactory.InitialFileSize(manga);
-                    await MangaFactory.InitialImageAmount(manga);
-                    manga.ChapterAmount=MangaFactory.InitialChapter(manga);
+                    manga.FileSize = await Task.Run(() => MangaFactory.GetFileSize(manga));
+                    manga.ImageAmount = await Task.Run(() => MangaFactory.CountImageAmount(manga));
+                    manga.ChapterAmount = await Task.Run(() => MangaFactory.CountChapterAmount(manga));
                 }
                 _ = mangas.Remove(manga);//改回list了，又需要了 .不需要执行，stack的pop方法已经取出最上面的了
             }

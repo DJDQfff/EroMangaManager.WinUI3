@@ -54,9 +54,9 @@ public class MangaFileOperation
     /// <param name="newname">新名字</param>
     public static string MoveManga(Manga book, string targetfolder, string newname)
     {
-        targetfolder = targetfolder ?? book.FolderPath; //这个路径并没有验证是否存在
+        targetfolder ??= book.FolderPath; //这个路径并没有验证是否存在
 
-        newname = newname ?? book.FileDisplayName;
+        newname ??= book.FileDisplayName;
         var newpath = Path.Combine(targetfolder, newname + book.Type);
 
         // TODO 可能重名

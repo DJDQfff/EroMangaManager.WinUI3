@@ -67,7 +67,7 @@
                                 DataContext="{x:Bind}"
                                 FontSize="16"
                                 Text="{Binding ElementName=order, Path=NewName, Mode=OneWay}"
-                                TextChanged="newnameBox_TextChanged"
+                                TextChanged="NewnameBox_TextChanged"
                                 TextWrapping="Wrap" />
                             <StackPanel
                                 Grid.Row="0"

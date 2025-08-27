@@ -93,7 +93,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     if (
                         !App.Current.GlobalViewModel.EnsureAddFolder(
                             folder,
-                            out MangasGroup mangasFolder
+                            out _
                         )
                     )
                     {
@@ -137,11 +137,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     {
                         _ = DatabaseController.MangaFolder_AddSingle(chidlfolder);
                     }
-                    if (
-                        !App.Current.GlobalViewModel.EnsureAddFolder(
-                            chidlfolder,
-                            out MangasGroup mangaFolder
-                        )
+
+                    if (!App.Current.GlobalViewModel.EnsureAddFolder(chidlfolder, out _)
                     )
                     {
                         await App.Current.GlobalViewModel.StartInitial();

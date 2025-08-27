@@ -29,7 +29,7 @@ public sealed partial class TagCategorySelect : ContentDialog
 
     public string CategoryName => combobox.SelectedItem as string;
 
-    private void combobox_Loaded(object sender, RoutedEventArgs e)
+    private void Combobox_Loaded(object sender, RoutedEventArgs e)
     {
         var category = DatabaseController.TagCategory_Query();
         if (category != null)

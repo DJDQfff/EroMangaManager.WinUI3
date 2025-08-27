@@ -94,7 +94,7 @@ public sealed partial class RemoveRepeatTags : Page
         order.Sources = items;
     }
 
-    private void newnameBox_TextChanged(object sender, TextChangedEventArgs e)
+    private void NewnameBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         var textbox = sender as TextBox;
         var book = textbox.DataContext as Manga;

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
 
+using Org.BouncyCastle.Crypto.Digests;
+
 using SharpCompress.Common;
 
 using Windows.Web.Syndication;
@@ -61,8 +63,6 @@ internal static class MangaFactory
                   )
             );
 
-            App.Current.initialStack.Add(filteredfiles);
-
             foreach (var manga in filteredfiles)
             {
                 mangasFolder.Mangas.Add(manga);
@@ -76,8 +76,6 @@ internal static class MangaFactory
                          CoverPath = CoverHelper.DefaultCoverPath
                      }
                 ));
-
-            App.Current.initialStack.Add(folders);
 
             foreach (var manga in folders)
             {
@@ -159,28 +157,29 @@ internal static class MangaFactory
 
     //    }
     //}
-    public static  int InitialChapter(Manga manga)
+    public static int CountChapterAmount(Manga manga)
     {
         switch (manga.Type)
         {
             case "":
                 {
-                    var directories = Directory.EnumerateDirectories(manga.FilePath, "*", new EnumerationOptions() { RecurseSubdirectories = true })
-                        .Count(folder => SupportedType.ImageType.Any(imagetype => Directory.EnumerateFiles(folder).Any(file => Path.GetExtension(file).ToLower() == imagetype )));
-                    return directories;
-                }break;
-            default: {
-                     var archive = ArchiveFactory.Open(manga.FilePath);
+                    return Directory.EnumerateDirectories(manga.FilePath, "*", new EnumerationOptions() { RecurseSubdirectories = true })
+                         .Count(folder => SupportedType.ImageType.Any(imagetype => Directory.EnumerateFiles(folder).Any(file => Path.GetExtension(file).ToLower() == imagetype)));
+                }
+
+            default:
+                {
+                    var archive = ArchiveFactory.Open(manga.FilePath);
                     var folders = archive.Entries.Where(x => x.IsDirectory).ToList();
-                    for (var index = folders.Count-1; index >= 0; index--)
+                    for (var index = folders.Count - 1; index >= 0; index--)
                     {
-                        for(int index2 = index - 1; index2 >= 0; index2--)
+                        for (int index2 = index - 1; index2 >= 0; index2--)
                         {
-                            var key1=folders[index].Key;
-                            var key2= folders[index2].Key;
-                            if (key1.Contains(key2) )
+                            var key1 = folders[index].Key;
+                            var key2 = folders[index2].Key;
+                            if (key1.Contains(key2))
                             {
-                            folders.RemoveAt(index2);
+                                folders.RemoveAt(index2);
                                 break;
                             }
                             if (key2.Contains(key1))
@@ -189,60 +188,53 @@ internal static class MangaFactory
                                 break;
                             }
                         }
-                    } 
-                    var files=archive.Entries.Where(x =>! x.IsDirectory);
+                    }
+                    var files = archive.Entries.Where(x => !x.IsDirectory);
 
-
-                    var group=folders.Count(folder=>files.Any(file=>file.Key.Contains(folder.Key)));
-                    var group2 = files.Count(file => folders.Any(folder => file.Key.Contains(folder.Key)));
+                    var group = folders.Count(folder => files.Any(file => file.Key.Contains(folder.Key)));
                     return group;
-                }   break; 
+                }
         }
     }
-    public static async Task InitialImageAmount(Manga manga)
-    {
-        switch (manga.Type) {
 
-            case "":
-                {
-                    manga.ImageAmount = await Task.Run(() => Directory
-      .EnumerateFiles(manga.FilePath, "*.*", new EnumerationOptions() { RecurseSubdirectories = true })
-      .Count(x => SupportedType.ImageType.Contains(Path.GetExtension(x).ToLower())));
-                }break;
-            default:
-                {
-                    manga.ImageAmount = await Task.Run(() => 
-                       ArchiveFactory.Open(manga.FilePath).Entries
-                         .Count(x => SupportedType.ImageType.Contains( Path.GetExtension(x.Key).ToLower()))
-                    );
-
-                }
-                break;
-        }
-    }    public static async Task InitialFileSize(Manga manga)
+    public static int CountImageAmount(Manga manga)
     {
         switch (manga.Type)
         {
             case "":
                 {
-                    manga.FileSize = await Task.Run(() =>
-                    {
-                        return Directory
+                    return Directory
       .EnumerateFiles(manga.FilePath, "*.*", new EnumerationOptions() { RecurseSubdirectories = true })
-      .Sum(x => new FileInfo(x).Length);
-                    });
+      .Count(x => SupportedType.ImageType.Contains(Path.GetExtension(x).ToLower()));
                 }
-                break;
+            default:
+                {
+                    return
+                       ArchiveFactory.Open(manga.FilePath).Entries
+                         .Count(x => SupportedType.ImageType.Contains(Path.GetExtension(x.Key).ToLower()))
+                    ;
+                }
+        }
+    }
+
+    public static long GetFileSize(Manga manga)
+    {
+        switch (manga.Type)
+        {
+            case "":
+                {
+                    return Directory
+                        .EnumerateFiles(manga.FilePath, "*.*", new EnumerationOptions() { RecurseSubdirectories = true })
+                        .Sum(x => new FileInfo(x).Length);
+                }
 
             default:
                 {
-                    var fileinfo = new FileInfo(manga.FilePath);
-                    manga.FileSize = fileinfo.Length;
+                    return new FileInfo(manga.FilePath).Length;
 
                     // filestream 也可以获取length;
                     //var rstr = new FileStream(manga.FilePath , FileMode.Open);
                 }
-                break;
         }
     }
 
@@ -262,25 +254,23 @@ internal static class MangaFactory
         ;
     }
 
-    public static async Task InitialCover(Manga manga)
+    public static async Task<string> GetCoverFile(Manga manga)
     {
         switch (manga.Type)
         {
             case "":
                 {
-                    manga.CoverPath =
+                    return
                        CoverHelper.LoadCoverFromInternalFolder(manga.FilePath)
                         ?? CoverHelper.DefaultCoverPath;
                 }
-                break;
 
             default:
                 {
-                    manga.CoverPath =
+                    return
                         await CoverHelper.TryCreatCoverFileAsync(manga.FilePath, null)
                         ?? CoverHelper.DefaultCoverPath;
                 }
-                break;
         }
     }
 
@@ -293,12 +283,12 @@ internal static class MangaFactory
     public static void InitialEachFoldersInOrder(this ObservableCollectionVM ViewModel)
     {
         // TODO 如果在初始化的时候，移除了这个文件夹，会出错，比如一些大型文件夹
-        foreach (var folder in ViewModel.MangaFolders.ToArray())
-        {
-            //var token = new CancellationTokenSource();
-            //App.Current.Tokens.TryAdd(folder , token);
+        //foreach (var folder in ViewModel.MangaFolders.ToArray())
+        //{
+        //    var token = new CancellationTokenSource();
+        //    App.Current.Tokens.TryAdd(folder, token);
 
-            //await folder.InitialGroup();
-        }
+        //    await folder.InitialGroup();
+        //}
     }
 }

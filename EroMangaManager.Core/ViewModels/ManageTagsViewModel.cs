@@ -11,7 +11,7 @@ public partial class ManageTagsViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<string> displayedTags;
 
-    private Dictionary<string, ObservableCollection<string>> keyValuePairs;
+    private readonly Dictionary<string, ObservableCollection<string>> keyValuePairs;
 
     /// <summary>
     ///
@@ -63,7 +63,7 @@ public partial class ManageTagsViewModel : ObservableObject
     /// <returns></returns>
     public ObservableCollection<string> this[string category] => keyValuePairs[category];
 
-     partial void OnDisplayedCategoryChanged(string value)
+    partial void OnDisplayedCategoryChanged(string value)
     {
         if (value is not null)
         {

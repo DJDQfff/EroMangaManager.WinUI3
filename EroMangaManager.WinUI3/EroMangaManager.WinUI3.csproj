@@ -88,7 +88,6 @@
     <None Remove="Views\MainPageChildPages\SettingPage.xaml" />
     <None Remove="Views\MainPageChildPages\TagsManagePage.xaml" />
     <None Remove="Views\ReadPage.xaml" />
-    <None Remove="Views\ReadPage2.xaml" />
     <None Remove="Views\SettingPageChildPages\CommonSettingPage.xaml" />
     <None Remove="Views\SettingPageChildPages\FiltedImagesPage.xaml" />
     <None Remove="Views\SettingPageChildPages\PasswordManagementPage.xaml" />
@@ -335,11 +334,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="UserControls\TagListOrder2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Views\ReadPage2.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

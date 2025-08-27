@@ -17,15 +17,15 @@ public sealed partial class TagListOrder2 : UserControl
     {
         get
         {
-            var items = gridview.Items;
+            //var items = gridview.Items;
             List<string> strings = [];
-            foreach (var item in items)
-            {
-                var container = gridview.ContainerFromItem(item);
-                //var checkbox = container.
-                //var text = container.Content as string;
-                //strings.Add(text);
-            }
+            //foreach (var item in items)
+            //{
+            //    var container = gridview.ContainerFromItem(item);
+            //    var checkbox = container.
+            //    var text = container.Content as string;
+            //    strings.Add(text);
+            //}
             return string.Concat(strings);
         }
     }

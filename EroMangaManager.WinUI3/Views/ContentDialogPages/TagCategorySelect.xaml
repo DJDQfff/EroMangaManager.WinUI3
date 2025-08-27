@@ -12,6 +12,6 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ListBox x:Name="combobox" Loaded="combobox_Loaded" />
+        <ListBox x:Name="combobox" Loaded="Combobox_Loaded" />
     </Grid>
 </ContentDialog>

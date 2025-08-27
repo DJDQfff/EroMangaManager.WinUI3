@@ -40,18 +40,19 @@ internal class MangaCommands
         };
         Instance.StorageCommandDelete.ExecuteRequested += async (sender, args) =>
         {
-            bool result = false;
-
             switch (args.Parameter)
             {
                 case Manga book:
                     {
                         try
                         {
-                            result = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
+                            var result = await DialogHelper.ConfirmDeleteSourceFileDialog(book);
+                            if (result)
+                            {
+                                App.Current.GlobalViewModel.RemoveManga(book);
+                                App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(book);
 
-                            App.Current.GlobalViewModel.RemoveManga(book);
-                            App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(book);
+                            }
                         }
                         catch (UnauthorizedAccessException)
                         {

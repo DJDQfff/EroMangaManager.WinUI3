@@ -34,30 +34,25 @@ internal class DialogHelper
 
         var deletemode = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
 
-        bool deleteResult = false;
         if (!temp1)
         {
-            ConfirmDeleteMangaFile confirm =
-                new(eroManga) { XamlRoot = App.Current.MainWindow.Content.XamlRoot };
+            ConfirmDeleteMangaFile confirm = new(eroManga) { XamlRoot = App.Current.MainWindow.Content.XamlRoot };
             var result = await confirm.ShowAsync();
             switch (result)
             {
                 case ContentDialogResult.Primary:
                     await StorageOperation.Delete(eroManga, deletemode);
-                    deleteResult = true;
-                    break;
+                    return true;
 
-                case ContentDialogResult.Secondary:
-                    break;
+                default:
+                    return false;
             }
         }
         else
         {
             await StorageOperation.Delete(eroManga, deletemode);
 
-            deleteResult = true;
+            return true;
         }
-
-        return deleteResult;
     }
 }
