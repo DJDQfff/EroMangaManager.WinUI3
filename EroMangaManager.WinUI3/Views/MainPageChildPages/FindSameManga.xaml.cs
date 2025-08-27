@@ -44,17 +44,13 @@ public sealed partial class FindSameManga : Page
                         XamlRoot = App.Current.MainWindow.Content.XamlRoot
                     };
                     var result = await selectcategory.ShowAsync();
-                    switch (result)
+                    if (result == ContentDialogResult.Primary)
                     {
-                        case ContentDialogResult.Primary:
-                            {
-                                if (!string.IsNullOrWhiteSpace(selectcategory.CategoryName))
-                                {
-                                    var strings = DatabaseController.TagCategory_QuerySingle(selectcategory.CategoryName);
-                                    await viewModel.Method4(strings);
-                                }
-                            }
-                            break;
+                        if (!string.IsNullOrWhiteSpace(selectcategory.CategoryName))
+                        {
+                            var strings = DatabaseController.TagCategory_QuerySingle(selectcategory.CategoryName);
+                            await viewModel.Method4(strings);
+                        }
                     }
                 }
                 break;

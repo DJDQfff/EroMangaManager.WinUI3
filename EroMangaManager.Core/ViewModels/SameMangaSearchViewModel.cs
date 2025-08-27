@@ -19,11 +19,15 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     private char[] chars = [' ', '-', '+', '~', '#'];
 
     [ObservableProperty]
-     bool isWorking = false;
-
+    private bool isWorking = false;
 
     private static bool filtKeystring(string str) => !string.IsNullOrWhiteSpace(str);
 
+    /// <summary>
+    /// 先传入tag集合，对每个tag，找出重复的本子
+    /// </summary>
+    /// <param name="tags"></param>
+    /// <returns></returns>
     public async Task Method4(IEnumerable<string> tags)
     {
         foreach (var tag in tags)
@@ -43,7 +47,12 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
         }
     }
 
-    // TODO 需要优化
+    /// <summary>
+    /// 按tag分组后查找，这个方法不行，成功版在method4
+    /// </summary>
+    /// <param name="tags"></param>
+    /// <returns></returns>
+    [Obsolete]
     public async Task Method3(IEnumerable<string> tags)
     {
         foreach (var tag in tags)
@@ -73,7 +82,12 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
         }
     }
 
-    // TODO 需要优化
+    // 
+    /// <summary>
+    /// 先找出第一次重复的tag和manganame，然后以此为key，循环查找  
+    /// TODO 需要优化
+    /// </summary>
+    /// <returns></returns>
     public async Task Method2()
     {
         static string func1(Manga manga1, Manga manga2)
@@ -91,14 +105,13 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
             return null;
         }
 
-        string func2(Manga x, Manga y)
-        {
-            return null;
-        }
-
         await StartCompareSequence(Source, func1, filtKeystring);
     }
 
+    /// <summary>
+    /// 将所有manganame分别切成小段，将所有小段重组成一个字典，各小段设为key，所有含有这个key的视为重复组
+    /// </summary>
+    /// <returns></returns>
     public async Task Method1()
     {
         Func<Manga, string> func = null;
@@ -118,6 +131,10 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
         await ByEachKey(Source, func, x => !string.IsNullOrWhiteSpace(x.Key));
     }
 
+    /// <summary>
+    /// 遍历找出两个相同manganame，以这个manganame为key，所有相同manganame视为重复组
+    /// </summary>
+    /// <returns></returns>
     public async Task Method0()
     {
         static string func1(Manga x, Manga y) => x.MangaName == y.MangaName ? x.MangaName : null;
