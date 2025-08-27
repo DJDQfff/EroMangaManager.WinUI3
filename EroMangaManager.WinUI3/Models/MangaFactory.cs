@@ -192,6 +192,10 @@ internal static class MangaFactory
                     var files = archive.Entries.Where(x => !x.IsDirectory);
 
                     var group = folders.Count(folder => files.Any(file => file.Key.Contains(folder.Key)));
+                    if (group == 0)
+                    {
+                        group = 1; //TODO 如果所有图片都直接放到文件夹里面，那么章数为0，这里直接设为1
+                    }
                     return group;
                 }
         }
