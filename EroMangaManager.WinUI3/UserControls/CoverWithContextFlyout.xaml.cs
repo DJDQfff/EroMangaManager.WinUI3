@@ -47,27 +47,14 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
             }
             item.Click += async (sender, e) =>
             {
-                string result = null;
                 try
                 {
-                    result = await Task.Run(() =>
-                       {
-                           return MangaFileOperation.MoveManga(
-
-                               Source,
-                               way.FolderPath,
-                               null
-                           );
-                       });
-
-                }
-                catch (UnauthorizedAccessException ) { App.Current.GlobalViewModel.AccessDenied(); }
-                if (result is not null)
-                {
-                    Source.FilePath = result;
+                    string newpath = await Task.Run(() => MangaFileOperation.MoveManga(Source, way.FolderPath, null));
+                    Source.FilePath = newpath;
 
                     App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
                 }
+                catch (UnauthorizedAccessException) { App.Current.GlobalViewModel.AccessDenied(); }
             };
         }
     }

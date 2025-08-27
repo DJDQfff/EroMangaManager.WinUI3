@@ -54,7 +54,6 @@ public class MangaFileOperation
     /// <param name="newname">新名字</param>
     public static string MoveManga(Manga book, string targetfolder, string newname)
     {
-        bool result = false;
         targetfolder = targetfolder ?? book.FolderPath; //这个路径并没有验证是否存在
 
         newname = newname ?? book.FileDisplayName;
@@ -66,44 +65,19 @@ public class MangaFileOperation
             case "":
 
                 {
-                    if (!Directory.Exists(newpath))
-                    {
-                        try
-                        {
-                            Directory.Move(book.FilePath, newpath);
-                            result = true;
-                        }
-                        catch(UnauthorizedAccessException)
-                        {
-
-                            result = false;
-                        }
-                        //book.FilePath = newpath;
-                        // 由于manganame使用MVVM绑定到了UI，所以跨线程，不能直接操作
-                    }
+                    Directory.Move(book.FilePath, newpath);
+                    return newpath;
+                    //book.FilePath = newpath;
+                    // 由于manganame使用MVVM绑定到了UI，所以跨线程，不能直接操作
                 }
-                break;
 
             default:
 
                 {
-                    if (!File.Exists(newpath))
-                    {
-                        try
-                        {
-                            File.Move(book.FilePath, newpath);
-                            result = true;
-                        }
-                        catch
-                        {
-                            result = false;
-                        }
-                        //book.FilePath = newpath;
-                    }
+                    File.Move(book.FilePath, newpath);
+                    return newpath;
+                    //book.FilePath = newpath;
                 }
-                break;
         }
-
-        return result ? newpath : null;
     }
 }

@@ -31,41 +31,37 @@ internal class StorageOperation
 
     internal static async Task Delete(Manga manga, StorageDeleteOption deletemode)
     {
-        try
+        switch (manga.Type)
         {
-            switch (manga.Type)
-            {
-                case "":
+            case "":
 
-                    {
+                {
 #if WINDOWS
-                        var folder = await StorageFolder.GetFolderFromPathAsync(
-                            manga.FilePath
-                        );
+                    var folder = await StorageFolder.GetFolderFromPathAsync(
+                        manga.FilePath
+                    );
 
-                        await folder.DeleteAsync(deletemode);
+                    await folder.DeleteAsync(deletemode);
 #else
                         System.IO.Directory.Delete(manga.FilePath, true);
 #endif
-                    }
-                    break;
+                }
+                break;
 
-                default:
+            default:
 
-                    {
+                {
 #if WINDOWS
-                        var file = await StorageFile.GetFileFromPathAsync(
-                            manga.FilePath
-                        );
+                    var file = await StorageFile.GetFileFromPathAsync(
+                        manga.FilePath
+                    );
 
-                        await file.DeleteAsync(deletemode);
+                    await file.DeleteAsync(deletemode);
 #else
                         System.IO.File.Delete(manga.FilePath);
 #endif
-                    }
-                    break;
-            }
+                }
+                break;
         }
-        catch { }
     }
 }

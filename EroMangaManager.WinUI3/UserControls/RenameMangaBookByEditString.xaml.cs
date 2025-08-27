@@ -121,16 +121,14 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
         }
     }
 
-    private void RenameButton_Click(object sender, RoutedEventArgs e)
+    private async void RenameButton_Click(object sender, RoutedEventArgs e)
     {
-        var result = EroMangaManager.Core.IOOperation.MangaFileOperation.MoveManga(
-               Manga,
-               null,
-               NewDisplayName
-           );
-        if (result is not null)
+        var newname = NewDisplayName;// 由于NewDIsplayName在下面异步访问，会出现ui线程报错，提前取出来
+        try
         {
-            Manga.FilePath = result;
+            string newpath = await Task.Run(() => MangaFileOperation.MoveManga(Manga, null, newname));
+            Manga.FilePath = newpath;
         }
+        catch (UnauthorizedAccessException) { App.Current.GlobalViewModel.AccessDenied(); }
     }
 }

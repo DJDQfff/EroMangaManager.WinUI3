@@ -2,6 +2,8 @@
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 using System.ComponentModel;
 
+using Windows.Devices.Geolocation;
+
 namespace EroMangaManager.WinUI3.UserControls;
 
 public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyChanged
@@ -30,14 +32,16 @@ public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyC
         InitializeComponent();
     }
 
-    private void SingleMangaRename_New(object sender, RoutedEventArgs e)
+    private async void SingleMangaRename_New(object sender, RoutedEventArgs e)
     {
-        var text = newnameBox.Text;
-        var result = MangaFileOperation.MoveManga(Manga, null, text);
-        if (result is not null)
+        var text = newnameBox.Text;// 由于NewDIsplayName在下面异步访问，可能会出现ui线程报错，提前取出来
+
+        try
         {
-            Manga.FilePath = result;
+            string newpath = await Task.Run(() => MangaFileOperation.MoveManga(Manga, null, text));
+            Manga.FilePath = newpath;
         }
+        catch (UnauthorizedAccessException) { App.Current.GlobalViewModel.AccessDenied(); }
 
         NameChanged?.Invoke(Manga);
     }
