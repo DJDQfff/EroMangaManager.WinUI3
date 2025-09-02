@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:app="using:EroMangaManager.WinUI3"
+    xmlns:complexmanga="using:EroMangaManager.WinUI3.UserControls.MangaComplexDisplay"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:EroMangaManager.Core.Models"
@@ -13,10 +14,10 @@
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="BookcaseTemplate1" x:DataType="models:Manga">
-            <usercontrols:MangaTagsView Manga="{x:Bind}" />
+            <complexmanga:MangaTagsView DataContext="{x:Bind}" Manga="{x:Bind}" />
         </DataTemplate>
         <DataTemplate x:Key="BookcaseTemplate0" x:DataType="models:Manga">
-            <usercontrols:MangaBriefInfo Manga="{x:Bind}" />
+            <complexmanga:BriefInfo Manga="{x:Bind}" />
         </DataTemplate>
     </Page.Resources>
     <Grid Background="Transparent">

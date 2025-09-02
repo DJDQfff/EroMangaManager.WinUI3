@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Controls;
 
 using Windows.ApplicationModel.DataTransfer;
 
-namespace EroMangaManager.WinUI3.UserControls;
+namespace EroMangaManager.WinUI3.UserControls.MangaComplexDisplay;
 
 public sealed partial class MangaTagsView : UserControl, INotifyPropertyChanged
 {

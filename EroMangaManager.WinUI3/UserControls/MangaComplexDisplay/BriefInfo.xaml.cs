@@ -3,9 +3,9 @@
 
 using System.ComponentModel;
 
-namespace EroMangaManager.WinUI3.UserControls;
+namespace EroMangaManager.WinUI3.UserControls.MangaComplexDisplay;
 
-public sealed partial class MangaBriefInfo : UserControl, INotifyPropertyChanged
+public sealed partial class BriefInfo : UserControl, INotifyPropertyChanged
 {
     private Manga mangaBook;
 
@@ -19,7 +19,7 @@ public sealed partial class MangaBriefInfo : UserControl, INotifyPropertyChanged
         }
     }
 
-    public MangaBriefInfo()
+    public BriefInfo()
     {
         InitializeComponent();
     }

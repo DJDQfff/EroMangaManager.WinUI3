@@ -39,7 +39,7 @@ global using Microsoft.UI.Xaml.Media;
 global using Microsoft.UI.Xaml.Media.Imaging;
 global using Microsoft.UI.Xaml.Navigation;
 global using Microsoft.Windows.AppNotifications;
-
+global using EroMangaManager.WinUI3.UserControls.MangaBasicInfo;
 global using SharpCompress.Archives;
 
 global using Windows.ApplicationModel.Resources;

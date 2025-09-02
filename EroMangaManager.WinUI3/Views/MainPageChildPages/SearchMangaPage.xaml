@@ -7,16 +7,16 @@
     xmlns:model="using:EroMangaManager.Core.Models"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
-    xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
+    xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls.MangaComplexDisplay"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="datatemplate0" x:DataType="model:Manga">
-            <usercontrols:MangaBriefInfo Manga="{x:Bind}" />
+            <usercontrols:BriefInfo Manga="{x:Bind}" />
         </DataTemplate>
         <DataTemplate x:Key="datatemplate1" x:DataType="model:Manga">
-            <usercontrols:MangaDisplayNameView MaxHeight="160" Manga="{x:Bind}" />
+            <usercontrols:StorageInfo MaxHeight="160" Manga="{x:Bind}" />
         </DataTemplate>
     </Page.Resources>
     <Grid>

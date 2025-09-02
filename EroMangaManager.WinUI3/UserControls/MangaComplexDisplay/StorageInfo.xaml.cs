@@ -4,9 +4,9 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace EroMangaManager.WinUI3.UserControls;
+namespace EroMangaManager.WinUI3.UserControls.MangaComplexDisplay;
 
-public sealed partial class MangaDisplayNameView : UserControl, INotifyPropertyChanged
+public sealed partial class StorageInfo : UserControl, INotifyPropertyChanged
 {
     private Manga mangaBook;
 
@@ -18,11 +18,11 @@ public sealed partial class MangaDisplayNameView : UserControl, INotifyPropertyC
         set
         {
             mangaBook = value;
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(nameof(Manga)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
         }
     }
 
-    public MangaDisplayNameView ()
+    public StorageInfo()
     {
         this.InitializeComponent();
     }

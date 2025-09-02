@@ -5,10 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
-    xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
+    xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls.MangaComplexDisplay"
     Title="{x:Bind Manga.FilePath}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     CloseButtonText="{uid:Strings Uid=Close}"
     mc:Ignorable="d">
-    <usercontrols:MangaDisplayNameView Manga="{x:Bind Manga}" />
+    <usercontrols:StorageInfo Manga="{x:Bind Manga}" />
 </ContentDialog>

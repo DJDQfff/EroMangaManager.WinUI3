@@ -3,7 +3,7 @@
 
 using System.ComponentModel;
 
-namespace EroMangaManager.WinUI3.UserControls;
+namespace EroMangaManager.WinUI3.UserControls.MangaBasicInfo;
 
 public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropertyChanged
 {

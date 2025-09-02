@@ -58,6 +58,7 @@
     <None Remove="ResourceDictionarys\TitleContentPairTheme.xaml" />
     <None Remove="ResourceDictionarys\ValueConverters.xaml" />
     <None Remove="UserControls\CoverWithContextFlyout.xaml" />
+    <None Remove="UserControls\MangaBasicInfo\SizeImagesChaptersAmount.xaml" />
     <None Remove="UserControls\MangaCoverTags.xaml" />
     <None Remove="UserControls\MangaDetailInfo.xaml" />
     <None Remove="UserControls\MangaOpenButton.xaml" />
@@ -207,7 +208,7 @@
     <Page Update="UserControls\MangaDetailInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="UserControls\MangaBriefInfo.xaml">
+    <Page Update="UserControls\BriefInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -341,5 +342,13 @@
     <Page Update="Views\MainPageChildPages\MnagaFolderReOrganize.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MangaBasicInfo\SizeImagesChaptersAmount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserControls\MangaComplexDisplay\" />
   </ItemGroup>
 </Project>
