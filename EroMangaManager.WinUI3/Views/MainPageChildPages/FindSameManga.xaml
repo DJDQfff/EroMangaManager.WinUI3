@@ -5,6 +5,7 @@
     xmlns:commands="using:EroMangaManager.WinUI3.Commands"
     xmlns:coremodel="using:EroMangaManager.Core.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:functionchildpages="using:EroMangaManager.WinUI3.Views.FunctionChildPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
     xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
@@ -33,7 +34,51 @@
             SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="coremodel:RepeatMangasGroup">
-                    <StackPanel Orientation="Vertical">
+
+                    <Expander>
+                        <Expander.Header>
+                            <CommandBar Content="{x:Bind Key}" />
+                        </Expander.Header>
+                        <Expander.Content>
+                            <ListView ItemsSource="{x:Bind Collections, Mode=OneWay}" SelectionMode="None">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="coremodel:Manga">
+                                        <Grid Margin="4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <usercontrols:MangaDisplayNameView Height="200" Manga="{x:Bind}" />
+                                            <StackPanel Grid.Column="1" Orientation="Vertical">
+                                                <Button
+                                                    HorizontalAlignment="Stretch"
+                                                    Command="{x:Bind commands:MangaCommands.Instance.OpenManga}"
+                                                    CommandParameter="{x:Bind}"
+                                                    Content="{uid:Strings Uid=Open}" />
+                                                <Button
+                                                    HorizontalAlignment="Stretch"
+                                                    Command="{x:Bind commands:MangaCommands.Instance.LocateInExplorer}"
+                                                    CommandParameter="{x:Bind}"
+                                                    Content="{uid:Strings Uid=OpenFolder}" />
+                                                <Button
+                                                    Command="{x:Bind commands:MangaCommands.Instance.StorageCommandRename}"
+                                                    CommandParameter="{x:Bind}"
+                                                    Content="{uid:Strings Uid=RenameFile}" />
+                                                <Button
+                                                    HorizontalAlignment="Stretch"
+                                                    Command="{x:Bind commands:MangaCommands.Instance.StorageCommandDelete}"
+                                                    CommandParameter="{x:Bind}"
+                                                    Content="{uid:Strings Uid=DeleteIt}"
+                                                    Foreground="Red" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Expander.Content>
+                    </Expander>
+
+                    <!--<StackPanel Orientation="Vertical">
                         <TextBlock
                             Margin="20"
                             FontSize="24"
@@ -73,7 +118,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackPanel>
+                    </StackPanel>-->
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

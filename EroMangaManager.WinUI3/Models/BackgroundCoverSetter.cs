@@ -27,10 +27,13 @@ internal class BackgroundCoverSetter
                 {
                     manga.CoverPath = await Task.Run(() => MangaFactory.GetCoverFile(manga));
 
-
                     manga.FileSize = await Task.Run(() => MangaFactory.GetFileSize(manga));
                     manga.ImageAmount = await Task.Run(() => MangaFactory.CountImageAmount(manga));
                     manga.ChapterAmount = await Task.Run(() => MangaFactory.CountChapterAmount(manga));
+                }
+                else
+                {
+                    break;
                 }
                 _ = mangas.Remove(manga);//改回list了，又需要了 .不需要执行，stack的pop方法已经取出最上面的了
             }

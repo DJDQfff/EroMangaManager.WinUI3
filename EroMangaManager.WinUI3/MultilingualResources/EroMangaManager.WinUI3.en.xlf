@@ -603,15 +603,19 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
         </trans-unit>
         <trans-unit id="Chapters" translate="yes" xml:space="preserve">
           <source>章</source>
-          <target state="new">章</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">chapter</target>
         </trans-unit>
         <trans-unit id="Images" translate="yes" xml:space="preserve">
           <source>图</source>
-          <target state="new">图</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">fig</target>
         </trans-unit>
         <trans-unit id="SearchThisTag" translate="yes" xml:space="preserve">
           <source>查找此Tag</source>
-          <target state="new">查找此Tag</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Look for this tag</target>
+        </trans-unit>
+        <trans-unit id="FileInfoViewMode" translate="yes" xml:space="preserve">
+          <source>文件视图模式</source>
+          <target state="new">文件视图模式</target>
         </trans-unit>
       </group>
     </body>

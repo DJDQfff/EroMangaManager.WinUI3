@@ -41,7 +41,8 @@ public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyC
             string newpath = await Task.Run(() => MangaFileOperation.MoveManga(Manga, null, text));
             Manga.FilePath = newpath;
         }
-        catch (UnauthorizedAccessException) { App.Current.GlobalViewModel.AccessDenied(); }
+        catch (UnauthorizedAccessException) { App.Current.GlobalViewModel.AccessDenied(); }// 未授权异常
+        catch (System.IO.IOException) { App.Current.GlobalViewModel.AccessDenied(); }// 其他未知异常
 
         NameChanged?.Invoke(Manga);
     }

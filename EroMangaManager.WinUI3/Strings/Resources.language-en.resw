@@ -446,4 +446,13 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
   <data name="AccessDenied" xml:space="preserve">
     <value>Access denied</value>
   </data>
+  <data name="Chapters" xml:space="preserve">
+    <value>chapter</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>fig</value>
+  </data>
+  <data name="SearchThisTag" xml:space="preserve">
+    <value>Look for this tag</value>
+  </data>
 </root>

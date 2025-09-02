@@ -159,13 +159,15 @@ internal static class MangaFactory
     //}
     public static int CountChapterAmount(Manga manga)
     {
+        var count = 0;
         switch (manga.Type)
         {
             case "":
                 {
-                    return Directory.EnumerateDirectories(manga.FilePath, "*", new EnumerationOptions() { RecurseSubdirectories = true })
+                    count = Directory.EnumerateDirectories(manga.FilePath, "*", new EnumerationOptions() { RecurseSubdirectories = true })
                          .Count(folder => SupportedType.ImageType.Any(imagetype => Directory.EnumerateFiles(folder).Any(file => Path.GetExtension(file).ToLower() == imagetype)));
                 }
+                break;
 
             default:
                 {
@@ -190,15 +192,16 @@ internal static class MangaFactory
                         }
                     }
                     var files = archive.Entries.Where(x => !x.IsDirectory);
-
-                    var group = folders.Count(folder => files.Any(file => file.Key.Contains(folder.Key)));
-                    if (group == 0)
-                    {
-                        group = 1; //TODO 如果所有图片都直接放到文件夹里面，那么章数为0，这里直接设为1
-                    }
-                    return group;
+                    archive.Dispose();
+                    count = folders.Count(folder => files.Any(file => file.Key.Contains(folder.Key)));
                 }
+                break;
         }
+        if (count == 0)
+        {
+            count = 1; // 如果图片直接存在压缩文件里或文件夹里面，count会为0
+        }
+        return count;
     }
 
     public static int CountImageAmount(Manga manga)
@@ -213,10 +216,12 @@ internal static class MangaFactory
                 }
             default:
                 {
-                    return
-                       ArchiveFactory.Open(manga.FilePath).Entries
+                    var archive = ArchiveFactory.Open(manga.FilePath);
+                    var amount = archive.Entries
                          .Count(x => SupportedType.ImageType.Contains(Path.GetExtension(x.Key).ToLower()))
                     ;
+                    archive.Dispose();
+                    return amount;
                 }
         }
     }

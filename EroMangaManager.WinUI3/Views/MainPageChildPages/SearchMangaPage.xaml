@@ -11,6 +11,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="datatemplate0" x:DataType="model:Manga">
+            <usercontrols:MangaBriefInfo Manga="{x:Bind}" />
+        </DataTemplate>
+        <DataTemplate x:Key="datatemplate1" x:DataType="model:Manga">
+            <usercontrols:MangaDisplayNameView MaxHeight="160" Manga="{x:Bind}" />
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -30,6 +38,7 @@
                 <AutoSuggestBox
                     x:Name="MangaNameAugoSuggestBox"
                     Grid.Row="0"
+                    Grid.Column="0"
                     VerticalAlignment="Top"
                     VerticalContentAlignment="Stretch"
                     Header="{uid:Strings Uid=SearchByMangaName}"
@@ -39,6 +48,7 @@
                 <toolkit:TokenizingTextBox
                     x:Name="MangaTagTokenizingTextBox"
                     Grid.Row="1"
+                    Grid.Column="1"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Header="{uid:Strings Uid=SearchByTag}"
@@ -59,6 +69,15 @@
                     </toolkit:TokenizingTextBox.SuggestedItemTemplate>
                 </toolkit:TokenizingTextBox>
             </Grid>
+            <!--  完成的不好  -->
+            <ListBox
+                Grid.Column="1"
+                SelectionChanged="ListBox_SelectionChanged"
+                SelectionMode="Single"
+                Visibility="Collapsed">
+                <ListBoxItem Content="{uid:Strings Uid=ThumanailViewMode}" />
+                <ListBoxItem Content="{uid:Strings Uid=FileInfoViewMode}" />
+            </ListBox>
         </Grid>
         <!--<StackPanel Visibility="Collapsed"
             Grid.Row="1"
@@ -78,12 +97,7 @@
         <GridView
             x:Name="ResultGridView"
             Grid.Row="2"
-            ItemsSource="{x:Bind viewmodel.ResultMangas, Mode=OneWay}">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="model:Manga">
-                    <usercontrols:MangaBriefInfo Manga="{x:Bind}" />
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+            ItemTemplate="{StaticResource datatemplate0}"
+            ItemsSource="{x:Bind viewmodel.ResultMangas, Mode=OneWay}" />
     </Grid>
 </Page>

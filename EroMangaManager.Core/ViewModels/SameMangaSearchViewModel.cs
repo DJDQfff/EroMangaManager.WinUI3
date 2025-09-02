@@ -4,6 +4,7 @@ using CommonLibrary.CollectionFindRepeat;
 using CommonLibrary.RepetitiveGroup;
 
 using static CommonLibrary.BracketBasedStringParser;
+using static iText.Svg.SvgConstants;
 
 namespace EroMangaManager.Core.ViewModels;
 
@@ -16,20 +17,48 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     /// <summary>
     /// 表示查重方法执行中
     /// </summary>
-    private char[] chars = [' ', '-', '+', '~', '#'];
+    private char[] sperators = [' ', '&', '+', '~', '~', '#', '!', '?', '？', '！', '|', '丶', '•', '﹐'];
 
     [ObservableProperty]
     private bool isWorking = false;
 
     private static bool filtKeystring(string str) => !string.IsNullOrWhiteSpace(str);
 
+    public async Task Method3_2(IEnumerable<string> tags)
+    {
+        RepeatPairs.Clear();
+        foreach (var tag in tags)
+        {
+            var mangas = Source.Where(x => x.Tags.Contains(tag)).ToList();
+            Source = Source.Except(mangas).ToList();
+
+            string func1(Manga manga1, Manga manga2)
+            {
+                //var tags1 = manga1.Tags;
+                //var tags2 = manga2.Tags;
+
+                var namepieces1 = manga1.MangaName.Split(sperators);
+                var namepieces2 = manga2.MangaName.Split(sperators);
+                var intersect = namepieces1.Intersect(namepieces2);//.Any();
+                if (intersect.Any())
+                {
+                    return /*$"[{tag}]" + "\t" +*/ intersect.First();
+                }
+                return null;
+            }
+
+            await StartCompareSequence(mangas, func1, filtKeystring);
+        }
+    }
+
     /// <summary>
     /// 先传入tag集合，对每个tag，找出重复的本子
     /// </summary>
     /// <param name="tags"></param>
     /// <returns></returns>
-    public async Task Method4(IEnumerable<string> tags)
+    public async Task Method3_1(IEnumerable<string> tags)
     {
+        RepeatPairs.Clear();
         foreach (var tag in tags)
         {
             var mangas = Source.Where(x => x.Tags.Contains(tag)).ToList();
@@ -43,18 +72,20 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
                 var keys = stringCollection.RepeatList.Select(x => x.Content);
                 return keys;
             }
+
             await ParseAll_FindOut(mangas, func, (x, key) => x.MangaName.Contains(key), filtKeystring);
         }
     }
 
     /// <summary>
-    /// 按tag分组后查找，这个方法不行，成功版在method4
+    ///
     /// </summary>
     /// <param name="tags"></param>
     /// <returns></returns>
     [Obsolete]
-    public async Task Method3(IEnumerable<string> tags)
+    public async Task Method3_0(IEnumerable<string> tags)
     {
+        RepeatPairs.Clear();
         foreach (var tag in tags)
         {
             var mangas = Source.Where(x => x.Tags.Contains(tag)).ToList();
@@ -82,14 +113,15 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
         }
     }
 
-    // 
+    //
     /// <summary>
-    /// 先找出第一次重复的tag和manganame，然后以此为key，循环查找  
+    /// 先找出第一次重复的tag和manganame，然后以此为key，循环查找
     /// TODO 需要优化
     /// </summary>
     /// <returns></returns>
     public async Task Method2()
     {
+        RepeatPairs.Clear();
         static string func1(Manga manga1, Manga manga2)
         {
             var tags1 = manga1.Tags;
@@ -114,11 +146,12 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     /// <returns></returns>
     public async Task Method1()
     {
+        RepeatPairs.Clear();
         Func<Manga, string> func = null;
 
         var dic = StringArrayCollection
     .Run(Source, x => Get_OutsideContent(x.FileDisplayName)
-    .SelectMany(x => x.Split(chars)))
+    .SelectMany(x => x.Split(sperators)))
 
     .Where(x => x.Value > 1)
     .Where(x => !int.TryParse(x.Key, out _))
@@ -126,7 +159,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     .ToDictionary();
         func = x =>
          Get_OutsideContent(x.FileDisplayName)
-         .SelectMany(x => x.Split(chars))
+         .SelectMany(x => x.Split(sperators))
             .FirstOrDefault(y => dic.ContainsKey(y));
         await ByEachKey(Source, func, x => !string.IsNullOrWhiteSpace(x.Key));
     }
@@ -137,6 +170,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     /// <returns></returns>
     public async Task Method0()
     {
+        RepeatPairs.Clear();
         static string func1(Manga x, Manga y) => x.MangaName == y.MangaName ? x.MangaName : null;
         await StartCompareSequence(Source, func1, filtKeystring);
     }

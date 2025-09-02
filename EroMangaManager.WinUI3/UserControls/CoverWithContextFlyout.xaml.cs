@@ -55,6 +55,10 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
                     App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
                 }
                 catch (UnauthorizedAccessException) { App.Current.GlobalViewModel.AccessDenied(); }
+                catch (System.IO.IOException ex)
+                {
+                    App.Current.GlobalViewModel.AccessDenied();
+                }
             };
         }
     }

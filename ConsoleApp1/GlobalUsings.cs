@@ -1,8 +1,10 @@
 ﻿global using CommonLibrary;
 global using CommonLibrary.CollectionFindRepeat;
 global using CommonLibrary.RepetitiveGroup;
-
+global using System.Linq;
+global using System.Collections;
+global using System.Collections.Generic;
 global using EroMangaManager.Core.Models;
 global using EroMangaManager.Core.ViewModels;
-
+global using System.Diagnostics;
 global using static CommonLibrary.BracketBasedStringParser;

@@ -117,5 +117,17 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             viewmodel.FiltTags(MangaTagTokenizingTextBox.Text);
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var control = sender as ListBox;
+            var index = control.SelectedIndex;
+            if (index != -1)
+            {
+                var key = "datatemplate" + index;
+                var resource = this.Resources[key] as DataTemplate;
+                ResultGridView.ItemTemplate = resource;
+            }
+        }
     }
 }

@@ -130,5 +130,6 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
             Manga.FilePath = newpath;
         }
         catch (UnauthorizedAccessException) { App.Current.GlobalViewModel.AccessDenied(); }
+        catch (System.IO.IOException) { App.Current.GlobalViewModel.AccessDenied(); }
     }
 }

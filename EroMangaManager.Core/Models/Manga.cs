@@ -14,7 +14,8 @@ public partial class Manga : ObservableObject
     /// 内里多少图像文件
     /// </summary>
     [ObservableProperty]
-    int imageAmount;
+    private int imageAmount;
+
     /// <summary> 漫画文件路径 </summary>
     [ObservableProperty]
     private string filePath;
@@ -23,7 +24,8 @@ public partial class Manga : ObservableObject
     /// 章节。每个含有图片的文件夹视为一个chapter
     /// </summary>
     [ObservableProperty]
-    int chapterAmount;
+    private int chapterAmount;
+
     partial void OnFilePathChanged(string value)
     {
         if (Directory.Exists(FilePath))
@@ -38,7 +40,7 @@ public partial class Manga : ObservableObject
         }
 
         MangaName = string.Join(' ', BracketBasedStringParser.Get_OutsideContent(FileDisplayName));
-        Tags = BracketBasedStringParser.Get_InsideContent(FileDisplayName).Distinct().ToArray();
+        Tags = BracketBasedStringParser.Get_InsideContent(FileDisplayName).SelectMany(x => x.Split('&', '、')).Distinct().ToArray();
 
         FolderPath = Path.GetDirectoryName(FilePath);
         FileFullName = Path.GetFileName(FilePath);

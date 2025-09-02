@@ -11,7 +11,7 @@
 
         ///<summary></summary>
         Answer_SupportedType,
-
+        FileInfoViewMode,
         ///<summary></summary>
         Answer_WhatISTheApp,
 

@@ -10,11 +10,16 @@
 
   <ItemGroup>
     <PackageReference Include="DJDQfff.BaiduTranslateAPI" Version="1.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EroMangaDatabase\EroMangaDatabase.csproj" />
     <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
+    <ProjectReference Include="..\TonquerPicacgDatabaseReverse\TonquerPicacgDatabaseReverse.csproj" />
   </ItemGroup>
 
 </Project>

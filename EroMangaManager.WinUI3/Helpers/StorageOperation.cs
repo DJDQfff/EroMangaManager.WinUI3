@@ -37,9 +37,7 @@ internal class StorageOperation
 
                 {
 #if WINDOWS
-                    var folder = await StorageFolder.GetFolderFromPathAsync(
-                        manga.FilePath
-                    );
+                    var folder = await StorageFolder.GetFolderFromPathAsync(manga.FilePath);
 
                     await folder.DeleteAsync(deletemode);
 #else
@@ -52,9 +50,7 @@ internal class StorageOperation
 
                 {
 #if WINDOWS
-                    var file = await StorageFile.GetFileFromPathAsync(
-                        manga.FilePath
-                    );
+                    var file = await StorageFile.GetFileFromPathAsync(manga.FilePath);
 
                     await file.DeleteAsync(deletemode);
 #else
