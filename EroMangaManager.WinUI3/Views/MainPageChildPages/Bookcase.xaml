@@ -14,7 +14,7 @@
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="BookcaseTemplate1" x:DataType="models:Manga">
-            <complexmanga:MangaTagsView DataContext="{x:Bind}" Manga="{x:Bind}" />
+            <complexmanga:MangaTagsView Manga="{x:Bind}" />
         </DataTemplate>
         <DataTemplate x:Key="BookcaseTemplate0" x:DataType="models:Manga">
             <complexmanga:BriefInfo Manga="{x:Bind}" />
@@ -56,6 +56,70 @@
             <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
                 <usercontrols:MangaOpenButton />
             </AppBarElementContainer>
+            <AppBarButton
+                AllowFocusOnInteraction="True"
+                Content="Filter"
+                Icon="Filter">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel Width="200" Orientation="Vertical">
+                            <TextBox PlaceholderText="含有内容" />
+
+                            <RadioButtons MaxColumns="2" />
+                            <!--<Grid>
+                                <Grid.Resources>
+                                    <Style TargetType="ToggleButton">
+                                        <Setter Property="Height" Value="40" />
+                                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            -->
+                            <!--<Setter Property="Content">
+                                            <Setter.Value>
+                                                <Rectangle Fill="{ThemeResource SystemAccentColor}" />
+                                            </Setter.Value>
+                                        </Setter>-->
+                            <!--
+                                    </Style>
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Content="size降" />
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Content="size升" />
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Content="chapter降" />
+                                <ToggleButton
+                                    Grid.Row="1" IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Column="1"
+                                    Content="chapter升" />
+
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Content="images降" />
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Content="images升" />
+                            </Grid>-->
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
             <AppBarButton
                 AllowFocusOnInteraction="True"
                 Icon="Switch"

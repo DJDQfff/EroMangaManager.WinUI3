@@ -13,6 +13,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private string index = null;
 
+        private ObservableCollection<Manga> FilteredMangas = [];
+
         public string GridViewItemTemplateIndex
         {
             get => index;
@@ -37,6 +39,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             set
             {
                 mangasGroup = value;
+
                 Bookcase_GridView.ItemsSource = value.Mangas;
                 Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
 
@@ -123,6 +126,11 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             var item = sender as MenuFlyoutItem;
             var index = item.Tag as string;
             GridViewItemTemplateIndex = index;
+        }
+
+        private void ToggleButton_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var control = sender as ToggleButton;
         }
     }
 }

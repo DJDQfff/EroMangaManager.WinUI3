@@ -144,7 +144,7 @@ public partial class App : Application
             folders.Insert(0, f);
         }
 #if DEBUG_TESTFOLDER
-        folders = new() { @"D:\test", @"Z:\PortableExe\bika_v1.5.2_windows_nosr_x64\bika\downloads\commies" };
+        folders = new() { @"D:\test" };
 #endif
         GlobalViewModel.GetAllFolders(folders);
         GlobalViewModel.InitialGroup += MangaFactory.InitialGroup2;

@@ -9,6 +9,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:strings="using:EroMangaManager.WinUI3.Strings"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <MenuFlyout x:Key="manganame_flyout">
+            <MenuFlyoutItem Click="MenuFlyoutItem_Click" Text="{strings:Strings Uid=Copy}" />
+            <MenuFlyoutItem Click="MenuFlyoutItem_Click_1" Text="{strings:Strings Uid=Search}" />
+        </MenuFlyout>
+    </UserControl.Resources>
     <!--  这个控件是专门用来给overviewinformation调用的，所以不能用coverwithcontextflyout控件  -->
     <Grid Width="300">
         <Grid.RowDefinitions>
@@ -16,17 +22,16 @@
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <TextBlock
+        <mangainfo:MangaName
+            x:Name="manganameTextblock"
+            ContextFlyout="{StaticResource manganame_flyout}"
+            FontSize="20"
+            Text="{x:Bind Manga.MangaName, Mode=OneWay}" />
+
+        <!--<TextBlock
             x:Name="manganameTextblock"
             FontSize="20"
-            Text="{x:Bind Manga.MangaName, Mode=OneWay}">
-            <TextBlock.ContextFlyout>
-                <MenuFlyout>
-                    <MenuFlyoutItem Click="MenuFlyoutItem_Click" Text="{strings:Strings Uid=Copy}" />
-                    <MenuFlyoutItem Click="MenuFlyoutItem_Click_1" Text="{strings:Strings Uid=Search}" />
-                </MenuFlyout>
-            </TextBlock.ContextFlyout>
-        </TextBlock>
+            Text="{x:Bind Manga.MangaName, Mode=OneWay}" />-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

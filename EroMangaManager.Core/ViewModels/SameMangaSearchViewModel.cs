@@ -29,7 +29,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
         RepeatPairs.Clear();
         foreach (var tag in tags)
         {
-            var mangas = Source.Where(x => x.Tags.Contains(tag)).ToList();
+            var mangas = Source.Where(x => x.Tags.Contains(tag)).OrderBy(x => x.Tags.Length).ToList();
             Source = Source.Except(mangas).ToList();
 
             string func1(Manga manga1, Manga manga2)
