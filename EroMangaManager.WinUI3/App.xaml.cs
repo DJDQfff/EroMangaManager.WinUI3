@@ -19,8 +19,10 @@ public partial class App : Application
     internal ObservableCollectionVM GlobalViewModel { get; private set; }
 
     internal CoverSetter CoverSetter { get; private set; } = new();
-    internal BackgroundCoverSetter BackgroundCoverSetter { get; private set; } = new();
+
+    //internal BackgroundCoverSetter BackgroundCoverSetter { get; private set; } = new();
     internal SettingViewModel AppConfig { get; private set; }
+
     internal string AppConfigPath { get; private set; }
     internal string LocalFolder = ApplicationData.Current.LocalFolder.Path;
 
