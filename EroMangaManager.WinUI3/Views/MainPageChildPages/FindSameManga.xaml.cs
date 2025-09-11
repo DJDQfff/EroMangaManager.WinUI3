@@ -16,7 +16,8 @@ public sealed partial class FindSameManga : Page
     {
         InitializeComponent();
         App.Current.GlobalViewModel.EventAfterDeleteMangaSource += viewModel.DeleteStorageFileInRootObservable;
-        viewModel.AddToResult += x => App.Current.BackgroundCoverSetter.mangas.Insert(0, x);
+        //viewModel.AddToResult += x => App.Current.BackgroundCoverSetter.mangas.Insert(0, x);
+        viewModel.AddGroup += async x => await App.Current.CoverSetter.AddWork(x.Collections);
     }
 
     private async void Button_Click(object sender, RoutedEventArgs e)
@@ -49,7 +50,7 @@ public sealed partial class FindSameManga : Page
                         if (!string.IsNullOrWhiteSpace(selectcategory.CategoryName))
                         {
                             var strings = DatabaseController.TagCategory_QuerySingle(selectcategory.CategoryName);
-                            await viewModel.Method3_2(strings);
+                            await viewModel.Method3_1(strings);
                         }
                     }
                 }

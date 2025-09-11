@@ -66,7 +66,7 @@ internal static class MangaFactory
             foreach (var manga in filteredfiles)
             {
                 mangasFolder.Mangas.Add(manga);
-                App.Current.BackgroundCoverSetter.mangas.Add(manga);
+                //App.Current.BackgroundCoverSetter.mangas.Add(manga);
             }
             //所有子文件夹作为mangabook
             var folders = await Task.Run(() => Directory.EnumerateDirectories(mangasFolder.FolderPath)
@@ -80,7 +80,7 @@ internal static class MangaFactory
             foreach (var manga in folders)
             {
                 mangasFolder.Mangas.Add(manga);
-                App.Current.BackgroundCoverSetter.mangas.Add(manga);
+                //App.Current.BackgroundCoverSetter.mangas.Add(manga);
             }
 
             mangasFolder.UpdateState = UpdateState.Over;

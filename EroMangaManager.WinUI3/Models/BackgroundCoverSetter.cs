@@ -5,14 +5,22 @@ internal class BackgroundCoverSetter
     public readonly List<Manga> mangas = [];
     private bool IsWorking = false;
 
+    public async Task WorkGroup(IEnumerable<Manga> mangas)
+    {
+        if (!IsWorking)
+        {
+            IsWorking = true;
+        }
+    }
+
     //int workcount = 0;
+    /// <summary>
+    /// 对mangas里面每个都开始循环初始化
+    /// </summary>
+    /// <returns></returns>
     public async Task LoopWork3()
     {
-        if (IsWorking)
-        {
-            return;
-        }
-        else
+        if (!IsWorking)
         {
             IsWorking = true;
             while (IsWorking)

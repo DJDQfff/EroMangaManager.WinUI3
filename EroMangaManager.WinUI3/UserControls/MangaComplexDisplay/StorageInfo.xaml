@@ -10,8 +10,8 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <mangainfo:CoverWithContextFlyout Grid.Column="0" Source="{x:Bind Manga, Mode=OneWay}" />
         <Grid Grid.Column="1">

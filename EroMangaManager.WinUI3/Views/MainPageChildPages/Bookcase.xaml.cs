@@ -60,7 +60,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         /// 导航时，传入要绑定的数据
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -74,6 +74,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 case MangasGroup mangasFolder:
                     if (mangasFolder != MangasGroup)
                         MangasGroup = mangasFolder;
+                    await App.Current.CoverSetter.AddWork(mangasFolder.Mangas);
+
                     break;
             }
         }
@@ -108,7 +110,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             MangasGroup?.SortMangas(x => x.FileSize);
         }
 
-        private void Combochangefolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void Combochangefolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         { // TODO 这里应该加一个：切换时，folde加载队列也应该跟着切换
             var a = App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder;
             if (a is null)
@@ -119,6 +121,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             MangasGroup = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(
                 x => x.FolderPath == a
             );
+
+            await App.Current.CoverSetter.AddWork(MangasGroup.Mangas);
         }
 
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)

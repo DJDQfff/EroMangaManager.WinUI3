@@ -58,6 +58,7 @@
     <None Remove="ResourceDictionarys\TitleContentPairTheme.xaml" />
     <None Remove="ResourceDictionarys\ValueConverters.xaml" />
     <None Remove="UserControls\CoverWithContextFlyout.xaml" />
+    <None Remove="UserControls\MangaBasicInfo\MangaName.xaml" />
     <None Remove="UserControls\MangaBasicInfo\SizeImagesChaptersAmount.xaml" />
     <None Remove="UserControls\MangaCoverTags.xaml" />
     <None Remove="UserControls\MangaDetailInfo.xaml" />
@@ -345,6 +346,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="UserControls\MangaBasicInfo\SizeImagesChaptersAmount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MangaBasicInfo\MangaName.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

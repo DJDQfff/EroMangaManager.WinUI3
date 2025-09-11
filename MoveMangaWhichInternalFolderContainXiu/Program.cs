@@ -1,5 +1,5 @@
-﻿var sourcefolder = @"D:\jmcomic_tocheck\检查";
-var targetfolder = @"D:\jmcomic_tocheck\新建文件夹";
+﻿var sourcefolder = @"D:\哔咔下载完成";
+var targetfolder = @"D:\未确认是否无修无水印";
 
 var folders = Directory.GetDirectories(sourcefolder);
 

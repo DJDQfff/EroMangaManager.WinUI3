@@ -73,6 +73,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
                 return keys;
             }
 
+            // TODO 每个key还需要检查一边包含关系
             await ParseAll_FindOut(mangas, func, (x, key) => x.MangaName.Contains(key), filtKeystring);
         }
     }

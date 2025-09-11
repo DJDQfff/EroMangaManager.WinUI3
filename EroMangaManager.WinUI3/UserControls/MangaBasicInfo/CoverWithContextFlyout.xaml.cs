@@ -40,7 +40,7 @@ public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropert
             var item = new MenuFlyoutItem { Text = way.FolderPath };
             moveto.Items.Add(item);
 
-            if (way.FolderPath == Source.FolderPath)
+            if (way.FolderPath == Source.FolderPath || Path.GetPathRoot(way.FolderPath).ToLower() != Path.GetPathRoot(Source.FilePath).ToLower())
             {
                 item.IsEnabled = false;
                 continue;

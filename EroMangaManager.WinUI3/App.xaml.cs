@@ -18,6 +18,7 @@ public partial class App : Application
     internal new static App Current;
     internal ObservableCollectionVM GlobalViewModel { get; private set; }
 
+    internal CoverSetter CoverSetter { get; private set; } = new();
     internal BackgroundCoverSetter BackgroundCoverSetter { get; private set; } = new();
     internal SettingViewModel AppConfig { get; private set; }
     internal string AppConfigPath { get; private set; }
@@ -121,8 +122,8 @@ public partial class App : Application
         #region 需要后台执行
 
         await GlobalViewModel.StartInitial();
-        //await Current.initialStack.StartAsync();
-        await Current.BackgroundCoverSetter.LoopWork3();
+
+        //await Current.BackgroundCoverSetter.LoopWork3();
 
         //GlobalViewModel.InitialEachFoldersInOrder();
 
@@ -144,7 +145,7 @@ public partial class App : Application
             folders.Insert(0, f);
         }
 #if DEBUG_TESTFOLDER
-        folders = new() { @"D:\test" };
+        folders = new() { @"Z:\本子 无修 无水印", @"D:\test" };
 #endif
         GlobalViewModel.GetAllFolders(folders);
         GlobalViewModel.InitialGroup += MangaFactory.InitialGroup2;
