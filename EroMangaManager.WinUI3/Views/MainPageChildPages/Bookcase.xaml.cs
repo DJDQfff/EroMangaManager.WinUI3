@@ -111,18 +111,14 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         }
 
         private async void Combochangefolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        { // TODO 这里应该加一个：切换时，folde加载队列也应该跟着切换
+        {
             var a = App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder;
-            if (a is null)
+            if (a is not null)
             {
                 //TODO 当默认文件夹被删除时，a为null
-                return;
+                MangasGroup = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x => x.FolderPath == a);
+                await App.Current.CoverSetter.AddWork(MangasGroup.Mangas);
             }
-            MangasGroup = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(
-                x => x.FolderPath == a
-            );
-
-            await App.Current.CoverSetter.AddWork(MangasGroup.Mangas);
         }
 
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)

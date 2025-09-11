@@ -72,11 +72,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 var folderws = new List<string>() { selectedfolderpath };
                 if (App.Current.AppConfig.AppConfig.General.WhetherPickSubFolder)
                 {
-                    var fs = Directory.GetDirectories(
-                        selectedfolderpath,
-                        "*",
-                        SearchOption.AllDirectories
-                    );
+                    var fs = Directory.GetDirectories(selectedfolderpath, "*", SearchOption.AllDirectories);
                     folderws.AddRange(fs);
                 }
 
@@ -90,12 +86,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                 }
                 foreach (var folder in folderws)
                 {
-                    if (
-                        !App.Current.GlobalViewModel.EnsureAddFolder(
-                            folder,
-                            out _
-                        )
-                    )
+                    if (!App.Current.GlobalViewModel.EnsureAddFolder(folder, out _))
                     {
                         await App.Current.GlobalViewModel.StartInitial();
                         //await App.Current.initialStack.StartAsync();

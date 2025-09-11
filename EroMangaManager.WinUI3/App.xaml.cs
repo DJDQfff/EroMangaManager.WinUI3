@@ -137,17 +137,18 @@ public partial class App : Application
     /// </summary>
     private void InitializeGlobalViewModel()
     {
-        var folders = DatabaseController.MangaFolder_GetAllPaths().ToList();
-        var defaultpath = AppConfig.AppConfig.General.DefaultBookcaseFolder;
+        var folders = DatabaseController.MangaFolder_GetAllPaths();
 
-        var f = folders.SingleOrDefault(x => x == defaultpath);
-        if (f != null)
-        {
-            folders.Remove(f);
-            folders.Insert(0, f);
-        }
+        // 这个是以前设计的会把默认暑假放第一个加载
+        //var defaultpath = AppConfig.AppConfig.General.DefaultBookcaseFolder;
+        //var f = folders.SingleOrDefault(x => x == defaultpath);
+        //if (f != null)
+        //{
+        //    folders.Remove(f);
+        //    folders.Insert(0, f);
+        //}
 #if DEBUG_TESTFOLDER
-        folders = new() { @"Z:\本子 无修 无水印", @"D:\test" };
+        folders = [@"Z:\本子 无修 无水印", @"D:\test"];
 #endif
         GlobalViewModel.GetAllFolders(folders);
         GlobalViewModel.InitialGroup += MangaFactory.InitialGroup2;
