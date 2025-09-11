@@ -54,7 +54,7 @@ internal class MangaCommands
 
                             }
                         }
-                        catch (UnauthorizedAccessException)
+                        catch (System.IO.IOException)
                         {
                             App.Current.GlobalViewModel.AccessDenied();
                         }

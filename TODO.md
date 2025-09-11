@@ -2,7 +2,7 @@
 
 - [ ] searchmanga页面的searchbytag控件放到一个checkbox里面，勾选此checkbox以一次性启用或禁用所有tag
 
-- [ ] 本子是否相同的算法可以提取出来，同时供searchmanga页面和findsamemanga页面使用
+- [x] 本子是否相同的算法可以提取出来，同时供searchmanga页面和findsamemanga页面使用
   
   > searchmanga页面的searchbyname控件旁边添加一个combobox，以切换搜索模式：完全相同、或近似相同、或其他符合条件的搜索模式
 

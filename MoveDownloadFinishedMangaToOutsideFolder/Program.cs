@@ -8,7 +8,7 @@ var downloads = downloadContext.Downloads;
 var downloads_2001 = downloads.Where(x => x.Status == "2001").ToList();
 Stopwatch sw = Stopwatch.StartNew();
 System.Console.WriteLine(downloads_2001.Count(x => Directory.Exists(x.SavePath)));
-//return;
+Console.Read();
 foreach (var download in downloads_2001)
 {
     var oldfolder = download.SavePath.Replace(@"\original", string.Empty);
