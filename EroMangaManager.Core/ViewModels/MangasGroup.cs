@@ -80,12 +80,11 @@ public partial class MangasGroup : ObservableObject
     /// <param name="func"></param>
     public void SortMangas<TKey>(Func<Manga, TKey> func)
     {
-        var list = Mangas.OrderByDescending(func);        //OrderBy方法不会修改源数据，返回的值是与源挂钩的，源清零，返回值也清零
+        var list = Mangas.OrderByDescending(func).ToList();        //OrderBy方法不会修改源数据，返回的值是与源挂钩的，源清零，返回值也清零
 
-        var list2 = new List<Manga>(list);
         Mangas.Clear();
 
-        foreach (var book in list2)
+        foreach (var book in list)
         {
             Mangas.Add(book);
         }

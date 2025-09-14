@@ -1,5 +1,7 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
+using System.Threading;
+
 namespace EroMangaManager.WinUI3.Views.FunctionChildPages;
 
 /// <summary>
@@ -8,6 +10,8 @@ namespace EroMangaManager.WinUI3.Views.FunctionChildPages;
 public sealed partial class FindSameManga : Page
 {
     private readonly SameMangaSearchViewModel viewModel = new();
+
+    private CancellationTokenSource cancellationTokenSource = new();
 
     /// <summary>
     ///
@@ -22,12 +26,18 @@ public sealed partial class FindSameManga : Page
 
     private async void Button_Click(object sender, RoutedEventArgs e)
     {
+        if (cancellationTokenSource is null)
+            return;
+
+        cancellationTokenSource.Cancel();
+
+        cancellationTokenSource = new();
         viewModel.Source = App.Current.GlobalViewModel.MangaList.SkipWhile(x => string.IsNullOrWhiteSpace(x.MangaName)).ToList();
 
         switch (combobox.SelectedIndex)
         {
             case 0:
-                await viewModel.Method0();
+                await viewModel.Method0(cancellationTokenSource);
                 break;
 
             case 1:
@@ -35,7 +45,7 @@ public sealed partial class FindSameManga : Page
                 break;
 
             case 2:
-                await viewModel.Method2();
+                await viewModel.Method2(cancellationTokenSource);
                 break;
 
             case 3:
@@ -50,7 +60,7 @@ public sealed partial class FindSameManga : Page
                         if (!string.IsNullOrWhiteSpace(selectcategory.CategoryName))
                         {
                             var strings = DatabaseController.TagCategory_QuerySingle(selectcategory.CategoryName);
-                            await viewModel.Method3_1(strings);
+                            await viewModel.Method3_2(strings, cancellationTokenSource);
                         }
                     }
                 }

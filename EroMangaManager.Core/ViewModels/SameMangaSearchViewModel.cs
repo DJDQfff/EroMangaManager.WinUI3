@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 using CommonLibrary.CollectionFindRepeat;
 using CommonLibrary.RepetitiveGroup;
@@ -24,7 +25,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
 
     private static bool filtKeystring(string str) => !string.IsNullOrWhiteSpace(str);
 
-    public async Task Method3_2(IEnumerable<string> tags)
+    public async Task Method3_2(IEnumerable<string> tags, CancellationTokenSource cancellationTokenSource)
     {
         RepeatPairs.Clear();
         foreach (var tag in tags)
@@ -47,7 +48,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
                 return null;
             }
 
-            await StartCompareSequence(mangas, func1, filtKeystring);
+            await StartCompareSequence(mangas, func1, filtKeystring, cancellationTokenSource);
         }
     }
 
@@ -84,7 +85,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     /// <param name="tags"></param>
     /// <returns></returns>
     [Obsolete]
-    public async Task Method3_0(IEnumerable<string> tags)
+    public async Task Method3_0(IEnumerable<string> tags, CancellationTokenSource cancellationTokenSource)
     {
         RepeatPairs.Clear();
         foreach (var tag in tags)
@@ -103,7 +104,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
                 return null;
             }
             var _viewmodel = new SameMangaSearchViewModel();
-            await _viewmodel.StartCompareSequence(mangas, func, filtKeystring);
+            await _viewmodel.StartCompareSequence(mangas, func, filtKeystring, cancellationTokenSource);
 
             foreach (var pair in _viewmodel.RepeatPairs)
             {
@@ -120,7 +121,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     /// TODO 需要优化
     /// </summary>
     /// <returns></returns>
-    public async Task Method2()
+    public async Task Method2(CancellationTokenSource cancellationTokenSource)
     {
         RepeatPairs.Clear();
         static string func1(Manga manga1, Manga manga2)
@@ -138,7 +139,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
             return null;
         }
 
-        await StartCompareSequence(Source, func1, filtKeystring);
+        await StartCompareSequence(Source, func1, filtKeystring, cancellationTokenSource);
     }
 
     /// <summary>
@@ -169,10 +170,10 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     /// 遍历找出两个相同manganame，以这个manganame为key，所有相同manganame视为重复组
     /// </summary>
     /// <returns></returns>
-    public async Task Method0()
+    public async Task Method0(CancellationTokenSource cancellationTokenSource)
     {
         RepeatPairs.Clear();
         static string func1(Manga x, Manga y) => x.MangaName == y.MangaName ? x.MangaName : null;
-        await StartCompareSequence(Source, func1, filtKeystring);
+        await StartCompareSequence(Source, func1, filtKeystring, cancellationTokenSource);
     }
 }

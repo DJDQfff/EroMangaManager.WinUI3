@@ -5,7 +5,7 @@ var folders = Directory.GetDirectories(sourcefolder);
 
 foreach (var folder in folders)
 {
-    var internalfolder = Directory.EnumerateDirectories(folder, "*修*", new EnumerationOptions() { RecurseSubdirectories = true }).Any();
+    var internalfolder = Directory.EnumerateDirectories(folder, "*修正*", new EnumerationOptions() { RecurseSubdirectories = true }).Any();
     if (internalfolder)
     {
         var foldername = Path.GetFileName(folder);

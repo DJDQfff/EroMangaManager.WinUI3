@@ -5,6 +5,7 @@ using TonquerPicacgDatabaseReverse.Download;
 var targetfolder = @"D:\哔咔下载完成";
 DownloadContext downloadContext = new();
 var downloads = downloadContext.Downloads;
+
 var downloads_2001 = downloads.Where(x => x.Status == "2001").ToList();
 Stopwatch sw = Stopwatch.StartNew();
 System.Console.WriteLine(downloads_2001.Count(x => Directory.Exists(x.SavePath)));

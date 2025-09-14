@@ -51,8 +51,11 @@ internal class MangaCommands
                             {
                                 App.Current.GlobalViewModel.RemoveManga(book);
                                 App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(book);
-
                             }
+                        }
+                        catch (UnauthorizedAccessException)
+                        {
+                            App.Current.GlobalViewModel.AccessDenied();
                         }
                         catch (System.IO.IOException)
                         {
