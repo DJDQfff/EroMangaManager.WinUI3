@@ -5,24 +5,20 @@ using System.ComponentModel;
 
 namespace EroMangaManager.WinUI3.UserControls;
 
-public sealed partial class TagItemsRepeater : UserControl, INotifyPropertyChanged
+public sealed partial class TagItemsRepeater : UserControl
 {
-    private Manga _manga;
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
     public Manga Manga
     {
-        get => _manga;
+        get => DataContext as Manga;
         set
         {
-            _manga = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
+            DataContext = value;
         }
     }
 
     public TagItemsRepeater()
     {
         InitializeComponent();
+        DataContextChanged += (a, b) => this.Bindings.Update();
     }
 }

@@ -9,24 +9,22 @@ using Windows.ApplicationModel.DataTransfer;
 
 namespace EroMangaManager.WinUI3.UserControls.MangaComplexDisplay;
 
-public sealed partial class MangaTagsView : UserControl, INotifyPropertyChanged
+public sealed partial class MangaTagsView : UserControl
 {
-    private Manga mangaBook;
-
-    public event PropertyChangedEventHandler PropertyChanged;
 
     public Manga Manga
     {
-        get => mangaBook;
+        get => DataContext as Manga;
         set
         {
-            mangaBook = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
+            DataContext = value;
         }
     }
 
     public MangaTagsView()
     {
         InitializeComponent();
+        DataContextChanged += (a, b) => this.Bindings.Update();
+
     }
 }

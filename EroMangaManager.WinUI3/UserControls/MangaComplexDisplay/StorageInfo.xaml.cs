@@ -6,24 +6,18 @@ using System.ComponentModel;
 
 namespace EroMangaManager.WinUI3.UserControls.MangaComplexDisplay;
 
-public sealed partial class StorageInfo : UserControl, INotifyPropertyChanged
+public sealed partial class StorageInfo : UserControl
 {
-    private Manga mangaBook;
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
     public Manga Manga
     {
-        get => mangaBook;
-        set
-        {
-            mangaBook = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
-        }
+        get => DataContext as Manga;
+
+        set => DataContext = value;
     }
 
     public StorageInfo()
     {
         this.InitializeComponent();
+        DataContextChanged += (a, b) => this.Bindings.Update();
     }
 }

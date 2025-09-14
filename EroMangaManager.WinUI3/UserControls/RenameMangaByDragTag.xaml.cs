@@ -6,17 +6,15 @@ using Windows.Devices.Geolocation;
 
 namespace EroMangaManager.WinUI3.UserControls;
 
-public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyChanged
+public sealed partial class RenameMangaByDragTag : UserControl
 {
-    private Manga mangaBook;
 
     public Manga Manga
     {
-        get => mangaBook;
+        get => DataContext as Manga;
         set
         {
-            mangaBook = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
+            DataContext = value;
             order.Sources = BracketBasedStringParser.SplitByBrackets_KeepBracket(
                 Manga.FileDisplayName
             ); //value.Tags;
@@ -25,11 +23,11 @@ public sealed partial class RenameMangaByDragTag : UserControl, INotifyPropertyC
 
     public event Action<Manga> NameChanged;
 
-    public event PropertyChangedEventHandler PropertyChanged;
-
     public RenameMangaByDragTag()
     {
         InitializeComponent();
+        DataContextChanged += (a, b) => this.Bindings.Update();
+
     }
 
     private async void SingleMangaRename_New(object sender, RoutedEventArgs e)

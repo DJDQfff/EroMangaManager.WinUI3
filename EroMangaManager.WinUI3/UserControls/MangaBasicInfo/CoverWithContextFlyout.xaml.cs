@@ -5,25 +5,18 @@ using System.ComponentModel;
 
 namespace EroMangaManager.WinUI3.UserControls.MangaBasicInfo;
 
-public sealed partial class CoverWithContextFlyout : UserControl, INotifyPropertyChanged
+public sealed partial class CoverWithContextFlyout : UserControl
 {
-    private Manga source;
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
     public Manga Source
     {
-        get => source;
-        set
-        {
-            source = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Source)));
-        }
+        get => DataContext as Manga;
+        set => DataContext = value;
     }
 
     public CoverWithContextFlyout()
     {
         InitializeComponent();
+        DataContextChanged += (a, b) => this.Bindings.Update();
     }
 
     private void UserControl_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)

@@ -5,18 +5,16 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace EroMangaManager.WinUI3.UserControls;
 
-public sealed partial class RenameMangaByEditString : UserControl, INotifyPropertyChanged
+public sealed partial class RenameMangaByEditString : UserControl
 {
-    private Manga mangaBook;
 
     public Manga Manga
     {
-        get => mangaBook;
+        get => DataContext as Manga;
         set
         {
-            mangaBook = value;
+            DataContext = value;
             textbox.Text = value.FileDisplayName;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Manga)));
         }
     }
 
@@ -42,8 +40,6 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
     /// </summary>
     public event Action CorrectInput;
 
-    public event PropertyChangedEventHandler PropertyChanged;
-
     /// <summary>
     /// 选择的新名字
     /// </summary>
@@ -54,7 +50,8 @@ public sealed partial class RenameMangaByEditString : UserControl, INotifyProper
     /// </summary>
     public RenameMangaByEditString()
     {
-        InitializeComponent();
+        InitializeComponent(); DataContextChanged += (a, b) => this.Bindings.Update();
+
     }
 
     /// <summary>

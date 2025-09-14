@@ -23,15 +23,12 @@ namespace EroMangaManager.WinUI3.UserControls.MangaBasicInfo
 {
     public sealed partial class MangaName : UserControl
     {
-        // DependencyProperty是设计给控件属性节省内存资源的，对于这种数据绑定不是我想要的效果，别的不需要这么弄
-        public static DependencyProperty MangaProperty = DependencyProperty.Register(nameof(Manga), typeof(Manga), typeof(MangaName), new PropertyMetadata(null));
-
-        public Manga Manga { get => GetValue(MangaProperty) as Manga; set => SetValue(MangaProperty, value); }
+        public Manga Manga { get => DataContext as Manga; set => DataContext = value; }
 
         public MangaName()
         {
             InitializeComponent();
-
+            DataContextChanged += (a, b) => this.Bindings.Update();
         }
 
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
