@@ -57,20 +57,25 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     /// </summary>
     /// <param name="tags"></param>
     /// <returns></returns>
-    public async Task Method3_1(IEnumerable<string> tags)
+    public async Task Method3_1(IEnumerable<string> tags, CancellationTokenSource cancellationTokenSource)
     {
         RepeatPairs.Clear();
         foreach (var tag in tags)
         {
             var mangas = Source.Where(x => x.Tags.Contains(tag)).ToList();
             Source = Source.Except(mangas).ToList();
+            if (mangas.Count < 2)
+            {
+                continue;
+            }
+
             IEnumerable<string> func(IEnumerable<Manga> _mangas)
             {
-                StringCollection<Manga> stringCollection = new();
-                stringCollection.Action = x => x.MangaName;
+                StringCollection<Manga, string> stringCollection = new();
+                stringCollection.Action = x => x.MangaName.Split(sperators);
                 stringCollection.Sources = mangas;
                 stringCollection.Run2();
-                var keys = stringCollection.RepeatList.Select(x => x.Content);
+                var keys = stringCollection.RepeatList.Select(x => string.Join(' ', x.Content));
                 return keys;
             }
 

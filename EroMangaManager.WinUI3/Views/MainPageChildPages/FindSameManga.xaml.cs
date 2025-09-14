@@ -60,7 +60,7 @@ public sealed partial class FindSameManga : Page
                         if (!string.IsNullOrWhiteSpace(selectcategory.CategoryName))
                         {
                             var strings = DatabaseController.TagCategory_QuerySingle(selectcategory.CategoryName);
-                            await viewModel.Method3_2(strings, cancellationTokenSource);
+                            await viewModel.Method3_1(strings, cancellationTokenSource);
                         }
                     }
                 }

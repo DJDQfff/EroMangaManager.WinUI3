@@ -42,7 +42,8 @@ public sealed partial class CoverWithContextFlyout : UserControl
             {
                 try
                 {
-                    string newpath = await Task.Run(() => MangaFileOperation.MoveManga(Source, way.FolderPath, null));
+                    var manga = Source;
+                    string newpath = await Task.Run(() => MangaFileOperation.MoveManga(manga, way.FolderPath, null));
                     Source.FilePath = newpath;
 
                     App.Current.GlobalViewModel.PlaceInCorrectGroup(Source);
