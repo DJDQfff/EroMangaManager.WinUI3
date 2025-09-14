@@ -15,6 +15,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             InitializeComponent();
             App.Current.GlobalViewModel.EventAfterDeleteMangaSource += x => { viewmodel.Sources.Remove(x); viewmodel.ResultMangas.Remove(x); };
+
+            viewmodel.ResultNewAdd += async x => await App.Current.CoverSetter.AddWork(x);
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)

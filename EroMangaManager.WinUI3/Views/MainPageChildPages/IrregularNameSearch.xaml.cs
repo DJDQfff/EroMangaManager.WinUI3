@@ -15,7 +15,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             books.Clear();
             foreach (var book in App.Current.GlobalViewModel.MangaList)
@@ -27,8 +27,11 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
                     || (checkbox3.IsChecked == true && book.Tags.ContainRepeat())
                     || (!string.IsNullOrEmpty(textbox.Text) && book.MangaName.Contains(textbox.Text))
                 )
-                { books.Add(book); }
+                {
+                    books.Add(book);
+                }
             }
+            await App.Current.CoverSetter.AddWork(books);
         }
     }
 }

@@ -8,6 +8,7 @@
 /// </remarks>
 public partial class MangaSearchViewModel : ObservableObject
 {
+    public event Action<IEnumerable<Manga>> ResultNewAdd;
     /// <summary>
     /// 所有要查重的manga集合
     /// </summary>
@@ -77,6 +78,7 @@ public partial class MangaSearchViewModel : ObservableObject
         {
             ResultMangas.Add(x);
         }
+        ResultNewAdd?.Invoke(a);
 
         //}
     }
