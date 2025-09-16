@@ -1,4 +1,6 @@
-﻿using Microsoft.Windows.AppNotifications.Builder;
+﻿using EroMangaManager.Core.Models;
+
+using Microsoft.Windows.AppNotifications.Builder;
 
 namespace EroMangaManager.WinUI3.Commands;
 
@@ -82,9 +84,9 @@ internal class MangaCommands
             Symbol = Symbol.Rename
         };
 
-        Instance.OpenManga.ExecuteRequested += (sender, args) =>
+        Instance.OpenManga.ExecuteRequested += async (sender, args) =>
         {
-            if (args.Parameter is Manga book)
+            if (args.Parameter is Manga manga)
             {
                 var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex;
 
@@ -94,12 +96,12 @@ internal class MangaCommands
                     {
                         case 0:
                         RunDefault:
-                            WindowHelper.ShowReadWindow(book);
+                            WindowHelper.ShowReadWindow(manga);
                             break;
 
                         case 1:
 
-                            Process.Start("explorer", book.FilePath);
+                            Process.Start("explorer", manga.FilePath);
                             break;
 
                         case > 1:
@@ -110,7 +112,11 @@ internal class MangaCommands
                             }
                             else
                             {
-                                Process.Start(SelectedExePath, $"\"{book.FilePath}\"");
+                                await Process.Start(SelectedExePath, $"\"{manga.FilePath}\"").WaitForExitAsync();
+                                if (MangaFactory.Exists(manga))
+                                {
+                                    await MangaFactory.LoadMangaInfo(manga);
+                                }
                             }
                             break;
                     }
@@ -119,7 +125,7 @@ internal class MangaCommands
                 {
                     var appNotification = new AppNotificationBuilder()
                         .AddText(
-                            $"{book.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}"
+                            $"{manga.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}"
                         )
                         .BuildNotification();
                     AppNotificationManager.Default.Show(appNotification);

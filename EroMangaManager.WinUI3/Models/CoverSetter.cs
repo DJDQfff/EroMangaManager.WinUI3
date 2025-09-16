@@ -36,12 +36,7 @@ namespace EroMangaManager.WinUI3.Models
                         var manga = popqueue.Dequeue();
                         if (manga.FileSize == 0) // 以filesize是否为0，来判断漫画信息是否已初始化
                         {
-                            manga.FileSize = await Task.Run(() => MangaFactory.GetFileSize(manga));
-
-                            manga.CoverPath = await Task.Run(() => MangaFactory.GetCoverFile(manga));
-
-                            manga.ImageAmount = await Task.Run(() => MangaFactory.CountImageAmount(manga));
-                            manga.ChapterAmount = await Task.Run(() => MangaFactory.CountChapterAmount(manga));
+                            await MangaFactory.LoadMangaInfo(manga);
                         }
                     }
                     if (popqueue.Count == 0)

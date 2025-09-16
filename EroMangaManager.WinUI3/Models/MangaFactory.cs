@@ -19,6 +19,16 @@ namespace EroMangaManager.WinUI3.Models;
 /// </summary>
 internal static class MangaFactory
 {
+    public static async Task LoadMangaInfo(Manga manga)
+    {
+        manga.FileSize = await Task.Run(() => MangaFactory.GetFileSize(manga));
+
+        manga.CoverPath = await Task.Run(() => MangaFactory.GetCoverFile(manga));
+
+        manga.ImageAmount = await Task.Run(() => MangaFactory.CountImageAmount(manga));
+        manga.ChapterAmount = await Task.Run(() => MangaFactory.CountChapterAmount(manga));
+
+    }
     /// <summary>ViewModel初始化</summary>
     public static void GetAllFolders(
         this ObservableCollectionVM ViewModel,
