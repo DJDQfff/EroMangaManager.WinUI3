@@ -13,8 +13,12 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         public IrregularNameSearch()
         {
             InitializeComponent();
+            App.Current.GlobalViewModel.EventAfterDeleteMangaSource += Delete;
         }
-
+        private void Delete(Manga manga)
+        {
+            _ = books.Remove(manga);
+        }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             books.Clear();

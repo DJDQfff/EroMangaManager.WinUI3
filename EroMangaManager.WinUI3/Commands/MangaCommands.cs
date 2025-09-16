@@ -117,6 +117,11 @@ internal class MangaCommands
                                 {
                                     await MangaFactory.LoadMangaInfo(manga);
                                 }
+                                else
+                                {
+                                    App.Current.GlobalViewModel.RemoveManga(manga);
+                                    App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(manga);
+                                }
                             }
                             break;
                     }
