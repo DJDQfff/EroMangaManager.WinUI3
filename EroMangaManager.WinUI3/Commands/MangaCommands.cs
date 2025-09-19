@@ -28,11 +28,7 @@ internal class MangaCommands
             ;
             if (folderpath is not null)
             {
-                try
-                {
-                    ExplorerFile.ExplorerSelectFile(folderpath);
-                }
-                catch { }
+                ExplorerFile.ExplorerSelectFile(folderpath);
             }
             //System.Diagnostics.Process.Start("explorer" , $"/select , {folderpath}");
         };

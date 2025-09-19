@@ -7,7 +7,6 @@ namespace EroMangaManager.WinUI3.UserControls;
 
 public sealed partial class RenameMangaByEditString : UserControl
 {
-
     public Manga Manga
     {
         get => DataContext as Manga;
@@ -51,7 +50,6 @@ public sealed partial class RenameMangaByEditString : UserControl
     public RenameMangaByEditString()
     {
         InitializeComponent(); DataContextChanged += (a, b) => this.Bindings.Update();
-
     }
 
     /// <summary>
@@ -123,7 +121,8 @@ public sealed partial class RenameMangaByEditString : UserControl
         var newname = NewDisplayName;// 由于NewDIsplayName在下面异步访问，会出现ui线程报错，提前取出来
         try
         {
-            string newpath = await Task.Run(() => MangaFileOperation.MoveManga(Manga, null, newname));
+            var manga = Manga;
+            string newpath = await Task.Run(() => MangaFileOperation.MoveManga(manga, null, newname));
             Manga.FilePath = newpath;
         }
         catch (UnauthorizedAccessException) { App.Current.GlobalViewModel.AccessDenied(); }

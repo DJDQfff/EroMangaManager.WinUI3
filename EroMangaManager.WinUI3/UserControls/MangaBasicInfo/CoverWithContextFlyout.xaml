@@ -15,16 +15,19 @@
     <UserControl.Resources>
         <MenuFlyout x:Key="flyout">
             <MenuFlyoutItem Command="{x:Bind commands:MangaCommands.Instance.OpenManga}" CommandParameter="{x:Bind Source, Mode=OneWay}" />
-            <MenuFlyoutSubItem Icon="Document" Text="{uid:Strings Uid=StorageOperation}">
-                <MenuFlyoutItem
-                    Command="{x:Bind commands:MangaCommands.Instance.LocateInExplorer}"
-                    CommandParameter="{x:Bind Source, Mode=OneWay}"
-                    Text="{uid:Strings Uid=LocateInExplorer}" />
-                <MenuFlyoutItem
-                    Command="{x:Bind commands:MangaCommands.Instance.ExportPDF}"
-                    CommandParameter="{x:Bind Source, Mode=OneWay}"
-                    Text="{uid:Strings Uid=ExportToPDF}" />
-            </MenuFlyoutSubItem>
+            <MenuFlyoutItem
+                Command="{x:Bind commands:MangaCommands.Instance.LocateInExplorer}"
+                CommandParameter="{x:Bind Source, Mode=OneWay}"
+                Text="{uid:Strings Uid=LocateInExplorer}" />
+            <MenuFlyoutSubItem
+                x:Name="moveto"
+                Icon="MoveToFolder"
+                Loaded="Moveto_Loaded"
+                Text="{uid:Strings Uid=MoveToOtherFolder}" />
+            <MenuFlyoutItem
+                Command="{x:Bind commands:MangaCommands.Instance.ExportPDF}"
+                CommandParameter="{x:Bind Source, Mode=OneWay}"
+                Text="{uid:Strings Uid=ExportToPDF}" />
 
             <MenuFlyoutItem
                 Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
@@ -39,13 +42,7 @@
                 CommandParameter="{x:Bind Source.MangaName, Mode=OneWay}"
                 Text="{uid:Strings Uid=SearchSimialr}" />
             <MenuFlyoutSeparator />
-            <MenuFlyoutSubItem
-                x:Name="moveto"
-                Icon="MoveToFolder"
-                Loaded="Moveto_Loaded"
-                Text="{uid:Strings Uid=MoveToOtherFolder}" />
 
-            <MenuFlyoutSeparator />
             <MenuFlyoutItem
                 Command="{x:Bind commands:MangaCommands.Instance.StorageCommandDelete}"
                 CommandParameter="{x:Bind Source, Mode=OneWay}"

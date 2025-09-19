@@ -18,7 +18,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     /// <summary>
     /// 表示查重方法执行中
     /// </summary>
-    private char[] sperators = [' ', '&', '+', '~', '~', '#', '!', '?', '？', '！', '|', '丶', '•', '﹐'];
+    private char[] sperators = [' ', '&', '+', '～', '~', '#', '!', '?', '？', '！', '|', '丶', '、', '•', '﹐'];
 
     [ObservableProperty]
     private bool isWorking = false;
@@ -71,11 +71,14 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
 
             IEnumerable<string> func(IEnumerable<Manga> _mangas)
             {
-                StringCollection<Manga, string> stringCollection = new();
-                stringCollection.Action = x => x.MangaName.Split(sperators);
-                stringCollection.Sources = mangas;
+                StringCollection<Manga, string> stringCollection = new()
+                {
+                    Action = x => x.MangaName/*.ToCharArray();//*/.Split(sperators),
+                    Sources = mangas,
+                    MinItemLength = 1
+                };
                 stringCollection.Run2();
-                var keys = stringCollection.RepeatList.Select(x => string.Join(' ', x.Content));
+                var keys = stringCollection.RepeatItemsList.Select(x => string.Join(' ', x.Items));
                 return keys;
             }
 

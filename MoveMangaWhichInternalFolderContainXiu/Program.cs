@@ -1,6 +1,6 @@
 ﻿var sourcefolder = @"D:\哔咔下载完成";
 var targetfolder = @"D:\未确认是否无修无水印";
-string[] checkstrings = ["无修", "无码", "無修", "無碼"];
+string[] checkstrings = ["无修", "无码", "無修", "無碼", "買動漫"];
 var folders = Directory.GetDirectories(sourcefolder);
 
 foreach (var folder in folders)

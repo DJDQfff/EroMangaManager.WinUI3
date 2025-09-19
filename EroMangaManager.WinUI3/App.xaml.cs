@@ -148,7 +148,7 @@ public partial class App : Application
         //    folders.Insert(0, f);
         //}
 #if DEBUG_TESTFOLDER
-        folders = [@"Z:\本子 无修 无水印", @"D:\test"];
+        folders = [@"Z:\本子\无修 无水印", @"D:\test", @"D:\重复本子"];
 #endif
         GlobalViewModel.GetAllFolders(folders);
         GlobalViewModel.InitialGroup += MangaFactory.InitialGroup2;

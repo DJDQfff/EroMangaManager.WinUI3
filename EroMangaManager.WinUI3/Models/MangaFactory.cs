@@ -27,8 +27,8 @@ internal static class MangaFactory
 
         manga.ImageAmount = await Task.Run(() => MangaFactory.CountImageAmount(manga));
         manga.ChapterAmount = await Task.Run(() => MangaFactory.CountChapterAmount(manga));
-
     }
+
     /// <summary>ViewModel初始化</summary>
     public static void GetAllFolders(
         this ObservableCollectionVM ViewModel,
@@ -293,7 +293,7 @@ internal static class MangaFactory
         }
     }
 
-    public static bool Exists(Manga manga)
+    public static bool Exists(this Manga manga)
     {
         return Directory.Exists(manga.FilePath) || File.Exists(manga.FilePath);
     }
