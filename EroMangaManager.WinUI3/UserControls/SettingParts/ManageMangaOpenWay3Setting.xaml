@@ -6,14 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:setting="using:CommunityToolkit.WinUI.Controls"
-    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings" xmlns:app="using:EroMangaManager.WinUI3"
     mc:Ignorable="d">
 
     <Grid>
 
         <setting:SettingsExpander x:Name="MangaOpenWay" Header="{uid:Strings Uid=MangaOpenWay}">
             <setting:SettingsExpander.ItemsHeader>
-                <RadioButtons ItemsSource="{x:Bind SettingVM.ExePaths, Mode=OneWay}" SelectedIndex="{x:Bind SettingVM.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}">
+                <RadioButtons ItemsSource="{x:Bind app:App.Current.AppConfig.ExePaths, Mode=OneWay}"
+                              SelectedIndex="{x:Bind app:App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}">
                     <RadioButtons.ItemTemplate>
                         <DataTemplate x:DataType="x:String">
                             <RadioButton Content="{x:Bind Converter={StaticResource uistringconverter}}">

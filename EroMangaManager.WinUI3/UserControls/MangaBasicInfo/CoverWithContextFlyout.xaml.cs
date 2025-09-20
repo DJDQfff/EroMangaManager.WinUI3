@@ -61,4 +61,27 @@ public sealed partial class CoverWithContextFlyout : UserControl
     {
         image.Source = CoverHelper.ErrorCoverImage;
     }
+
+    private void MenuFlyoutItem_Loaded(object sender, RoutedEventArgs e)
+    {
+        openwith.Items.Clear();
+        var ways = App.Current.AppConfig.ExePaths;
+
+
+
+
+        foreach (var way in ways)
+        {
+            var item = new MenuFlyoutItem { Text = Path.GetFileNameWithoutExtension( way) };
+
+            openwith.Items.Add(item);
+
+            item.Click +=  (sender, e) =>
+            {
+                    var manga = Source;// 获取datacontext，可能导致ui线程错误
+                     MangaCommands.Instance.OpenWithManga.Execute(( manga, way));
+            };
+        }
+
+    }
 }

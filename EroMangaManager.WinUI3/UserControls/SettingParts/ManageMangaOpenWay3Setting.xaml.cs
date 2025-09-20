@@ -5,7 +5,6 @@ namespace EroMangaManager.WinUI3.UserControls.SettingParts
 {
     public sealed partial class ManageMangaOpenWay3Setting : UserControl
     {
-        public SettingViewModel SettingVM { set; get; }
 
         public ManageMangaOpenWay3Setting()
         {
@@ -21,7 +20,7 @@ namespace EroMangaManager.WinUI3.UserControls.SettingParts
             var file = await picker.PickSingleFileAsync();
             if (file is not null)
             {
-                SettingVM.AddExePath(file.Path);
+                App.Current.AppConfig.AddExePath(file.Path);
             }
         }
 
@@ -31,7 +30,7 @@ namespace EroMangaManager.WinUI3.UserControls.SettingParts
             {
                 if (item.DataContext is string exepath)
                 {
-                    SettingVM.RemoveExePath(exepath);
+                    App.Current.AppConfig.RemoveExePath(exepath);
                 }
             }
         }

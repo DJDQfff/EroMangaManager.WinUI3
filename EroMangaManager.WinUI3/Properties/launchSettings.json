@@ -1,7 +1,8 @@
 {
   "profiles": {
     "EroMangaManager.WinUI3 (Package)": {
-      "commandName": "MsixPackage"
+      "commandName": "MsixPackage",
+      "nativeDebugging": false
     },
     "EroMangaManager.WinUI3 (Unpackaged)": {
       "commandName": "Project"

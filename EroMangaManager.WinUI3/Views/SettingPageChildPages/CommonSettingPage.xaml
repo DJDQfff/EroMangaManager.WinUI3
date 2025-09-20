@@ -44,7 +44,7 @@
                     OffContent="{uid:Strings Uid=DeleteMode_MoveTo}"
                     OnContent="{uid:Strings Uid=DeleteMode_JustDelete}" />
             </setting:SettingsCard>
-            <usercontrol:ManageMangaOpenWay3Setting SettingVM="{x:Bind app:App.Current.AppConfig}" />
+            <usercontrol:ManageMangaOpenWay3Setting  />
             <!--  这个功能隐藏了  -->
             <setting:SettingsCard
                 x:Name="aaa"

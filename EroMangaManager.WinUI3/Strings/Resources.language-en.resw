@@ -455,4 +455,10 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
   <data name="SearchThisTag" xml:space="preserve">
     <value>Look for this tag</value>
   </data>
+  <data name="FileInfoViewMode" xml:space="preserve">
+    <value>File view mode</value>
+  </data>
+  <data name="OpenWithExternal" xml:space="preserve">
+    <value>Open from the outside</value>
+  </data>
 </root>

@@ -10,25 +10,29 @@ namespace EroMangaManager.Core.ViewModels
     /// <remarks>
     ///
     /// </remarks>
-    /// <param name="iniPath"></param>
-    public class SettingViewModel(string iniPath) : ObservableObject
+    public class SettingViewModel : ObservableObject
     {
         /// <summary>
         /// 设置数据源
         /// </summary>
-        public IAppConfig AppConfig { get; } =
-            new ConfigurationBuilder<IAppConfig>().UseIniFile(iniPath).Build();
+        public IAppConfig AppConfig { get; } 
+
+        public SettingViewModel(string iniPath) {
+            AppConfig=     new ConfigurationBuilder<IAppConfig>().UseIniFile(iniPath).Build();
+            var exes = AppConfig.MangaOpenWay3.OpenWays
+                    ?.Split('|', '?')
+
+                    .SkipWhile(string.IsNullOrWhiteSpace)
+                .Skip(2);
+            ExePaths = new(exes);
+
+ }
+
 
         /// <summary>
         /// 存储的exe路径
         /// </summary>
-        public IEnumerable<string> ExePaths
-        {
-            get =>
-                AppConfig.MangaOpenWay3.OpenWays
-                    ?.Split('|', '?')
-                    .SkipWhile(string.IsNullOrWhiteSpace);
-        }
+        public ObservableCollection<string> ExePaths { get; }
 
         /// <summary>
         /// 移除某exe路径
@@ -41,8 +45,7 @@ namespace EroMangaManager.Core.ViewModels
                 str,
                 string.Empty
             );
-
-            OnPropertyChanged(nameof(ExePaths));
+          _=  ExePaths.Remove(path);
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace EroMangaManager.Core.ViewModels
             if (!AppConfig.MangaOpenWay3.OpenWays.Contains(exePath))
             {
                 AppConfig.MangaOpenWay3.OpenWays += $"|{exePath}";
-                OnPropertyChanged(nameof(ExePaths));
+                ExePaths.Add(exePath);
             }
         }
     }

@@ -14,20 +14,22 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <MenuFlyout x:Key="flyout">
-            <MenuFlyoutItem Command="{x:Bind commands:MangaCommands.Instance.OpenManga}" CommandParameter="{x:Bind Source, Mode=OneWay}" />
+            <!--<MenuFlyoutItem Command="{x:Bind commands:MangaCommands.Instance.OpenManga}" CommandParameter="{x:Bind Source, Mode=OneWay}" />-->
+            <MenuFlyoutSubItem
+                x:Name="openwith"
+                Icon="OpenWith"
+                Loaded="MenuFlyoutItem_Loaded"
+                Text="{uid:Strings Uid=OpenWithExternal}" />
             <MenuFlyoutItem
                 Command="{x:Bind commands:MangaCommands.Instance.LocateInExplorer}"
                 CommandParameter="{x:Bind Source, Mode=OneWay}"
+                Icon="OpenLocal"
                 Text="{uid:Strings Uid=LocateInExplorer}" />
             <MenuFlyoutSubItem
                 x:Name="moveto"
                 Icon="MoveToFolder"
                 Loaded="Moveto_Loaded"
                 Text="{uid:Strings Uid=MoveToOtherFolder}" />
-            <MenuFlyoutItem
-                Command="{x:Bind commands:MangaCommands.Instance.ExportPDF}"
-                CommandParameter="{x:Bind Source, Mode=OneWay}"
-                Text="{uid:Strings Uid=ExportToPDF}" />
 
             <MenuFlyoutItem
                 Command="{x:Bind commands:UICommands.Instance.OverviewInformation}"
@@ -40,7 +42,12 @@
             <MenuFlyoutItem
                 Command="{x:Bind commands:UICommands.Instance.SearchSimilar}"
                 CommandParameter="{x:Bind Source.MangaName, Mode=OneWay}"
-                Text="{uid:Strings Uid=SearchSimialr}" />
+                Text="{uid:Strings Uid=SearchSimialr}" />            
+            <MenuFlyoutItem
+                Command="{x:Bind commands:MangaCommands.Instance.ExportPDF}"
+                CommandParameter="{x:Bind Source, Mode=OneWay}"
+                Text="{uid:Strings Uid=ExportToPDF}" />
+
             <MenuFlyoutSeparator />
 
             <MenuFlyoutItem

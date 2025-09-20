@@ -5,7 +5,7 @@
     {
         Method3, Method4, UsageLong, StorageOperation,
         HaveNoneBrackets,
-        AllInBrackets, WhereContains,
+        AllInBrackets, WhereContains, OpenWithExternal,
         NotCorrectBracketPairs,
         MoveToOtherFolder, SearchThisTag,
 

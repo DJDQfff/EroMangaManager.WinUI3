@@ -1,7 +1,6 @@
-﻿using EroMangaManager.Core.Models;
+﻿using System;
 
 using Microsoft.Windows.AppNotifications.Builder;
-
 namespace EroMangaManager.WinUI3.Commands;
 
 internal class MangaCommands
@@ -9,13 +8,15 @@ internal class MangaCommands
     public StandardUICommand ExportPDF = new(StandardUICommandKind.Save);
     public StandardUICommand LocateInExplorer = new(StandardUICommandKind.Open);
     public StandardUICommand OpenManga = new(StandardUICommandKind.Open);
+    public StandardUICommand OpenWithManga = new(StandardUICommandKind.Open);
     public StandardUICommand StorageCommandDelete = new(StandardUICommandKind.Delete);
     public StandardUICommand StorageCommandRename = new();
-    public static MangaCommands Instance { get; set; }
+    public static MangaCommands Instance { get; private set; }
 
     public static void Initial()
     {
         Instance ??= new();
+
         Instance.LocateInExplorer.ExecuteRequested += (sender, args) =>
         {
             string folderpath = args.Parameter switch
@@ -80,8 +81,50 @@ internal class MangaCommands
             Symbol = Symbol.Rename
         };
 
+        Instance.OpenWithManga.ExecuteRequested += async (sender, args) =>
+        {
+            // 不知道为什么 object is (Manga,styring) 在这里会报错
+            var b = args.Parameter as (Manga, string)?;
+
+            if (b is not null)
+            {
+                var manga = b.Value.Item1;
+                var way = b.Value.Item2;
+
+                try
+                {
+                    await Process.Start(way, $"\"{manga.FilePath}\"").WaitForExitAsync();
+
+                    if (MangaFactory.Exists(manga))
+                    {
+                        await MangaFactory.LoadMangaInfo(manga);
+                    }
+                    else
+                    {
+                        App.Current.GlobalViewModel.RemoveManga(manga);
+                        App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(manga);
+                    }
+
+
+
+                }
+                catch (Exception)
+                {
+                    var appNotification = new AppNotificationBuilder()
+                        .AddText(
+                            $"{manga.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}"
+                        )
+                        .BuildNotification();
+                    AppNotificationManager.Default.Show(appNotification);
+                }
+            }
+        };
+
+
         Instance.OpenManga.ExecuteRequested += async (sender, args) =>
         {
+
+
             if (args.Parameter is Manga manga)
             {
                 var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex;
@@ -90,10 +133,11 @@ internal class MangaCommands
                 {
                     switch (wayindex)
                     {
-                        case 0:
-                        RunDefault:
-                            WindowHelper.ShowReadWindow(manga);
-                            break;
+                        // 功能不完善，注销掉
+                        //case 0:
+                        //RunDefault:
+                        //    WindowHelper.ShowReadWindow(manga);
+                        //    break;
 
                         case 1:
 
@@ -101,10 +145,10 @@ internal class MangaCommands
                             break;
 
                         case > 1:
-                            var SelectedExePath = App.Current.AppConfig.ExePaths.ToList()[wayindex];
+                            var SelectedExePath = App.Current.AppConfig.ExePaths.ToList()[wayindex - 2];
                             if (!File.Exists(SelectedExePath))
                             {
-                                goto RunDefault;
+                                //goto RunDefault;
                             }
                             else
                             {

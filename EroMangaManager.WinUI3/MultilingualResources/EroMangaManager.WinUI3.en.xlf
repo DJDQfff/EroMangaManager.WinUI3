@@ -615,7 +615,11 @@ If you have love, take it yourself, and if you don't like it, don't spray it.
         </trans-unit>
         <trans-unit id="FileInfoViewMode" translate="yes" xml:space="preserve">
           <source>文件视图模式</source>
-          <target state="new">文件视图模式</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">File view mode</target>
+        </trans-unit>
+        <trans-unit id="OpenWithExternal" translate="yes" xml:space="preserve">
+          <source>从外部打开</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open from the outside</target>
         </trans-unit>
       </group>
     </body>

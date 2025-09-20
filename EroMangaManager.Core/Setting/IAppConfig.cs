@@ -122,10 +122,10 @@ public interface MangaOpenWay3
     int WayIndex { set; get; }
 
     /// <summary>
-    /// 打开方式字符串都放这里，因为config.net还不支持集合，用这个代替
+    /// 打开方式字符串都放这里，因为config.net还不支持集合，用这个代替，需要在外部再套一层集合操作
     /// ?的两个为默认设置，|后面跟的是打开exe
     /// </summary>
-    [DefaultValue("?InternalReadPage?OSRelated")]
+    [DefaultValue("?InternalReadPage?OSRelated?explorer.exe")]
     string OpenWays { set; get; }
 }
 
