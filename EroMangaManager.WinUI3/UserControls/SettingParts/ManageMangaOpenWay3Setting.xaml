@@ -15,6 +15,8 @@
             <setting:SettingsExpander.ItemsHeader>
                 <RadioButtons ItemsSource="{x:Bind app:App.Current.AppConfig.ExePaths, Mode=OneWay}"
                               SelectedIndex="{x:Bind app:App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}">
+                    <!--不知道为什么，只使用selecteditem无法数据绑定，必须通过selectedindex来获取-->
+                    <!--SelectedItem="{x:Bind app:App.Current.AppConfig.AppConfig.MangaOpenWay3.DefaultWay, Mode=TwoWay}"-->
                     <RadioButtons.ItemTemplate>
                         <DataTemplate x:DataType="x:String">
                             <RadioButton Content="{x:Bind Converter={StaticResource uistringconverter}}">

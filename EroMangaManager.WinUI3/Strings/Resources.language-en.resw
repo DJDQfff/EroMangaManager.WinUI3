@@ -410,23 +410,23 @@
 Directions for use:
 This is a software for managing your local hard drive notebook.
 If you don't know what a notebook is, then you will most likely not use this software.
-
+		
 Classify and manage the books according to folders, and one folder is regarded as a classification.
-
+		
 Subformats: zip, 7z, and folder.
 The internal image format of this sub is limited to webp, jpg, png, and other formats are automatically ignored.
 The file format must be the same as the file suffix, and the software is not verified, and the user guarantees it.
-
+				
 Text in parentheses is considered a label, and content not included in parentheses will be recognized as the subname. This is not necessarily 100% correctly identified.
 Tags can be categorized and organized, providing built-in classification (not necessarily correct).
 For example: Document "[Tama Sugar] Kimi Color Protection Color (COMIC BAVEL June 2021 issue) [Innocent Sinicization Group] [Innocent Space Group] [MJK-22-Z2748] [Uncensored].zip"
-
+		
 Internal functions: book reading (basically useless, it is recommended to use external exes, see below), duplicate book search (not necessarily correctly recognized), tag management, file name management,
-
+		
 External function: Add the external exe path and call it to handle it externally. For external readers and external compressed file processors, NeeViewer is recommended.
-
+		
 The software functions are added and modified according to my own needs.
-
+		
 Self-use software, free sharing.
 If you have love, take it yourself, and if you don't like it, don't spray it.
 </value>

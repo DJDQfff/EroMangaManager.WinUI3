@@ -54,6 +54,7 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
         {
             InitializeComponent();
             GridViewItemTemplateIndex = "1";
+            //MangasGroup = App.Current.GlobalViewModel.MangaFolders.FirstOrDefault();
         }
 
         /// <summary>
@@ -112,13 +113,8 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
 
         private async void Combochangefolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var a = App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder;
-            if (a is not null)
-            {
-                //TODO 当默认文件夹被删除时，a为null
-                MangasGroup = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x => x.FolderPath == a);
-                await App.Current.CoverSetter.AddWork(MangasGroup.Mangas);
-            }
+            MangasGroup = e.AddedItems[0] as MangasGroup; 
+            await App.Current.CoverSetter.AddWork(MangasGroup.Mangas);
         }
 
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
@@ -128,9 +124,5 @@ namespace EroMangaManager.WinUI3.Views.MainPageChildPages
             GridViewItemTemplateIndex = index;
         }
 
-        private void ToggleButton_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            var control = sender as ToggleButton;
-        }
     }
 }

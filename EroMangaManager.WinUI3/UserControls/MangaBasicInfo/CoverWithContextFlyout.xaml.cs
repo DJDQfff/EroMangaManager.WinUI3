@@ -21,7 +21,7 @@ public sealed partial class CoverWithContextFlyout : UserControl
 
     private void UserControl_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
     {
-        MangaCommands.Instance.OpenManga.Execute(Source);
+        MangaCommands.Instance.OpenWithManga.Execute((Source, App.Current.AppConfig.AppConfig.MangaOpenWay3.DefaultWay));
     }
 
     private void Moveto_Loaded(object sender, RoutedEventArgs e)

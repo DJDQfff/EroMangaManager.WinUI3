@@ -1,13 +1,15 @@
 ﻿using System;
 
 using Microsoft.Windows.AppNotifications.Builder;
+
+using WinRT.EroMangaManager_WinUI3VtableClasses;
 namespace EroMangaManager.WinUI3.Commands;
 
 internal class MangaCommands
 {
     public StandardUICommand ExportPDF = new(StandardUICommandKind.Save);
     public StandardUICommand LocateInExplorer = new(StandardUICommandKind.Open);
-    public StandardUICommand OpenManga = new(StandardUICommandKind.Open);
+    //public StandardUICommand OpenManga = new(StandardUICommandKind.Open);
     public StandardUICommand OpenWithManga = new(StandardUICommandKind.Open);
     public StandardUICommand StorageCommandDelete = new(StandardUICommandKind.Delete);
     public StandardUICommand StorageCommandRename = new();
@@ -83,100 +85,111 @@ internal class MangaCommands
 
         Instance.OpenWithManga.ExecuteRequested += async (sender, args) =>
         {
-            // 不知道为什么 object is (Manga,styring) 在这里会报错
-            var b = args.Parameter as (Manga, string)?;
-
-            if (b is not null)
+            Manga manga = default;
+            string way = default;
+            switch (args.Parameter)
             {
-                var manga = b.Value.Item1;
-                var way = b.Value.Item2;
-
-                try
-                {
-                    await Process.Start(way, $"\"{manga.FilePath}\"").WaitForExitAsync();
-
-                    if (MangaFactory.Exists(manga))
+                case Manga manga1:
                     {
-                        await MangaFactory.LoadMangaInfo(manga);
+                        manga = manga1;
+                        way = App.Current.AppConfig.AppConfig.MangaOpenWay3.DefaultWay;
                     }
-                    else
+                    break;
+                case (Manga manga1, string way1):
                     {
-                        App.Current.GlobalViewModel.RemoveManga(manga);
-                        App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(manga);
+                        manga = manga1;
+                        way = way1;
                     }
+                    break;
 
-
-
-                }
-                catch (Exception)
-                {
-                    var appNotification = new AppNotificationBuilder()
-                        .AddText(
-                            $"{manga.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}"
-                        )
-                        .BuildNotification();
-                    AppNotificationManager.Default.Show(appNotification);
-                }
             }
+
+            try
+            {
+                await Process.Start(way, $"\"{manga.FilePath}\"").WaitForExitAsync();
+
+                if (MangaFactory.Exists(manga))
+                {
+                    await MangaFactory.LoadMangaInfo(manga);
+                }
+                else
+                {
+                    App.Current.GlobalViewModel.RemoveManga(manga);
+                    App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(manga);
+                }
+
+
+
+            }
+            catch (Exception)
+            {
+                var appNotification = new AppNotificationBuilder()
+                    .AddText(
+                        $"{manga.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}"
+                    )
+                    .BuildNotification();
+                AppNotificationManager.Default.Show(appNotification);
+            }
+
         };
 
+        // 弃用
+        //Instance.OpenManga.ExecuteRequested += async (sender, args) =>
+        //{
 
-        Instance.OpenManga.ExecuteRequested += async (sender, args) =>
-        {
 
+        //    if (args.Parameter is Manga manga)
+        //    {
+        //        var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex;
 
-            if (args.Parameter is Manga manga)
-            {
-                var wayindex = App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex;
+        //        try
+        //        {
+        //            switch (wayindex)
+        //            {
+        //                // 功能不完善，注销掉
+        //                //case 0:
+        //                //RunDefault:
+        //                //    WindowHelper.ShowReadWindow(manga);
+        //                //    break;
 
-                try
-                {
-                    switch (wayindex)
-                    {
-                        // 功能不完善，注销掉
-                        //case 0:
-                        //RunDefault:
-                        //    WindowHelper.ShowReadWindow(manga);
-                        //    break;
+        //                case 1:
 
-                        case 1:
+        //                    Process.Start("explorer", manga.FilePath);
+        //                    break;
 
-                            Process.Start("explorer", manga.FilePath);
-                            break;
-
-                        case > 1:
-                            var SelectedExePath = App.Current.AppConfig.ExePaths.ToList()[wayindex - 2];
-                            if (!File.Exists(SelectedExePath))
-                            {
-                                //goto RunDefault;
-                            }
-                            else
-                            {
-                                await Process.Start(SelectedExePath, $"\"{manga.FilePath}\"").WaitForExitAsync();
-                                if (MangaFactory.Exists(manga))
-                                {
-                                    await MangaFactory.LoadMangaInfo(manga);
-                                }
-                                else
-                                {
-                                    App.Current.GlobalViewModel.RemoveManga(manga);
-                                    App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(manga);
-                                }
-                            }
-                            break;
-                    }
-                }
-                catch (Exception)
-                {
-                    var appNotification = new AppNotificationBuilder()
-                        .AddText(
-                            $"{manga.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}"
-                        )
-                        .BuildNotification();
-                    AppNotificationManager.Default.Show(appNotification);
-                }
-            }
-        };
+        //                case > 1:
+        //                    var SelectedExePath = App.Current.AppConfig.ExePaths.ToList()[wayindex - 2];
+        //                    if (!File.Exists(SelectedExePath))
+        //                    {
+        //                        //goto RunDefault;
+        //                    }
+        //                    else
+        //                    {
+        //                        await Process.Start(SelectedExePath, $"\"{manga.FilePath}\"").WaitForExitAsync();
+        //                        if (MangaFactory.Exists(manga))
+        //                        {
+        //                            await MangaFactory.LoadMangaInfo(manga);
+        //                        }
+        //                        else
+        //                        {
+        //                            App.Current.GlobalViewModel.RemoveManga(manga);
+        //                            App.Current.GlobalViewModel.InvokeEvent_AfterDeleteMnagaSource(manga);
+        //                        }
+        //                    }
+        //                    break;
+        //            }
+        //        }
+        //        catch (Exception)
+        //        {
+        //            var appNotification = new AppNotificationBuilder()
+        //                .AddText(
+        //                    $"{manga.MangaName}\r{ResourceLoader.GetForViewIndependentUse().GetString("OpenFailed")}"
+        //                )
+        //                .BuildNotification();
+        //            AppNotificationManager.Default.Show(appNotification);
+        //        }
+        //    }
+        //};
 
         Instance.ExportPDF.ExecuteRequested += async (sender, args) =>
         {

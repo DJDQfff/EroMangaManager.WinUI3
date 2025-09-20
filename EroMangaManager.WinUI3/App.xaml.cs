@@ -139,7 +139,7 @@ public partial class App : Application
     {
         var folders = DatabaseController.MangaFolder_GetAllPaths();
 
-        // 这个是以前设计的会把默认暑假放第一个加载
+        // 这个是以前设计的会把默认书架放第一个加载
         //var defaultpath = AppConfig.AppConfig.General.DefaultBookcaseFolder;
         //var f = folders.SingleOrDefault(x => x == defaultpath);
         //if (f != null)

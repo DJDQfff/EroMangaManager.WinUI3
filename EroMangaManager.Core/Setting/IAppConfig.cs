@@ -127,6 +127,10 @@ public interface MangaOpenWay3
     /// </summary>
     [DefaultValue("?InternalReadPage?OSRelated?explorer.exe")]
     string OpenWays { set; get; }
+    /// <summary>
+    /// 默认exe，注意，在MangaeMangaOpenWay3Setting.xaml控件中，RadioButtons无法通过此设置数据绑定（双向不可以，单向不知道），额外通过wayindex来绑定。
+    /// </summary>
+    string DefaultWay { set; get; }
 }
 
 /// <summary>

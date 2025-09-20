@@ -16,7 +16,10 @@ namespace EroMangaManager.Core.ViewModels
         /// 设置数据源
         /// </summary>
         public IAppConfig AppConfig { get; } 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="iniPath"></param>
         public SettingViewModel(string iniPath) {
             AppConfig=     new ConfigurationBuilder<IAppConfig>().UseIniFile(iniPath).Build();
             var exes = AppConfig.MangaOpenWay3.OpenWays

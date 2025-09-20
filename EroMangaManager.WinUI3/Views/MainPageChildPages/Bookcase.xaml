@@ -54,7 +54,7 @@
                            TextAlignment="Center" />-->
             </CommandBar.Content>
             <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
-                <usercontrols:MangaOpenButton />
+                <usercontrols:MangaOpenButton  ToolTipService.ToolTip="{uid:Strings Uid=DefaultWay}"/>
             </AppBarElementContainer>
             <AppBarButton
                 AllowFocusOnInteraction="True"

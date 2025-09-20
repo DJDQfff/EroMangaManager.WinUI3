@@ -21,18 +21,19 @@ namespace EroMangaManager.WinUI3.Views
             Current = this;
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
+        ///// <summary>
+        /////
+        ///// </summary>
+        ///// <param name="e"></param>
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    base.OnNavigatedTo(e);
 
-            var defaultfolder = App.Current.GlobalViewModel.MangaFolders.FirstOrDefault();
+        //    var defaultfolder = App.Current.GlobalViewModel.MangaFolders.FirstOrDefault();
 
-            MainFrame.Navigate(typeof(Bookcase), defaultfolder);
-        }
+        //    //_ = MainFrame.Navigate(typeof(Bookcase), defaultfolder);
+
+        //}
 
         public void MainNavigationView_ItemInvoked(
             NavigationView sender,

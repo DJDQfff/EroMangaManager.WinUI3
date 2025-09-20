@@ -16,7 +16,10 @@
                 x:Name="b"
                 Background="Transparent"
                 ItemsSource="{x:Bind app:App.Current.AppConfig.ExePaths, Mode=OneWay}"
-                SelectedIndex="{x:Bind app:App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}"
+                                              SelectedIndex="{x:Bind app:App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}"
+
+                                SelectedItem="{x:Bind app:App.Current.AppConfig.AppConfig.MangaOpenWay3.DefaultWay, Mode=TwoWay}"
+
                 SelectionMode="Single">
                 <ListBox.ItemTemplate>
                     <DataTemplate x:DataType="x:String">

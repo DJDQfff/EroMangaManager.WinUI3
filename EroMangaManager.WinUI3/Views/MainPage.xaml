@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+    xmlns:mainpagechild="using:EroMangaManager.WinUI3.Views.MainPageChildPages"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     NavigationCacheMode="Required"
     mc:Ignorable="d">
@@ -74,7 +75,9 @@
                 <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
             <NavigationView.Content>
-                <Frame x:Name="MainFrame" x:FieldModifier="public" />
+                <Frame x:Name="MainFrame" x:FieldModifier="public" >
+                    <mainpagechild:Bookcase/>
+                </Frame>
             </NavigationView.Content>
             <!--<NavigationView.Header>
                 <ProgressBar  IsIndeterminate="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing,Mode=OneWay}" />

@@ -61,7 +61,7 @@
                                             <StackPanel Grid.Column="1" Orientation="Vertical">
                                                 <Button
                                                     HorizontalAlignment="Stretch"
-                                                    Command="{x:Bind commands:MangaCommands.Instance.OpenManga}"
+                                                    Command="{x:Bind commands:MangaCommands.Instance.OpenWithManga}"
                                                     CommandParameter="{x:Bind}"
                                                     Content="{uid:Strings Uid=Open}" />
                                                 <Button

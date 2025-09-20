@@ -24,7 +24,12 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     private bool isWorking = false;
 
     private static bool filtKeystring(string str) => !string.IsNullOrWhiteSpace(str);
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tags"></param>
+    /// <param name="cancellationTokenSource"></param>
+    /// <returns></returns>
     public async Task Method3_2(IEnumerable<string> tags, CancellationTokenSource cancellationTokenSource)
     {
         RepeatPairs.Clear();
@@ -56,6 +61,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     /// 先传入tag集合，对每个tag，找出重复的本子
     /// </summary>
     /// <param name="tags"></param>
+    /// <param name="cancellationTokenSource"></param>
     /// <returns></returns>
     public async Task Method3_1(IEnumerable<string> tags, CancellationTokenSource cancellationTokenSource)
     {
@@ -91,6 +97,7 @@ public partial class SameMangaSearchViewModel : RepeatItemsGroupWithMethod<strin
     ///
     /// </summary>
     /// <param name="tags"></param>
+    /// <param name="cancellationTokenSource"></param>
     /// <returns></returns>
     [Obsolete]
     public async Task Method3_0(IEnumerable<string> tags, CancellationTokenSource cancellationTokenSource)

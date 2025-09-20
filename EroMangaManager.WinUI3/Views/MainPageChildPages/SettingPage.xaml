@@ -19,7 +19,7 @@
                     x:Name="CommonSettingNavigationViewItem"
                     Content="{uid:Strings Uid=CommonSetting}"
                     IsSelected="True" />
-                <NavigationViewItem x:Name="PasswordManagementSetting" Content="{uid:Strings Uid=PasswordManagement}" />
+                <NavigationViewItem x:Name="PasswordManagementSetting" Visibility="Collapsed" Content="{uid:Strings Uid=PasswordManagement}" />
                 <NavigationViewItem
                     x:Name="SettingFilterImageButton"
                     Content="{uid:Strings Uid=FilteredImages}"
